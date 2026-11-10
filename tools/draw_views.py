@@ -13,6 +13,7 @@ part with cuts in it is drawn as its outline.
 """
 import json
 import math
+import re
 import os
 import sys
 from collections import OrderedDict
@@ -93,10 +94,14 @@ def cut_list(data):
             L = size[g]
             t, w = sorted(size[k] for k in range(3) if k != g)
             desc = "%s x %s x %s" % (frac(t), frac(w), frac(L)) + (" (shaped)" if p["kind"] == "prism" else "")
-        base = p["name"].rstrip("0123456789 ").rstrip(" -_") or p["name"]
+        base = re.sub(r"[\s_-]*(\d+|L|R)$", "", p["name"]) or p["name"]    # (Leg 1, Post L: one row)
         k = (base, mat, desc)
         rows[k] = rows.get(k, 0) + 1
+        BF[mat] = BF.get(mat, 0.0) + size[0] * size[1] * size[2] / 144.0
     return [(n, base, mat, desc) for (base, mat, desc), n in rows.items()]
+
+
+BF = {}    # board feet by material, net (cut_list() fills it)
 
 
 def draw(data, out):
@@ -114,7 +119,7 @@ def draw(data, out):
     origins = {"front": (fx, fy), "top": (fx, M + 60 + D * K), "side": (fx + W * K + GAP, fy)}
     sw = max(origins["side"][0] + D * K + M + 40, fx + W * K + GAP + table_w + M)
     sh = fy + DIM_OFF * K + 80 + 20 * len(data.get("notes", []))
-    sh = max(sh, M + 60 + 30 * (len(rows) + 4))
+    sh = max(sh, M + 60 + 30 * (len(rows) + 8))
     svg = SvgDraw((int(sw), int(sh)))
 
     def P(view, hv):
@@ -216,6 +221,13 @@ def draw(data, out):
         for i, s in enumerate((str(n), base, mat, desc)):
             svg.text((tx + cols[i], y), s, font=font(12), fill=INK, anchor="la")
         y += 20
+    y += 6
+    svg.line([(tx, y), (tx + table_w - 20, y)], fill="#aaa", width=0.7)
+    y += 8
+    for m, bf in BF.items():
+        svg.text((tx, y), "%s: %.1f board feet net (buy about %d with waste)" % (m, bf, math.ceil(bf * 1.35)),
+                 font=font(12), fill="#555", anchor="la")
+        y += 18
     for i, note in enumerate(data.get("notes", [])):
         svg.text((M, sh - 30 - 20 * (len(data["notes"]) - 1 - i)), note, font=font(12), fill="#555", anchor="la")
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)

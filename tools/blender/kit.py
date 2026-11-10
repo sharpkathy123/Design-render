@@ -235,6 +235,25 @@ def cyl(name, r, a0, a1, x=0.0, y=0.0, key="steel", axis="z", segs=48, part=True
     return o
 
 
+def pyramid(name, x0, y0, x1, y1, z0, rise, key, flat=0.0):
+    """A shallow pyramid over a rectangle at height z0 (a post's cap),
+    rising `rise`, with a flat of `flat` inches across at its peak. Not a
+    part of its own: it's cut on the post's end."""
+    bm = bmesh.new()
+    cx, cy, f = (x0 + x1) / 2, (y0 + y1) / 2, flat / 2
+    base = [bm.verts.new(p) for p in ((x0, y0, z0), (x1, y0, z0), (x1, y1, z0), (x0, y1, z0))]
+    top = [bm.verts.new(p) for p in ((cx - f, cy - f, z0 + rise), (cx + f, cy - f, z0 + rise),
+                                      (cx + f, cy + f, z0 + rise), (cx - f, cy + f, z0 + rise))]
+    bm.faces.new(list(reversed(base)))
+    for i in range(4):
+        j = (i + 1) % 4
+        bm.faces.new((base[i], base[j], top[j], top[i]))
+    bm.faces.new(top)
+    bmesh.ops.remove_doubles(bm, verts=bm.verts, dist=1e-6)
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    return _obj(name, bm, key, "z")
+
+
 def cut(o, *boxes):
     """Cut boxes (x0, y0, z0, x1, y1, z1, inches) out of a part: a notch,
     a mortise, a hole for a bolt."""
@@ -319,11 +338,12 @@ def write_parts(path, name="", notes=()):
 # ---------------------------------------------------------------------------
 # Studio, camera, render
 # ---------------------------------------------------------------------------
-def studio(floor="#cfc8bd", wall="#e8e4dc", size=None, wall_y=None, warm=True):
+def studio(floor="#cfc8bd", wall="#e8e4dc", size=None, wall_y=None, warm=True, radius=30.0):
     """A plain photo studio: a floor, a wall behind with a soft curve into
     it (a sweep), a big soft key light, a fill and a rim, a dim gray world.
     The sweep stands behind the model's back (wall_y, inches; default 24"
-    behind it). Not parts: they're left out of the parts list."""
+    behind it; radius, the curve's: small for a thing that stands against
+    a wall, as a bed does). Not parts: they're left out of the parts list."""
     lo, hi = bounds()
     span = max(hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2])
     size = size or max(240.0, span * 6)
@@ -332,7 +352,7 @@ def studio(floor="#cfc8bd", wall="#e8e4dc", size=None, wall_y=None, warm=True):
     SPECS.setdefault("_floor", dict(color=hexcolor(floor), roughness=0.75))
     SPECS.setdefault("_wall", dict(color=hexcolor(wall), roughness=0.9))
     # the sweep: floor up into the wall on a 30" radius, one smooth piece
-    R, n = 30.0, 12
+    R, n = radius, 12
     prof = [(-size, 0.0), (wy - R, 0.0)]
     prof += [(wy - R + R * math.sin(math.pi / 2 * k / n), R - R * math.cos(math.pi / 2 * k / n)) for k in range(1, n + 1)]
     prof += [(wy, size * 0.6)]
@@ -349,15 +369,30 @@ def studio(floor="#cfc8bd", wall="#e8e4dc", size=None, wall_y=None, warm=True):
     w = bpy.context.scene.world or bpy.data.worlds.new("World")
     bpy.context.scene.world = w
     w.use_nodes = True
-    bg = w.node_tree.nodes.get("Background")
+    nt = w.node_tree
+    bg = nt.nodes.get("Background")
     bg.inputs["Color"].default_value = (0.05, 0.05, 0.055, 1.0)
     bg.inputs["Strength"].default_value = 1.0
+    # (past the sweep's edges the camera sees the wall's color, not the dark
+    # world that lights the scene: a side view looked out into black)
+    if "Camera backdrop" not in nt.nodes:
+        lp = nt.nodes.new("ShaderNodeLightPath")
+        seen = nt.nodes.new("ShaderNodeBackground")
+        seen.name = "Camera backdrop"
+        seen.inputs["Color"].default_value = SPECS["_wall"]["color"] + (1.0,)
+        seen.inputs["Strength"].default_value = 0.9
+        mix = nt.nodes.new("ShaderNodeMixShader")
+        out = nt.nodes.get("World Output")
+        nt.links.new(lp.outputs["Is Camera Ray"], mix.inputs[0])
+        nt.links.new(bg.outputs[0], mix.inputs[1])
+        nt.links.new(seen.outputs[0], mix.inputs[2])
+        nt.links.new(mix.outputs[0], out.inputs["Surface"])
     c = Vector(((lo[0] + hi[0]) / 2, (lo[1] + hi[1]) / 2, (lo[2] + hi[2]) / 2)) * INCH
     d = max(span, 30.0) * INCH
     tint = (1.0, 0.93, 0.85) if warm else (1.0, 1.0, 1.0)
     for nm, off, power, sz, col in (
-            ("Key light", Vector((-1.6, -1.8, 2.0)), 900.0, 2.2, tint),
-            ("Fill light", Vector((2.0, -1.4, 0.8)), 250.0, 3.0, (0.92, 0.95, 1.0)),
+            ("Key light", Vector((-1.6, -1.8, 2.0)), 650.0, 2.2, tint),
+            ("Fill light", Vector((2.0, -1.4, 0.8)), 160.0, 3.0, (0.92, 0.95, 1.0)),
             ("Rim light", Vector((1.0, 2.0, 2.2)), 400.0, 1.2, tint)):
         ld = bpy.data.lights.new(nm, "AREA")
         ld.shape = "DISK"
