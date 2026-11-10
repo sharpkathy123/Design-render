@@ -1,19 +1,19 @@
 {
  "name": "Queen bed frame",
  "notes": [
-  "Quartersawn white oak, poplar for the cleats, slats and center rail. Headboard joints mortise and tenon; side rails on bed-rail fasteners.",
+  "Quartersawn white oak, fumed; poplar slats; 2x4 cleats and center rail. The headboard's rails and the foot rail are through-tenoned and pegged; side rails on bed bolts. Joinery: bed-frame-joinery.svg.",
   "Mattress 60\" x 80\" x 11\" on the slats (no box spring); its top 24\" from the floor."
  ],
  "bounds": [
   [
-   0.0,
-   0.0,
+   -0.37500000463461314,
+   -0.07999999499989777,
    0.0
   ],
   [
-   64.12500002252774,
+   64.49999771718905,
    85.06250193738562,
-   53.125000375462335
+   60.1249980175589
   ]
  ],
  "dims": [
@@ -37,12 +37,12 @@
    "a": [
     0,
     85.0625,
-    49.0
+    56.0
    ],
    "b": [
     0,
     85.0625,
-    53.125
+    60.125
    ],
    "view": "side",
    "offset": 3
@@ -57,7 +57,7 @@
    "b": [
     0,
     85.0625,
-    49.0
+    56.0
    ],
    "view": "side",
    "offset": 7
@@ -82,15 +82,15 @@
    "a": [
     1.8125,
     0,
-    49.0
+    56.0
    ],
    "b": [
     62.3125,
     0,
-    49.0
+    56.0
    ],
    "view": "front",
-   "offset": 4
+   "offset": 5
   },
   {
    "label": "",
@@ -125,7 +125,11 @@
  ],
  "materials": {
   "oak": "QS white oak",
-  "poplar": "poplar"
+  "peg": "QS white oak",
+  "poplar": "poplar",
+  "pine": "2x4 (SPF)",
+  "pine_dark": "2x4 (SPF), stained dark",
+  "brass": "brass"
  },
  "parts": [
   {
@@ -140,9 +144,11 @@
    "hi": [
     2.75,
     85.0625,
-    52.5
+    59.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 0.625,
+   "note": "with its cap"
   },
   {
    "name": "Head post R",
@@ -156,9 +162,11 @@
    "hi": [
     64.125,
     85.0625,
-    52.5
+    59.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 0.625,
+   "note": "with its cap"
   },
   {
    "name": "Headboard bottom rail",
@@ -174,7 +182,9 @@
     83.8125,
     19.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 6.25,
+   "note": "with tenons"
   },
   {
    "name": "Headboard top rail",
@@ -183,14 +193,16 @@
    "lo": [
     2.75,
     82.5625,
-    44.5
+    51.5
    ],
    "hi": [
     61.375,
     83.8125,
-    49.0
+    56.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 6.25,
+   "note": "with tenons"
   },
   {
    "name": "Headboard slat 1",
@@ -204,9 +216,11 @@
    "hi": [
     10.982142857142858,
     83.3125,
-    44.5
+    51.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 1.5,
+   "note": "with tenons"
   },
   {
    "name": "Headboard slat 2",
@@ -220,9 +234,11 @@
    "hi": [
     19.214285714285715,
     83.3125,
-    44.5
+    51.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 1.5,
+   "note": "with tenons"
   },
   {
    "name": "Headboard slat 3",
@@ -236,9 +252,11 @@
    "hi": [
     27.446428571428573,
     83.3125,
-    44.5
+    51.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 1.5,
+   "note": "with tenons"
   },
   {
    "name": "Headboard slat 4",
@@ -252,9 +270,11 @@
    "hi": [
     35.67857142857143,
     83.3125,
-    44.5
+    51.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 1.5,
+   "note": "with tenons"
   },
   {
    "name": "Headboard slat 5",
@@ -268,9 +288,11 @@
    "hi": [
     43.910714285714285,
     83.3125,
-    44.5
+    51.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 1.5,
+   "note": "with tenons"
   },
   {
    "name": "Headboard slat 6",
@@ -284,9 +306,11 @@
    "hi": [
     52.142857142857146,
     83.3125,
-    44.5
+    51.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 1.5,
+   "note": "with tenons"
   },
   {
    "name": "Headboard slat 7",
@@ -300,9 +324,11 @@
    "hi": [
     60.375,
     83.3125,
-    44.5
+    51.5
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 1.5,
+   "note": "with tenons"
   },
   {
    "name": "Foot leg L",
@@ -318,7 +344,9 @@
     2.75,
     16.0
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Foot leg R",
@@ -334,12 +362,137 @@
     2.75,
     16.0
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Foot rail",
-   "kind": "box",
+   "kind": "prism",
    "key": "oak",
+   "axis": "y",
+   "pts": [
+    [
+     2.75,
+     8.0
+    ],
+    [
+     5.75,
+     8.0
+    ],
+    [
+     7.942708333333334,
+     8.240239023601532
+    ],
+    [
+     10.135416666666668,
+     8.459369013078458
+    ],
+    [
+     12.328125,
+     8.657450122182354
+    ],
+    [
+     14.520833333333334,
+     8.834536529957376
+    ],
+    [
+     16.713541666666664,
+     8.99067651566071
+    ],
+    [
+     18.90625,
+     9.125912525166257
+    ],
+    [
+     21.098958333333336,
+     9.240281229065744
+    ],
+    [
+     23.291666666666668,
+     9.333813572654691
+    ],
+    [
+     25.484375,
+     9.406534817963092
+    ],
+    [
+     27.677083333333332,
+     9.458464577964321
+    ],
+    [
+     29.869791666666668,
+     9.489616843070763
+    ],
+    [
+     32.0625,
+     9.5
+    ],
+    [
+     34.25520833333333,
+     9.489616843070763
+    ],
+    [
+     36.44791666666667,
+     9.458464577964321
+    ],
+    [
+     38.640625,
+     9.406534817963092
+    ],
+    [
+     40.833333333333336,
+     9.333813572654691
+    ],
+    [
+     43.026041666666664,
+     9.240281229065744
+    ],
+    [
+     45.21875,
+     9.125912525166257
+    ],
+    [
+     47.411458333333336,
+     8.99067651566071
+    ],
+    [
+     49.604166666666664,
+     8.834536529957376
+    ],
+    [
+     51.796875,
+     8.657450122182354
+    ],
+    [
+     53.989583333333336,
+     8.459369013078458
+    ],
+    [
+     56.182291666666664,
+     8.240239023601532
+    ],
+    [
+     58.375,
+     8.0
+    ],
+    [
+     61.375,
+     8.0
+    ],
+    [
+     61.375,
+     16.0
+    ],
+    [
+     2.75,
+     16.0
+    ]
+   ],
+   "a": [
+    0.9375,
+    1.8125
+   ],
    "lo": [
     2.75,
     0.9375,
@@ -350,7 +503,8 @@
     1.8125,
     16.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 6.25
   },
   {
    "name": "Side rail L",
@@ -366,7 +520,9 @@
     82.3125,
     14.0
    ],
-   "grain": "y"
+   "grain": "y",
+   "extra": 1.0,
+   "note": "with stub tenons"
   },
   {
    "name": "Side rail R",
@@ -382,12 +538,14 @@
     82.3125,
     14.0
    ],
-   "grain": "y"
+   "grain": "y",
+   "extra": 1.0,
+   "note": "with stub tenons"
   },
   {
    "name": "Cleat L",
    "kind": "box",
-   "key": "poplar",
+   "key": "pine",
    "lo": [
     1.8125,
     2.75,
@@ -398,12 +556,14 @@
     82.3125,
     12.25
    ],
-   "grain": "y"
+   "grain": "y",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Cleat R",
    "kind": "box",
-   "key": "poplar",
+   "key": "pine",
    "lo": [
     60.8125,
     2.75,
@@ -414,7 +574,9 @@
     82.3125,
     12.25
    ],
-   "grain": "y"
+   "grain": "y",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 1",
@@ -430,7 +592,9 @@
     7.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 2",
@@ -446,7 +610,9 @@
     13.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 3",
@@ -462,7 +628,9 @@
     19.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 4",
@@ -478,7 +646,9 @@
     25.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 5",
@@ -494,7 +664,9 @@
     31.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 6",
@@ -510,7 +682,9 @@
     37.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 7",
@@ -526,7 +700,9 @@
     43.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 8",
@@ -542,7 +718,9 @@
     49.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 9",
@@ -558,7 +736,9 @@
     55.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 10",
@@ -574,7 +754,9 @@
     61.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 11",
@@ -590,7 +772,9 @@
     67.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 12",
@@ -606,7 +790,9 @@
     73.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Slat 13",
@@ -622,12 +808,14 @@
     79.8125,
     13.0
    ],
-   "grain": "x"
+   "grain": "x",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Center rail",
    "kind": "box",
-   "key": "poplar",
+   "key": "pine",
    "lo": [
     31.3125,
     1.8125,
@@ -638,12 +826,14 @@
     82.3125,
     12.25
    ],
-   "grain": "y"
+   "grain": "y",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Center leg 1",
    "kind": "box",
-   "key": "poplar",
+   "key": "pine_dark",
    "lo": [
     31.3125,
     13.8125,
@@ -654,12 +844,14 @@
     17.3125,
     8.75
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Center leg 2",
    "kind": "box",
-   "key": "poplar",
+   "key": "pine_dark",
    "lo": [
     31.3125,
     40.3125,
@@ -670,12 +862,14 @@
     43.8125,
     8.75
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 0.0,
+   "note": ""
   },
   {
    "name": "Center leg 3",
    "kind": "box",
-   "key": "poplar",
+   "key": "pine_dark",
    "lo": [
     31.3125,
     66.8125,
@@ -686,7 +880,9 @@
     70.3125,
     8.75
    ],
-   "grain": "z"
+   "grain": "z",
+   "extra": 0.0,
+   "note": ""
   }
  ]
 }

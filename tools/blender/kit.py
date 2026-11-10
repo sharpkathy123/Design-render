@@ -145,11 +145,15 @@ def _longest(lo, hi):
     return "xyz"[d.index(max(d))]
 
 
-def box(name, x0, y0, z0, x1, y1, z1, key, grain=None, part=True, round_edges=None):
+def box(name, x0, y0, z0, x1, y1, z1, key, grain=None, part=True, round_edges=None, check=True, extra=0.0, note="with tenons"):
     """A rectangular part from corner to corner. A wood's grain runs along
     its longest side unless `grain` names the axis. part=False leaves it
     out of the parts list (a floor, a stand-in). round_edges: a bevel
-    radius in inches (eased edges catch the light; default 1/16")."""
+    radius in inches (eased edges catch the light; default 1/16").
+    check=False leaves it out of the joint and overlap checks (a tenon's
+    proud end, a peg: they sit against a part's face on purpose). extra:
+    length the cut list adds along the grain (tenons the model doesn't
+    draw inside the parts they go into), and note what it is."""
     lo = (min(x0, x1), min(y0, y1), min(z0, z1))
     hi = (max(x0, x1), max(y0, y1), max(z0, z1))
     bm = bmesh.new()
@@ -158,7 +162,8 @@ def box(name, x0, y0, z0, x1, y1, z1, key, grain=None, part=True, round_edges=No
         vert.co = Vector(tuple(lo[k] if vert.co[k] < 0 else hi[k] for k in range(3)))
     g = grain or _longest(lo, hi)
     o = _obj(name, bm, key, g)
-    BOXES.append((o, lo, hi))
+    if check:
+        BOXES.append((o, lo, hi))
     r = 1 / 16 if round_edges is None else round_edges
     if r > 0:
         mod = o.modifiers.new("Bevel", "BEVEL")
@@ -168,11 +173,12 @@ def box(name, x0, y0, z0, x1, y1, z1, key, grain=None, part=True, round_edges=No
         mod.use_clamp_overlap = True
         mod.harden_normals = True
     if part:
-        PARTS.append(dict(name=name, kind="box", key=key, lo=list(lo), hi=list(hi), grain=g))
+        PARTS.append(dict(name=name, kind="box", key=key, lo=list(lo), hi=list(hi), grain=g, extra=extra,
+                          note=note if extra else ""))
     return o
 
 
-def prism(name, pts, axis, a0, a1, key, grain=None, part=True, smooth=False):
+def prism(name, pts, axis, a0, a1, key, grain=None, part=True, smooth=False, extra=0.0):
     """A polygon extruded along an axis: pts are (u, v) in the other two
     axes in order (axis "y": (x, z); "x": (y, z); "z": (x, y)), from a0 to
     a1 along the axis. For angled legs, braces, arched aprons."""
@@ -200,7 +206,7 @@ def prism(name, pts, axis, a0, a1, key, grain=None, part=True, smooth=False):
     o = _obj(name, bm, key, g, smooth)
     if part:
         PARTS.append(dict(name=name, kind="prism", key=key, axis=axis, pts=[list(p) for p in pts],
-                          a=[min(a0, a1), max(a0, a1)], lo=blo, hi=bhi, grain=g))
+                          a=[min(a0, a1), max(a0, a1)], lo=blo, hi=bhi, grain=g, extra=extra))
     return o
 
 

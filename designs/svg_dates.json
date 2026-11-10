@@ -1,6 +1,10 @@
 {
  "designs/bed-frame/bed-frame-drawing.svg": {
   "date": "2026-11-10",
-  "hash": "27d7017104129cc979c7496d52300fd099deb198"
+  "hash": "81db45ec738f34ca95e4e6ef2d61cacd14dafe7a"
+ },
+ "designs/bed-frame/bed-frame-joinery.svg": {
+  "date": "2026-11-10",
+  "hash": "5e6d1901b120824907928052a9063065d7ed7d28"
  }
 }

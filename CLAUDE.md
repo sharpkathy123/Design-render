@@ -13,14 +13,17 @@ Each design starts as a text spec, `specs/<name>.md`, and ends up in
 
 | File | What it is |
 |---|---|
+| `sizes.py` | every size, in inches |
 | `model.py` | the Blender model, built with `tools/blender/kit.py` |
+| `BUILD.md` | for something to be built: materials with prices, tools, steps |
 | `README.md` | what was built, the assumptions, open questions, links |
 | `parts.json` | the parts list, written by the model |
 | `<name>-drawing.svg` | front, side, top, dimensions, cut list |
 | `renders/<name>-<view>.jpg` | the pictures |
 
-1. **Read the whole spec.** Every size in it goes into `model.py` as a
-   named number at the top, with the line of the spec it came from. Don't
+1. **Read the whole spec.** Every size goes into the design's `sizes.py`
+   (one size, one number: the model, the drawings and the build notes all
+   read it), with where it came from. Don't
    invent sizes that matter. Where the spec is silent, pick the usual
    size (a 30" table height, 3/4" stock), say so in the README under
    "Assumptions", and keep going. Put real questions under "Questions",

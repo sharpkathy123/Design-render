@@ -91,13 +91,14 @@ def cut_list(data):
             desc = "%s dia. x %s" % (frac(2 * p["r"]), frac(L))
         else:
             g = "xyz".index(p.get("grain", "x"))
-            L = size[g]
+            L = size[g] + p.get("extra", 0.0)
             t, w = sorted(size[k] for k in range(3) if k != g)
-            desc = "%s x %s x %s" % (frac(t), frac(w), frac(L)) + (" (shaped)" if p["kind"] == "prism" else "")
+            desc = "%s x %s x %s" % (frac(t), frac(w), frac(L)) + (" (shaped)" if p["kind"] == "prism" else "") \
+                + ((" " + p.get("note", "with tenons")) if p.get("extra") else "")
         base = re.sub(r"[\s_-]*(\d+|L|R)$", "", p["name"]) or p["name"]    # (Leg 1, Post L: one row)
         k = (base, mat, desc)
         rows[k] = rows.get(k, 0) + 1
-        BF[mat] = BF.get(mat, 0.0) + size[0] * size[1] * size[2] / 144.0
+        BF[mat] = BF.get(mat, 0.0) + size[0] * size[1] * size[2] * (1 + p.get("extra", 0.0) / max(size)) / 144.0
     return [(n, base, mat, desc) for (base, mat, desc), n in rows.items()]
 
 
@@ -113,7 +114,7 @@ def draw(data, out):
     DIM_OFF = 2.2 * big / 40 + 1.5                                 # the overall dimensions' offset, inches
     M, GAP = 70.0, max(80.0, 0.25 * D * K)
     rows = cut_list(data)
-    table_w = 620.0
+    table_w = 700.0
     # where each view's (h, v) = lo corner lands on the sheet
     fx, fy = M + 40, M + 60 + D * K + GAP + H * K          # the front view's lower left (y down)
     origins = {"front": (fx, fy), "top": (fx, M + 60 + D * K), "side": (fx + W * K + GAP, fy)}
@@ -211,7 +212,7 @@ def draw(data, out):
     y = ty + 84
     svg.text((tx, y), "CUT LIST", font=font(13), fill=INK, anchor="la")
     y += 22
-    cols = (0, 40, 230, 400)
+    cols = (0, 40, 230, 380)
     for i, head in enumerate(("Qty", "Part", "Material", "T x W x L")):
         svg.text((tx + cols[i], y), head, font=font(11), fill="#555", anchor="la")
     y += 16

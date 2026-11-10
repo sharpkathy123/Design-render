@@ -17,4 +17,12 @@ Answers (client, 2026-11-10):
 7. The quilt is separate, sized to cover the headboard.
 8. The client hopes to build it.
 
+Follow-up (client, 2026-11-10):
+
+- Make it look more like original Arts & Crafts: through-tenons pegged through
+  the posts, an arched foot rail, bed bolts with brass covers, a fumed finish.
+- Taller, so a tall person can lounge sitting up: the top rail at 56", 32" above
+  the mattress top.
+- Everything needed to build it, with estimated prices (BUILD.md).
+
 The design: [designs/bed-frame/](../designs/bed-frame/README.md).
