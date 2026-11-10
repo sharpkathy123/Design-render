@@ -1,0 +1,5 @@
+# For the Blender models (python3.11 -m pip install -r tools/render_requirements.txt)
+bpy==4.5.*
+pyyaml
+pillow
+numpy
