@@ -342,11 +342,11 @@
    "hi": [
     2.75,
     2.75,
-    16.0
+    17.0
    ],
    "grain": "z",
-   "extra": 0.0,
-   "note": ""
+   "extra": 0.625,
+   "note": "with its cap"
   },
   {
    "name": "Foot leg R",
@@ -360,11 +360,11 @@
    "hi": [
     64.125,
     2.75,
-    16.0
+    17.0
    ],
    "grain": "z",
-   "extra": 0.0,
-   "note": ""
+   "extra": 0.625,
+   "note": "with its cap"
   },
   {
    "name": "Foot rail",

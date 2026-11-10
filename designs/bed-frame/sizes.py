@@ -23,6 +23,8 @@ REVEAL = 0.25                      # the headboard's face set back from the post
 # --- heights ------------------------------------------------------------
 RAIL_Z = (8.0, 14.0)               # side rails, 6": their top 1" above the slats holds the mattress
 FOOT_Z = (8.0, 16.0)               # the foot rail, 8" at its ends: 3" above the slats keeps the mattress in
+FOOT_LEG = FOOT_Z[1] + 1.0          # the foot legs stand 1" above the rail, capped like the head posts:
+                                   # short posts, as period beds had (client, 2026-11-10: "more authentic")
 FOOT_ARCH = 1.5                    # its bottom edge arched up 1 1/2" at the middle (period beds' shaped rails)
 FOOT_FLAT = 3.0                    # flat for 3" from each leg before the arch starts
 HB_BOTTOM = (14.0, 19.0)           # the headboard's bottom rail, 5", behind the mattress and pillows

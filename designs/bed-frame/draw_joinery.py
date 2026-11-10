@@ -201,10 +201,12 @@ def slats(ox, oy):
 def foot(ox, oy):
     k = 9.0
     d = Detail(ox, oy, k, "D. FOOT LEGS (2) AND FOOT RAIL",
-               "Legs %s square x %s; the rail %s thick, %s tall at its ends, its bottom arched %s." % (frac(POST), frac(FOOT_Z[1]), frac(RAIL_T), frac(FOOT_Z[1] - FOOT_Z[0]), frac(FOOT_ARCH)) +
+               "Legs %s square x %s with the cap; the rail %s thick, %s tall at its ends, its bottom arched %s." % (frac(POST), frac(FOOT_LEG + CAP_RISE), frac(RAIL_T), frac(FOOT_Z[1] - FOOT_Z[0]), frac(FOOT_ARCH)) +
                "\nLeft leg and the rail's left end shown; the right is the mirror.")
     # left leg, front face
-    d.rect(0, 0, POST, FOOT_Z[1])
+    d.rect(0, 0, POST, FOOT_LEG)
+    d.poly([(0, FOOT_LEG), (POST, FOOT_LEG), (POST / 2 + CAP_FLAT / 2, FOOT_LEG + CAP_RISE), (POST / 2 - CAP_FLAT / 2, FOOT_LEG + CAP_RISE)])
+    d.dim((0, FOOT_Z[1]), (0, FOOT_LEG), -0.8, label=frac(FOOT_LEG - FOOT_Z[1]) + " above rail")
     for zp in (FOOT_TENON_Z[0] + PEG_IN, FOOT_TENON_Z[1] - PEG_IN):
         d.rect(POST / 2 - PEG / 2, zp - PEG / 2, POST / 2 + PEG / 2, zp + PEG / 2, fill="#bba78a")
     d.circle(POST / 2, BOLT_Z[0], BOLT_COUNTERBORE[0] / 2, fill="#f3e3b5")
@@ -212,7 +214,7 @@ def foot(ox, oy):
     d.text(POST / 2, -1.2, "LEG, FRONT FACE", 11, color=NOTE)
     # the rail's left end, with the leg's mortise in section
     rx = POST + 5.0
-    d.rect(rx, FOOT_Z[0], rx + POST, FOOT_Z[1], fill="#f6f3ec")
+    d.rect(rx, FOOT_Z[0], rx + POST, FOOT_LEG, fill="#f6f3ec")
     d.rect(rx, FOOT_TENON_Z[0], rx + POST, FOOT_TENON_Z[1], fill="#e9e3d6")
     d.text(rx + POST / 2, FOOT_Z[0] - 2.6, "leg, in section", 10, color=NOTE)
     run = 26.0
@@ -245,7 +247,7 @@ def foot(ox, oy):
     ]
     for i, n in enumerate(notes):
         d.text(0, -4.0 - i * 1.75, n, 11, "start", NOTE)
-    d.heading(FOOT_Z[1] + 2.0)
+    d.heading(FOOT_LEG + CAP_RISE + 2.0)
 
 
 def side_rail(ox, oy):

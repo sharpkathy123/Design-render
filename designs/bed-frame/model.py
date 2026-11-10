@@ -71,7 +71,8 @@ def build():
                 "oak", round_edges=0.125, extra=2 * SLAT_TENON[1])
     # the foot: two legs no higher than the rail; the rail arched, through-tenoned and pegged
     for nm, x in (("Foot leg L", 0.0), ("Foot leg R", W - POST)):
-        kit.box(nm, x, 0, 0, x + POST, POST, FOOT_Z[1], "oak", round_edges=0.125)
+        kit.box(nm, x, 0, 0, x + POST, POST, FOOT_LEG, "oak", extra=CAP_RISE, note="with its cap")
+        kit.pyramid(nm + " cap", x, 0, x + POST, POST, FOOT_LEG, CAP_RISE, "oak", flat=CAP_FLAT)
     kit.prism("Foot rail", foot_rail_profile(), "y", FOOT_IN - RAIL_T, FOOT_IN, "oak", extra=2 * (POST + PROUD))
     ty = FOOT_IN - RAIL_T + (RAIL_T - FOOT_TENON_T) / 2
     for side, xf, out in (("L", 0.0, -1), ("R", W, 1)):

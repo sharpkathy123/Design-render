@@ -26,7 +26,7 @@ wide faces), FAS or Select grade.
 
 | Stock | For | Rough sizes to look for | Board feet | Price per bf | Cost |
 |---|---|---|---|---|---|
-| QS white oak 6/4 | head posts and foot legs (each glued up from two boards), headboard rails | 3 1/4" wide x 64" (4), 3 1/4" x 18" (4), 5" and 5 1/2" x 67" | about 21 | $15 to $17 (estimated: 6/4 isn't on the lists checked) | $315 to $355 |
+| QS white oak 6/4 | head posts and foot legs (each glued up from two boards), headboard rails | 3 1/4" wide x 64" (4), 3 1/4" x 20" (4), 5" and 5 1/2" x 67" | about 21 | $15 to $17 (estimated: 6/4 isn't on the lists checked) | $315 to $355 |
 | QS white oak 5/4 | side rails, foot rail | 6 1/2" x 82" (2), 8 1/2" x 67" | about 16 | $14 to $16 (estimated, between 4/4 and 8/4) | $225 to $255 |
 | QS white oak 4/4 | headboard slats | 7 3/4" x 36" (7), or wider boards ripped | about 16 | $13 to $14.50 | $210 to $235 |
 | Poplar 4/4 | 13 mattress slats | 4 1/4" x 62" (13) | about 26 | about $5.35 | about $140 |
@@ -115,9 +115,9 @@ Add $30 to $60 if the yard planes the lumber.
    the back and on the inside. (Stickley glued thin quartersawn faces onto
    the plain sides, so all four faces showed the figure. You can do that
    with 1/8" strips if you want it.)
-4. **Cut to length and shape the caps.** Head posts 60 1/8", foot legs 16".
-   Plane or sand the pyramid cap: 5/8" rise to a 1/4" flat, all four
-   sides alike. Ease all the long edges 1/16".
+4. **Cut to length and shape the caps.** Head posts 60 1/8", foot legs 17 5/8".
+   Plane or sand the pyramid caps on all four, head posts and foot legs
+   alike: 5/8" rise to a 1/4" flat, all four sides the same. Ease all the long edges 1/16".
 5. **Lay out every mortise** from the joinery sheet, all at once, from the
    floor end and the front face (sheet A for the posts, D for the legs, C
    for the slat mortises in the rails).

@@ -28,9 +28,13 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
 - **The top rail** is at 56", 32" above the mattress top, so someone tall
   can sit up against it with pillows (raised from 49", 2026-11-10). It has
   well-rounded 3/8" edges.
-- **Foot:** no posts. A foot rail with a gently arched bottom edge (1 1/2"
-  rise) keeps the mattress in place. It's through-tenoned and pegged into
-  two short legs whose tops are flush with it.
+- **Foot:** no tall posts. A foot rail with a gently arched bottom edge
+  (1 1/2" rise) keeps the mattress in place. It's through-tenoned and pegged
+  into two short legs. The legs have the same 2 3/4" section as the head
+  posts and stand 1" above the rail with the same pyramid cap, as period
+  beds' low posts did. Their tops are still 6" below the mattress top
+  (decided 2026-11-10: hiding them under the rail would be a modern
+  platform-bed look).
 - **Side rails:** on one bed bolt and a stub tenon at each end, the way
   period beds were, with brass covers on the foot's bolts.
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
@@ -59,6 +63,4 @@ Each of these adds wood or work:
 
 ## Questions
 
-- The foot legs are flush with the foot rail's top, so they read as plain
-  corner blocks. Would you rather have them tucked under the rail, out of
-  sight?
+None open.
