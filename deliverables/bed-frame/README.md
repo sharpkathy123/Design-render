@@ -4,7 +4,7 @@
 
 An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washable quilt over its headboard: square posts with pyramid caps, through-tenons pegged through the posts, wide flat slats to lean against, and a low arched foot rail with short capped legs.
 
-![With a quilt draped over the headboard](renders/bed-frame-corner-quilt.jpg)
+![Made up with a pomegranate-print headboard cover, an indigo block-print coverlet, a kilim throw and four pillows](renders/bed-frame-bedroom-bedding.jpg)
 
 **[Download the build packet (PDF)](bed-frame-build-packet.pdf)**: the pictures, the drawings and the build guide in one printable file.
 
@@ -18,6 +18,12 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 [The build guide](BUILD.md): materials with estimated prices, tools, and the steps in order.
 
 ## Pictures
+
+![Made up with a pomegranate-print headboard cover, an indigo block-print coverlet, a kilim throw and four pillows](renders/bed-frame-bedroom-bedding.jpg)
+*Made up with a pomegranate-print headboard cover, an indigo block-print coverlet, a kilim throw and four pillows*
+
+![The same, from above the foot](renders/bed-frame-corner-bedding.jpg)
+*The same, from above the foot*
 
 ![With a quilt draped over the headboard](renders/bed-frame-corner-quilt.jpg)
 *With a quilt draped over the headboard*

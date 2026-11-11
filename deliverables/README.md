@@ -5,7 +5,7 @@ Everything for each design, ready to share: pictures, drawings, a build guide, a
 
 ### [Queen bed frame](bed-frame/)
 
-<a href="bed-frame/"><img src="bed-frame/renders/bed-frame-corner-quilt.jpg" width="420" alt="Queen bed frame"></a>
+<a href="bed-frame/"><img src="bed-frame/renders/bed-frame-bedroom-bedding.jpg" width="420" alt="Queen bed frame"></a>
 
 An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washable quilt over its headboard: square posts with pyramid caps, through-tenons pegged through the posts, wide flat slats to lean against, and a low arched foot rail with short capped legs.
 

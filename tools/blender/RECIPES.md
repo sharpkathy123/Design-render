@@ -722,3 +722,19 @@ cabinet runs to the ceiling, its cap against the plaster.
   `vanity_render_setup.build_material`, added here: the house's oak only
   ran up and down, which made a table top look speckled). Pass `grain=` to
   turn it.
+- **Bedding** (2026-11-11, `designs/bed-frame/model.py` `bedding()`):
+  - **Patterns are our own.** `tools/make_fabric.py` draws them with numpy
+    (pomegranate, block print, kilim): this repo is public, so no shop's or
+    designer's print goes in it. Print them by the cloth's UVs
+    (`fabric_material`, repeat = piece size / repeat size). Keep sheen low
+    (0.1 to 0.15) and add a Hue/Saturation node (saturation 1.25, value
+    0.85): the studio light washed them pastel.
+  - **A coverlet slides off the foot** with the weight of its overhang:
+    pin a few inches of its head end, over the mattress only (pinned
+    corners stand out in the air).
+  - **Cloth on cloth leaks.** Give the lower cloth its thickness before
+    dropping the upper one. Then push any of the upper cloth's points that
+    are still inside back out along the lower sheet's normals (`lay_on`).
+  - **Pillows** are a mesh, not a simulation: a soft dome on both faces
+    joined at a thin seam (`pillow()`). Prop the back pair at about 55
+    degrees and lay the front pair nearly flat against them.

@@ -57,6 +57,14 @@ SLATS, SLAT_W = 13, 3.5            # poplar 1x4 slats, about 2 1/2" apart
 CENTER = (1.5, 3.5)                # a 2x4 on edge down the middle, on three 2x4 legs
 CENTER_LEG_IN = 12.0               # its end legs set in from the ends, out of sight
 
+# --- bedding, for the renders (the client's picture, 2026-11-11) ------------
+COVERLET = (84.0, 87.0)            # across, along: hangs 12" down each side, 8" over the foot
+THROW = (90.0, 26.0)               # a kilim throw across the foot, hanging over both sides
+THROW_FROM_FOOT = 10.0             # its near edge this far up the bed from the foot rail
+PILLOW = (28.0, 19.0, 8.0)         # standard pillows: wide, deep, plump
+PILLOW_BACK_TILT = 55.0            # the back pair propped on the headboard
+PILLOW_FRONT_TILT = 12.0           # the front pair lying nearly flat in front of them
+
 # --- the plan (worked out) ----------------------------------------------
 IN_W = MAT_W + CLEAR               # between the side rails
 IN_L = MAT_L + CLEAR               # from the foot rail to the head posts
