@@ -10,6 +10,7 @@ their captions, which drawings, the guide), writes deliverables/<name>/:
     README.md                 the page GitHub shows: pictures, links, the design
     <name>-build-packet.pdf   everything in one printable file
     <drawing>.svg and .pdf    each drawing, sharp at any zoom, and printable
+    files:                    anything else listed (3D models and their notes)
     BUILD.md                  the build guide, if the design has one
     renders/                  the pictures
 
@@ -111,6 +112,14 @@ def build(name):
         os.remove(f.name)
         copied |= {svg, pdf}
         drawings.append((dr["title"], svg, pdf))
+    # other files to share as they are (3D models, with their notes)
+    extras = []
+    for fl in cfg.get("files", []):
+        dst = os.path.join(out, fl["file"])
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        shutil.copy2(os.path.join(d, fl["file"]), dst)
+        copied.add(fl["file"])
+        extras.append(fl)
     # the guide
     guide_md = ""
     if cfg.get("guide"):
@@ -152,6 +161,11 @@ def build(name):
         lines.append("- **%s:** [view](%s) (sharp at any zoom), [PDF to print](%s)" % (t, svg, pdf))
     if guide_md:
         lines.append("\n## How to build it\n\n[The build guide](%s): materials with estimated prices, tools, and the steps in order.\n" % cfg["guide"])
+    if extras:
+        lines.append("## 3D model\n")
+        for fl in extras:
+            lines.append("- **%s:** [%s](%s)" % (fl["title"], os.path.basename(fl["file"]), fl["file"]))
+        lines.append("")
     lines.append("## Pictures\n")
     for r in cfg.get("renders", []):
         lines.append("![%s](%s)\n*%s*\n" % (r["caption"], r["file"], r["caption"]))

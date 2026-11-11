@@ -27,3 +27,10 @@ drawings:
   - file: bed-frame-joinery.svg
     title: Joinery
 guide: BUILD.md
+files:
+  - file: model/README.md
+    title: How to use the 3D model in another room's render
+  - file: model/bed-frame-made-up.blend
+    title: The bed made up (Blender 4.5)
+  - file: model/bed-frame-bare.blend
+    title: The bare frame and mattress (Blender 4.5)

@@ -65,6 +65,20 @@ The drawings and other tools are plain `python3`.
   code, so to show a drawing in the chat run
   `SCRATCH=<scratchpad> python3 tools/svg_view.py <drawing.svg>` and send
   the page. Run `python3 tools/stamp_svg.py` after drawing, to date the sheets.
+- **Free ready-made things first, for anything new** (client, 2026-11-11:
+  "look for pre-existing free Blender things to use that will look nicer
+  and use up less of my Claude minutes"). Before modeling, simulating or
+  drawing any object, material or texture, look for a free one:
+  - **models:** Poly Haven, CC0, through `tools/fetch_models.py`;
+  - **materials and textures:** Poly Haven's textures, CC0, include fabric,
+    wood and plaster;
+  - **historic patterns:** public domain scans on Wikimedia Commons (Cooper
+    Hewitt, the Met, the V&A).
+
+  Use what fits, and build or simulate only what's left: the design itself,
+  and what nothing free matches. The repo is public, so only CC0, public
+  domain or CC-BY (with credit) goes in. Say in the reply what was found
+  and used.
 - **Real models before boxes** for props and accessories (Poly Haven, CC0):
   `python3 tools/fetch_models.py --list <words>`, add the id to
   `library/models/models.yaml`, `python3 tools/fetch_models.py <id>`, place

@@ -17,6 +17,12 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 
 [The build guide](BUILD.md): materials with estimated prices, tools, and the steps in order.
 
+## 3D model
+
+- **How to use the 3D model in another room's render:** [README.md](model/README.md)
+- **The bed made up (Blender 4.5):** [bed-frame-made-up.blend](model/bed-frame-made-up.blend)
+- **The bare frame and mattress (Blender 4.5):** [bed-frame-bare.blend](model/bed-frame-bare.blend)
+
 ## Pictures
 
 ![Made up with William Morris's Strawberry Thief over the headboard, an indigo block-print coverlet tucked in, a kilim throw, and pillows stacked two by two](renders/bed-frame-bedroom-bedding.jpg)
@@ -63,7 +69,8 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
   (decided 2026-11-10: hiding them under the rail would be a modern
   platform-bed look).
 - **Side rails:** on one bed bolt and a stub tenon at each end, the way
-  period beds were, with brass covers on the foot's bolts.
+  period beds were. The foot's bolts have aged-brass covers, the small
+  round caps on the foot legs (darkened 2026-11-11 so they don't stand out).
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
   a 2x4 center rail on three legs stained dark (they show through the
   arch).
