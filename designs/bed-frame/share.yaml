@@ -4,7 +4,7 @@ summary: >-
   An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a
   washable quilt over its headboard: square posts with pyramid caps,
   through-tenons pegged through the posts, wide flat slats to lean against,
-  and a low arched foot rail with short capped legs.
+  and a low foot rail with short capped legs.
 cover: renders/bed-frame-bedroom-bedding.jpg
 renders:
   - file: renders/bed-frame-bedroom-bedding.jpg
@@ -20,7 +20,7 @@ renders:
   - file: renders/bed-frame-head.jpg
     caption: A head post's pyramid cap, and the top rail's through-tenon and pegs
   - file: renders/bed-frame-footend.jpg
-    caption: The foot's corner, with its arched rail, pegged tenon and brass bolt cover
+    caption: The foot's corner, with its pegged through-tenon and brass bolt cover
 drawings:
   - file: bed-frame-drawing.svg
     title: Overall drawing and cut list

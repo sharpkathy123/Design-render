@@ -2,7 +2,7 @@
 quartersawn white oak, fumed: two square posts with pyramid caps, the
 headboard's rails through-tenoned and pegged through them, seven wide flat
 slats between, the top rail rounded for a separate draped quilt; low side
-rails on bed bolts and a foot rail with an arched bottom edge, through-
+rails on bed bolts and a straight foot rail, through-
 tenoned into two short legs, no posts at the foot. Sizes in sizes.py.
 
     python3.11 designs/bed-frame/model.py [--quality check|final] [--views corner,foot,head,footend] [--quilt | --bedding]
@@ -69,11 +69,14 @@ def build():
         sx = x0 + HB_GAP + i * (HB_SLAT_W + HB_GAP)
         kit.box("Headboard slat %d" % (i + 1), sx, HB_Y, HB_BOTTOM[1], sx + HB_SLAT_W, HB_Y + SLAT_T, HB_TOP[0],
                 "oak", round_edges=0.125, extra=2 * SLAT_TENON[1])
-    # the foot: two legs no higher than the rail; the rail arched, through-tenoned and pegged
+    # the foot: two short capped legs; the rail straight (or arched: FOOT_ARCH), through-tenoned and pegged
     for nm, x in (("Foot leg L", 0.0), ("Foot leg R", W - POST)):
         kit.box(nm, x, 0, 0, x + POST, POST, FOOT_LEG, "oak", extra=CAP_RISE, note="with its cap")
         kit.pyramid(nm + " cap", x, 0, x + POST, POST, FOOT_LEG, CAP_RISE, "oak", flat=CAP_FLAT)
-    kit.prism("Foot rail", foot_rail_profile(), "y", FOOT_IN - RAIL_T, FOOT_IN, "oak", extra=2 * (POST + PROUD))
+    if FOOT_ARCH > 0:
+        kit.prism("Foot rail", foot_rail_profile(), "y", FOOT_IN - RAIL_T, FOOT_IN, "oak", extra=2 * (POST + PROUD))
+    else:
+        kit.box("Foot rail", POST, FOOT_IN - RAIL_T, FOOT_Z[0], W - POST, FOOT_IN, FOOT_Z[1], "oak", extra=2 * (POST + PROUD))
     ty = FOOT_IN - RAIL_T + (RAIL_T - FOOT_TENON_T) / 2
     for side, xf, out in (("L", 0.0, -1), ("R", W, 1)):
         through_tenon("Foot rail tenon " + side, xf, out, ty, ty + FOOT_TENON_T, *FOOT_TENON_Z)
@@ -94,11 +97,10 @@ def build():
         kit.box("Slat %d" % (i + 1), RAIL_IN, y, ct, W - RAIL_IN, y + SLAT_W, SLAT_TOP, "poplar", round_edges=0)
     cx = W / 2
     cr = (cx - CENTER[0] / 2, cx + CENTER[0] / 2)
-    # (stained dark like its legs: its end showed light through the foot rail's arch)
-    kit.box("Center rail", cr[0], FOOT_IN, ct - CENTER[1], cr[1], L - POST, ct, "pine_dark", round_edges=0)
+    kit.box("Center rail", cr[0], FOOT_IN, ct - CENTER[1], cr[1], L - POST, ct, "pine", round_edges=0)
     ends = (FOOT_IN + CENTER_LEG_IN, (FOOT_IN + L - POST) / 2 - CENTER[1] / 2, L - POST - CENTER_LEG_IN - CENTER[1])
     for i, y in enumerate(ends):
-        # (stained dark: they show through the foot rail's arch)
+        # (stained dark: from low down they can be seen under the foot rail)
         kit.box("Center leg %d" % (i + 1), cr[0], y, 0, cr[1], y + CENTER[1], ct - CENTER[1], "pine_dark", round_edges=0)
 
     # the builder's dimensions
@@ -522,7 +524,7 @@ def head_close():
 
 
 def foot_close():
-    """The foot's left corner: the arched rail, its tenon and pegs, the bolt covers."""
+    """The foot's left corner: the foot rail, its tenon and pegs, the bolt covers."""
     kit.camera((-30.0, -34.0, 26.0), (8.0, 1.0, 11.0), lens=40.0)
 
 

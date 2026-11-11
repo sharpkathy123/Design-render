@@ -25,8 +25,9 @@ RAIL_Z = (8.0, 14.0)               # side rails, 6": their top 1" above the slat
 FOOT_Z = (8.0, 16.0)               # the foot rail, 8" at its ends: 3" above the slats keeps the mattress in
 FOOT_LEG = FOOT_Z[1] + 1.0          # the foot legs stand 1" above the rail, capped like the head posts:
                                    # short posts, as period beds had (client, 2026-11-10: "more authentic")
-FOOT_ARCH = 1.5                    # its bottom edge arched up 1 1/2" at the middle (period beds' shaped rails)
-FOOT_FLAT = 3.0                    # flat for 3" from each leg before the arch starts
+FOOT_ARCH = 0.0                    # straight: the arch (1 1/2") showed the center support under the
+                                   # bed (client, 2026-11-11); set it to arch the bottom edge again
+FOOT_FLAT = 3.0                    # (with an arch) flat for 3" from each leg before it starts
 HB_BOTTOM = (14.0, 19.0)           # the headboard's bottom rail, 5", behind the mattress and pillows
 HB_TOP = (51.5, 56.0)              # the top rail, 4 1/2": 32" above the mattress top, for a tall person lounging
 POST_BODY = 59.5                   # posts stand 3 1/2" above the top rail (above the folded quilt), then the cap

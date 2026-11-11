@@ -2,7 +2,7 @@
 
 # Queen bed frame
 
-An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washable quilt over its headboard: square posts with pyramid caps, through-tenons pegged through the posts, wide flat slats to lean against, and a low arched foot rail with short capped legs.
+An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washable quilt over its headboard: square posts with pyramid caps, through-tenons pegged through the posts, wide flat slats to lean against, and a low foot rail with short capped legs.
 
 ![Made up with William Morris's Strawberry Thief over the headboard, an indigo block-print coverlet tucked in, a kilim throw, and pillows stacked two by two](renders/bed-frame-bedroom-bedding.jpg)
 
@@ -43,8 +43,8 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 ![A head post's pyramid cap, and the top rail's through-tenon and pegs](renders/bed-frame-head.jpg)
 *A head post's pyramid cap, and the top rail's through-tenon and pegs*
 
-![The foot's corner, with its arched rail, pegged tenon and brass bolt cover](renders/bed-frame-footend.jpg)
-*The foot's corner, with its arched rail, pegged tenon and brass bolt cover*
+![The foot's corner, with its pegged through-tenon and brass bolt cover](renders/bed-frame-footend.jpg)
+*The foot's corner, with its pegged through-tenon and brass bolt cover*
 
 ## The design
 
@@ -61,8 +61,9 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 - **The top rail** is at 56", 32" above the mattress top, so someone tall
   can sit up against it with pillows (raised from 49", 2026-11-10). It has
   well-rounded 3/8" edges.
-- **Foot:** no tall posts. A foot rail with a gently arched bottom edge
-  (1 1/2" rise) keeps the mattress in place. It's through-tenoned and pegged
+- **Foot:** no tall posts. A straight foot rail keeps the mattress in
+  place (an arched one showed the support under the bed, dropped
+  2026-11-11). It's through-tenoned and pegged
   into two short legs. The legs have the same 2 3/4" section as the head
   posts and stand 1" above the rail with the same pyramid cap, as period
   beds' low posts did. Their tops are still 6" below the mattress top
@@ -72,8 +73,8 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
   period beds were. The foot's bolts have aged-brass covers, the small
   round caps on the foot legs (darkened 2026-11-11 so they don't stand out).
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
-  a 2x4 center rail on three legs stained dark (they show through the
-  arch).
+  a 2x4 center rail on three legs stained dark (they can be seen under
+  the foot rail from low down).
 - **Finish:** fumed, a deep brown, as Stickley's workshops did it; or dyed
   to match (BUILD.md, step 15).
 

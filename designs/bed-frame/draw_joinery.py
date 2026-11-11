@@ -201,7 +201,8 @@ def slats(ox, oy):
 def foot(ox, oy):
     k = 9.0
     d = Detail(ox, oy, k, "D. FOOT LEGS (2) AND FOOT RAIL",
-               "Legs %s square x %s with the cap; the rail %s thick, %s tall at its ends, its bottom arched %s." % (frac(POST), frac(FOOT_LEG + CAP_RISE), frac(RAIL_T), frac(FOOT_Z[1] - FOOT_Z[0]), frac(FOOT_ARCH)) +
+               "Legs %s square x %s with the cap; the rail %s thick, %s tall at its ends, %s." % (frac(POST), frac(FOOT_LEG + CAP_RISE), frac(RAIL_T), frac(FOOT_Z[1] - FOOT_Z[0]),
+               "its bottom arched " + frac(FOOT_ARCH) if FOOT_ARCH > 0 else "straight") +
                "\nLeft leg and the rail's left end shown; the right is the mirror.")
     # left leg, front face
     d.rect(0, 0, POST, FOOT_LEG)
@@ -218,14 +219,17 @@ def foot(ox, oy):
     d.rect(rx, FOOT_TENON_Z[0], rx + POST, FOOT_TENON_Z[1], fill="#e9e3d6")
     d.text(rx + POST / 2, FOOT_Z[0] - 2.6, "leg, in section", 10, color=NOTE)
     run = 26.0
-    span = (HB_SPAN) - 2 * FOOT_FLAT
-    r = (span ** 2 / 4 + FOOT_ARCH ** 2) / (2 * FOOT_ARCH)
     import math
     arch = []
-    for i in range(0, 41):
-        xx = FOOT_FLAT + (run - FOOT_FLAT) * i / 40
-        dx = xx - HB_SPAN / 2
-        arch.append((rx + POST + xx, FOOT_Z[0] + math.sqrt(max(0, r * r - dx * dx)) - (r - FOOT_ARCH)))
+    if FOOT_ARCH > 0:
+        span = (HB_SPAN) - 2 * FOOT_FLAT
+        r = (span ** 2 / 4 + FOOT_ARCH ** 2) / (2 * FOOT_ARCH)
+        for i in range(0, 41):
+            xx = FOOT_FLAT + (run - FOOT_FLAT) * i / 40
+            dx = xx - HB_SPAN / 2
+            arch.append((rx + POST + xx, FOOT_Z[0] + math.sqrt(max(0, r * r - dx * dx)) - (r - FOOT_ARCH)))
+    else:
+        arch = [(rx + POST + run, FOOT_Z[0])]
     d.line([(rx + POST, FOOT_Z[1]), (rx + POST + run, FOOT_Z[1])])
     d.line([(rx + POST, FOOT_Z[0]), (rx + POST + FOOT_FLAT, FOOT_Z[0])] + arch)
     d.line([(rx + POST + run, FOOT_Z[1] + 0.5), (rx + POST + run, arch[-1][1] - 0.5)], NOTE, 0.8, dash=True)
@@ -233,14 +237,17 @@ def foot(ox, oy):
             (rx - PROUD, FOOT_TENON_Z[1] - 0.125), (rx - PROUD + 0.125, FOOT_TENON_Z[1]), (rx + POST, FOOT_TENON_Z[1])],
            fill="none")
     d.dim((rx - PROUD, FOOT_Z[1]), (rx + POST, FOOT_Z[1]), 1.0, label=frac(POST + PROUD) + " tenon")
-    d.dim((rx + POST, FOOT_Z[0]), (rx + POST + FOOT_FLAT, FOOT_Z[0]), -1.2)
+    if FOOT_ARCH > 0:
+        d.dim((rx + POST, FOOT_Z[0]), (rx + POST + FOOT_FLAT, FOOT_Z[0]), -1.2)
     d.dim((rx + POST + run + 0.6, FOOT_Z[0]), (rx + POST + run + 0.6, FOOT_TENON_Z[0]), 0.4, along="v")
     d.dim((rx + POST + run + 0.6, FOOT_TENON_Z[0]), (rx + POST + run + 0.6, FOOT_TENON_Z[1]), 0.4, along="v")
     notes = [
         "Rail %s long between the legs, %s overall with its tenons." % (frac(HB_SPAN), frac(HB_SPAN + 2 * (POST + PROUD))),
         "Through-tenons %s thick, centered on the rail; mortises %s from the legs' front faces." % (frac(FOOT_TENON_T), frac(ft_mort_y)),
+    ] + ([
         "The arch: a fair curve from %s in from each leg, %s high at the middle (%s from the" % (frac(FOOT_FLAT), frac(FOOT_ARCH), frac(HB_SPAN / 2)),
         "  shoulder). Bend a thin batten through the three points and trace it.",
+    ] if FOOT_ARCH > 0 else ["The rail is straight; ease its edges 1/16\"."]) + [
         "Bed bolt from the front face, %s up, %s counterbore %s deep, brass cover;" % (frac(BOLT_Z[0]), frac(BOLT_COUNTERBORE[0]), frac(BOLT_COUNTERBORE[1])),
         "  stub mortise for the side rail on the back face, as on the head posts.",
         "Pegs %s square through the front face, centered, at %s and %s up." % (frac(PEG), frac(FOOT_TENON_Z[0] + PEG_IN), frac(FOOT_TENON_Z[1] - PEG_IN)),
