@@ -1,0 +1,25 @@
+# What goes in deliverables/bed-frame/ to share (tools/build_deliverables.py).
+title: Queen bed frame
+summary: >-
+  An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a
+  washable quilt over its headboard: square posts with pyramid caps,
+  through-tenons pegged through the posts, wide flat slats to lean against,
+  and a low arched foot rail with short capped legs.
+cover: renders/bed-frame-corner-quilt.jpg
+renders:
+  - file: renders/bed-frame-corner-quilt.jpg
+    caption: With a quilt draped over the headboard
+  - file: renders/bed-frame-corner.jpg
+    caption: The bare frame
+  - file: renders/bed-frame-foot-quilt.jpg
+    caption: From the foot
+  - file: renders/bed-frame-head.jpg
+    caption: A head post's pyramid cap, and the top rail's through-tenon and pegs
+  - file: renders/bed-frame-footend.jpg
+    caption: The foot's corner, with its arched rail, pegged tenon and brass bolt cover
+drawings:
+  - file: bed-frame-drawing.svg
+    title: Overall drawing and cut list
+  - file: bed-frame-joinery.svg
+    title: Joinery
+guide: BUILD.md

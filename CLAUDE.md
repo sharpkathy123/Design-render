@@ -17,6 +17,7 @@ Each design starts as a text spec, `specs/<name>.md`, and ends up in
 | `model.py` | the Blender model, built with `tools/blender/kit.py` |
 | `BUILD.md` | for something to be built: materials with prices, tools, steps |
 | `README.md` | what was built, the assumptions, open questions, links |
+| `share.yaml` | what goes in its shareable folder, `deliverables/<name>/` |
 | `parts.json` | the parts list, written by the model |
 | `<name>-drawing.svg` | front, side, top, dimensions, cut list |
 | `renders/<name>-<view>.jpg` | the pictures |
@@ -42,8 +43,15 @@ Each design starts as a text spec, `specs/<name>.md`, and ends up in
    `kit.camera_auto()`, `kit.render(..., quality="check")`). Look at
    the picture before sending it. If something looks wrong, fix it first.
    Final quality only when asked: it's slow on this machine.
-6. **Commit and push**, then reply with what was built, the assumptions,
-   the questions, and links to the drawing and renders.
+6. **Build the deliverables** (client, 2026-11-11: everything for each
+   design in one folder, to share): list what to share in the design's
+   `share.yaml`, then `python3 tools/build_deliverables.py <name>`. It writes
+   `deliverables/<name>/` (a landing page, a printable build packet PDF,
+   each drawing as SVG and PDF, the build guide, the renders) and the index
+   `deliverables/README.md`. Never edit `deliverables/` by hand; rerun it
+   after any change to the design.
+7. **Commit and push**, then reply with what was built, the assumptions,
+   the questions, and the link to its deliverables page.
 
 Run a model with `python3.11 designs/<name>/model.py [--quality check|final] [--views front,back]`.
 Blender's module is `bpy` for Python 3.11
