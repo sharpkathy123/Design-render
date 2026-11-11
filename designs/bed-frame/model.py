@@ -5,7 +5,7 @@ slats between, the top rail rounded for a separate draped quilt; low side
 rails on bed bolts and a foot rail with an arched bottom edge, through-
 tenoned into two short legs, no posts at the foot. Sizes in sizes.py.
 
-    python3.11 designs/bed-frame/model.py [--quality check|final] [--views corner,foot,head,footend] [--quilt]
+    python3.11 designs/bed-frame/model.py [--quality check|final] [--views corner,foot,head,footend] [--quilt | --bedding]
 
 Writes designs/bed-frame/parts.json and renders/bed-frame-<view>[-quilt].jpg.
 """
@@ -135,8 +135,141 @@ def mattress():
     return m
 
 
+TEXTURES = os.path.join(HERE, "textures")   # tools/make_fabric.py: our own patterns
+
+
+def fabric_material(name, png, repeat, color_hint=None, sheen=0.15, roughness=0.85):
+    """A cloth material printed with one of tools/make_fabric.py's patterns,
+    by the cloth's own UVs; repeat: (times across, times along) the piece."""
+    m = bpy.data.materials.new(name)
+    m.use_nodes = True
+    nt = m.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    tc = nt.nodes.new("ShaderNodeTexCoord")
+    mp = nt.nodes.new("ShaderNodeMapping")
+    mp.inputs["Scale"].default_value = (repeat[0], repeat[1], 1.0)
+    tex = nt.nodes.new("ShaderNodeTexImage")
+    tex.image = bpy.data.images.load(os.path.join(TEXTURES, png), check_existing=True)
+    tex.interpolation = "Cubic"
+    nt.links.new(tc.outputs["UV"], mp.inputs["Vector"])
+    nt.links.new(mp.outputs["Vector"], tex.inputs["Vector"])
+    hs = nt.nodes.new("ShaderNodeHueSaturation")       # (the bright studio washed the prints pastel)
+    hs.inputs["Saturation"].default_value = 1.25
+    hs.inputs["Value"].default_value = 0.85
+    nt.links.new(tex.outputs["Color"], hs.inputs["Color"])
+    nt.links.new(hs.outputs["Color"], bsdf.inputs["Base Color"])
+    bsdf.inputs["Roughness"].default_value = roughness
+    bsdf.inputs["Sheen Weight"].default_value = sheen
+    return m
+
+
+def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=1.0, thick=0.35, pin_head=0.0,
+          foot_corners=0.0):
+    """A piece of cloth size (x, y) inches, laid flat with its middle at
+    center (inches) and dropped onto what's below with Blender's cloth
+    simulation; the colliders are cleared again after. pin_head: hold
+    that many inches of its head end (+y) still, as if tucked in: a
+    coverlet slid off the foot of the bed without it (2026-11-11).
+    foot_corners: cut that many inches square out of its two foot corners,
+    so the sides and the foot tuck in flat instead of folding out over the
+    rails at the corners."""
+    I = kit.INCH
+    bpy.ops.mesh.primitive_grid_add(x_subdivisions=max(8, int(size[0] / res)),
+                                    y_subdivisions=max(8, int(size[1] / res)), size=1.0)
+    q = bpy.context.active_object
+    q.name = name
+    q.scale = (size[0] * I, size[1] * I, 1.0)
+    bpy.ops.object.transform_apply(scale=True)
+    q.location = tuple(c * I for c in center)
+    q.data.materials.append(mat)
+    if foot_corners:
+        import bmesh
+        bm = bmesh.new()
+        bm.from_mesh(q.data)
+        hx, hy, c = size[0] / 2 * I, size[1] / 2 * I, foot_corners * I
+        bmesh.ops.delete(bm, geom=[v for v in bm.verts if abs(v.co.x) > hx - c + 1e-6 and v.co.y < -hy + c - 1e-6],
+                         context="VERTS")
+        bm.to_mesh(q.data)
+        bm.free()
+    if pin_head:
+        vg = q.vertex_groups.new(name="pin")
+        top = max(v.co.y for v in q.data.vertices)
+        half = min(MAT_W, size[0]) / 2 * I       # (only over the mattress: pinned corners stood out in the air)
+        vg.add([v.index for v in q.data.vertices if v.co.y > top - pin_head * I and abs(v.co.x) < half - 2 * I],
+               1.0, "REPLACE")
+    for o in collide:
+        if "Collision" not in o.modifiers:
+            o.modifiers.new("Collision", "COLLISION")
+        o.collision.thickness_outer = 0.008
+        o.collision.cloth_friction = 6.0
+    cl = q.modifiers.new("Cloth", "CLOTH")
+    st = cl.settings
+    st.quality = 8
+    st.mass = mass
+    st.tension_stiffness = st.compression_stiffness = 30
+    st.bending_stiffness = bend
+    st.air_damping = 2.0
+    if pin_head:
+        st.vertex_group_mass = "pin"
+    cl.collision_settings.distance_min = 0.004
+    cl.collision_settings.collision_quality = 5          # (the throw's ends went through the coverlet)
+    sc = bpy.context.scene
+    sc.frame_start, sc.frame_end = 1, frames
+    cl.point_cache.frame_start, cl.point_cache.frame_end = 1, frames
+    for f in range(1, frames + 1):
+        sc.frame_set(f)
+    bpy.context.view_layer.objects.active = q
+    bpy.ops.object.modifier_apply(modifier="Cloth")
+    sc.frame_set(1)
+    for o in collide:
+        o.modifiers.remove(o.modifiers["Collision"])
+    for p in q.data.polygons:
+        p.use_smooth = True
+    return q
+
+
+def lay_on(top, under, gap):
+    """Push any of top's points that ended up inside under (cloth on cloth
+    collides poorly: the throw's hanging ends went through the coverlet)
+    back out onto under's surface, gap inches clear."""
+    from mathutils.bvhtree import BVHTree
+    um = under.matrix_world        # (its draped sheet itself, before any thickness: normals all outward)
+    tree = BVHTree.FromPolygons([um @ v.co for v in under.data.vertices], [tuple(p.vertices) for p in under.data.polygons])
+    mw, inv = top.matrix_world, top.matrix_world.inverted()
+    moved = 0
+    for v in top.data.vertices:
+        p = mw @ v.co
+        loc, normal, _, dist = tree.find_nearest(p)
+        if loc is None or dist > 4 * kit.INCH:
+            continue
+        side = (p - loc).dot(normal)
+        if side < gap * kit.INCH:
+            v.co = inv @ (loc + normal * gap * kit.INCH)
+            moved += 1
+    top.data.update()
+    return moved
+
+
+def finish_cloth(q, thick=0.35):
+    so = q.modifiers.new("Solidify", "SOLIDIFY")
+    so.thickness = thick * kit.INCH
+    sub = q.modifiers.new("Smooth", "SUBSURF")
+    sub.levels = sub.render_levels = 1
+
+
+def headboard_cover(collide, mat):
+    """The washable cover over the headboard, between the posts: down the
+    front to the mattress, down the back to the bottom rail."""
+    span = HB_SPAN - 0.75
+    length = (HB_TOP[1] - MAT_TOP) + (HB_TOP[1] - HB_BOTTOM[1]) + 6.0
+    q = cloth("Headboard cover", (span, length), (W / 2, HB_Y + HB_RAIL_T / 2 - 3.0, HB_TOP[1] + 1.0), mat,
+              collide, res=length / 72, frames=80, mass=0.6, bend=2.0)
+    finish_cloth(q, 0.4)
+    return q
+
+
 def quilt_material():
-    """A stand-in quilt in Arts & Crafts colors: pieced squares, soft."""
+    """The first stand-in quilt for the headboard: pieced squares."""
     m = bpy.data.materials.new("Quilt")
     m.use_nodes = True
     nt = m.node_tree
@@ -167,54 +300,127 @@ def quilt_material():
 
 
 def quilt(collide):
-    """A quilt laid over the headboard with Blender's cloth simulation:
-    sized to cover it between the posts, down the front to the mattress
-    and down the back to the bottom rail."""
-    I = kit.INCH
-    span = HB_SPAN - 0.75                      # between the posts, a little play
-    length = (HB_TOP[1] - MAT_TOP) + (HB_TOP[1] - HB_BOTTOM[1]) + 6.0
-    bpy.ops.mesh.primitive_grid_add(x_subdivisions=64, y_subdivisions=72, size=1.0)
-    q = bpy.context.active_object
-    q.name = "Quilt"
-    q.scale = (span * I, length * I, 1.0)
-    bpy.ops.object.transform_apply(scale=True)
-    q.location = (W / 2 * I, (HB_Y + HB_RAIL_T / 2 - 3.0) * I, (HB_TOP[1] + 1.0) * I)
-    q.data.materials.append(quilt_material())
-    for o in collide:
-        o.modifiers.new("Collision", "COLLISION")
-        o.collision.thickness_outer = 0.004
-        o.collision.cloth_friction = 8.0
-    cl = q.modifiers.new("Cloth", "CLOTH")
-    s = cl.settings
-    s.quality = 8
-    s.mass = 0.6
-    s.tension_stiffness = s.compression_stiffness = 30
-    s.bending_stiffness = 2.0
-    s.air_damping = 2.0
-    cl.collision_settings.distance_min = 0.004
-    sc = bpy.context.scene
-    frames = 80
-    sc.frame_start, sc.frame_end = 1, frames
-    cl.point_cache.frame_end = frames
-    for f in range(1, frames + 1):
-        sc.frame_set(f)
-    bpy.context.view_layer.objects.active = q
-    bpy.ops.object.modifier_apply(modifier="Cloth")
-    so = q.modifiers.new("Solidify", "SOLIDIFY")
-    so.thickness = 0.4 * I
-    sub = q.modifiers.new("Smooth", "SUBSURF")
-    sub.levels = sub.render_levels = 1
-    for p in q.data.polygons:
+    """The headboard covered with the stand-in quilt (--quilt)."""
+    return headboard_cover(collide, quilt_material())
+
+
+def pillow(name, cx, cy, cz, tilt, w=PILLOW[0], d=PILLOW[1], t=PILLOW[2], seed=0, mat=None):
+    """A bed pillow: plump in the middle, thin at its seamed edge. Its
+    middle at (cx, cy, cz) inches, tilted up toward the headboard by tilt
+    degrees (0 flat, 90 standing)."""
+    import bmesh
+    import random
+    rnd = random.Random(seed)
+    n = 36
+    bm = bmesh.new()
+    rows = {}
+    for side in (1, -1):
+        for i in range(n + 1):
+            for j in range(n + 1):
+                u, v = -1 + 2 * i / n, -1 + 2 * j / n
+                edge = i in (0, n) or j in (0, n)
+                f = (max(0.0, 1 - abs(u) ** 2.2) * max(0.0, 1 - abs(v) ** 2.2)) ** 0.6   # a soft dome
+                # the corners pulled in a little, the faces slightly uneven
+                x = u * w / 2 * (1 - 0.05 * (1 - abs(v)) ** 2 * 0)
+                y = v * d / 2
+                z = side * t / 2 * f * (1 + 0.04 * rnd.uniform(-1, 1) * f)
+                if edge and side < 0:
+                    rows[(side, i, j)] = rows[(1, i, j)]
+                else:
+                    rows[(side, i, j)] = bm.verts.new((x, y, z))
+    for side in (1, -1):
+        for i in range(n):
+            for j in range(n):
+                q = [rows[(side, i, j)], rows[(side, i + 1, j)], rows[(side, i + 1, j + 1)], rows[(side, i, j + 1)]]
+                bm.faces.new(q if side > 0 else list(reversed(q)))
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces)
+    me = bpy.data.meshes.new(name)
+    for vert in bm.verts:
+        vert.co *= kit.INCH
+    bm.to_mesh(me)
+    bm.free()
+    for p in me.polygons:
         p.use_smooth = True
-    for o in collide:
-        o.modifiers.remove(o.modifiers["Collision"])
-    return q
+    o = bpy.data.objects.new(name, me)
+    o.data.materials.append(mat)
+    bpy.context.scene.collection.objects.link(o)
+    o.rotation_euler = (math.radians(tilt), 0.0, math.radians(rnd.uniform(-2.5, 2.5)))
+    o.location = (cx * kit.INCH, cy * kit.INCH, cz * kit.INCH)
+    sub = o.modifiers.new("Smooth", "SUBSURF")
+    sub.levels = sub.render_levels = 1
+    return o
+
+
+def pillow_material():
+    m = bpy.data.materials.new("Pillowcase")
+    m.use_nodes = True
+    nt = m.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    bsdf.inputs["Base Color"].default_value = kit.hexcolor("#f4f2ec") + (1.0,)
+    bsdf.inputs["Roughness"].default_value = 0.85
+    bsdf.inputs["Sheen Weight"].default_value = 0.5
+    nz = nt.nodes.new("ShaderNodeTexNoise")              # soft wrinkles
+    nz.inputs["Scale"].default_value = 60.0
+    nz.inputs["Detail"].default_value = 4.0
+    bump = nt.nodes.new("ShaderNodeBump")
+    bump.inputs["Strength"].default_value = 0.12
+    nt.links.new(nz.outputs["Fac"], bump.inputs["Height"])
+    nt.links.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
+    return m
+
+
+def relax(o, factor=0.5, repeat=4):
+    """Smooth a draped cloth's mesh a little (the throw looked torn where
+    lay_on had pushed single points out)."""
+    m = o.modifiers.new("Relax", "SMOOTH")
+    m.factor, m.iterations = factor, repeat
+    bpy.context.view_layer.objects.active = o
+    bpy.ops.object.modifier_apply(modifier=m.name)
+
+
+def bedding(frame, mat):
+    """Made up after the client's picture (2026-11-11): Morris's Strawberry
+    Thief over the headboard, an indigo block-print coverlet tucked in
+    between the mattress and the rails, a kilim throw across the foot, and
+    two pillows stacked flat at the head of each side."""
+    hb = [o for o in frame if o.name.startswith(("Headboard", "Head post"))]
+    posts = [o for o in frame if o.name.startswith("Head post")]
+    # the coverlet: only the mattress (and the head posts) stop it, so its
+    # edges fall straight down inside the rails, tucked in
+    cw, cl_ = COVERLET
+    cov = cloth("Coverlet", (cw, cl_), (W / 2, L - POST - 1.0 - cl_ / 2, MAT_TOP + 1.0),
+                fabric_material("Coverlet", "blockprint.png", (cw / 6.0, cl_ / 6.0)), posts + [mat], frames=80, mass=0.5,
+                bend=0.8, pin_head=3.0, foot_corners=COVERLET_DROP)
+    finish_cloth(cov, 0.3)          # (its thickness first: the throw fell through a bare sheet)
+    # the throw, laid on the coverlet; any points left inside it pushed out, then smoothed
+    tw, tl = THROW
+    thr = cloth("Throw", (tw, tl), (W / 2, FOOT_IN + THROW_FROM_FOOT + tl / 2, MAT_TOP + 3.0),
+                fabric_material("Throw", "kilim.png", (tw / 10.0, 1.0), sheen=0.1), [mat, cov], frames=80, mass=0.7, bend=6.0)
+    n = lay_on(thr, cov, 0.4)
+    relax(thr)
+    n += lay_on(thr, cov, 0.4)
+    print("LAY_ON %d points of the throw moved out" % n, flush=True)
+    finish_cloth(thr, 0.25)
+    span = HB_SPAN - 0.75
+    length = (HB_TOP[1] - MAT_TOP) + (HB_TOP[1] - HB_BOTTOM[1]) + 6.0
+    headboard_cover(hb + [mat], fabric_material("Headboard cover", "morris-strawberry-thief.jpg",
+                                               (span / STRAWBERRY_REPEAT[0], length / STRAWBERRY_REPEAT[1])))
+    # pillows: two stacked flat at the head of each side
+    pm = pillow_material()
+    w, d, t = PILLOW
+    for k, side in enumerate((-1, 1)):
+        x = W / 2 + side * (w / 2 + 0.25)
+        y = HB_Y - 4.5 - d / 2
+        for j in range(PILLOW_STACK):
+            pillow("Pillow %d-%d" % (k, j), x + side * 0.4 * j, y + 0.6 * j, MAT_TOP + 0.5 + t * 0.42 + j * t * 0.78,
+                   2.0 + 2.0 * j, seed=3 * k + j, mat=pm)
 
 
 VIEWS = {
     # name: (azimuth, elevation, lens)  -- seen from the foot of the bed
     "corner": (-38.0, 20.0, 40.0),
     "foot": (0.0, 14.0, 50.0),
+    "bedroom": (-28.0, 9.0, 32.0),        # as the client's picture is taken: low, from the foot's left
 }
 
 
@@ -233,6 +439,7 @@ def main():
     ap.add_argument("--quality", default="check", choices=("check", "final"))
     ap.add_argument("--views", default="corner,foot")
     ap.add_argument("--quilt", action="store_true")
+    ap.add_argument("--bedding", action="store_true", help="made up: printed headboard cover, coverlet, throw, pillows")
     ap.add_argument("--no-render", action="store_true")
     a = ap.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:])
     build()
@@ -246,11 +453,13 @@ def main():
         return
     lo, hi = kit.bounds()
     mat = mattress()
-    if a.quilt:
+    if a.bedding:
+        bedding(list(kit.OBJS), mat)
+    elif a.quilt:
         hb = [o for o in kit.OBJS if o.name.startswith(("Headboard", "Head post"))]
         quilt(hb + [mat])
     kit.studio(wall_y=L + 0.5, radius=1.0)
-    suffix = "-quilt" if a.quilt else ""
+    suffix = "-bedding" if a.bedding else "-quilt" if a.quilt else ""
     for v in a.views.split(","):
         if v == "head":
             head_close()

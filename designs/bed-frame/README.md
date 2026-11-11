@@ -11,7 +11,11 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
 - Joinery (every mortise, tenon, peg and bolt): [bed-frame-joinery.svg](bed-frame-joinery.svg)
 - Renders: [corner](renders/bed-frame-corner.jpg), [foot](renders/bed-frame-foot.jpg),
   [post top and through-tenon](renders/bed-frame-head.jpg), [the foot's corner](renders/bed-frame-footend.jpg),
-  [with a quilt](renders/bed-frame-corner-quilt.jpg), [with a quilt, from the foot](renders/bed-frame-foot-quilt.jpg)
+  [with a quilt](renders/bed-frame-corner-quilt.jpg), [with a quilt, from the foot](renders/bed-frame-foot-quilt.jpg),
+  [made up](renders/bed-frame-bedroom-bedding.jpg) (`--bedding`, after the client's picture, 2026-11-11:
+  William Morris's Strawberry Thief over the headboard, public domain, from Cooper Hewitt
+  ([sources](textures/SOURCES.md)); our own indigo block-print coverlet tucked in between the mattress and the
+  rails, and kilim throw (`tools/make_fabric.py`); two pillows stacked flat at each side), [made up, from above](renders/bed-frame-corner-bedding.jpg)
 
 ## The design
 

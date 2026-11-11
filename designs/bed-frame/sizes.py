@@ -57,6 +57,16 @@ SLATS, SLAT_W = 13, 3.5            # poplar 1x4 slats, about 2 1/2" apart
 CENTER = (1.5, 3.5)                # a 2x4 on edge down the middle, on three 2x4 legs
 CENTER_LEG_IN = 12.0               # its end legs set in from the ends, out of sight
 
+# --- bedding, for the renders (the client's picture, 2026-11-11) ------------
+COVERLET_DROP = 10.0               # down each side and the foot, tucked in between the mattress and
+                                   # the rails (client, 2026-11-11); its foot corners cut out square
+COVERLET = (MAT_W + 2 * COVERLET_DROP + 1.0, MAT_L + COVERLET_DROP)   # across, along
+THROW = (72.0, 24.0)               # a kilim throw across the foot, hanging 6" over each side
+THROW_FROM_FOOT = 8.0              # its near edge this far up the bed from the foot rail
+PILLOW = (28.0, 19.0, 7.0)         # standard pillows: wide, deep, plump
+PILLOW_STACK = 2                   # two stacked flat at the head of each side (client, 2026-11-11)
+STRAWBERRY_REPEAT = (18.0, 19.6)   # Morris's Strawberry Thief, one repeat across and down, inches
+
 # --- the plan (worked out) ----------------------------------------------
 IN_W = MAT_W + CLEAR               # between the side rails
 IN_L = MAT_L + CLEAR               # from the foot rail to the head posts
