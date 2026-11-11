@@ -11,3 +11,8 @@
   pixels of the 3840 x 2598 original, found by autocorrelation) so it tiles
   without seams. Morris's printed repeat is roughly 18" across; the model
   maps it at that size.
+- `caban_nor_gl_1k.jpg`, `caban_ao_1k.jpg`: the weave and nap of a woolen
+  cloth, from Poly Haven's "Caban" (photography colormass, processing Rico
+  Cilliers), CC0, https://polyhaven.com/a/caban, downloaded 2026-11-11.
+  The sample is 274 mm (10 3/4") square. Only its relief and shading are
+  used, under the kilim's own colors, for the folded blanket.

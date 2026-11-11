@@ -746,6 +746,12 @@ cabinet runs to the ceiling, its cap against the plaster.
     with a faint ripple at the hems. Measure the coverlet's actual outline
     where it lies (its draped sides bulge out), and give it its thickness
     upward.
+  - **Make it read as wool:** lay Poly Haven's Caban (CC0) normal map
+    and shading map under the print, at the sample's real size (10.8"),
+    keeping the print's own colors (`wool()`). Add a fringe of thin
+    strands, a little uneven, along the hanging hems (`fringe()`).
+    Sketchfab had no throw folded across a bed, 2026-11-11: only a scanned
+    stack of blankets on a shelf, and beds whose duvets cover everything.
   - **Cloth on cloth leaks.** Give the lower cloth its thickness before
     dropping the upper one. Then push any of the upper cloth's points that
     are still inside back out along the lower sheet's normals (`lay_on`).
