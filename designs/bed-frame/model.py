@@ -163,12 +163,16 @@ def fabric_material(name, png, repeat, color_hint=None, sheen=0.15, roughness=0.
     return m
 
 
-def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=1.0, thick=0.35, pin_head=0.0):
+def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=1.0, thick=0.35, pin_head=0.0,
+          foot_corners=0.0):
     """A piece of cloth size (x, y) inches, laid flat with its middle at
     center (inches) and dropped onto what's below with Blender's cloth
     simulation; the colliders are cleared again after. pin_head: hold
     that many inches of its head end (+y) still, as if tucked in: a
-    coverlet slid off the foot of the bed without it (2026-11-11)."""
+    coverlet slid off the foot of the bed without it (2026-11-11).
+    foot_corners: cut that many inches square out of its two foot corners,
+    so the sides and the foot tuck in flat instead of folding out over the
+    rails at the corners."""
     I = kit.INCH
     bpy.ops.mesh.primitive_grid_add(x_subdivisions=max(8, int(size[0] / res)),
                                     y_subdivisions=max(8, int(size[1] / res)), size=1.0)
@@ -178,6 +182,15 @@ def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=
     bpy.ops.object.transform_apply(scale=True)
     q.location = tuple(c * I for c in center)
     q.data.materials.append(mat)
+    if foot_corners:
+        import bmesh
+        bm = bmesh.new()
+        bm.from_mesh(q.data)
+        hx, hy, c = size[0] / 2 * I, size[1] / 2 * I, foot_corners * I
+        bmesh.ops.delete(bm, geom=[v for v in bm.verts if abs(v.co.x) > hx - c + 1e-6 and v.co.y < -hy + c - 1e-6],
+                         context="VERTS")
+        bm.to_mesh(q.data)
+        bm.free()
     if pin_head:
         vg = q.vertex_groups.new(name="pin")
         top = max(v.co.y for v in q.data.vertices)
@@ -356,38 +369,51 @@ def pillow_material():
     return m
 
 
+def relax(o, factor=0.5, repeat=4):
+    """Smooth a draped cloth's mesh a little (the throw looked torn where
+    lay_on had pushed single points out)."""
+    m = o.modifiers.new("Relax", "SMOOTH")
+    m.factor, m.iterations = factor, repeat
+    bpy.context.view_layer.objects.active = o
+    bpy.ops.object.modifier_apply(modifier=m.name)
+
+
 def bedding(frame, mat):
-    """Made up as in the client's picture (2026-11-11): the headboard in a
-    pomegranate print, an indigo block-print coverlet, a kilim throw across
-    the foot, four white pillows. Our own patterns (tools/make_fabric.py)."""
+    """Made up after the client's picture (2026-11-11): Morris's Strawberry
+    Thief over the headboard, an indigo block-print coverlet tucked in
+    between the mattress and the rails, a kilim throw across the foot, and
+    two pillows stacked flat at the head of each side."""
     hb = [o for o in frame if o.name.startswith(("Headboard", "Head post"))]
-    base = [o for o in frame if o.name.startswith(("Side rail", "Foot rail", "Foot leg", "Head post"))] + [mat]
-    # the coverlet first, then the throw over it, then the headboard's cover
+    posts = [o for o in frame if o.name.startswith("Head post")]
+    # the coverlet: only the mattress (and the head posts) stop it, so its
+    # edges fall straight down inside the rails, tucked in
     cw, cl_ = COVERLET
     cov = cloth("Coverlet", (cw, cl_), (W / 2, L - POST - 1.0 - cl_ / 2, MAT_TOP + 1.0),
-                fabric_material("Coverlet", "blockprint.png", (cw / 6.0, cl_ / 6.0)), base, frames=70, mass=0.5, bend=0.8,
-                pin_head=3.0)
+                fabric_material("Coverlet", "blockprint.png", (cw / 6.0, cl_ / 6.0)), posts + [mat], frames=80, mass=0.5,
+                bend=0.8, pin_head=3.0, foot_corners=COVERLET_DROP)
     finish_cloth(cov, 0.3)          # (its thickness first: the throw fell through a bare sheet)
+    # the throw, laid on the coverlet; any points left inside it pushed out, then smoothed
     tw, tl = THROW
-    thr = cloth("Throw", (tw, tl), (W / 2, FOOT_IN + THROW_FROM_FOOT + tl / 2, MAT_TOP + 4.0),
-                fabric_material("Throw", "kilim.png", (tw / 10.0, 1.0), sheen=0.1), base + [cov], frames=70, mass=0.7, bend=3.0)
-    print("LAY_ON %d points of the throw moved out" % lay_on(thr, cov, 0.4), flush=True)
+    thr = cloth("Throw", (tw, tl), (W / 2, FOOT_IN + THROW_FROM_FOOT + tl / 2, MAT_TOP + 3.0),
+                fabric_material("Throw", "kilim.png", (tw / 10.0, 1.0), sheen=0.1), [mat, cov], frames=80, mass=0.7, bend=6.0)
+    n = lay_on(thr, cov, 0.4)
+    relax(thr)
+    n += lay_on(thr, cov, 0.4)
+    print("LAY_ON %d points of the throw moved out" % n, flush=True)
     finish_cloth(thr, 0.25)
-    headboard_cover(hb + [mat], fabric_material("Headboard cover", "pomegranate.png",
-                                               ((HB_SPAN - 0.75) / 18.0, ((HB_TOP[1] - MAT_TOP) + (HB_TOP[1] - HB_BOTTOM[1]) + 6.0) / 18.0)))
-    # pillows: two leaning on the headboard, two in front lying lower
+    span = HB_SPAN - 0.75
+    length = (HB_TOP[1] - MAT_TOP) + (HB_TOP[1] - HB_BOTTOM[1]) + 6.0
+    headboard_cover(hb + [mat], fabric_material("Headboard cover", "morris-strawberry-thief.jpg",
+                                               (span / STRAWBERRY_REPEAT[0], length / STRAWBERRY_REPEAT[1])))
+    # pillows: two stacked flat at the head of each side
     pm = pillow_material()
     w, d, t = PILLOW
     for k, side in enumerate((-1, 1)):
-        x = W / 2 + side * (w / 2 - 0.5)
-        a = math.radians(PILLOW_BACK_TILT)
-        yb = HB_Y - 2.5 - d / 2 * math.cos(a) - t / 2 * math.sin(a)
-        pillow("Pillow back %d" % k, x, yb, MAT_TOP + 0.9 + t * 0.3 * math.cos(a) + d / 2 * math.sin(a),
-               PILLOW_BACK_TILT, seed=k, mat=pm)
-        f = math.radians(PILLOW_FRONT_TILT)       # the front pair lying on the bed, their backs on the back pair
-        yf = yb - d / 2 * math.cos(a) - d / 2 * math.cos(f) + 5.0
-        pillow("Pillow front %d" % k, x + side * 0.5, yf, MAT_TOP + 0.9 + t * 0.45 + d / 2 * math.sin(f),
-               PILLOW_FRONT_TILT, seed=k + 5, mat=pm)
+        x = W / 2 + side * (w / 2 + 0.25)
+        y = HB_Y - 4.5 - d / 2
+        for j in range(PILLOW_STACK):
+            pillow("Pillow %d-%d" % (k, j), x + side * 0.4 * j, y + 0.6 * j, MAT_TOP + 0.5 + t * 0.42 + j * t * 0.78,
+                   2.0 + 2.0 * j, seed=3 * k + j, mat=pm)
 
 
 VIEWS = {
