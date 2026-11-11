@@ -69,7 +69,10 @@ The drawings and other tools are plain `python3`.
   "look for pre-existing free Blender things to use that will look nicer
   and use up less of my Claude minutes"). Before modeling, simulating or
   drawing any object, material or texture, look for a free one:
-  - **models:** Poly Haven, CC0, through `tools/fetch_models.py`;
+  - **models:** Poly Haven, CC0, through `tools/fetch_models.py`; and
+    Sketchfab (`python3 tools/fetch_models.py --sketchfab <words>`, CC0 or
+    CC Attribution only, credit in the record; the client's token is in
+    this environment as SKETCHFAB_API_TOKEN, 2026-11-11);
   - **materials and textures:** Poly Haven's textures, CC0, include fabric,
     wood and plaster;
   - **historic patterns:** public domain scans on Wikimedia Commons (Cooper

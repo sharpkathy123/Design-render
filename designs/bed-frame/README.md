@@ -34,8 +34,9 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
 - **The top rail** is at 56", 32" above the mattress top, so someone tall
   can sit up against it with pillows (raised from 49", 2026-11-10). It has
   well-rounded 3/8" edges.
-- **Foot:** no tall posts. A foot rail with a gently arched bottom edge
-  (1 1/2" rise) keeps the mattress in place. It's through-tenoned and pegged
+- **Foot:** no tall posts. A straight foot rail keeps the mattress in
+  place (an arched one showed the support under the bed, dropped
+  2026-11-11). It's through-tenoned and pegged
   into two short legs. The legs have the same 2 3/4" section as the head
   posts and stand 1" above the rail with the same pyramid cap, as period
   beds' low posts did. Their tops are still 6" below the mattress top
@@ -45,8 +46,8 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
   period beds were. The foot's bolts have aged-brass covers, the small
   round caps on the foot legs (darkened 2026-11-11 so they don't stand out).
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
-  a 2x4 center rail on three legs stained dark (they show through the
-  arch).
+  a 2x4 center rail on three legs stained dark (they can be seen under
+  the foot rail from low down).
 - **Finish:** fumed, a deep brown, as Stickley's workshops did it; or dyed
   to match (BUILD.md, step 15).
 

@@ -94,7 +94,7 @@ Add $30 to $60 if the yard planes the lumber.
 - **Must have:** table saw (or a circular saw with a straightedge),
   drill and a 3/8" brad-point bit at least 8" long, 1" Forstner bit,
   chisels (3/8", 1/2", 1"), a mallet, a combination square and marking
-  gauge, a jigsaw or bandsaw for the arch, a router with a 3/8" roundover
+  gauge, a jigsaw, a router with a 3/8" roundover
   bit, a random-orbit sander.
 - **Clamps:** four that open to 72" (pipe clamps are cheapest) for the
   headboard, and six of 24" or more.
@@ -130,10 +130,8 @@ Add $30 to $60 if the yard planes the lumber.
    - Leave the through-tenons 3/8" proud, chamfer their ends 1/8", and
      sand them smooth: they're on show.
    - Fit each tenon to its own mortise and mark the pair.
-7. **Shape the foot rail's arch.** Mark the bottom edge 3" in from each
-   shoulder and 1 1/2" up at the middle. Bend a thin batten through the
-   three points, trace it, cut just outside the line, then spokeshave or
-   sand to it.
+7. **The foot rail** stays straight (an arch was tried and dropped: it
+   showed the support under the bed). Ease its edges 1/16" like the rest.
 8. **Round the headboard's top rail.** Use a 3/8" roundover on all four
    long edges, which is soft to lean on and easy on the quilt. Dry-fit the
    whole headboard and the foot. Check that the headboard is square and
@@ -177,8 +175,8 @@ Add $30 to $60 if the yard planes the lumber.
     - **Dyed:** follow the dye's directions and match it on offcuts first.
     - **Then:** a coat of oil, two or three of shellac, and dark paste wax
       buffed out.
-    - Stain the three center-rail legs dark: they show through the foot
-      rail's arch.
+    - Stain the three center-rail legs dark: from low down they can be
+      seen under the foot rail.
 16. **Set it up in the bedroom.**
     - Bolt the side rails to the headboard and the foot, with brass covers
       on the foot bolts.
