@@ -7,6 +7,8 @@ add `--quilt` for the draped quilt; `python3 designs/bed-frame/draw_joinery.py`
 and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings).
 
 - **How to build it, with prices:** [BUILD.md](BUILD.md)
+- **The bed as a 3D model for other renders:** [model/](model/README.md)
+  (`python3.11 designs/bed-frame/model.py [--bedding] --export <file.blend>`)
 - Drawing (front, side, top, cut list): [bed-frame-drawing.svg](bed-frame-drawing.svg)
 - Joinery (every mortise, tenon, peg and bolt): [bed-frame-joinery.svg](bed-frame-joinery.svg)
 - Renders: [corner](renders/bed-frame-corner.jpg), [foot](renders/bed-frame-foot.jpg),
@@ -40,7 +42,8 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
   (decided 2026-11-10: hiding them under the rail would be a modern
   platform-bed look).
 - **Side rails:** on one bed bolt and a stub tenon at each end, the way
-  period beds were, with brass covers on the foot's bolts.
+  period beds were. The foot's bolts have aged-brass covers, the small
+  round caps on the foot legs (darkened 2026-11-11 so they don't stand out).
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
   a 2x4 center rail on three legs stained dark (they show through the
   arch).

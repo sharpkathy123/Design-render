@@ -49,7 +49,7 @@ def build():
         "poplar": dict(color=kit.hexcolor("#cbb994"), roughness=0.6, label="poplar"),
         "pine": dict(color=kit.hexcolor("#d8c08e"), roughness=0.6, label="2x4 (SPF)"),
         "pine_dark": dict(color=kit.hexcolor("#2a1d12"), roughness=0.7, label="2x4 (SPF), stained dark"),
-        "brass": dict(preset="brass", label="brass"),
+        "brass": dict(color=kit.hexcolor("#6b5130"), roughness=0.5, metallic=1.0, label="brass"),   # aged, darkened
     })
     # head posts, with their caps
     for nm, x in (("Head post L", 0.0), ("Head post R", W - POST)):
@@ -125,9 +125,11 @@ def foot_rail_profile(n=24):
     return [(x0, FOOT_Z[0])] + arch + [(x1, FOOT_Z[0]), (x1, FOOT_Z[1]), (x0, FOOT_Z[1])]
 
 
-def mattress():
-    """The mattress, for the renders (not a part)."""
-    kit.materials({"ticking": dict(color=kit.hexcolor("#ece8df"), roughness=0.9, sheen=0.5)})
+def mattress(sheet="#ece8df"):
+    """The mattress, for the renders (not a part); sheet: its cover's color
+    (made up, a dark fitted sheet, so no white shows where the coverlet's
+    tucked corners meet)."""
+    kit.materials({"ticking": dict(color=kit.hexcolor(sheet), roughness=0.9, sheen=0.3)})
     m = kit.box("Mattress", RAIL_IN + CLEAR / 2, FOOT_IN + CLEAR / 2, SLAT_TOP, W - RAIL_IN - CLEAR / 2,
                 L - POST - CLEAR / 2, MAT_TOP, "ticking", part=False, check=False, round_edges=2.0)
     m.modifiers["Bevel"].segments = 6
@@ -250,9 +252,11 @@ def lay_on(top, under, gap):
     return moved
 
 
-def finish_cloth(q, thick=0.35):
+def finish_cloth(q, thick=0.35, up=False):
     so = q.modifiers.new("Solidify", "SOLIDIFY")
     so.thickness = thick * kit.INCH
+    if up:                          # (built up off what it lies on, not down into it)
+        so.offset = 1.0
     sub = q.modifiers.new("Smooth", "SUBSURF")
     sub.levels = sub.render_levels = 1
 
@@ -390,17 +394,18 @@ def bedding(frame, mat):
     cw, cl_ = COVERLET
     cov = cloth("Coverlet", (cw, cl_), (W / 2, L - POST - 1.0 - cl_ / 2, MAT_TOP + 1.0),
                 fabric_material("Coverlet", "blockprint.png", (cw / 6.0, cl_ / 6.0)), posts + [mat], frames=80, mass=0.5,
-                bend=0.8, pin_head=3.0, foot_corners=COVERLET_DROP)
+                bend=0.8, pin_head=3.0, foot_corners=COVERLET_CORNER)
     finish_cloth(cov, 0.3)          # (its thickness first: the throw fell through a bare sheet)
     # the throw, laid on the coverlet; any points left inside it pushed out, then smoothed
     tw, tl = THROW
     thr = cloth("Throw", (tw, tl), (W / 2, FOOT_IN + THROW_FROM_FOOT + tl / 2, MAT_TOP + 3.0),
-                fabric_material("Throw", "kilim.png", (tw / 10.0, 1.0), sheen=0.1), [mat, cov], frames=80, mass=0.7, bend=6.0)
+                fabric_material("Throw", "kilim.png", (tw / 10.0, 1.0), sheen=0.1), [mat, cov], frames=90, mass=1.4,
+                bend=30.0)        # (heavy and stiff: a folded blanket, not a runner)
     n = lay_on(thr, cov, 0.4)
     relax(thr)
     n += lay_on(thr, cov, 0.4)
     print("LAY_ON %d points of the throw moved out" % n, flush=True)
-    finish_cloth(thr, 0.25)
+    finish_cloth(thr, THROW_THICK, up=True)
     span = HB_SPAN - 0.75
     length = (HB_TOP[1] - MAT_TOP) + (HB_TOP[1] - HB_BOTTOM[1]) + 6.0
     headboard_cover(hb + [mat], fabric_material("Headboard cover", "morris-strawberry-thief.jpg",
@@ -414,6 +419,22 @@ def bedding(frame, mat):
         for j in range(PILLOW_STACK):
             pillow("Pillow %d-%d" % (k, j), x + side * 0.4 * j, y + 0.6 * j, MAT_TOP + 0.5 + t * 0.42 + j * t * 0.78,
                    2.0 + 2.0 * j, seed=3 * k + j, mat=pm)
+
+
+def export(path):
+    """The bed alone, for other models to place (tools/blender/assets.py
+    place(), or File > Append in Blender): every object named "Bed ...",
+    no studio, lights or camera; its images packed in. Blender meters,
+    the floor at z 0, the foot toward -y, the headboard toward +y."""
+    for o in list(bpy.data.objects):
+        if o.type != "MESH":
+            bpy.data.objects.remove(o, do_unlink=True)
+    for o in bpy.data.objects:
+        if not o.name.startswith("Bed "):
+            o.name = "Bed " + o.name
+    bpy.ops.file.pack_all()
+    kit.save_blend(path)
+    print("EXPORT %s (%d objects)" % (path, len(bpy.data.objects)), flush=True)
 
 
 VIEWS = {
@@ -441,6 +462,7 @@ def main():
     ap.add_argument("--quilt", action="store_true")
     ap.add_argument("--bedding", action="store_true", help="made up: printed headboard cover, coverlet, throw, pillows")
     ap.add_argument("--no-render", action="store_true")
+    ap.add_argument("--export", metavar="BLEND", help="save the bed (no studio, lights or camera) to a .blend and stop")
     a = ap.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:])
     build()
     kit.check_joints()
@@ -452,12 +474,15 @@ def main():
     if a.no_render:
         return
     lo, hi = kit.bounds()
-    mat = mattress()
+    mat = mattress("#1c2c4a" if a.bedding else "#ece8df")
     if a.bedding:
         bedding(list(kit.OBJS), mat)
     elif a.quilt:
         hb = [o for o in kit.OBJS if o.name.startswith(("Headboard", "Head post"))]
         quilt(hb + [mat])
+    if a.export:
+        export(a.export)
+        return
     kit.studio(wall_y=L + 0.5, radius=1.0)
     suffix = "-bedding" if a.bedding else "-quilt" if a.quilt else ""
     for v in a.views.split(","):
