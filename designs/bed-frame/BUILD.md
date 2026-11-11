@@ -1,0 +1,196 @@
+# Building the queen bed frame
+
+Everything to build it: what to buy and roughly what it costs, the tools,
+and the steps in order. The sizes are on two drawings:
+
+- [bed-frame-drawing.svg](bed-frame-drawing.svg): the front, side and top
+  views, the overall sizes and the cut list (finished sizes, tenons included)
+- [bed-frame-joinery.svg](bed-frame-joinery.svg): every mortise, tenon, peg
+  and bolt hole, dimensioned for marking out
+
+Every number comes from [sizes.py](sizes.py); change a size there and rerun
+the model and both drawings, never on the drawing alone.
+
+## What to buy, and roughly what it costs
+
+Prices are estimates from November 2026. The lumber prices come from three
+suppliers' online lists (sources at the end); the hardware and finishing
+prices are typical retail and weren't checked against a store. Your local
+yard will differ, so take this list in and ask for a quote.
+
+### Lumber
+
+Rough lumber, with about 20% extra for defects, planing and the odd bad
+board. Ask for **quartersawn** white oak (straight grain, ray fleck on the
+wide faces), FAS or Select grade.
+
+| Stock | For | Rough sizes to look for | Board feet | Price per bf | Cost |
+|---|---|---|---|---|---|
+| QS white oak 6/4 | head posts and foot legs (each glued up from two boards), headboard rails | 3 1/4" wide x 64" (4), 3 1/4" x 20" (4), 5" and 5 1/2" x 67" | about 21 | $15 to $17 (estimated: 6/4 isn't on the lists checked) | $315 to $355 |
+| QS white oak 5/4 | side rails, foot rail | 6 1/2" x 82" (2), 8 1/2" x 67" | about 16 | $14 to $16 (estimated, between 4/4 and 8/4) | $225 to $255 |
+| QS white oak 4/4 | headboard slats | 7 3/4" x 36" (7), or wider boards ripped | about 16 | $13 to $14.50 | $210 to $235 |
+| Poplar 4/4 | 13 mattress slats | 4 1/4" x 62" (13) | about 26 | about $5.35 | about $140 |
+| 2x4 x 8', kiln-dried, straight | center rail, its 3 legs, 2 cleats ripped from one | | 3 boards | $4 to $6 each | $12 to $18 |
+| **Lumber** | | | | | **about $900 to $1,000** |
+
+- **No jointer or planer?** Most yards will plane and straight-line rip for
+  roughly $0.50 to $1 per board foot ($30 to $60 here). Give them the
+  finished thicknesses: posts' boards 1 3/8", headboard rails 1 1/4", side
+  and foot rails 7/8", slats 3/4".
+- **Cheaper slats:** home-center 1x4 pine instead of poplar, about $8 per 8'
+  board, one slat each (about $105). No one sees them.
+
+### Hardware
+
+| Item | Qty | Each | Cost |
+|---|---|---|---|
+| Bed bolts, 3/8" x 6", with square nut and washer | 4 | $4 to $6 | $16 to $24 |
+| Brass bed-bolt covers, 1 5/8" (the two at the foot show) | 2 | about $6.40 | about $13 |
+| Wood glue, Titebond III, 16 oz | 1 | | $10 to $12 |
+| #8 x 1 1/4" wood screws (slats), box of 100 | 1 | | $8 to $10 |
+| #10 x 2 1/2" wood screws (cleats, center legs), about 40 | 1 box | | $8 to $10 |
+| Felt or nylon glides for 7 feet | 1 pack | | $8 to $12 |
+| Sandpaper, 120, 150, 180 | | | about $20 |
+| **Hardware** | | | **about $85 to $100** |
+
+The 3/8" square pegs are made from oak offcuts (step 9).
+
+### Finish: choose one
+
+**Fumed** (the Stickley workshops' way: ammonia fumes darken the oak's own
+tannins, so the color is in the wood, not on it):
+
+| Item | Cost |
+|---|---|
+| Strong ammonia, 26% to 29%, 1 gallon (blueprint or chemical suppliers, not household ammonia) | $40 to $60 |
+| Plastic sheeting and tape for the tent | about $15 |
+| Respirator with ammonia cartridges, chemical goggles, gloves | $40 to $60 |
+
+**Or dyed** (easier and safer, nearly the same look): a medium-brown
+water- or alcohol-based wood dye, about $20 to $25.
+
+**Then, either way:** boiled linseed oil or an oil-varnish blend ($15 to
+$20), amber or garnet shellac ($20 to $30), dark paste wax (about $15).
+
+| Finish | Cost |
+|---|---|
+| Fumed, with the topcoats | about $150 to $200 |
+| Dyed, with the topcoats | about $75 to $90 |
+
+### Total
+
+| | Low | High |
+|---|---|---|
+| Lumber | $900 | $1,000 |
+| Hardware | $85 | $100 |
+| Finish (dyed / fumed) | $75 | $200 |
+| **Total** | **about $1,050** | **about $1,300** |
+
+Add $30 to $60 if the yard planes the lumber.
+
+## Tools
+
+- **Must have:** table saw (or a circular saw with a straightedge),
+  drill and a 3/8" brad-point bit at least 8" long, 1" Forstner bit,
+  chisels (3/8", 1/2", 1"), a mallet, a combination square and marking
+  gauge, a jigsaw or bandsaw for the arch, a router with a 3/8" roundover
+  bit, a random-orbit sander.
+- **Clamps:** four that open to 72" (pipe clamps are cheapest) for the
+  headboard, and six of 24" or more.
+- **Makes it much easier:** a jointer and planer, a drill press or a
+  doweling guide to bore the bolt holes straight, a hollow-chisel mortiser
+  (or rent time at a makerspace).
+
+## The steps
+
+1. **Let the wood settle.** Stack it with spacers in the room where you'll
+   work for a week or two before milling.
+2. **Mill.** Flatten and plane every board to its thickness and rip it a
+   little wide; cut everything 1" long. Pick the best quartersawn faces for
+   the posts' fronts and outsides, the slats' fronts and the foot rail's
+   front.
+3. **Glue up the posts and legs.** Two 1 3/8" boards for each, quartersawn
+   faces out. When the glue is dry, plane to 2 3/4" square. Each post then
+   has two quartersawn faces and two plainer ones: put the plain ones at
+   the back and on the inside. (Stickley glued thin quartersawn faces onto
+   the plain sides, so all four faces showed the figure. You can do that
+   with 1/8" strips if you want it.)
+4. **Cut to length and shape the caps.** Head posts 60 1/8", foot legs 17 5/8".
+   Plane or sand the pyramid caps on all four, head posts and foot legs
+   alike: 5/8" rise to a 1/4" flat, all four sides the same. Ease all the long edges 1/16".
+5. **Lay out every mortise** from the joinery sheet, all at once, from the
+   floor end and the front face (sheet A for the posts, D for the legs, C
+   for the slat mortises in the rails).
+   - Cut the **through-mortises** halfway from each side so neither face
+     splinters.
+   - Cut the **stub mortises** for the side rails.
+   - Cut the **slat mortises** in both headboard rails.
+6. **Cut the tenons** (sheets B, C, D, E).
+   - Leave the through-tenons 3/8" proud, chamfer their ends 1/8", and
+     sand them smooth: they're on show.
+   - Fit each tenon to its own mortise and mark the pair.
+7. **Shape the foot rail's arch.** Mark the bottom edge 3" in from each
+   shoulder and 1 1/2" up at the middle. Bend a thin batten through the
+   three points, trace it, cut just outside the line, then spokeshave or
+   sand to it.
+8. **Round the headboard's top rail.** Use a 3/8" roundover on all four
+   long edges, which is soft to lean on and easy on the quilt. Dry-fit the
+   whole headboard and the foot. Check that the headboard is square and
+   flat, and that the slats sit flush with the rails' faces.
+9. **Pegs.**
+   - Rip 3/8" square sticks from straight-grained oak offcuts and taper
+     the lead end slightly.
+   - Bore the peg holes through the posts' and legs' front faces with the
+     joints dry-fitted.
+   - Optional, for a joint that pulls itself tight: take the tenons out,
+     and bore their holes 1/32" closer to the shoulder ("drawboring").
+10. **Bed-bolt holes.**
+    - Bore the 1" counterbore, 1/2" deep, then the 3/8" hole straight
+      through. Bore from the back face on the head posts and from the front
+      face on the foot legs.
+    - Clamp each side rail in place, its stub tenon in its mortise. Run
+      the long bit back through the post's hole into the rail's end, to
+      4 1/4" deep.
+    - Drill the 1" nut hole from the rail's inside face, 3/4" deep. Test
+      the bolt before moving on.
+11. **Sand** to 150, then 180. Raise the grain with a damp cloth and sand
+    again lightly if you'll use a water-based dye.
+12. **Glue up the headboard.**
+    - Glue only the middle of each slat's tenons, so the slats can move a
+      little. Glue the rails' tenons into the posts.
+    - Drive the pegs with a little glue, and trim them 1/16" proud with
+      chamfered edges.
+    - Clamp, check the diagonals for square, and clean off every bit of
+      squeeze-out: dried glue won't take a fumed or dyed color.
+13. **Glue up the foot.** The foot rail goes into the two legs the same
+    way, with pegs.
+14. **Cleats.** Glue and screw a 1 1/2" square cleat (ripped from a 2x4)
+    along each side rail's inside face, its top 4 1/4" above the rail's
+    bottom edge. Use #10 x 2 1/2" screws every 8".
+15. **Finish.**
+    - **Fumed:** fume outdoors or in a garage, never indoors. Set the parts
+      in a plastic tent with a shallow dish of the ammonia and wear the
+      respirator, goggles and gloves. Fume test offcuts first, checking
+      every few hours. Most quartersawn oak goes a medium brown in 12 to 24
+      hours, and pieces from different boards darken differently.
+    - **Dyed:** follow the dye's directions and match it on offcuts first.
+    - **Then:** a coat of oil, two or three of shellac, and dark paste wax
+      buffed out.
+    - Stain the three center-rail legs dark: they show through the foot
+      rail's arch.
+16. **Set it up in the bedroom.**
+    - Bolt the side rails to the headboard and the foot, with brass covers
+      on the foot bolts.
+    - Set the center rail on its three legs down the middle and adjust its
+      glides so it touches the slats' undersides.
+    - Lay the 13 slats about 2 1/2" apart. Screw each one to the cleats
+      and the center rail.
+    - Put glides on all the feet.
+
+## Sources for the prices
+
+- [The Wood Yard, current price list](https://www.thewoodyard.com/current-pricing-list/) (quartersawn white oak 4/4, poplar)
+- [Woodshed Lumber, white oak](https://woodshedlumber.com/products/white-oak/) (quartersawn 4/4 and 8/4)
+- [Advantage Lumber, quartersawn white oak](https://www.advantagelumber.com/qtrwhiteoak.htm)
+- [Lee Valley, brass bed-bolt cover](https://www.leevalley.com/en-ca/shop/hardware/fasteners/caps-and-covers/100098-bed-bolt-cover)
+- [Rockler, 3/8" bed bolt](https://rockler.com/3-8-diameter-bed-bolt) (price not shown on the page checked)

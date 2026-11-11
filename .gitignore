@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+*.blend1
+# Poly Haven models are fetched on demand (python3 tools/fetch_models.py <id>)
+library/models/*/

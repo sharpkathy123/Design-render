@@ -1,0 +1,381 @@
+# The 3D models the renders can use (tools/fetch_models.py fetches them;
+# tools/blender/assets.py places them). size_in: width, depth, height, inches.
+painted_wooden_bench:
+  use: a painted bench with a back and shelf (the mud room's west window, or the hall)
+  name: Painted Wooden Bench
+  author: Kirill Sannikov
+  size_in:
+  - 45.9
+  - 19.5
+  - 35.0
+  source: https://polyhaven.com/a/painted_wooden_bench
+  license: CC0 (public domain)
+  file: library/models/painted_wooden_bench/painted_wooden_bench_1k.blend
+painted_wooden_sofa:
+  use: a painted wooden settle with a cushion (the lake window, in place of a settee)
+  name: Painted Wooden Sofa
+  author: Kirill Sannikov
+  size_in:
+  - 96.5
+  - 31.0
+  - 50.4
+  source: https://polyhaven.com/a/painted_wooden_sofa
+  license: CC0 (public domain)
+  file: library/models/painted_wooden_sofa/painted_wooden_sofa_1k.blend
+Rockingchair_01:
+  use: a spindle rocking chair (a corner chair)
+  name: Rockingchair 01
+  author: Jorge Camacho
+  size_in:
+  - 27.9
+  - 32.8
+  - 39.2
+  source: https://polyhaven.com/a/Rockingchair_01
+  license: CC0 (public domain)
+  file: library/models/Rockingchair_01/Rockingchair_01_1k.blend
+wicker_basket_01:
+  use: a woven basket (shelves, the closet shelf, under a bench)
+  name: Wicker Basket 01
+  author: Kuutti Siitonen
+  size_in:
+  - 15.1
+  - 11.6
+  - 4.6
+  source: https://polyhaven.com/a/wicker_basket_01
+  license: CC0 (public domain)
+  file: library/models/wicker_basket_01/wicker_basket_01_1k.blend
+wicker_basket_02:
+  use: a woven basket
+  name: Wicker Basket 02
+  author: Kuutti Siitonen
+  size_in:
+  - 14.8
+  - 10.7
+  - 8.6
+  source: https://polyhaven.com/a/wicker_basket_02
+  license: CC0 (public domain)
+  file: library/models/wicker_basket_02/wicker_basket_02_1k.blend
+antique_ceramic_vase_01:
+  use: a blue-and-white vase
+  name: Antique Ceramic Vase 01
+  author: James Ray Cock
+  size_in:
+  - 10.0
+  - 10.0
+  - 17.3
+  source: https://polyhaven.com/a/antique_ceramic_vase_01
+  license: CC0 (public domain)
+  file: library/models/antique_ceramic_vase_01/antique_ceramic_vase_01_1k.blend
+ceramic_vase_03:
+  use: a vase
+  name: Ceramic Vase 03
+  author: James Ray Cock
+  size_in:
+  - 4.4
+  - 4.4
+  - 16.3
+  source: https://polyhaven.com/a/ceramic_vase_03
+  license: CC0 (public domain)
+  file: library/models/ceramic_vase_03/ceramic_vase_03_1k.blend
+ceramic_vase_04:
+  use: a vase
+  name: Ceramic Vase 04
+  author: James Ray Cock
+  size_in:
+  - 7.2
+  - 7.2
+  - 13.5
+  source: https://polyhaven.com/a/ceramic_vase_04
+  license: CC0 (public domain)
+  file: library/models/ceramic_vase_04/ceramic_vase_04_1k.blend
+fern_02:
+  use: a fern
+  name: Fern 02
+  author: Rob Tuytel, Rico Cilliers
+  size_in:
+  - 77.7
+  - 67.9
+  - 16.8
+  source: https://polyhaven.com/a/fern_02
+  license: CC0 (public domain)
+  file: library/models/fern_02/fern_02_1k.blend
+vintage_oil_lamp:
+  use: an oil lamp, for a shelf
+  name: Vintage Oil Lamp
+  author: Monsta3D
+  size_in:
+  - 8.7
+  - 8.7
+  - 31.6
+  source: https://polyhaven.com/a/vintage_oil_lamp
+  license: CC0 (public domain)
+  file: library/models/vintage_oil_lamp/vintage_oil_lamp_1k.blend
+planter_pot_clay:
+  use: a clay planter pot
+  name: Planter Pot Clay
+  author: Amal Kumar
+  size_in:
+  - 10.5
+  - 10.4
+  - 8.7
+  source: https://polyhaven.com/a/planter_pot_clay
+  license: CC0 (public domain)
+  file: library/models/planter_pot_clay/planter_pot_clay_1k.blend
+ceramic_vase_01:
+  use: 'the window sill: a slim bottle (second floor, D10)'
+  source: https://polyhaven.com/a/ceramic_vase_01
+  license: CC0 (public domain)
+  note: already used by tools/blender/vanity_render_setup.py (scheme_flowers)
+  file: library/models/ceramic_vase_01/ceramic_vase_01_1k.blend
+ceramic_vase_02:
+  use: 'the counter: a round glazed jar (second floor, D10)'
+  source: https://polyhaven.com/a/ceramic_vase_02
+  license: CC0 (public domain)
+  note: already used by tools/blender/vanity_render_setup.py (scheme_flowers)
+  file: library/models/ceramic_vase_02/ceramic_vase_02_1k.blend
+periwinkle_plant:
+  use: sprigs of flowers, recolored per scheme (second floor, D10)
+  source: https://polyhaven.com/a/periwinkle_plant
+  license: CC0 (public domain)
+  note: already used by tools/blender/vanity_render_setup.py (scheme_flowers)
+  file: library/models/periwinkle_plant/periwinkle_plant_1k.blend
+throw_pillows_01:
+  use: throw pillows (the mud room's benches; tinted or left as they come)
+  name: Throw Pillows 01
+  source: https://polyhaven.com/a/throw_pillows_01
+  license: CC0 (public domain)
+  file: library/models/throw_pillows_01/throw_pillows_01_1k.blend
+  author: Serhii Khromov
+  size_in:
+  - 40.2
+  - 24.7
+  - 17.7
+tea_set_01:
+  use: a teacup on its saucer (the Bristol's pop-up table); the set also has a teapot, sugar bowl and
+    creamer
+  license: CC0 (public domain)
+  name: Tea Set 01
+  author: James Ray Cock, Rico Cilliers, Jurita Burger
+  size_in:
+  - 36.2
+  - 19.1
+  - 6.5
+  source: https://polyhaven.com/a/tea_set_01
+  file: library/models/tea_set_01/tea_set_01_1k.blend
+binder_notebook:
+  use: a small worn leather book (set down on a table or bench)
+  license: CC0 (public domain)
+  name: Binder Notebook
+  author: DaDrood
+  size_in:
+  - 23.0
+  - 7.9
+  - 1.0
+  source: https://polyhaven.com/a/binder_notebook
+  file: library/models/binder_notebook/binder_notebook_1k.blend
+jug_01:
+  use: 'the kitchen: a glazed jug, in the glass row or on the counter'
+  name: Jug 01
+  author: Kuutti Siitonen
+  size_in:
+  - 10.8
+  - 6.6
+  - 8.3
+  source: https://polyhaven.com/a/jug_01
+  license: CC0 (public domain)
+  file: library/models/jug_01/jug_01_1k.blend
+pot_enamel_01:
+  use: 'the kitchen: an enamel stockpot on the range (enamelware is of the period)'
+  name: Pot Enamel 01
+  author: Kuutti Siitonen
+  size_in:
+  - 10.4
+  - 7.1
+  - 7.0
+  source: https://polyhaven.com/a/pot_enamel_01
+  license: CC0 (public domain)
+  file: library/models/pot_enamel_01/pot_enamel_01_1k.blend
+food_apple_01:
+  use: 'the kitchen: apples in the fruit bowl'
+  name: Food Apple 01
+  author: Oliver Harries
+  size_in:
+  - 3.8
+  - 3.8
+  - 3.4
+  source: https://polyhaven.com/a/food_apple_01
+  license: CC0 (public domain)
+  file: library/models/food_apple_01/food_apple_01_1k.blend
+food_pears_asian_01:
+  use: 'the kitchen: pears in the fruit bowl'
+  name: Pears Asian 01
+  author: Amal Kumar
+  size_in:
+  - 6.1
+  - 7.0
+  - 4.3
+  source: https://polyhaven.com/a/food_pears_asian_01
+  license: CC0 (public domain)
+  file: library/models/food_pears_asian_01/food_pears_asian_01_1k.blend
+carved_wooden_plate:
+  use: 'the kitchen: a carved wooden plate stood in the glass row'
+  name: Carved Wooden Plate
+  author: Jan Martens
+  size_in:
+  - 10.7
+  - 10.6
+  - 1.5
+  source: https://polyhaven.com/a/carved_wooden_plate
+  license: CC0 (public domain)
+  file: library/models/carved_wooden_plate/carved_wooden_plate_1k.blend
+ceramic_pot:
+  use: 'the kitchen: a glazed crock, in the glass row or on the counter'
+  name: Ceramic Pot
+  author: Aron Łyczek
+  size_in:
+  - 25.8
+  - 19.8
+  - 14.6
+  source: https://polyhaven.com/a/ceramic_pot
+  license: CC0 (public domain)
+  file: library/models/ceramic_pot/ceramic_pot_1k.blend
+lemon:
+  use: 'the kitchen: lemons in a bowl on the counter by the sink'
+  license: CC0 (public domain)
+  source: https://polyhaven.com/a/lemon
+  name: Lemon
+  author: Kuutti Siitonen
+  size_in:
+  - 2.7
+  - 2.7
+  - 3.8
+  file: library/models/lemon/lemon_1k.blend
+sf_vintage_toaster:
+  use: 'the kitchen: the toaster in the appliance garage (it comes Y-up, lying on its back; turned 90
+    degrees about x in its .blend 2026-11-06, its base now on z = 0: the 2026-10-31 turn had left it on
+    its back)'
+  source: https://sketchfab.com/3d-models/vintage-toaster-f1d04726212f4bfea15fa57fd45420bf
+  size_in:
+  - 55.0
+  - 39.5
+  - 24.9
+  name: Vintage Toaster
+  author: Kommander Karl
+  license: CC Attribution
+  file: library/models/sf_vintage_toaster/sf_vintage_toaster.blend
+sf_vintage_kettle:
+  use: 'the kitchen: a kettle on the coffee bar or the range'
+  source: https://sketchfab.com/3d-models/vintage-style-kettle-8e53dadfbcdf4875bc6190545f9f688b
+  size_in:
+  - 8.7
+  - 7.9
+  - 7.8
+  name: Vintage Style Kettle
+  author: AardwolfDigital
+  license: CC Attribution
+  file: library/models/sf_vintage_kettle/sf_vintage_kettle.blend
+sf_red_mug:
+  use: 'the kitchen: mugs on the cup hooks at the coffee bar, tinted in the palette (it comes lying on
+    its side, handle +x)'
+  source: https://sketchfab.com/3d-models/classic-red-coffee-mug-c89fa8b5390145488a28c41ec54ccc8d
+  size_in:
+  - 9572.6
+  - 12315.6
+  - 8650.2
+  name: Classic Red Coffee Mug
+  author: hungry_beagle
+  license: CC Attribution
+  file: library/models/sf_red_mug/sf_red_mug.blend
+sf_coffee_maker:
+  use: 'the kitchen: the coffee bar''s drip coffee maker, a Moccamaster-style one with its glass carafe
+    (2026-11-06, in place of a dark box the client couldn''t read)'
+  source: https://sketchfab.com/3d-models/coffee-maker-9ccda2fddba846e6ba97eb774b8a09c6
+  size_in:
+  - 16099.5
+  - 31869.7
+  - 31695.8
+  name: Coffee maker
+  author: Fredrik Johansen
+  license: CC Attribution
+  file: library/models/sf_coffee_maker/sf_coffee_maker.blend
+sf_coffee_canister:
+  use: 'the kitchen: the coffee bar''s stoneware canisters (2026-11-06, in place of three plain cylinders),
+    glazed in the palette; its round window faces -x. Its Y-up parent baked into the mesh and removed,
+    2026-11-06: placed, it lay on its side, the parent''s turn lost'
+  source: https://sketchfab.com/3d-models/coffee-canister-ea3c9adc480e430381b358558a71f634
+  size_in:
+  - 5.8
+  - 5.9
+  - 8.2
+  name: Coffee Canister
+  author: csanchez131
+  license: CC Attribution
+  file: library/models/sf_coffee_canister/sf_coffee_canister.blend
+wooden_cutting_board:
+  use: 'the kitchen: the prep counter, a board with vegetables and a knife on it, and a second one leaned
+    on the tile behind it (kitchen.py lean_board)'
+  name: Wooden Cutting Board
+  author: Kuutti Siitonen
+  size_in:
+  - 17.7
+  - 9.7
+  - 1.6
+  source: https://polyhaven.com/a/wooden_cutting_board
+  license: CC0 (public domain)
+  file: library/models/wooden_cutting_board/wooden_cutting_board_1k.blend
+yellow_onion:
+  use: 'the kitchen: on the prep counter''s board'
+  name: Yellow Onion
+  author: Kuutti Siitonen
+  size_in:
+  - 2.9
+  - 2.7
+  - 3.4
+  source: https://polyhaven.com/a/yellow_onion
+  license: CC0 (public domain)
+  file: library/models/yellow_onion/yellow_onion_1k.blend
+sf_chef_knife:
+  use: 'the kitchen: a chef''s knife on the prep counter''s board (laid flat in its .blend: it came standing
+    on its point)'
+  source: https://sketchfab.com/3d-models/chef-knife-bf7f5cde2a5a45dd98883ecd9be599ad
+  size_in:
+  - 25.0
+  - 10.0
+  - 183.6
+  name: Chef Knife
+  author: General Jorge
+  license: CC Attribution
+  file: library/models/sf_chef_knife/sf_chef_knife.blend
+sf_tomato:
+  use: 'the kitchen: tomatoes on the prep counter''s board'
+  source: https://sketchfab.com/3d-models/tomato-4489b8ec5bc14761a2ddc05241e580af
+  size_in:
+  - 13.3
+  - 12.9
+  - 11.7
+  name: Tomato
+  author: Claudiu
+  license: CC Attribution
+  file: library/models/sf_tomato/sf_tomato.blend
+sf_red_pepper:
+  use: 'the kitchen: a red pepper on the prep counter''s board'
+  source: https://sketchfab.com/3d-models/red-bell-pepper-7dceb5e3fa574027b6b8c6ffff8c980c
+  size_in:
+  - 299.6
+  - 313.7
+  - 329.0
+  name: Red Bell Pepper
+  author: Meerschaum Digital
+  license: CC Attribution
+  file: library/models/sf_red_pepper/sf_red_pepper.blend
+gallinera_chair:
+  use: a woven-seat armchair, the sun porch's sitting chairs (tinted as painted wicker)
+  source: https://polyhaven.com/a/gallinera_chair
+  license: CC0 (public domain)
+  name: Gallinera Chair
+  author: Ulan Cabanilla
+  size_in:
+  - 22.9
+  - 23.8
+  - 40.7
+  file: library/models/gallinera_chair/gallinera_chair_1k.blend
