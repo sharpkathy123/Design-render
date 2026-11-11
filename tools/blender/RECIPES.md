@@ -739,6 +739,13 @@ cabinet runs to the ceiling, its cap against the plaster.
   - **Tucked in:** let only the mattress stop the coverlet, so its edges
     fall straight down inside the rails. Cut its foot corners out square,
     as wide as the drop (`foot_corners`), or they fold out over the rails.
+  - **A folded blanket is shaped, not simulated** (`folded_blanket()`).
+    Simulated, a heavy throw crumpled and curled at its ends like a torn
+    runner. Sweep a profile instead: flat across the top, a 2 1/2" round
+    over each edge, then straight down each side to just above the rails,
+    with a faint ripple at the hems. Measure the coverlet's actual outline
+    where it lies (its draped sides bulge out), and give it its thickness
+    upward.
   - **Cloth on cloth leaks.** Give the lower cloth its thickness before
     dropping the upper one. Then push any of the upper cloth's points that
     are still inside back out along the lower sheet's normals (`lay_on`).

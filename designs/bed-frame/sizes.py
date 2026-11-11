@@ -60,7 +60,7 @@ CENTER_LEG_IN = 12.0               # its end legs set in from the ends, out of s
 # --- bedding, for the renders (the client's picture, 2026-11-11) ------------
 COVERLET_DROP = 10.0               # down each side and the foot, tucked in between the mattress and
                                    # the rails (client, 2026-11-11); its foot corners cut out square,
-COVERLET_CORNER = 8.0              # a little less than the drop, so the flaps overlap at the corner
+COVERLET_CORNER = COVERLET_DROP    # as wide as the drop (8" left loose flaps at the foot, 2026-11-11)
 COVERLET = (MAT_W + 2 * COVERLET_DROP + 1.0, MAT_L + COVERLET_DROP)   # across, along
 THROW_DROP = 8.5                   # a folded blanket across the foot, hanging to just above the rails
 THROW = (MAT_W + 2 * THROW_DROP + 2.0, 20.0)   # across, along: folded in thirds (client, 2026-11-11)

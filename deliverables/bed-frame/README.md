@@ -69,7 +69,8 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
   (decided 2026-11-10: hiding them under the rail would be a modern
   platform-bed look).
 - **Side rails:** on one bed bolt and a stub tenon at each end, the way
-  period beds were, with brass covers on the foot's bolts.
+  period beds were. The foot's bolts have aged-brass covers, the small
+  round caps on the foot legs (darkened 2026-11-11 so they don't stand out).
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
   a 2x4 center rail on three legs stained dark (they show through the
   arch).

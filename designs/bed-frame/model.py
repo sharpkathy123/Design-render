@@ -94,7 +94,8 @@ def build():
         kit.box("Slat %d" % (i + 1), RAIL_IN, y, ct, W - RAIL_IN, y + SLAT_W, SLAT_TOP, "poplar", round_edges=0)
     cx = W / 2
     cr = (cx - CENTER[0] / 2, cx + CENTER[0] / 2)
-    kit.box("Center rail", cr[0], FOOT_IN, ct - CENTER[1], cr[1], L - POST, ct, "pine", round_edges=0)
+    # (stained dark like its legs: its end showed light through the foot rail's arch)
+    kit.box("Center rail", cr[0], FOOT_IN, ct - CENTER[1], cr[1], L - POST, ct, "pine_dark", round_edges=0)
     ends = (FOOT_IN + CENTER_LEG_IN, (FOOT_IN + L - POST) / 2 - CENTER[1] / 2, L - POST - CENTER_LEG_IN - CENTER[1])
     for i, y in enumerate(ends):
         # (stained dark: they show through the foot rail's arch)
@@ -373,6 +374,83 @@ def pillow_material():
     return m
 
 
+def folded_blanket(cov):
+    """A blanket folded in thirds across the foot: flat across the top of
+    the bed, rounded over the mattress's edges, hanging straight down each
+    side to just above the rails, its hems a little uneven. Built as a
+    swept profile (x, z) along the bed (y), then laid onto the coverlet."""
+    import bmesh
+    I = kit.INCH
+    tw, tl = THROW
+    gap = 0.3                                    # over the coverlet, as draped (its sides bulge out:
+    # a blanket shaped to the mattress was pushed about and crumpled, 2026-11-11)
+    y0 = FOOT_IN + THROW_FROM_FOOT
+    dg = bpy.context.evaluated_depsgraph_get()
+    ev = cov.evaluated_get(dg)
+    pts = [ev.matrix_world @ v.co / I for v in ev.data.vertices]
+    near = [p for p in pts if y0 - 1 <= p.y <= y0 + tl + 1 and p.z > MAT_TOP - THROW_DROP - 1]
+    x0 = min(p.x for p in near) - gap
+    x1 = max(p.x for p in near) + gap
+    top = max(p.z for p in near if abs(p.x - W / 2) < 20) + gap
+    r = 2.5                                      # the rounded edge it folds over
+    drop = THROW_DROP
+    path = []                                    # (x, z) along the blanket, left hem to right hem
+    for k in range(13):                          # down the left side
+        path.append((x0, top - r - (drop - r) * (1 - k / 12)))
+    for k in range(1, 9):                        # over the left edge
+        a = math.pi - (math.pi / 2) * k / 8
+        path.append((x0 + r + r * math.cos(a), top - r + r * math.sin(a)))
+    n = 40
+    for k in range(1, n):                        # across the top
+        path.append((x0 + r + (x1 - x0 - 2 * r) * k / n, top))
+    for k in range(0, 9):                        # over the right edge
+        a = math.pi / 2 - (math.pi / 2) * k / 8
+        path.append((x1 - r + r * math.cos(a), top - r + r * math.sin(a)))
+    for k in range(1, 13):                       # down the right side
+        path.append((x1, top - r - (drop - r) * k / 12))
+    seg = [0.0]
+    for (ax, az), (bx, bz) in zip(path, path[1:]):
+        seg.append(seg[-1] + math.hypot(bx - ax, bz - az))
+    rows = 24
+    bm = bmesh.new()
+    uv = bm.loops.layers.uv.new()
+    grid = []
+    for j in range(rows + 1):
+        t = j / rows
+        y = y0 + tl * t
+        row = []
+        for i, (x, z) in enumerate(path):
+            s = seg[i] / seg[-1]
+            hang = max(0.0, (top - r) - z)       # how far down a side this point is
+            # the hems ripple a little, and the top sags a touch between the folds
+            dx = (0.25 * math.sin(7.0 * t + 3.0 * s) * hang / drop) * (-1 if x < W / 2 else 1)
+            dz = -0.08 * math.sin(math.pi * t) if hang == 0 else 0.0
+            row.append(bm.verts.new(((x + dx) * I, y * I, (z + dz) * I)))
+        grid.append(row)
+    for j in range(rows):
+        for i in range(len(path) - 1):
+            f = bm.faces.new((grid[j][i], grid[j][i + 1], grid[j + 1][i + 1], grid[j + 1][i]))
+            for loop, (ii, jj) in zip(f.loops, ((i, j), (i + 1, j), (i + 1, j + 1), (i, j + 1))):
+                loop[uv].uv = (seg[ii] / seg[-1], jj / rows)
+    me = bpy.data.meshes.new("Throw")
+    bm.to_mesh(me)
+    bm.free()
+    for p in me.polygons:
+        p.use_smooth = True
+    o = bpy.data.objects.new("Throw", me)
+    bpy.context.scene.collection.objects.link(o)
+    o.data.materials.append(fabric_material("Throw", "kilim.png", (seg[-1] / 10.0, 1.0), sheen=0.1))
+    # (normals up/out, so its thickness builds outward off the coverlet)
+    if o.data.polygons[len(o.data.polygons) // 2].normal.z < 0:
+        bm = bmesh.new()
+        bm.from_mesh(o.data)
+        bmesh.ops.reverse_faces(bm, faces=bm.faces)
+        bm.to_mesh(o.data)
+        bm.free()
+    finish_cloth(o, THROW_THICK, up=True)
+    return o
+
+
 def relax(o, factor=0.5, repeat=4):
     """Smooth a draped cloth's mesh a little (the throw looked torn where
     lay_on had pushed single points out)."""
@@ -396,16 +474,9 @@ def bedding(frame, mat):
                 fabric_material("Coverlet", "blockprint.png", (cw / 6.0, cl_ / 6.0)), posts + [mat], frames=80, mass=0.5,
                 bend=0.8, pin_head=3.0, foot_corners=COVERLET_CORNER)
     finish_cloth(cov, 0.3)          # (its thickness first: the throw fell through a bare sheet)
-    # the throw, laid on the coverlet; any points left inside it pushed out, then smoothed
-    tw, tl = THROW
-    thr = cloth("Throw", (tw, tl), (W / 2, FOOT_IN + THROW_FROM_FOOT + tl / 2, MAT_TOP + 3.0),
-                fabric_material("Throw", "kilim.png", (tw / 10.0, 1.0), sheen=0.1), [mat, cov], frames=90, mass=1.4,
-                bend=30.0)        # (heavy and stiff: a folded blanket, not a runner)
-    n = lay_on(thr, cov, 0.4)
-    relax(thr)
-    n += lay_on(thr, cov, 0.4)
-    print("LAY_ON %d points of the throw moved out" % n, flush=True)
-    finish_cloth(thr, THROW_THICK, up=True)
+    # the throw: a blanket folded in thirds, shaped rather than simulated
+    # (simulated, it crumpled and curled at its ends like a torn runner)
+    folded_blanket(cov)
     span = HB_SPAN - 0.75
     length = (HB_TOP[1] - MAT_TOP) + (HB_TOP[1] - HB_BOTTOM[1]) + 6.0
     headboard_cover(hb + [mat], fabric_material("Headboard cover", "morris-strawberry-thief.jpg",

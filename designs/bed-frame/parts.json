@@ -815,7 +815,7 @@
   {
    "name": "Center rail",
    "kind": "box",
-   "key": "pine",
+   "key": "pine_dark",
    "lo": [
     31.3125,
     1.8125,
