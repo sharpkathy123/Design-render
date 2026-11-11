@@ -429,6 +429,7 @@ def folded_blanket(cov):
             dz = -0.08 * math.sin(math.pi * t) if hang == 0 else 0.0
             row.append(bm.verts.new(((x + dx) * I, y * I, (z + dz) * I)))
         grid.append(row)
+    hems = ([g[0].co.copy() for g in grid], [g[-1].co.copy() for g in grid])   # (meters) left, right
     for j in range(rows):
         for i in range(len(path) - 1):
             f = bm.faces.new((grid[j][i], grid[j][i + 1], grid[j + 1][i + 1], grid[j + 1][i]))
@@ -441,7 +442,9 @@ def folded_blanket(cov):
         p.use_smooth = True
     o = bpy.data.objects.new("Throw", me)
     bpy.context.scene.collection.objects.link(o)
-    o.data.materials.append(fabric_material("Throw", "kilim.png", (seg[-1] / 10.0, 1.0), sheen=0.1))
+    m = fabric_material("Throw", "kilim.png", (seg[-1] / 10.0, 1.0), sheen=0.12)
+    wool(m, (seg[-1] / WOOL_REPEAT, tl / WOOL_REPEAT))
+    o.data.materials.append(m)
     # (normals up/out, so its thickness builds outward off the coverlet)
     if o.data.polygons[len(o.data.polygons) // 2].normal.z < 0:
         bm = bmesh.new()
@@ -450,7 +453,81 @@ def folded_blanket(cov):
         bm.to_mesh(o.data)
         bm.free()
     finish_cloth(o, THROW_THICK, up=True)
+    o.modifiers["Smooth"].levels = o.modifiers["Smooth"].render_levels = 2    # (a soft folded edge)
+    fringe(hems, tl, top - r)
     return o
+
+
+def wool(m, repeat):
+    """Real wool under a printed material: Poly Haven's Caban (CC0), its
+    nap and weave as a normal map and its shading darkening the color a
+    little, at its own scale (WOOL_REPEAT inches)."""
+    nt = m.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    tc = nt.nodes["Texture Coordinate"]
+    mp = nt.nodes.new("ShaderNodeMapping")
+    mp.inputs["Scale"].default_value = (repeat[0], repeat[1], 1.0)
+    nt.links.new(tc.outputs["UV"], mp.inputs["Vector"])
+
+    def img(name, color):
+        t = nt.nodes.new("ShaderNodeTexImage")
+        t.image = bpy.data.images.load(os.path.join(TEXTURES, name), check_existing=True)
+        t.image.colorspace_settings.name = "sRGB" if color else "Non-Color"
+        nt.links.new(mp.outputs["Vector"], t.inputs["Vector"])
+        return t
+    nm = nt.nodes.new("ShaderNodeNormalMap")
+    nm.inputs["Strength"].default_value = 1.2
+    nt.links.new(img("caban_nor_gl_1k.jpg", False).outputs["Color"], nm.inputs["Color"])
+    nt.links.new(nm.outputs["Normal"], bsdf.inputs["Normal"])
+    mix = nt.nodes.new("ShaderNodeMix")
+    mix.data_type, mix.blend_type = "RGBA", "MULTIPLY"
+    mix.inputs["Factor"].default_value = 0.35
+    base = bsdf.inputs["Base Color"].links[0].from_socket
+    nt.links.new(base, mix.inputs["A"])
+    nt.links.new(img("caban_ao_1k.jpg", True).outputs["Color"], mix.inputs["B"])
+    nt.links.new(mix.outputs["Result"], bsdf.inputs["Base Color"])
+    bsdf.inputs["Sheen Roughness"].default_value = 0.6
+
+
+def fringe(hems, width, top_of_hang):
+    """A short wool fringe along both hanging hems: strands about every
+    FRINGE[1] inches, FRINGE[0] long, a little uneven."""
+    import bmesh
+    import random
+    I = kit.INCH
+    rnd = random.Random(11)
+    flen, step = FRINGE
+    bm = bmesh.new()
+    for side, pts in ((-1, hems[0]), (1, hems[1])):
+        n = int(width / step)
+        for k in range(n):
+            t = (k + 0.5) / n * (len(pts) - 1)
+            a, b = pts[int(t)], pts[min(int(t) + 1, len(pts) - 1)]
+            p = a.lerp(b, t - int(t))
+            p.x += side * THROW_THICK / 2 * I
+            ln = flen * rnd.uniform(0.85, 1.1) * I
+            sway = side * rnd.uniform(-0.05, 0.3) * I + 0 * I
+            twist = rnd.uniform(-0.25, 0.25) * I              # (strands lie every which way, softly)
+            r = 0.045 * I
+            ring0 = [bm.verts.new((p.x + r * math.cos(q), p.y + r * math.sin(q), p.z)) for q in (0, 1.57, 3.14, 4.71)]
+            ring1 = [bm.verts.new((p.x + sway + r * 0.7 * math.cos(q), p.y + twist + r * 0.7 * math.sin(q), p.z - ln))
+                     for q in (0, 1.57, 3.14, 4.71)]
+            for i in range(4):
+                j = (i + 1) % 4
+                bm.faces.new((ring0[i], ring0[j], ring1[j], ring1[i]))
+    me = bpy.data.meshes.new("Throw fringe")
+    bm.to_mesh(me)
+    bm.free()
+    f = bpy.data.objects.new("Throw fringe", me)
+    bpy.context.scene.collection.objects.link(f)
+    fm = bpy.data.materials.new("Fringe")
+    fm.use_nodes = True
+    b = fm.node_tree.nodes["Principled BSDF"]
+    b.inputs["Base Color"].default_value = kit.hexcolor("#c9ae7c") + (1.0,)
+    b.inputs["Roughness"].default_value = 0.95
+    b.inputs["Sheen Weight"].default_value = 0.5
+    f.data.materials.append(fm)
+    return f
 
 
 def relax(o, factor=0.5, repeat=4):
