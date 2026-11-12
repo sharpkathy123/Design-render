@@ -6,12 +6,14 @@ rails on bed bolts and a straight foot rail, through-
 tenoned into two short legs, no posts at the foot. Sizes in sizes.py.
 
     python3.11 designs/bed-frame/model.py [--quality check|final] [--views corner,foot,head,footend] [--quilt | --bedding]
+    python3.11 designs/bed-frame/model.py --export-all     # the 3D models in model/ (add a CHANGELOG line first)
 
 Writes designs/bed-frame/parts.json and renders/bed-frame-<view>[-quilt].jpg.
 """
 import argparse
 import math
 import os
+import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -303,6 +305,7 @@ def quilt_material():
     nt.links.new(br.outputs["Color"], bsdf.inputs["Base Color"])
     bsdf.inputs["Roughness"].default_value = 0.95
     bsdf.inputs["Sheen Weight"].default_value = 0.6
+    m.diffuse_color = kit.hexcolor("#6d6432") + (1.0,)     # (its squares' average: the .glb's and .dae's color)
     return m
 
 
@@ -571,20 +574,57 @@ def bedding(frame, mat):
                    2.0 + 2.0 * j, seed=3 * k + j, mat=pm)
 
 
-def export(path):
-    """The bed alone, for other models to place (tools/blender/assets.py
-    place(), or File > Append in Blender): every object named "Bed ...",
-    no studio, lights or camera; its images packed in. Blender meters,
-    the floor at z 0, the foot toward -y, the headboard toward +y."""
-    for o in list(bpy.data.objects):
-        if o.type != "MESH":
-            bpy.data.objects.remove(o, do_unlink=True)
-    for o in bpy.data.objects:
-        if not o.name.startswith("Bed "):
-            o.name = "Bed " + o.name
-    bpy.ops.file.pack_all()
-    kit.save_blend(path)
-    print("EXPORT %s (%d objects)" % (path, len(bpy.data.objects)), flush=True)
+# the export (tools/blender/deliver.py): every version of the bed, for other repos' rooms
+MODEL = os.path.join(HERE, "model")
+VERSIONS = {        # file stem: (model.py's option, its bedding collections)
+    "bed-frame-made-up": ("--bedding", ("Bedding: Strawberry Thief", "Bedding: coverlet, throw and pillows")),
+    "bed-frame-bare": (None, ()),
+    "bed-frame-quilt": ("--quilt", ("Bedding: quilt",)),
+}
+MATERIAL_NAMES = [("Vanity Oak", "oak fumed"), ("Vanity Peg", "oak fumed pegs"), ("Vanity Pine_dark", "2x4 pine stained dark"),
+                  ("Vanity Pine", "2x4 pine"), ("Vanity Poplar", "poplar"), ("Vanity Brass", "brass aged"),
+                  ("Vanity Ticking", "mattress sheet"), ("Headboard cover", "Strawberry Thief"), ("Quilt", "quilt"),
+                  ("Coverlet", "block-print coverlet"), ("Throw", "kilim wool"), ("Fringe", "wool fringe"),
+                  ("Pillowcase", "pillowcase")]
+
+
+def export_name(n):
+    """The headboard's parts all start "headboard" (Sketchup-tools' notes:
+    so a script can find them): "Bed headboard post L", "Bed headboard rail top"."""
+    n = re.sub(r"^Head post", "headboard post", n)
+    return re.sub(r"^Headboard (top|bottom) rail", r"headboard rail \1", n)
+
+
+def export(path, frame, mat, kind):
+    """The bed alone, for other models to place: tools/blender/deliver.py
+    applies, names, centers, tags, saves, checks and records it. The frame,
+    the mattress, and the bedding in named collections a room can turn on
+    and off."""
+    import deliver
+    bedding_names = VERSIONS[kind][1]
+    rest = [o for o in bpy.data.objects if o.type == "MESH" and o not in frame and o is not mat]
+    coll = {"Bed frame": list(frame), "Bed mattress": [mat]}
+    if kind == "bed-frame-made-up":
+        coll[bedding_names[0]] = [o for o in rest if o.name.startswith("Headboard cover")]
+        coll[bedding_names[1]] = [o for o in rest if not o.name.startswith("Headboard cover")]
+    elif bedding_names:
+        coll[bedding_names[0]] = rest
+    deliver.export(path, "bed-frame", "Bed", coll, frame=("Bed frame", "Bed mattress"), tall_in=50.0,
+                   expect_frame_in=(W + 2 * PROUD, L, POST_BODY + CAP_RISE), object_names=export_name,
+                   material_names=MATERIAL_NAMES)
+
+
+def export_all():
+    """Every version, each in a Blender of its own (the cloth simulations start clean)."""
+    import subprocess
+    import deliver
+    deliver.start_all(MODEL)
+    for stem, (opt, _) in VERSIONS.items():
+        cmd = [sys.executable, os.path.abspath(__file__), "--no-checks", "--export", os.path.join(MODEL, stem + ".blend")]
+        if opt:
+            cmd.insert(2, opt)
+        print("EXPORT-ALL", " ".join(cmd[2:]), flush=True)
+        subprocess.run(cmd, check=True)
 
 
 VIEWS = {
@@ -612,11 +652,16 @@ def main():
     ap.add_argument("--quilt", action="store_true")
     ap.add_argument("--bedding", action="store_true", help="made up: printed headboard cover, coverlet, throw, pillows")
     ap.add_argument("--no-render", action="store_true")
-    ap.add_argument("--export", metavar="BLEND", help="save the bed (no studio, lights or camera) to a .blend and stop")
+    ap.add_argument("--export", metavar="BLEND", help="save the bed (no studio, lights or camera) to a .blend, check it, and stop")
+    ap.add_argument("--export-all", action="store_true", help="export every version (VERSIONS) into model/")
+    ap.add_argument("--no-checks", action="store_true", help=argparse.SUPPRESS)
     a = ap.parse_args(sys.argv[sys.argv.index("--") + 1:] if "--" in sys.argv else sys.argv[1:])
+    if a.export_all:
+        return export_all()
     build()
-    kit.check_joints()
-    kit.check_overlaps()
+    if not a.no_checks:
+        kit.check_joints()
+        kit.check_overlaps()
     kit.write_parts(os.path.join(HERE, "parts.json"), name="Queen bed frame",
                     notes=["Quartersawn white oak, fumed; poplar slats; 2x4 cleats and center rail. The headboard's rails "
                            "and the foot rail are through-tenoned and pegged; side rails on bed bolts. Joinery: bed-frame-joinery.svg.",
@@ -631,7 +676,10 @@ def main():
         hb = [o for o in kit.OBJS if o.name.startswith(("Headboard", "Head post"))]
         quilt(hb + [mat])
     if a.export:
-        export(a.export)
+        stem = os.path.splitext(os.path.basename(a.export))[0]
+        if stem not in VERSIONS:
+            sys.exit("--export: name the file as one of %s" % ", ".join(VERSIONS))
+        export(a.export, list(kit.OBJS), mat, stem)
         return
     kit.studio(wall_y=L + 0.5, radius=1.0)
     suffix = "-bedding" if a.bedding else "-quilt" if a.quilt else ""

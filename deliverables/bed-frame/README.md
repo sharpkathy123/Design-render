@@ -12,6 +12,7 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 
 - **Overall drawing and cut list:** [view](bed-frame-drawing.svg) (sharp at any zoom), [PDF to print](bed-frame-drawing.pdf)
 - **Joinery:** [view](bed-frame-joinery.svg) (sharp at any zoom), [PDF to print](bed-frame-joinery.pdf)
+- **Footprint, for a room's plan:** [view](bed-frame-footprint.svg) (sharp at any zoom), [PDF to print](bed-frame-footprint.pdf)
 
 ## How to build it
 
@@ -19,9 +20,17 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 
 ## 3D model
 
-- **How to use the 3D model in another room's render:** [README.md](model/README.md)
+- **How to use the 3D model in another room's render (sizes, placing, SketchUp, rights):** [README.md](model/README.md)
+- **The model's version and every file's sha256:** [VERSION](model/VERSION)
+- **What changed in each version:** [CHANGELOG.md](model/CHANGELOG.md)
+- **Ready-to-paste records for Sketchup-tools' library:** [library.yaml](model/library.yaml)
 - **The bed made up (Blender 4.5):** [bed-frame-made-up.blend](model/bed-frame-made-up.blend)
 - **The bare frame and mattress (Blender 4.5):** [bed-frame-bare.blend](model/bed-frame-bare.blend)
+- **The frame with a quilt over the headboard (Blender 4.5):** [bed-frame-quilt.blend](model/bed-frame-quilt.blend)
+- **The bed made up (glTF):** [bed-frame-made-up.glb](model/bed-frame-made-up.glb)
+- **The bare frame and mattress (glTF):** [bed-frame-bare.glb](model/bed-frame-bare.glb)
+- **The frame with the quilt (glTF):** [bed-frame-quilt.glb](model/bed-frame-quilt.glb)
+- **For SketchUp, in inches (COLLADA .dae files and their images):** [sketchup/](model/sketchup/)
 
 ## Pictures
 
@@ -79,4 +88,4 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
   to match (BUILD.md, step 15).
 
 ---
-Updated November 11, 2026. Made with [Design-render](../../README.md); the model and its sources are in [designs/bed-frame](../../designs/bed-frame/).
+Updated November 12, 2026. Made with [Design-render](../../README.md); the model and its sources are in [designs/bed-frame](../../designs/bed-frame/).

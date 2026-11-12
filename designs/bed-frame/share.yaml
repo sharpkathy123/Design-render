@@ -26,11 +26,73 @@ drawings:
     title: Overall drawing and cut list
   - file: bed-frame-joinery.svg
     title: Joinery
+  - file: bed-frame-footprint.svg
+    title: Footprint, for a room's plan
 guide: BUILD.md
 files:
   - file: model/README.md
-    title: How to use the 3D model in another room's render
+    title: How to use the 3D model in another room's render (sizes, placing, SketchUp, rights)
+  - file: model/VERSION
+    title: The model's version and every file's sha256
+  - file: model/CHANGELOG.md
+    title: What changed in each version
+  - file: model/library.yaml
+    title: Ready-to-paste records for Sketchup-tools' library
   - file: model/bed-frame-made-up.blend
     title: The bed made up (Blender 4.5)
   - file: model/bed-frame-bare.blend
     title: The bare frame and mattress (Blender 4.5)
+  - file: model/bed-frame-quilt.blend
+    title: The frame with a quilt over the headboard (Blender 4.5)
+  - file: model/bed-frame-made-up.glb
+    title: The bed made up (glTF)
+  - file: model/bed-frame-bare.glb
+    title: The bare frame and mattress (glTF)
+  - file: model/bed-frame-quilt.glb
+    title: The frame with the quilt (glTF)
+  - file: model/sketchup/
+    title: For SketchUp, in inches (COLLADA .dae files and their images)
+
+# The 3D model's description (tools/model_card.py writes model/README.md,
+# VERSION and library.yaml from this and the exported files' measurements).
+model:
+  command: python3.11 designs/bed-frame/model.py --export-all
+  facing: >-
+    The foot faces -y and the headboard +y, with its back face at the bed's +y
+    end: stand it with that face against a wall.
+  rot_rule: >-
+    rot=0: the headboard to the room's +y; in a room whose x runs south,
+    rot=90 puts it to the north wall
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  versions:
+    bed-frame-made-up:
+      name: Queen bed frame, made up
+      use: the Arts & Crafts queen bed, made up (Design-render's bed frame)
+      about: >-
+        The bed made up: William Morris's Strawberry Thief over the headboard,
+        an indigo block-print coverlet tucked in, a folded kilim blanket across
+        the foot, four white pillows stacked two by two, a dark fitted sheet.
+    bed-frame-bare:
+      name: Queen bed frame, bare
+      use: the Arts & Crafts queen bed, bare (Design-render's bed frame)
+      about: The frame and a mattress with a white sheet, nothing else.
+    bed-frame-quilt:
+      name: Queen bed frame, with a quilt over the headboard
+      use: the Arts & Crafts queen bed with a pieced quilt over its headboard (Design-render's bed frame)
+      about: >-
+        The frame, a mattress with a white sheet, and a pieced quilt (ochre and
+        sage squares) draped over the headboard.
+  textures:
+    morris-strawberry-thief.jpg: >-
+      William Morris, *Strawberry Thief*, designed 1883 (printed about 1934),
+      [Cooper Hewitt, Smithsonian Design Museum, object 18340065](https://collection.cooperhewitt.org/objects/18340065/):
+      the design is public domain and Cooper Hewitt releases the image as CC0
+      ([on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Textile,_Strawberry_Thief,_designed_1883,_printed_ca._1934_%28CH_18340065%29.jpg)).
+      One repeat, cut from the scan to tile.
+    blockprint.png: our own, drawn by `tools/make_fabric.py` (this repo, public)
+    kilim.png: our own, drawn by `tools/make_fabric.py` (this repo, public)
+    caban_nor_gl_1k.jpg: >-
+      Poly Haven, [Caban](https://polyhaven.com/a/caban) (photography colormass,
+      processing Rico Cilliers), CC0: the wool's weave and nap
+    caban_ao_1k.jpg: >-
+      Poly Haven, [Caban](https://polyhaven.com/a/caban), CC0: the wool's shading

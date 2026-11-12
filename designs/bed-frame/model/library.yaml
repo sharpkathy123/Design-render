@@ -1,0 +1,39 @@
+# Ready-made records for Sketchup-tools' library/models/models.yaml (written by tools/model_card.py
+# from the exported files: paste them in, copy each .blend to the record's file, and the sizes,
+# version and facing are already right).
+bed-frame-made-up:
+  use: the Arts & Crafts queen bed, made up (Design-render's bed frame)
+  name: Queen bed frame, made up
+  size_in:
+  - 64.9
+  - 85.1
+  - 60.1
+  source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
+  version: Design-render 2026-11-12a (model/VERSION and CHANGELOG.md in the source)
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  file: library/models/bed-frame-made-up/bed-frame-made-up.blend
+  facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
+bed-frame-bare:
+  use: the Arts & Crafts queen bed, bare (Design-render's bed frame)
+  name: Queen bed frame, bare
+  size_in:
+  - 64.9
+  - 85.1
+  - 60.1
+  source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
+  version: Design-render 2026-11-12a (model/VERSION and CHANGELOG.md in the source)
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  file: library/models/bed-frame-bare/bed-frame-bare.blend
+  facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
+bed-frame-quilt:
+  use: the Arts & Crafts queen bed with a pieced quilt over its headboard (Design-render's bed frame)
+  name: Queen bed frame, with a quilt over the headboard
+  size_in:
+  - 64.9
+  - 85.1
+  - 60.1
+  source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
+  version: Design-render 2026-11-12a (model/VERSION and CHANGELOG.md in the source)
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  file: library/models/bed-frame-quilt/bed-frame-quilt.blend
+  facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'

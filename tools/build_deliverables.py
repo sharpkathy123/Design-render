@@ -115,9 +115,14 @@ def build(name):
     # other files to share as they are (3D models, with their notes)
     extras = []
     for fl in cfg.get("files", []):
-        dst = os.path.join(out, fl["file"])
-        os.makedirs(os.path.dirname(dst), exist_ok=True)
-        shutil.copy2(os.path.join(d, fl["file"]), dst)
+        src, dst = os.path.join(d, fl["file"]), os.path.join(out, fl["file"])
+        if not os.path.exists(src):
+            sys.exit("share.yaml lists %s, which isn't there (export the model again?)" % fl["file"])
+        if os.path.isdir(src):                      # a folder (the SketchUp .dae files and their images)
+            shutil.copytree(src, dst)
+        else:
+            os.makedirs(os.path.dirname(dst), exist_ok=True)
+            shutil.copy2(src, dst)
         copied.add(fl["file"])
         extras.append(fl)
     # the guide
@@ -164,7 +169,7 @@ def build(name):
     if extras:
         lines.append("## 3D model\n")
         for fl in extras:
-            lines.append("- **%s:** [%s](%s)" % (fl["title"], os.path.basename(fl["file"]), fl["file"]))
+            lines.append("- **%s:** [%s](%s)" % (fl["title"], os.path.basename(fl["file"].rstrip("/")) + ("/" if fl["file"].endswith("/") else ""), fl["file"]))
         lines.append("")
     lines.append("## Pictures\n")
     for r in cfg.get("renders", []):

@@ -7,8 +7,11 @@ add `--quilt` for the draped quilt; `python3 designs/bed-frame/draw_joinery.py`
 and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings).
 
 - **How to build it, with prices:** [BUILD.md](BUILD.md)
-- **The bed as a 3D model for other renders:** [model/](model/README.md)
-  (`python3.11 designs/bed-frame/model.py [--bedding] --export <file.blend>`)
+- **The bed as a 3D model for other repos' rooms:** [model/](model/README.md), made up, bare, or
+  with the quilt, each as a .blend, a .glb and a SketchUp .dae, checked on every export, with its
+  [version](model/VERSION), [changes](model/CHANGELOG.md) and [library records](model/library.yaml)
+  (`python3.11 designs/bed-frame/model.py --export-all`)
+- Footprint (top view to scale, for a room's plan): [bed-frame-footprint.svg](bed-frame-footprint.svg)
 - Drawing (front, side, top, cut list): [bed-frame-drawing.svg](bed-frame-drawing.svg)
 - Joinery (every mortise, tenon, peg and bolt): [bed-frame-joinery.svg](bed-frame-joinery.svg)
 - Renders: [corner](renders/bed-frame-corner.jpg), [foot](renders/bed-frame-foot.jpg),

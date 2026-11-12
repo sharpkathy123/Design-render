@@ -1,0 +1,1932 @@
+{
+ "bed-frame-bare": {
+  "about": "",
+  "change": "ready for other repos' rooms: checked in a fresh Blender, names prefixed, bedding in named collections, a quilt version, .glb and SketchUp .dae copies, a footprint drawing",
+  "checked": {
+   "failed": [],
+   "passed": [
+    "size 64.875 x 85.143 x 60.125 in (exported [64.875, 85.143, 60.125])",
+    "bottom at z 0.0000 in",
+    "frame footprint centered at (-0.000, 0.000) in",
+    "frame 64.875 x 85.143 x 60.125 in (the design's sizes: [64.875, 85.0625, 60.125])",
+    "facing: 660 vertices above 50.0 in, all in the +y half",
+    "no parents",
+    "every mesh's matrix the identity",
+    "objects and meshes named 'Bed ...'",
+    "9 materials named 'Bed ...'",
+    "0 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-12a",
+    "collections Bed frame, Bed mattress",
+    "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
+   ],
+   "size_in": [
+    64.875,
+    85.143,
+    60.125
+   ]
+  },
+  "collections": {
+   "Bed frame": [
+    "Bed center leg 1",
+    "Bed center leg 2",
+    "Bed center leg 3",
+    "Bed center rail",
+    "Bed cleat L",
+    "Bed cleat R",
+    "Bed foot leg L",
+    "Bed foot leg L cap",
+    "Bed foot leg R",
+    "Bed foot leg R cap",
+    "Bed foot rail",
+    "Bed foot rail peg L0",
+    "Bed foot rail peg L1",
+    "Bed foot rail peg R0",
+    "Bed foot rail peg R1",
+    "Bed foot rail tenon L",
+    "Bed foot rail tenon R",
+    "Bed headboard post L",
+    "Bed headboard post L cap",
+    "Bed headboard post R",
+    "Bed headboard post R cap",
+    "Bed headboard rail bottom",
+    "Bed headboard rail bottom peg L0",
+    "Bed headboard rail bottom peg L1",
+    "Bed headboard rail bottom peg R0",
+    "Bed headboard rail bottom peg R1",
+    "Bed headboard rail bottom tenon L",
+    "Bed headboard rail bottom tenon R",
+    "Bed headboard rail top",
+    "Bed headboard rail top peg L0",
+    "Bed headboard rail top peg L1",
+    "Bed headboard rail top peg R0",
+    "Bed headboard rail top peg R1",
+    "Bed headboard rail top tenon L",
+    "Bed headboard rail top tenon R",
+    "Bed headboard slat 1",
+    "Bed headboard slat 2",
+    "Bed headboard slat 3",
+    "Bed headboard slat 4",
+    "Bed headboard slat 5",
+    "Bed headboard slat 6",
+    "Bed headboard slat 7",
+    "Bed side rail L",
+    "Bed side rail L bolt cover 0",
+    "Bed side rail R",
+    "Bed side rail R bolt cover 0",
+    "Bed slat 1",
+    "Bed slat 10",
+    "Bed slat 11",
+    "Bed slat 12",
+    "Bed slat 13",
+    "Bed slat 2",
+    "Bed slat 3",
+    "Bed slat 4",
+    "Bed slat 5",
+    "Bed slat 6",
+    "Bed slat 7",
+    "Bed slat 8",
+    "Bed slat 9"
+   ],
+   "Bed mattress": [
+    "Bed mattress"
+   ]
+  },
+  "dae_textures": [
+   "sketchup/Bed blockprint.png",
+   "sketchup/Bed kilim.png",
+   "sketchup/Bed morris-strawberry-thief.jpg"
+  ],
+  "exported": "2026-11-12",
+  "file": "bed-frame-bare.blend",
+  "footprint": {
+   "frame": [
+    [
+     -0.75,
+     -28.679,
+     0.75,
+     -25.179,
+     8.75
+    ],
+    [
+     -0.75,
+     -2.179,
+     0.75,
+     1.321,
+     8.75
+    ],
+    [
+     -0.75,
+     24.321,
+     0.75,
+     27.821,
+     8.75
+    ],
+    [
+     -31.5,
+     -42.571,
+     -29.875,
+     -42.491,
+     10.062
+    ],
+    [
+     29.875,
+     -42.571,
+     31.5,
+     -42.491,
+     10.062
+    ],
+    [
+     -30.875,
+     -42.554,
+     -30.5,
+     -42.491,
+     11.438
+    ],
+    [
+     30.5,
+     -42.554,
+     30.875,
+     -42.491,
+     11.438
+    ],
+    [
+     -0.75,
+     -40.679,
+     0.75,
+     39.821,
+     12.25
+    ],
+    [
+     -30.25,
+     -39.741,
+     -28.75,
+     39.821,
+     12.25
+    ],
+    [
+     28.75,
+     -39.741,
+     30.25,
+     39.821,
+     12.25
+    ],
+    [
+     -30.25,
+     -38.179,
+     30.25,
+     -34.679,
+     13.0
+    ],
+    [
+     -30.25,
+     15.821,
+     30.25,
+     19.321,
+     13.0
+    ],
+    [
+     -30.25,
+     21.821,
+     30.25,
+     25.321,
+     13.0
+    ],
+    [
+     -30.25,
+     27.821,
+     30.25,
+     31.321,
+     13.0
+    ],
+    [
+     -30.25,
+     33.821,
+     30.25,
+     37.321,
+     13.0
+    ],
+    [
+     -30.25,
+     -32.179,
+     30.25,
+     -28.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -26.179,
+     30.25,
+     -22.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -20.179,
+     30.25,
+     -16.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -14.179,
+     30.25,
+     -10.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -8.179,
+     30.25,
+     -4.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -2.179,
+     30.25,
+     1.321,
+     13.0
+    ],
+    [
+     -30.25,
+     3.821,
+     30.25,
+     7.321,
+     13.0
+    ],
+    [
+     -30.25,
+     9.821,
+     30.25,
+     13.321,
+     13.0
+    ],
+    [
+     -31.125,
+     -39.741,
+     -30.25,
+     39.821,
+     14.0
+    ],
+    [
+     30.25,
+     -39.741,
+     31.125,
+     39.821,
+     14.0
+    ],
+    [
+     -30.875,
+     -42.554,
+     -30.5,
+     -42.491,
+     14.938
+    ],
+    [
+     30.5,
+     -42.554,
+     30.875,
+     -42.491,
+     14.938
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     15.437
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     15.437
+    ],
+    [
+     -32.438,
+     -41.304,
+     -32.063,
+     -40.929,
+     15.5
+    ],
+    [
+     32.063,
+     -41.304,
+     32.437,
+     -40.929,
+     15.5
+    ],
+    [
+     -29.312,
+     -41.554,
+     29.313,
+     -40.679,
+     16.0
+    ],
+    [
+     -32.063,
+     -42.491,
+     -29.312,
+     -39.741,
+     17.0
+    ],
+    [
+     29.313,
+     -42.491,
+     32.063,
+     -39.741,
+     17.0
+    ],
+    [
+     -32.063,
+     -42.491,
+     -29.312,
+     -39.741,
+     17.625
+    ],
+    [
+     29.313,
+     -42.491,
+     32.063,
+     -39.741,
+     17.625
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     17.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     17.937
+    ],
+    [
+     -32.438,
+     40.446,
+     -32.063,
+     40.946,
+     18.5
+    ],
+    [
+     32.063,
+     40.446,
+     32.437,
+     40.946,
+     18.5
+    ],
+    [
+     -29.312,
+     40.071,
+     29.313,
+     41.321,
+     19.0
+    ],
+    [
+     -30.0,
+     -40.429,
+     30.0,
+     39.571,
+     24.0
+    ],
+    [
+     -28.312,
+     40.071,
+     -21.08,
+     40.821,
+     51.5
+    ],
+    [
+     -20.08,
+     40.071,
+     -12.848,
+     40.821,
+     51.5
+    ],
+    [
+     -11.848,
+     40.071,
+     -4.616,
+     40.821,
+     51.5
+    ],
+    [
+     -3.616,
+     40.071,
+     3.616,
+     40.821,
+     51.5
+    ],
+    [
+     4.616,
+     40.071,
+     11.848,
+     40.821,
+     51.5
+    ],
+    [
+     12.848,
+     40.071,
+     20.08,
+     40.821,
+     51.5
+    ],
+    [
+     21.08,
+     40.071,
+     28.312,
+     40.821,
+     51.5
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     52.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     52.937
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     54.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     54.937
+    ],
+    [
+     -32.438,
+     40.446,
+     -32.063,
+     40.946,
+     55.5
+    ],
+    [
+     32.063,
+     40.446,
+     32.437,
+     40.946,
+     55.5
+    ],
+    [
+     -29.312,
+     40.071,
+     29.313,
+     41.321,
+     56.0
+    ],
+    [
+     -32.063,
+     39.821,
+     -29.312,
+     42.571,
+     59.5
+    ],
+    [
+     29.313,
+     39.821,
+     32.063,
+     42.571,
+     59.5
+    ],
+    [
+     -32.063,
+     39.821,
+     -29.312,
+     42.571,
+     60.125
+    ],
+    [
+     29.313,
+     39.821,
+     32.063,
+     42.571,
+     60.125
+    ]
+   ],
+   "overhang": []
+  },
+  "frame": [
+   "Bed frame",
+   "Bed mattress"
+  ],
+  "frame_hi_in": [
+   32.437,
+   42.571,
+   60.125
+  ],
+  "frame_lo_in": [
+   -32.438,
+   -42.571,
+   0.0
+  ],
+  "frame_size_in": [
+   64.875,
+   85.143,
+   60.125
+  ],
+  "front": "Bed front",
+  "hi_in": [
+   32.437,
+   42.571,
+   60.125
+  ],
+  "images": [],
+  "lo_in": [
+   -32.438,
+   -42.571,
+   0.0
+  ],
+  "materials": [
+   "Bed 2x4 pine",
+   "Bed 2x4 pine stained dark",
+   "Bed brass aged",
+   "Bed mattress sheet",
+   "Bed oak fumed grain x",
+   "Bed oak fumed grain y",
+   "Bed oak fumed grain z",
+   "Bed oak fumed pegs grain x",
+   "Bed poplar"
+  ],
+  "objects": 60,
+  "prefix": "Bed",
+  "sha256": {
+   "bed-frame-bare.blend": "80a67e5d65434e42cc937b1ef8f400dc1a29d4823ac759b8d48edb07ff7ca689",
+   "bed-frame-bare.glb": "13ea5ae24e98c4c177e5750779f79386dfa01603ad80949c9282586898cdd6d5",
+   "sketchup/bed-frame-bare.dae": "b83d89ab85e5e1dd40859361eea760d41503c39333fc4deb9ae0983067056230"
+  },
+  "size_in": [
+   64.875,
+   85.143,
+   60.125
+  ],
+  "tall_in": 50.0,
+  "triangles": 4912,
+  "triangles_render": 4912,
+  "version": "2026-11-12a"
+ },
+ "bed-frame-made-up": {
+  "about": "",
+  "change": "ready for other repos' rooms: checked in a fresh Blender, names prefixed, bedding in named collections, a quilt version, .glb and SketchUp .dae copies, a footprint drawing",
+  "checked": {
+   "failed": [],
+   "passed": [
+    "size 64.875 x 85.143 x 60.125 in (exported [64.875, 85.143, 60.125])",
+    "bottom at z 0.0000 in",
+    "frame footprint centered at (-0.000, 0.000) in",
+    "frame 64.875 x 85.143 x 60.125 in (the design's sizes: [64.875, 85.0625, 60.125])",
+    "facing: 2116 vertices above 50.0 in, all in the +y half",
+    "no parents",
+    "every mesh's matrix the identity",
+    "objects and meshes named 'Bed ...'",
+    "14 materials named 'Bed ...'",
+    "5 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-12a",
+    "collections Bed frame, Bed mattress, Bedding: Strawberry Thief, Bedding: coverlet, throw and pillows",
+    "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
+   ],
+   "size_in": [
+    64.875,
+    85.143,
+    60.125
+   ]
+  },
+  "collections": {
+   "Bed frame": [
+    "Bed center leg 1",
+    "Bed center leg 2",
+    "Bed center leg 3",
+    "Bed center rail",
+    "Bed cleat L",
+    "Bed cleat R",
+    "Bed foot leg L",
+    "Bed foot leg L cap",
+    "Bed foot leg R",
+    "Bed foot leg R cap",
+    "Bed foot rail",
+    "Bed foot rail peg L0",
+    "Bed foot rail peg L1",
+    "Bed foot rail peg R0",
+    "Bed foot rail peg R1",
+    "Bed foot rail tenon L",
+    "Bed foot rail tenon R",
+    "Bed headboard post L",
+    "Bed headboard post L cap",
+    "Bed headboard post R",
+    "Bed headboard post R cap",
+    "Bed headboard rail bottom",
+    "Bed headboard rail bottom peg L0",
+    "Bed headboard rail bottom peg L1",
+    "Bed headboard rail bottom peg R0",
+    "Bed headboard rail bottom peg R1",
+    "Bed headboard rail bottom tenon L",
+    "Bed headboard rail bottom tenon R",
+    "Bed headboard rail top",
+    "Bed headboard rail top peg L0",
+    "Bed headboard rail top peg L1",
+    "Bed headboard rail top peg R0",
+    "Bed headboard rail top peg R1",
+    "Bed headboard rail top tenon L",
+    "Bed headboard rail top tenon R",
+    "Bed headboard slat 1",
+    "Bed headboard slat 2",
+    "Bed headboard slat 3",
+    "Bed headboard slat 4",
+    "Bed headboard slat 5",
+    "Bed headboard slat 6",
+    "Bed headboard slat 7",
+    "Bed side rail L",
+    "Bed side rail L bolt cover 0",
+    "Bed side rail R",
+    "Bed side rail R bolt cover 0",
+    "Bed slat 1",
+    "Bed slat 10",
+    "Bed slat 11",
+    "Bed slat 12",
+    "Bed slat 13",
+    "Bed slat 2",
+    "Bed slat 3",
+    "Bed slat 4",
+    "Bed slat 5",
+    "Bed slat 6",
+    "Bed slat 7",
+    "Bed slat 8",
+    "Bed slat 9"
+   ],
+   "Bed mattress": [
+    "Bed mattress"
+   ],
+   "Bedding: Strawberry Thief": [
+    "Bed headboard cover"
+   ],
+   "Bedding: coverlet, throw and pillows": [
+    "Bed coverlet",
+    "Bed pillow 0-0",
+    "Bed pillow 0-1",
+    "Bed pillow 1-0",
+    "Bed pillow 1-1",
+    "Bed throw",
+    "Bed throw fringe"
+   ]
+  },
+  "dae_textures": [
+   "sketchup/Bed blockprint.png",
+   "sketchup/Bed kilim.png",
+   "sketchup/Bed morris-strawberry-thief.jpg"
+  ],
+  "exported": "2026-11-12",
+  "file": "bed-frame-made-up.blend",
+  "footprint": {
+   "frame": [
+    [
+     -0.75,
+     -28.679,
+     0.75,
+     -25.179,
+     8.75
+    ],
+    [
+     -0.75,
+     -2.179,
+     0.75,
+     1.321,
+     8.75
+    ],
+    [
+     -0.75,
+     24.321,
+     0.75,
+     27.821,
+     8.75
+    ],
+    [
+     -31.5,
+     -42.571,
+     -29.875,
+     -42.491,
+     10.062
+    ],
+    [
+     29.875,
+     -42.571,
+     31.5,
+     -42.491,
+     10.062
+    ],
+    [
+     -30.875,
+     -42.554,
+     -30.5,
+     -42.491,
+     11.438
+    ],
+    [
+     30.5,
+     -42.554,
+     30.875,
+     -42.491,
+     11.438
+    ],
+    [
+     -0.75,
+     -40.679,
+     0.75,
+     39.821,
+     12.25
+    ],
+    [
+     -30.25,
+     -39.741,
+     -28.75,
+     39.821,
+     12.25
+    ],
+    [
+     28.75,
+     -39.741,
+     30.25,
+     39.821,
+     12.25
+    ],
+    [
+     -30.25,
+     -38.179,
+     30.25,
+     -34.679,
+     13.0
+    ],
+    [
+     -30.25,
+     15.821,
+     30.25,
+     19.321,
+     13.0
+    ],
+    [
+     -30.25,
+     21.821,
+     30.25,
+     25.321,
+     13.0
+    ],
+    [
+     -30.25,
+     27.821,
+     30.25,
+     31.321,
+     13.0
+    ],
+    [
+     -30.25,
+     33.821,
+     30.25,
+     37.321,
+     13.0
+    ],
+    [
+     -30.25,
+     -32.179,
+     30.25,
+     -28.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -26.179,
+     30.25,
+     -22.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -20.179,
+     30.25,
+     -16.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -14.179,
+     30.25,
+     -10.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -8.179,
+     30.25,
+     -4.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -2.179,
+     30.25,
+     1.321,
+     13.0
+    ],
+    [
+     -30.25,
+     3.821,
+     30.25,
+     7.321,
+     13.0
+    ],
+    [
+     -30.25,
+     9.821,
+     30.25,
+     13.321,
+     13.0
+    ],
+    [
+     -31.125,
+     -39.741,
+     -30.25,
+     39.821,
+     14.0
+    ],
+    [
+     30.25,
+     -39.741,
+     31.125,
+     39.821,
+     14.0
+    ],
+    [
+     -30.875,
+     -42.554,
+     -30.5,
+     -42.491,
+     14.938
+    ],
+    [
+     30.5,
+     -42.554,
+     30.875,
+     -42.491,
+     14.938
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     15.437
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     15.437
+    ],
+    [
+     -32.438,
+     -41.304,
+     -32.063,
+     -40.929,
+     15.5
+    ],
+    [
+     32.063,
+     -41.304,
+     32.437,
+     -40.929,
+     15.5
+    ],
+    [
+     -29.312,
+     -41.554,
+     29.313,
+     -40.679,
+     16.0
+    ],
+    [
+     -32.063,
+     -42.491,
+     -29.312,
+     -39.741,
+     17.0
+    ],
+    [
+     29.313,
+     -42.491,
+     32.063,
+     -39.741,
+     17.0
+    ],
+    [
+     -32.063,
+     -42.491,
+     -29.312,
+     -39.741,
+     17.625
+    ],
+    [
+     29.313,
+     -42.491,
+     32.063,
+     -39.741,
+     17.625
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     17.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     17.937
+    ],
+    [
+     -32.438,
+     40.446,
+     -32.063,
+     40.946,
+     18.5
+    ],
+    [
+     32.063,
+     40.446,
+     32.437,
+     40.946,
+     18.5
+    ],
+    [
+     -29.312,
+     40.071,
+     29.313,
+     41.321,
+     19.0
+    ],
+    [
+     -30.0,
+     -40.429,
+     30.0,
+     39.571,
+     24.0
+    ],
+    [
+     -28.312,
+     40.071,
+     -21.08,
+     40.821,
+     51.5
+    ],
+    [
+     -20.08,
+     40.071,
+     -12.848,
+     40.821,
+     51.5
+    ],
+    [
+     -11.848,
+     40.071,
+     -4.616,
+     40.821,
+     51.5
+    ],
+    [
+     -3.616,
+     40.071,
+     3.616,
+     40.821,
+     51.5
+    ],
+    [
+     4.616,
+     40.071,
+     11.848,
+     40.821,
+     51.5
+    ],
+    [
+     12.848,
+     40.071,
+     20.08,
+     40.821,
+     51.5
+    ],
+    [
+     21.08,
+     40.071,
+     28.312,
+     40.821,
+     51.5
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     52.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     52.937
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     54.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     54.937
+    ],
+    [
+     -32.438,
+     40.446,
+     -32.063,
+     40.946,
+     55.5
+    ],
+    [
+     32.063,
+     40.446,
+     32.437,
+     40.946,
+     55.5
+    ],
+    [
+     -29.312,
+     40.071,
+     29.313,
+     41.321,
+     56.0
+    ],
+    [
+     -32.063,
+     39.821,
+     -29.312,
+     42.571,
+     59.5
+    ],
+    [
+     29.313,
+     39.821,
+     32.063,
+     42.571,
+     59.5
+    ],
+    [
+     -32.063,
+     39.821,
+     -29.312,
+     42.571,
+     60.125
+    ],
+    [
+     29.313,
+     39.821,
+     32.063,
+     42.571,
+     60.125
+    ]
+   ],
+   "overhang": [
+    [
+     -31.693,
+     -31.496
+    ],
+    [
+     -31.26,
+     -41.102
+    ],
+    [
+     -30.315,
+     -41.299
+    ],
+    [
+     30.354,
+     -41.181
+    ],
+    [
+     30.394,
+     -41.142
+    ],
+    [
+     31.614,
+     -33.78
+    ],
+    [
+     31.732,
+     -21.85
+    ],
+    [
+     31.732,
+     -17.559
+    ],
+    [
+     30.512,
+     37.638
+    ],
+    [
+     30.472,
+     38.858
+    ],
+    [
+     28.858,
+     41.811
+    ],
+    [
+     26.772,
+     42.047
+    ],
+    [
+     -1.575,
+     42.087
+    ],
+    [
+     -26.772,
+     42.008
+    ],
+    [
+     -28.858,
+     41.811
+    ],
+    [
+     -30.433,
+     38.898
+    ],
+    [
+     -30.591,
+     36.378
+    ],
+    [
+     -31.654,
+     -14.016
+    ],
+    [
+     -31.693,
+     -27.323
+    ]
+   ]
+  },
+  "frame": [
+   "Bed frame",
+   "Bed mattress"
+  ],
+  "frame_hi_in": [
+   32.437,
+   42.571,
+   60.125
+  ],
+  "frame_lo_in": [
+   -32.438,
+   -42.571,
+   0.0
+  ],
+  "frame_size_in": [
+   64.875,
+   85.143,
+   60.125
+  ],
+  "front": "Bed front",
+  "hi_in": [
+   32.437,
+   42.571,
+   60.125
+  ],
+  "images": [
+   "Bed blockprint.png",
+   "Bed caban_ao_1k.jpg",
+   "Bed caban_nor_gl_1k.jpg",
+   "Bed kilim.png",
+   "Bed morris-strawberry-thief.jpg"
+  ],
+  "lo_in": [
+   -32.438,
+   -42.571,
+   0.0
+  ],
+  "materials": [
+   "Bed 2x4 pine",
+   "Bed 2x4 pine stained dark",
+   "Bed Strawberry Thief",
+   "Bed block-print coverlet",
+   "Bed brass aged",
+   "Bed kilim wool",
+   "Bed mattress sheet",
+   "Bed oak fumed grain x",
+   "Bed oak fumed grain y",
+   "Bed oak fumed grain z",
+   "Bed oak fumed pegs grain x",
+   "Bed pillowcase",
+   "Bed poplar",
+   "Bed wool fringe"
+  ],
+  "objects": 68,
+  "prefix": "Bed",
+  "sha256": {
+   "bed-frame-made-up.blend": "e6ec221343989ecf145433e2e01a23b571445c43330f7377d9fc1fa5f5e8421e",
+   "bed-frame-made-up.glb": "c7585085928eea822cc0fad7349813cc4a81eaf976e9537d08efe413b13863e8",
+   "sketchup/bed-frame-made-up.dae": "65f4f2f7b86afcfca91d4b85a27553e640d2514411011743c8ed715af38be09e"
+  },
+  "size_in": [
+   64.875,
+   85.143,
+   60.125
+  ],
+  "tall_in": 50.0,
+  "triangles": 70556,
+  "triangles_render": 358640,
+  "version": "2026-11-12a"
+ },
+ "bed-frame-quilt": {
+  "about": "",
+  "change": "ready for other repos' rooms: checked in a fresh Blender, names prefixed, bedding in named collections, a quilt version, .glb and SketchUp .dae copies, a footprint drawing",
+  "checked": {
+   "failed": [],
+   "passed": [
+    "size 64.875 x 85.143 x 60.125 in (exported [64.875, 85.143, 60.125])",
+    "bottom at z 0.0000 in",
+    "frame footprint centered at (-0.000, 0.000) in",
+    "frame 64.875 x 85.143 x 60.125 in (the design's sizes: [64.875, 85.0625, 60.125])",
+    "facing: 2116 vertices above 50.0 in, all in the +y half",
+    "no parents",
+    "every mesh's matrix the identity",
+    "objects and meshes named 'Bed ...'",
+    "10 materials named 'Bed ...'",
+    "0 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-12a",
+    "collections Bed frame, Bed mattress, Bedding: quilt",
+    "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
+   ],
+   "size_in": [
+    64.875,
+    85.143,
+    60.125
+   ]
+  },
+  "collections": {
+   "Bed frame": [
+    "Bed center leg 1",
+    "Bed center leg 2",
+    "Bed center leg 3",
+    "Bed center rail",
+    "Bed cleat L",
+    "Bed cleat R",
+    "Bed foot leg L",
+    "Bed foot leg L cap",
+    "Bed foot leg R",
+    "Bed foot leg R cap",
+    "Bed foot rail",
+    "Bed foot rail peg L0",
+    "Bed foot rail peg L1",
+    "Bed foot rail peg R0",
+    "Bed foot rail peg R1",
+    "Bed foot rail tenon L",
+    "Bed foot rail tenon R",
+    "Bed headboard post L",
+    "Bed headboard post L cap",
+    "Bed headboard post R",
+    "Bed headboard post R cap",
+    "Bed headboard rail bottom",
+    "Bed headboard rail bottom peg L0",
+    "Bed headboard rail bottom peg L1",
+    "Bed headboard rail bottom peg R0",
+    "Bed headboard rail bottom peg R1",
+    "Bed headboard rail bottom tenon L",
+    "Bed headboard rail bottom tenon R",
+    "Bed headboard rail top",
+    "Bed headboard rail top peg L0",
+    "Bed headboard rail top peg L1",
+    "Bed headboard rail top peg R0",
+    "Bed headboard rail top peg R1",
+    "Bed headboard rail top tenon L",
+    "Bed headboard rail top tenon R",
+    "Bed headboard slat 1",
+    "Bed headboard slat 2",
+    "Bed headboard slat 3",
+    "Bed headboard slat 4",
+    "Bed headboard slat 5",
+    "Bed headboard slat 6",
+    "Bed headboard slat 7",
+    "Bed side rail L",
+    "Bed side rail L bolt cover 0",
+    "Bed side rail R",
+    "Bed side rail R bolt cover 0",
+    "Bed slat 1",
+    "Bed slat 10",
+    "Bed slat 11",
+    "Bed slat 12",
+    "Bed slat 13",
+    "Bed slat 2",
+    "Bed slat 3",
+    "Bed slat 4",
+    "Bed slat 5",
+    "Bed slat 6",
+    "Bed slat 7",
+    "Bed slat 8",
+    "Bed slat 9"
+   ],
+   "Bed mattress": [
+    "Bed mattress"
+   ],
+   "Bedding: quilt": [
+    "Bed headboard cover"
+   ]
+  },
+  "dae_textures": [
+   "sketchup/Bed blockprint.png",
+   "sketchup/Bed kilim.png",
+   "sketchup/Bed morris-strawberry-thief.jpg"
+  ],
+  "exported": "2026-11-12",
+  "file": "bed-frame-quilt.blend",
+  "footprint": {
+   "frame": [
+    [
+     -0.75,
+     -28.679,
+     0.75,
+     -25.179,
+     8.75
+    ],
+    [
+     -0.75,
+     -2.179,
+     0.75,
+     1.321,
+     8.75
+    ],
+    [
+     -0.75,
+     24.321,
+     0.75,
+     27.821,
+     8.75
+    ],
+    [
+     -31.5,
+     -42.571,
+     -29.875,
+     -42.491,
+     10.062
+    ],
+    [
+     29.875,
+     -42.571,
+     31.5,
+     -42.491,
+     10.062
+    ],
+    [
+     -30.875,
+     -42.554,
+     -30.5,
+     -42.491,
+     11.438
+    ],
+    [
+     30.5,
+     -42.554,
+     30.875,
+     -42.491,
+     11.438
+    ],
+    [
+     -0.75,
+     -40.679,
+     0.75,
+     39.821,
+     12.25
+    ],
+    [
+     -30.25,
+     -39.741,
+     -28.75,
+     39.821,
+     12.25
+    ],
+    [
+     28.75,
+     -39.741,
+     30.25,
+     39.821,
+     12.25
+    ],
+    [
+     -30.25,
+     -38.179,
+     30.25,
+     -34.679,
+     13.0
+    ],
+    [
+     -30.25,
+     15.821,
+     30.25,
+     19.321,
+     13.0
+    ],
+    [
+     -30.25,
+     21.821,
+     30.25,
+     25.321,
+     13.0
+    ],
+    [
+     -30.25,
+     27.821,
+     30.25,
+     31.321,
+     13.0
+    ],
+    [
+     -30.25,
+     33.821,
+     30.25,
+     37.321,
+     13.0
+    ],
+    [
+     -30.25,
+     -32.179,
+     30.25,
+     -28.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -26.179,
+     30.25,
+     -22.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -20.179,
+     30.25,
+     -16.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -14.179,
+     30.25,
+     -10.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -8.179,
+     30.25,
+     -4.679,
+     13.0
+    ],
+    [
+     -30.25,
+     -2.179,
+     30.25,
+     1.321,
+     13.0
+    ],
+    [
+     -30.25,
+     3.821,
+     30.25,
+     7.321,
+     13.0
+    ],
+    [
+     -30.25,
+     9.821,
+     30.25,
+     13.321,
+     13.0
+    ],
+    [
+     -31.125,
+     -39.741,
+     -30.25,
+     39.821,
+     14.0
+    ],
+    [
+     30.25,
+     -39.741,
+     31.125,
+     39.821,
+     14.0
+    ],
+    [
+     -30.875,
+     -42.554,
+     -30.5,
+     -42.491,
+     14.938
+    ],
+    [
+     30.5,
+     -42.554,
+     30.875,
+     -42.491,
+     14.938
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     15.437
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     15.437
+    ],
+    [
+     -32.438,
+     -41.304,
+     -32.063,
+     -40.929,
+     15.5
+    ],
+    [
+     32.063,
+     -41.304,
+     32.437,
+     -40.929,
+     15.5
+    ],
+    [
+     -29.312,
+     -41.554,
+     29.313,
+     -40.679,
+     16.0
+    ],
+    [
+     -32.063,
+     -42.491,
+     -29.312,
+     -39.741,
+     17.0
+    ],
+    [
+     29.313,
+     -42.491,
+     32.063,
+     -39.741,
+     17.0
+    ],
+    [
+     -32.063,
+     -42.491,
+     -29.312,
+     -39.741,
+     17.625
+    ],
+    [
+     29.313,
+     -42.491,
+     32.063,
+     -39.741,
+     17.625
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     17.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     17.937
+    ],
+    [
+     -32.438,
+     40.446,
+     -32.063,
+     40.946,
+     18.5
+    ],
+    [
+     32.063,
+     40.446,
+     32.437,
+     40.946,
+     18.5
+    ],
+    [
+     -29.312,
+     40.071,
+     29.313,
+     41.321,
+     19.0
+    ],
+    [
+     -30.0,
+     -40.429,
+     30.0,
+     39.571,
+     24.0
+    ],
+    [
+     -28.312,
+     40.071,
+     -21.08,
+     40.821,
+     51.5
+    ],
+    [
+     -20.08,
+     40.071,
+     -12.848,
+     40.821,
+     51.5
+    ],
+    [
+     -11.848,
+     40.071,
+     -4.616,
+     40.821,
+     51.5
+    ],
+    [
+     -3.616,
+     40.071,
+     3.616,
+     40.821,
+     51.5
+    ],
+    [
+     4.616,
+     40.071,
+     11.848,
+     40.821,
+     51.5
+    ],
+    [
+     12.848,
+     40.071,
+     20.08,
+     40.821,
+     51.5
+    ],
+    [
+     21.08,
+     40.071,
+     28.312,
+     40.821,
+     51.5
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     52.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     52.937
+    ],
+    [
+     -30.875,
+     39.759,
+     -30.5,
+     39.821,
+     54.937
+    ],
+    [
+     30.5,
+     39.759,
+     30.875,
+     39.821,
+     54.937
+    ],
+    [
+     -32.438,
+     40.446,
+     -32.063,
+     40.946,
+     55.5
+    ],
+    [
+     32.063,
+     40.446,
+     32.437,
+     40.946,
+     55.5
+    ],
+    [
+     -29.312,
+     40.071,
+     29.313,
+     41.321,
+     56.0
+    ],
+    [
+     -32.063,
+     39.821,
+     -29.312,
+     42.571,
+     59.5
+    ],
+    [
+     29.313,
+     39.821,
+     32.063,
+     42.571,
+     59.5
+    ],
+    [
+     -32.063,
+     39.821,
+     -29.312,
+     42.571,
+     60.125
+    ],
+    [
+     29.313,
+     39.821,
+     32.063,
+     42.571,
+     60.125
+    ]
+   ],
+   "overhang": [
+    [
+     -28.937,
+     39.252
+    ],
+    [
+     -28.898,
+     38.937
+    ],
+    [
+     -28.858,
+     38.74
+    ],
+    [
+     -28.622,
+     37.953
+    ],
+    [
+     -28.583,
+     37.835
+    ],
+    [
+     -28.543,
+     37.756
+    ],
+    [
+     -26.772,
+     36.417
+    ],
+    [
+     26.181,
+     34.37
+    ],
+    [
+     27.402,
+     34.331
+    ],
+    [
+     28.189,
+     34.449
+    ],
+    [
+     28.504,
+     34.606
+    ],
+    [
+     28.898,
+     39.528
+    ],
+    [
+     28.898,
+     40.0
+    ],
+    [
+     28.858,
+     41.811
+    ],
+    [
+     26.772,
+     42.047
+    ],
+    [
+     -1.575,
+     42.087
+    ],
+    [
+     -26.772,
+     42.008
+    ],
+    [
+     -28.858,
+     41.811
+    ],
+    [
+     -28.937,
+     39.921
+    ]
+   ]
+  },
+  "frame": [
+   "Bed frame",
+   "Bed mattress"
+  ],
+  "frame_hi_in": [
+   32.437,
+   42.571,
+   60.125
+  ],
+  "frame_lo_in": [
+   -32.438,
+   -42.571,
+   0.0
+  ],
+  "frame_size_in": [
+   64.875,
+   85.143,
+   60.125
+  ],
+  "front": "Bed front",
+  "hi_in": [
+   32.437,
+   42.571,
+   60.125
+  ],
+  "images": [],
+  "lo_in": [
+   -32.438,
+   -42.571,
+   0.0
+  ],
+  "materials": [
+   "Bed 2x4 pine",
+   "Bed 2x4 pine stained dark",
+   "Bed brass aged",
+   "Bed mattress sheet",
+   "Bed oak fumed grain x",
+   "Bed oak fumed grain y",
+   "Bed oak fumed grain z",
+   "Bed oak fumed pegs grain x",
+   "Bed poplar",
+   "Bed quilt"
+  ],
+  "objects": 61,
+  "prefix": "Bed",
+  "sha256": {
+   "bed-frame-quilt.blend": "3808b370432b9bc3596e0438570ecaea9d30b840d0ea72bda9df6a7187e648eb",
+   "bed-frame-quilt.glb": "d3c2cf9715a8e676bb82c24667f1db5ccb10c7c23787edbc1c809e9f4ffb0b11",
+   "sketchup/bed-frame-quilt.dae": "65d9c9052c556b55fced1d94cc99b5e7b04a5bf132f23d262571910918223dc0"
+  },
+  "size_in": [
+   64.875,
+   85.143,
+   60.125
+  ],
+  "tall_in": 50.0,
+  "triangles": 21260,
+  "triangles_render": 70304,
+  "version": "2026-11-12a"
+ }
+}

@@ -758,3 +758,41 @@ cabinet runs to the ceiling, its cap against the plaster.
   - **Pillows** are a mesh, not a simulation: a soft dome on both faces
     joined at a thin seam (`pillow()`). Stacked flat, the upper one sits
     about 0.78 of a pillow's thickness above the lower one.
+- **A model for another repo's rooms** (2026-11-12, Sketchup-tools'
+  `designer/notes-for-design-render.md`: what it had to fix to use the
+  bed): `tools/blender/deliver.py` `export()` does all of it, and
+  `designs/bed-frame/model.py` `export()` shows the call.
+  - **Blender doesn't save `matrix_world`.** An object appended without
+    `view_layer.update()` reads as the identity until the depsgraph runs
+    (tested, Blender 4.5). So any object with a transform of its own (the
+    pillows, rotated; the draped cloths, moved) lands in the wrong place
+    for a script that reads matrices straight after appending. Calling
+    `update()` before saving doesn't help. **Bake every transform into the
+    mesh** (`o.data.transform(o.matrix_world)`, then the identity) and
+    clear parents. Then nothing a script reads can be wrong. The one
+    object that keeps a transform is the `<prefix> front` empty: read it
+    by `matrix_basis`, or after an update.
+  - **Check it the way the room loads it:** append every object into an
+    empty scene in a fresh Blender, with no update, and assert the size,
+    the floor at z = 0, the footprint centered, the facing (everything
+    above a height in the +y half), the names, the version tags, the
+    packing and the collections (`check_export.py`). The first run caught
+    the empty reading as the identity.
+  - **Prefix everything:** objects, meshes, materials, images
+    (`Bed oak fumed grain z`, `Bed Strawberry Thief`). An `oak` appended
+    into a room that has one becomes `oak.001`, or a script merges them.
+  - **One choice per file, named collections inside.** Rooms append every
+    object (`assets.place()`), so two headboard covers in one file would
+    both come in. Give each choice its own file (`bed-frame-quilt.blend`)
+    and its parts a collection (`Bedding: quilt`) that a script can leave
+    out.
+  - **Apply the modifiers but leave the smoothing live:** a Subdivision at
+    0 in the viewport and its render level in renders. A room with three
+    beds stays light, and the .glb and .dae get the cage (the made-up bed: 71k
+    triangles in the viewport, 359k rendered).
+  - **SketchUp reads COLLADA.** Blender writes the file in meters whatever
+    the scene's unit, so `_write_dae` scales the coordinates to inches and
+    rewrites `<unit name="inch" meter="0.0254"/>`. Its materials are plain:
+    each one's color (kit materials keep it in `diffuse_color`), or the
+    image feeding its base color with the Mapping node's repeat baked into
+    the UVs, since COLLADA has no texture transform.
