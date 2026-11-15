@@ -168,6 +168,24 @@ def readme(name, share, cfg, recs, order, version, change, prefix, lib):
           "`assets.place(\"%s\", (x, y, 0), rot=..., objs=OBJS)` at its real size: give no width. %s.\n" % (
               order[0], cfg.get("rot_rule", "")),
           "```yaml", yaml.safe_dump({order[0]: lib[order[0]]}, sort_keys=False, width=110).rstrip(), "```", ""]
+    tx = {}
+    for s_ in order:
+        tx.update(recs[s_].get("textiles") or {})
+    if tx:
+        L += ["## Swapping a pattern\n",
+              "Each textile is its own material with one image: the node named `Pattern`, through a mapping named "
+              "`Repeat`. The cloth's UVs are one unit to a meter of the cloth laid flat, so a print whose repeat is "
+              "R inches takes `Repeat`'s scale 39.37 / R both ways (a different repeat across and down: each its "
+              "own). No hue or saturation nodes: a print's color is in its image.\n",
+              "```python",
+              "m = bpy.data.materials[\"%s coverlet\"]" % prefix,
+              "m.node_tree.nodes[\"Pattern\"].image = bpy.data.images.load(\"golden-lily.jpg\")",
+              "m.node_tree.nodes[\"Repeat\"].inputs[\"Scale\"].default_value = (39.37 / 21.0, 39.37 / 21.0, 1)   # a 21\" repeat",
+              "```", "",
+              "| Material | Its pattern now | Repeat (across x along) |", "|---|---|---|"]
+        for mname, t in sorted(tx.items()):
+            L.append("| `%s` | `%s` | %s x %s |" % (mname, t["pattern"], frac(t["repeat_in"][0]), frac(t["repeat_in"][1])))
+        L.append("")
     tex = cfg.get("textures") or {}
     imgs = sorted({i for s in order for i in recs[s]["images"]})
     if imgs:

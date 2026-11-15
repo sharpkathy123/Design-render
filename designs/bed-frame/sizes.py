@@ -59,11 +59,14 @@ CENTER = (1.5, 3.5)                # a 2x4 on edge down the middle, on three 2x4
 CENTER_LEG_IN = 12.0               # its end legs set in from the ends, out of sight
 
 # --- bedding, for the renders (the client's picture, 2026-11-11) ------------
-COVERLET_DROP = 10.0               # down each side and the foot, tucked in between the mattress and
-                                   # the rails (client, 2026-11-11); its foot corners cut out square,
-COVERLET_CORNER = COVERLET_DROP    # as wide as the drop (8" left loose flaps at the foot, 2026-11-11)
-COVERLET = (MAT_W + 2 * COVERLET_DROP + 1.0, MAT_L + COVERLET_DROP)   # across, along
-THROW_DROP = 8.5                   # a folded blanket across the foot, hanging to just above the rails
+COVERLET_DROP = 14.0               # over the sides and the foot, over the rails (Sketchup-tools' notes,
+                                   # 2026-11-14: a designer's coverlet, falling about 14")
+COVERLET_CORNER = 0.0              # one uncut sheet: its corners fold over the foot legs as real cloth does
+                                   # (cut out and sewn, the seam ran through the leg, 2026-11-15; a number
+                                   # here cuts that much out of each foot corner and sews it after the drape)
+TURNDOWN = 10.0                    # the white top sheet turned down over the coverlet's head end
+THROW_DROP = 12.0                  # a folded blanket across the foot, its ends falling over the sides
+                                   # to 2" above the coverlet's hem (2026-11-14)
 THROW = (MAT_W + 2 * THROW_DROP + 2.0, 20.0)   # across, along: folded in thirds (client, 2026-11-11)
 THROW_THICK = 0.8                  # three layers of a wool blanket
 WOOL_REPEAT = 10.8                 # Poly Haven's Caban wool sample, inches square (textures/SOURCES.md)
@@ -72,6 +75,13 @@ THROW_FROM_FOOT = 7.0              # its near edge this far up the bed from the 
 PILLOW = (28.0, 19.0, 7.0)         # standard pillows: wide, deep, plump
 PILLOW_STACK = 2                   # two stacked flat at the head of each side (client, 2026-11-11)
 STRAWBERRY_REPEAT = (18.0, 19.6)   # Morris's Strawberry Thief, one repeat across and down, inches
+# the textiles: each one image, at its real repeat in inches (Sketchup-tools' notes, 2026-11-14: a Morris
+# print on the coverlet, a wool plaid blanket, checks on the small piece, plain white sheets and pillows)
+COVERLET_PRINT, COVERLET_REPEAT = "morris-strawberry-thief-print.jpg", STRAWBERRY_REPEAT
+BLANKET_PRINT, BLANKET_REPEAT = "plaid.png", (8.0, 8.0)
+HEADBOARD_PRINT, HEADBOARD_REPEAT = "check.png", (4.0, 4.0)
+PERCALE_REPEAT = (2.0, 2.0)        # percale.png: plain white sheeting
+QUILT_REPEAT = 18.0                # quilt.png: the --quilt version's pieced squares
 
 # --- the plan (worked out) ----------------------------------------------
 IN_W = MAT_W + CLEAR               # between the side rails
@@ -82,6 +92,9 @@ FOOT_IN = RAIL_IN                  # the foot rail likewise centered on the foot
 L = FOOT_IN + IN_L + POST          # the mattress runs to the head posts' front faces
 HB_Y = L - POST + REVEAL           # the headboard's front face
 HB_SPAN = W - 2 * POST             # between the posts
+COVERLET_HEAD = HB_Y - 4.5 - PILLOW[1] + 2.0   # the coverlet's head edge, 2" under the pillows' front
+COVERLET = (MAT_W + 2 * (COVERLET_DROP + 1.5),                       # across: the drop, and over the rails
+            COVERLET_HEAD - (FOOT_IN + CLEAR / 2) + COVERLET_DROP + 1.5)   # along: to the foot's hem
 HB_SLAT_W = (HB_SPAN - (HB_SLATS + 1) * HB_GAP) / HB_SLATS
 CLEAT_TOP = SLAT_TOP - SLAT_T
 

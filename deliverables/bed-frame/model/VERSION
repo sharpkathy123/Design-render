@@ -1,13 +1,13 @@
-version: 2026-11-15a
-change: the coverlet's foot corners sewn after the drape, so no black slit shows where the flaps met (Sketchup-tools' notes); the export test checks it; cloth thickness left live
+version: 2026-11-15b
+change: made up as a designer would: a Morris coverlet falling 14" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes
 design: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
 sha256:
-  bed-frame-made-up.blend: 043bd300188e68fbe4eb9116b39368ad3f07435e7e874236eb5422cb88863359
-  bed-frame-made-up.glb: a2e881622cc1f06e99a2f8ef631de02851765fb8e39be392afa43191e6db295c
-  sketchup/bed-frame-made-up.dae: 1cc68db8592323712df49f8c1ec5ae36be24811498603c4991304f5d2b4bbf93
-  bed-frame-bare.blend: 642634c57d2bd8d4667c76bf0f9b968a9a60f099bf04b79f140b40f1eb88c50c
-  bed-frame-bare.glb: 2a6a339456f6cff7801e36819b343d307f9c96c3e086613fd44315bb54e6b2f1
-  sketchup/bed-frame-bare.dae: 4907df2db9f7185f46a4276e9baa1dd03eaae31f35909c8b339e86767ecf2c88
-  bed-frame-quilt.blend: c36679ebfb7267e98d89446d404bbce6b44d9c999db8b0b626f903c3198b3874
-  bed-frame-quilt.glb: ba9ebbbfe7000fd154ea12935ada21d8b470c5f7f146cf84b4c0d56c6be27b69
-  sketchup/bed-frame-quilt.dae: 85e782cda9208c9ecc22a03cb140f8706c5fed428b2b1ae300b7748bbebcc87c
+  bed-frame-made-up.blend: 6216ac7f74d4ef6e82387c546199828353971ba61a2fd8c12f990cb6c0c4af53
+  bed-frame-made-up.glb: a9670b025a825ae3882a5d672b4cd5d9b5d4c072c2d5971e7a875879a10ac6e4
+  sketchup/bed-frame-made-up.dae: 050ffc1a1de9adc0b9fa24a8a4048c51f9733100796367c0af94d1bb73e956e1
+  bed-frame-bare.blend: 914b38cc7dbe2ab7ee70db60725e76273ee1fe38e98763b8608a83907bc9d63d
+  bed-frame-bare.glb: fd8db1f48bf087a52c6190be3c527fd4756128c98faa276a164f0274fb9e981c
+  sketchup/bed-frame-bare.dae: e5d83b7814802cd539057fcc6d11a28bab5f0fe13d6ae8193d6e4c595378227d
+  bed-frame-quilt.blend: 6ff493fd887eb9a4fd848480846de823ea36aca466ff8a15a55c72f7aa3c9c6c
+  bed-frame-quilt.glb: c44b43039ebca23d33936a5117cf641efb008e79e61362777eed04698798ae62
+  sketchup/bed-frame-quilt.dae: 7ef2fc031df5fca81816a804844f87af626a7958faef04f9e387fbe133c60f30

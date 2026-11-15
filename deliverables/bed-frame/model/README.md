@@ -1,26 +1,26 @@
 <!-- Written by tools/model_card.py from exports.json, CHANGELOG.md and share.yaml: edit those. -->
 # Queen bed frame as a 3D model, for rendering rooms
 
-**Version 2026-11-15a:** the coverlet's foot corners sewn after the drape, so no black slit shows where the flaps met (Sketchup-tools' notes); the export test checks it; cloth thickness left live ([VERSION](VERSION) has every file's sha256; [CHANGELOG](CHANGELOG.md)). Every object in the files carries it too, as `o["design_render_version"]`.
+**Version 2026-11-15b:** made up as a designer would: a Morris coverlet falling 14" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes ([VERSION](VERSION) has every file's sha256; [CHANGELOG](CHANGELOG.md)). Every object in the files carries it too, as `o["design_render_version"]`.
 
 
 ## The files
 
 | Version | Blender 4.5 | glTF (meters) | SketchUp (inches) | Size over everything, W x D x H | Triangles (viewport / render) |
 |---|---|---|---|---|---|
-| **Queen bed frame, made up** | [bed-frame-made-up.blend](bed-frame-made-up.blend) | [bed-frame-made-up.glb](bed-frame-made-up.glb) | [sketchup/bed-frame-made-up.dae](sketchup/bed-frame-made-up.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 70,784 / 359,552 |
+| **Queen bed frame, made up** | [bed-frame-made-up.blend](bed-frame-made-up.blend) | [bed-frame-made-up.glb](bed-frame-made-up.glb) | [sketchup/bed-frame-made-up.dae](sketchup/bed-frame-made-up.dae) | 71 1/8" x 89 15/16" x 60 1/8" | 72,232 / 365,344 |
 | **Queen bed frame, bare** | [bed-frame-bare.blend](bed-frame-bare.blend) | [bed-frame-bare.glb](bed-frame-bare.glb) | [sketchup/bed-frame-bare.dae](sketchup/bed-frame-bare.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 4,912 / 4,912 |
 | **Queen bed frame, with a quilt over the headboard** | [bed-frame-quilt.blend](bed-frame-quilt.blend) | [bed-frame-quilt.glb](bed-frame-quilt.glb) | [sketchup/bed-frame-quilt.dae](sketchup/bed-frame-quilt.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 21,260 / 70,304 |
 
-- **bed-frame-made-up.blend**: The bed made up: William Morris's Strawberry Thief over the headboard, an indigo block-print coverlet tucked in, a folded kilim blanket across the foot, four white pillows stacked two by two, a dark fitted sheet. Collections: `Bed frame` (59); `Bed mattress` (1); `Bedding: Strawberry Thief` (1); `Bedding: coverlet, throw and pillows` (7).
-- **bed-frame-bare.blend**: The frame and a mattress with a white sheet, nothing else. Collections: `Bed frame` (59); `Bed mattress` (1).
-- **bed-frame-quilt.blend**: The frame, a mattress with a white sheet, and a pieced quilt (ochre and sage squares) draped over the headboard. Collections: `Bed frame` (59); `Bed mattress` (1); `Bedding: quilt` (1).
+- **bed-frame-made-up.blend**: The bed made up as a designer would: a coverlet in William Morris's Strawberry Thief falling about 14" over the sides and the foot, one uncut sheet folding over the foot's corners; a plain white top sheet turned down about 10" over it; a wool plaid blanket folded across the foot, its ends over the sides; four white pillows stacked two by two; a checked cover over the headboard; a white fitted sheet. Collections: `Bed frame` (59); `Bed mattress` (1); `Bedding: coverlet, top sheet, blanket and pillows` (8); `Bedding: headboard cover` (1).
+- **bed-frame-bare.blend**: The frame and a mattress in a white fitted sheet, nothing else. Collections: `Bed frame` (59); `Bed mattress` (1).
+- **bed-frame-quilt.blend**: The frame, a mattress in a white fitted sheet, and a pieced quilt (ochre and sage squares) draped over the headboard. Collections: `Bed frame` (59); `Bed mattress` (1); `Bedding: quilt` (1).
 
 The frame alone is 64 7/8" x 85 1/8" x 60 1/8" (W x D x H), the same in every file. Sizes are measured from the saved files by the export's check, not typed.
 
 ## What's in them
 
-- Only meshes, and one empty: every object, mesh, material and image is named `Bed ...`, so appending them into a room that has its own `oak` or `brass` neither merges them nor makes `.001` copies. Materials: `Bed 2x4 pine`, `Bed 2x4 pine stained dark`, `Bed Strawberry Thief`, `Bed block-print coverlet`, `Bed brass aged`, `Bed kilim wool`, `Bed mattress sheet`, `Bed oak fumed grain x`, `Bed oak fumed grain y`, `Bed oak fumed grain z`, `Bed oak fumed pegs grain x`, `Bed pillowcase`, `Bed poplar`, `Bed quilt`, `Bed wool fringe`.
+- Only meshes, and one empty: every object, mesh, material and image is named `Bed ...`, so appending them into a room that has its own `oak` or `brass` neither merges them nor makes `.001` copies. Materials: `Bed 2x4 pine`, `Bed 2x4 pine stained dark`, `Bed blanket`, `Bed brass aged`, `Bed coverlet`, `Bed headboard cover`, `Bed mattress sheet`, `Bed oak fumed grain x`, `Bed oak fumed grain y`, `Bed oak fumed grain z`, `Bed oak fumed pegs grain x`, `Bed pillowcase`, `Bed poplar`, `Bed quilt`, `Bed top sheet`.
 - Real size in Blender meters (the scene's display unit set to inches). The floor is at z = 0 and the frame's footprint is centered on the origin.
 - The foot faces -y and the headboard +y, with its back face at the bed's +y end: stand it with that face against a wall.
 - An empty, `Bed front`, at the middle of the front on the floor, its arrow pointing -y (out of the front); its `depth_in` property is how far behind it the back is. Place by the front or by the back without measuring.
@@ -73,25 +73,46 @@ bed-frame-made-up:
   use: the Arts & Crafts queen bed, made up (Design-render's bed frame)
   name: Queen bed frame, made up
   size_in:
-  - 64.9
-  - 85.1
+  - 71.1
+  - 90.0
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-15a (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15b (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-made-up/bed-frame-made-up.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
 ```
 
+## Swapping a pattern
+
+Each textile is its own material with one image: the node named `Pattern`, through a mapping named `Repeat`. The cloth's UVs are one unit to a meter of the cloth laid flat, so a print whose repeat is R inches takes `Repeat`'s scale 39.37 / R both ways (a different repeat across and down: each its own). No hue or saturation nodes: a print's color is in its image.
+
+```python
+m = bpy.data.materials["Bed coverlet"]
+m.node_tree.nodes["Pattern"].image = bpy.data.images.load("golden-lily.jpg")
+m.node_tree.nodes["Repeat"].inputs["Scale"].default_value = (39.37 / 21.0, 39.37 / 21.0, 1)   # a 21" repeat
+```
+
+| Material | Its pattern now | Repeat (across x along) |
+|---|---|---|
+| `Bed blanket` | `plaid.png` | 8" x 8" |
+| `Bed coverlet` | `morris-strawberry-thief-print.jpg` | 18" x 19 5/8" |
+| `Bed headboard cover` | `check.png` | 4" x 4" |
+| `Bed mattress sheet` | `percale.png` | 2" x 2" |
+| `Bed pillowcase` | `percale.png` | 2" x 2" |
+| `Bed quilt` | `quilt.png` | 18" x 18" |
+| `Bed top sheet` | `percale.png` | 2" x 2" |
+
 ## Textures and their rights
 
 | Image (packed) | Source and rights |
 |---|---|
-| `Bed blockprint.png` | our own, drawn by `tools/make_fabric.py` (this repo, public) |
-| `Bed caban_ao_1k.jpg` | Poly Haven, [Caban](https://polyhaven.com/a/caban), CC0: the wool's shading |
-| `Bed caban_nor_gl_1k.jpg` | Poly Haven, [Caban](https://polyhaven.com/a/caban) (photography colormass, processing Rico Cilliers), CC0: the wool's weave and nap |
-| `Bed kilim.png` | our own, drawn by `tools/make_fabric.py` (this repo, public) |
-| `Bed morris-strawberry-thief.jpg` | William Morris, *Strawberry Thief*, designed 1883 (printed about 1934), [Cooper Hewitt, Smithsonian Design Museum, object 18340065](https://collection.cooperhewitt.org/objects/18340065/): the design is public domain and Cooper Hewitt releases the image as CC0 ([on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Textile,_Strawberry_Thief,_designed_1883,_printed_ca._1934_%28CH_18340065%29.jpg)). One repeat, cut from the scan to tile. |
+| `Bed caban_nor_gl_1k.jpg` | Poly Haven, [Caban](https://polyhaven.com/a/caban) (photography colormass, processing Rico Cilliers), CC0: the wool's weave and nap, as the blanket's relief |
+| `Bed check.png` | our own woven check, drawn by `tools/make_fabric.py` (this repo, public) |
+| `Bed morris-strawberry-thief-print.jpg` | William Morris, *Strawberry Thief*, designed 1883 (printed about 1934), [Cooper Hewitt, Smithsonian Design Museum, object 18340065](https://collection.cooperhewitt.org/objects/18340065/): the design is public domain and Cooper Hewitt releases the image as CC0 ([on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Textile,_Strawberry_Thief,_designed_1883,_printed_ca._1934_%28CH_18340065%29.jpg)). One repeat, cut from the scan to tile, its color deepened a little (saturation 1.25, value 0.85) in the image. |
+| `Bed percale.png` | our own plain white sheeting, drawn by `tools/make_fabric.py` (this repo, public) |
+| `Bed plaid.png` | our own wool plaid, drawn by `tools/make_fabric.py` (this repo, public) |
+| `Bed quilt.png` | our own pieced squares, drawn by `tools/make_fabric.py` (this repo, public) |
 
 ## Footprint
 

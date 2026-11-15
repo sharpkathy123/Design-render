@@ -4,7 +4,7 @@
 
 An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washable quilt over its headboard: square posts with pyramid caps, through-tenons pegged through the posts, wide flat slats to lean against, and a low foot rail with short capped legs.
 
-![Made up with William Morris's Strawberry Thief over the headboard, an indigo block-print coverlet tucked in, a kilim throw, and pillows stacked two by two](renders/bed-frame-bedroom-bedding.jpg)
+![Made up as a designer would, William Morris's Strawberry Thief on the coverlet falling over the sides and foot, a white top sheet turned down, a wool plaid blanket, white pillows two by two, a checked cover over the headboard](renders/bed-frame-bedroom-bedding.jpg)
 
 **[Download the build packet (PDF)](bed-frame-build-packet.pdf)**: the pictures, the drawings and the build guide in one printable file.
 
@@ -34,8 +34,8 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 
 ## Pictures
 
-![Made up with William Morris's Strawberry Thief over the headboard, an indigo block-print coverlet tucked in, a kilim throw, and pillows stacked two by two](renders/bed-frame-bedroom-bedding.jpg)
-*Made up with William Morris's Strawberry Thief over the headboard, an indigo block-print coverlet tucked in, a kilim throw, and pillows stacked two by two*
+![Made up as a designer would, William Morris's Strawberry Thief on the coverlet falling over the sides and foot, a white top sheet turned down, a wool plaid blanket, white pillows two by two, a checked cover over the headboard](renders/bed-frame-bedroom-bedding.jpg)
+*Made up as a designer would, William Morris's Strawberry Thief on the coverlet falling over the sides and foot, a white top sheet turned down, a wool plaid blanket, white pillows two by two, a checked cover over the headboard*
 
 ![The same, from above the foot](renders/bed-frame-corner-bedding.jpg)
 *The same, from above the foot*

@@ -191,7 +191,73 @@ def kilim(path):
     c.save(path)
 
 
-KINDS = {"pomegranate": pomegranate, "blockprint": blockprint, "kilim": kilim}
+def _sett(stripes, n):
+    """A tartan sett as a row of n colors: stripes [(color, threads)], then
+    mirrored, as a symmetric sett is woven."""
+    row = []
+    for col, k in stripes + stripes[::-1]:
+        row += [hexrgb(col)] * k
+    idx = (np.arange(n) * len(row) / n).astype(int)
+    return np.array(row)[idx]
+
+
+def plaid(path):
+    """A wool blanket's plaid, our own: moss green and deep brown blocks
+    with a rust and a cream overcheck, a 2/2 twill (half the threads warp,
+    half weft). One tile is an 8" repeat."""
+    n = 512
+    sett = _sett([("#3d4a2a", 18), ("#2b2118", 6), ("#3d4a2a", 4), ("#2b2118", 14), ("#a4482a", 3),
+                  ("#2b2118", 14), ("#3d4a2a", 22), ("#d8c9a0", 2)], n)
+    warp = np.broadcast_to(sett[None, :, :], (n, n, 3))
+    weft = np.broadcast_to(sett[:, None, :], (n, n, 3))
+    yy, xx = np.mgrid[0:n, 0:n]
+    twill = ((xx + yy) // 2) % 2 == 0
+    rgb = np.where(twill[..., None], warp, weft) * 0.5 + (warp + weft) * 0.25
+    c = Canvas(n, n, "#000000")
+    c.rgb = rgb.copy()
+    c.texture(0.05, 21)
+    c.save(path)
+
+
+def check(path):
+    """A woven check for a small piece (the headboard's cover), our own:
+    ochre and sage in a gingham weave, its crossings darker, on cream.
+    One tile is a 4" repeat."""
+    n = 256
+    a = ((np.arange(n) // (n // 4)) % 2 == 0).astype(float)           # two bands each way per tile
+    X, Y = np.meshgrid(a, a)
+    c = Canvas(n, n, "#e8dcc0")
+    c.paint(X * (1 - Y) > 0.5, "#b88a3c")
+    c.paint(Y * (1 - X) > 0.5, "#8c9a6a")
+    c.paint(X * Y > 0.5, "#5f5a32")
+    c.texture(0.06, 22)
+    c.save(path)
+
+
+def quilt(path):
+    """A pieced quilt, our own: ochre and sage squares with pale stitched
+    seams. One tile is an 18" repeat, 3 by 3 squares."""
+    n = 540
+    c = Canvas(n, n, "#8a6a2a")
+    sq = (np.floor(c.X * 3) + np.floor(c.Y * 3)) % 2 == 1
+    c.paint(sq, "#4f5e3a")
+    seam = (np.abs(((c.X * 3) % 1.0) - 0.5) > 0.49) | (np.abs(((c.Y * 3) % 1.0) - 0.5) > 0.49)
+    c.paint(seam, "#a89466")
+    c.texture(0.05, 23)
+    c.save(path)
+
+
+def percale(path):
+    """Plain white cotton percale for sheets and pillowcases (client,
+    2026-11-14: plain white everywhere, no band): white with only its
+    weave. One tile is a 2" repeat."""
+    c = Canvas(128, 128, "#f3f1ec")
+    c.texture(0.025, 24)
+    c.save(path)
+
+
+KINDS = {"pomegranate": pomegranate, "blockprint": blockprint, "kilim": kilim, "plaid": plaid, "check": check,
+         "quilt": quilt, "percale": percale}
 
 
 def main():

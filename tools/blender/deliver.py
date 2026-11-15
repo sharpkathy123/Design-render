@@ -377,6 +377,8 @@ def export(path, design, prefix, collections, frame, about="", front_back="y", t
                objects=len([o for o in objs]), triangles=_tris(objs), triangles_render=_tris(objs, render=True),
                collections={c: sorted(o.name for o in g) for c, g in groups.items()},
                materials=sorted(m.name for m in bpy.data.materials if m.users),
+               textiles={m.name: dict(pattern=m["pattern"], repeat_in=list(m["repeat_in"]))
+                         for m in bpy.data.materials if m.users and "pattern" in m},
                images=sorted(i.name for i in bpy.data.images if i.users and i.source == "FILE"),
                front=prefix + " front", prefix=prefix, tall_in=tall_in, frame=list(frame),
                sewn={o.name: [[round(x + shift.x / INCH, 3), round(y + shift.y / INCH, 3)] for x, y in sewn[n]]

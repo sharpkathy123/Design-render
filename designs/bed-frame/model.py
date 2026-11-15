@@ -130,48 +130,67 @@ def foot_rail_profile(n=24):
     return [(x0, FOOT_Z[0])] + arch + [(x1, FOOT_Z[0]), (x1, FOOT_Z[1]), (x0, FOOT_Z[1])]
 
 
-def mattress(sheet="#ece8df"):
-    """The mattress, for the renders (not a part); sheet: its cover's color
-    (made up, a dark fitted sheet, so no white shows where the coverlet's
-    tucked corners meet)."""
-    kit.materials({"ticking": dict(color=kit.hexcolor(sheet), roughness=0.9, sheen=0.3)})
+def mattress():
+    """The mattress, for the renders (not a part), in a plain white fitted
+    sheet (client, 2026-11-14: plain white everywhere)."""
     m = kit.box("Mattress", RAIL_IN + CLEAR / 2, FOOT_IN + CLEAR / 2, SLAT_TOP, W - RAIL_IN - CLEAR / 2,
                 L - POST - CLEAR / 2, MAT_TOP, "ticking", part=False, check=False, round_edges=2.0)
     m.modifiers["Bevel"].segments = 6
+    box_uv(m)
+    m.data.materials[0] = fabric_material("Mattress sheet", "percale.png", PERCALE_REPEAT, sheen=0.3, roughness=0.9)
     kit.OBJS.remove(m)
     return m
 
 
-TEXTURES = os.path.join(HERE, "textures")   # tools/make_fabric.py: our own patterns
+def box_uv(o):
+    """UVs for a box-like mesh by its faces' directions, one UV unit a meter
+    (so a print's repeat is the same number on every piece)."""
+    me = o.data
+    uv = me.uv_layers.new(name="UVMap")
+    for p in me.polygons:
+        n = p.normal
+        ax = max(range(3), key=lambda k: abs(n[k]))
+        a, b = [k for k in range(3) if k != ax]
+        for li in p.loop_indices:
+            co = me.vertices[me.loops[li].vertex_index].co
+            uv.data[li].uv = (co[a], co[b])
 
 
-def fabric_material(name, png, repeat, color_hint=None, sheen=0.15, roughness=0.85):
-    """A cloth material printed with one of tools/make_fabric.py's patterns,
-    by the cloth's own UVs; repeat: (times across, times along) the piece."""
+TEXTURES = os.path.join(HERE, "textures")   # tools/make_fabric.py: our own patterns; the Morris scan
+
+
+def fabric_material(name, image, repeat, sheen=0.15, roughness=0.85):
+    """A textile: its own material with ONE image input, so a room swaps the
+    pattern by changing one image (Sketchup-tools' notes, 2026-11-14). The
+    image node is named "Pattern" and the mapping "Repeat"; the cloth's UVs
+    are one unit to a meter of cloth, laid flat, and Repeat's scale is
+    39.37 / the print's repeat in inches, so a room gives a new print its
+    real size with one number. No hue or saturation nodes: any change of
+    color is baked into the image. repeat: (across, along) inches."""
     m = bpy.data.materials.new(name)
     m.use_nodes = True
     nt = m.node_tree
     bsdf = nt.nodes["Principled BSDF"]
     tc = nt.nodes.new("ShaderNodeTexCoord")
     mp = nt.nodes.new("ShaderNodeMapping")
-    mp.inputs["Scale"].default_value = (repeat[0], repeat[1], 1.0)
+    mp.name = mp.label = "Repeat"
+    mp.inputs["Scale"].default_value = (1 / (repeat[0] * kit.INCH), 1 / (repeat[1] * kit.INCH), 1.0)
     tex = nt.nodes.new("ShaderNodeTexImage")
-    tex.image = bpy.data.images.load(os.path.join(TEXTURES, png), check_existing=True)
+    tex.name = tex.label = "Pattern"
+    tex.image = bpy.data.images.load(os.path.join(TEXTURES, image), check_existing=True)
     tex.interpolation = "Cubic"
     nt.links.new(tc.outputs["UV"], mp.inputs["Vector"])
     nt.links.new(mp.outputs["Vector"], tex.inputs["Vector"])
-    hs = nt.nodes.new("ShaderNodeHueSaturation")       # (the bright studio washed the prints pastel)
-    hs.inputs["Saturation"].default_value = 1.25
-    hs.inputs["Value"].default_value = 0.85
-    nt.links.new(tex.outputs["Color"], hs.inputs["Color"])
-    nt.links.new(hs.outputs["Color"], bsdf.inputs["Base Color"])
+    nt.links.new(tex.outputs["Color"], bsdf.inputs["Base Color"])
     bsdf.inputs["Roughness"].default_value = roughness
     bsdf.inputs["Sheen Weight"].default_value = sheen
+    m["repeat_in"] = list(repeat)            # (the README lists each print and its repeat)
+    m["pattern"] = image
     return m
 
 
 def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=1.0, thick=0.35, pin_head=0.0,
-          foot_corners=0.0):
+          foot_corners=0.0, self_collide=False):
     """A piece of cloth size (x, y) inches, laid flat with its middle at
     center (inches) and dropped onto what's below with Blender's cloth
     simulation; the colliders are cleared again after. pin_head: hold
@@ -197,6 +216,9 @@ def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=
         q.name = name
         q.scale = (size[0] * I, size[1] * I, 1.0)
         bpy.ops.object.transform_apply(scale=True)
+        for d, lp in zip(q.data.uv_layers.active.data, q.data.loops):     # (a meter of cloth to a UV unit)
+            co = q.data.vertices[lp.vertex_index].co
+            d.uv = (co.x + size[0] * I / 2, co.y + size[1] * I / 2)
     q.location = tuple(c * I for c in center)
     q.data.materials.append(mat)
     if pin_head:
@@ -205,6 +227,7 @@ def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=
         half = min(MAT_W, size[0]) / 2 * I       # (only over the mattress: pinned corners stood out in the air)
         vg.add([v.index for v in q.data.vertices if v.co.y > top - pin_head * I and abs(v.co.x) < half - 2 * I],
                1.0, "REPLACE")
+    collide = list(dict.fromkeys(collide))          # (each once: a post listed twice was cleared twice)
     for o in collide:
         if "Collision" not in o.modifiers:
             o.modifiers.new("Collision", "COLLISION")
@@ -220,6 +243,9 @@ def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=
     if pin_head:
         st.vertex_group_mass = "pin"
     cl.collision_settings.distance_min = 0.004
+    if self_collide:                                     # (a corner folding on itself mustn't pass through)
+        cl.collision_settings.use_self_collision = True
+        cl.collision_settings.self_distance_min = 0.004
     cl.collision_settings.collision_quality = 5          # (the throw's ends went through the coverlet)
     sc = bpy.context.scene
     sc.frame_start, sc.frame_end = 1, frames
@@ -239,7 +265,7 @@ def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=
 
 
 def corner_cut_grid(name, nx, ny, sp, n):
-    """A flat grid nx by ny squares of sp inches, centered, its UVs 0..1,
+    """A flat grid nx by ny squares of sp inches, centered, its UVs in meters,
     with an n-square corner cut out at each foot (-y) corner. Returns the
     object and, for each corner, its two cut edges as vertex indices from
     the shared inner corner outward: (foot flap's, side flap's)."""
@@ -260,7 +286,7 @@ def corner_cut_grid(name, nx, ny, sp, n):
             if all(c in vs for c in k) and not (j < n and (i < n or i >= nx - n)):
                 f = bm.faces.new([vs[c] for c in k])
                 for lp, c in zip(f.loops, k):
-                    lp[uv].uv = (c[0] / nx, c[1] / ny)
+                    lp[uv].uv = (c[0] * sp * I, c[1] * sp * I)     # (a meter of cloth to a UV unit)
     bm.verts.index_update()
     seams = []
     for i0, step in ((n, -1), (nx - n, 1)):            # the left corner, the right
@@ -354,35 +380,8 @@ def headboard_cover(collide, mat):
 
 
 def quilt_material():
-    """The first stand-in quilt for the headboard: pieced squares."""
-    m = bpy.data.materials.new("Quilt")
-    m.use_nodes = True
-    nt = m.node_tree
-    bsdf = nt.nodes["Principled BSDF"]
-    tc = nt.nodes.new("ShaderNodeTexCoord")
-    mp = nt.nodes.new("ShaderNodeMapping")
-    mp.inputs["Scale"].default_value = (6.0, 6.0, 1.0)
-    ck = nt.nodes.new("ShaderNodeTexChecker")
-    ck.inputs["Scale"].default_value = 1.0
-    ck.inputs["Color1"].default_value = kit.hexcolor("#8a6a2a") + (1.0,)    # ochre
-    ck.inputs["Color2"].default_value = kit.hexcolor("#4f5e3a") + (1.0,)    # sage green
-    br = nt.nodes.new("ShaderNodeTexBrick")                                 # the stitched seams
-    br.inputs["Scale"].default_value = 1.0
-    br.inputs["Mortar Size"].default_value = 0.005
-    br.inputs["Brick Width"].default_value = 0.5
-    br.inputs["Row Height"].default_value = 0.5
-    br.offset = 0.0
-    nt.links.new(tc.outputs["UV"], mp.inputs["Vector"])
-    nt.links.new(mp.outputs["Vector"], ck.inputs["Vector"])
-    nt.links.new(mp.outputs["Vector"], br.inputs["Vector"])
-    nt.links.new(ck.outputs["Color"], br.inputs["Color1"])
-    nt.links.new(ck.outputs["Color"], br.inputs["Color2"])
-    br.inputs["Mortar"].default_value = kit.hexcolor("#a89466") + (1.0,)
-    nt.links.new(br.outputs["Color"], bsdf.inputs["Base Color"])
-    bsdf.inputs["Roughness"].default_value = 0.95
-    bsdf.inputs["Sheen Weight"].default_value = 0.6
-    m.diffuse_color = kit.hexcolor("#6d6432") + (1.0,)     # (its squares' average: the .glb's and .dae's color)
-    return m
+    """The quilt over the headboard (--quilt): pieced ochre and sage squares."""
+    return fabric_material("Quilt", "quilt.png", (QUILT_REPEAT, QUILT_REPEAT), sheen=0.6, roughness=0.95)
 
 
 def quilt(collide):
@@ -438,21 +437,7 @@ def pillow(name, cx, cy, cz, tilt, w=PILLOW[0], d=PILLOW[1], t=PILLOW[2], seed=0
 
 
 def pillow_material():
-    m = bpy.data.materials.new("Pillowcase")
-    m.use_nodes = True
-    nt = m.node_tree
-    bsdf = nt.nodes["Principled BSDF"]
-    bsdf.inputs["Base Color"].default_value = kit.hexcolor("#f4f2ec") + (1.0,)
-    bsdf.inputs["Roughness"].default_value = 0.85
-    bsdf.inputs["Sheen Weight"].default_value = 0.5
-    nz = nt.nodes.new("ShaderNodeTexNoise")              # soft wrinkles
-    nz.inputs["Scale"].default_value = 60.0
-    nz.inputs["Detail"].default_value = 4.0
-    bump = nt.nodes.new("ShaderNodeBump")
-    bump.inputs["Strength"].default_value = 0.12
-    nt.links.new(nz.outputs["Fac"], bump.inputs["Height"])
-    nt.links.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
-    return m
+    return fabric_material("Pillowcase", "percale.png", PERCALE_REPEAT, sheen=0.5)
 
 
 def folded_blanket(cov):
@@ -513,16 +498,16 @@ def folded_blanket(cov):
         for i in range(len(path) - 1):
             f = bm.faces.new((grid[j][i], grid[j][i + 1], grid[j + 1][i + 1], grid[j + 1][i]))
             for loop, (ii, jj) in zip(f.loops, ((i, j), (i + 1, j), (i + 1, j + 1), (i, j + 1))):
-                loop[uv].uv = (seg[ii] / seg[-1], jj / rows)
-    me = bpy.data.meshes.new("Throw")
+                loop[uv].uv = (seg[ii] * I, tl * jj / rows * I)     # (a meter of cloth to a UV unit)
+    me = bpy.data.meshes.new("Blanket")
     bm.to_mesh(me)
     bm.free()
     for p in me.polygons:
         p.use_smooth = True
-    o = bpy.data.objects.new("Throw", me)
+    o = bpy.data.objects.new("Blanket", me)
     bpy.context.scene.collection.objects.link(o)
-    m = fabric_material("Throw", "kilim.png", (seg[-1] / 10.0, 1.0), sheen=0.12)
-    wool(m, (seg[-1] / WOOL_REPEAT, tl / WOOL_REPEAT))
+    m = fabric_material("Blanket", BLANKET_PRINT, BLANKET_REPEAT, sheen=0.12)
+    wool(m, WOOL_REPEAT)
     o.data.materials.append(m)
     # (normals up/out, so its thickness builds outward off the coverlet)
     if o.data.polygons[len(o.data.polygons) // 2].normal.z < 0:
@@ -533,42 +518,34 @@ def folded_blanket(cov):
         bm.free()
     finish_cloth(o, THROW_THICK, up=True)
     o.modifiers["Smooth"].levels = o.modifiers["Smooth"].render_levels = 2    # (a soft folded edge)
-    fringe(hems, tl, top - r)
+    fringe(hems, tl, top - r, m)
     return o
 
 
 def wool(m, repeat):
-    """Real wool under a printed material: Poly Haven's Caban (CC0), its
-    nap and weave as a normal map and its shading darkening the color a
-    little, at its own scale (WOOL_REPEAT inches)."""
+    """Real wool's relief under the blanket's pattern: Poly Haven's Caban
+    (CC0) normal map, at the sample's own size (WOOL_REPEAT inches): a
+    second image, but not a color one, so the pattern stays the one image
+    a room swaps."""
     nt = m.node_tree
     bsdf = nt.nodes["Principled BSDF"]
     tc = nt.nodes["Texture Coordinate"]
     mp = nt.nodes.new("ShaderNodeMapping")
-    mp.inputs["Scale"].default_value = (repeat[0], repeat[1], 1.0)
+    mp.inputs["Scale"].default_value = (1 / (repeat * kit.INCH), 1 / (repeat * kit.INCH), 1.0)
     nt.links.new(tc.outputs["UV"], mp.inputs["Vector"])
-
-    def img(name, color):
-        t = nt.nodes.new("ShaderNodeTexImage")
-        t.image = bpy.data.images.load(os.path.join(TEXTURES, name), check_existing=True)
-        t.image.colorspace_settings.name = "sRGB" if color else "Non-Color"
-        nt.links.new(mp.outputs["Vector"], t.inputs["Vector"])
-        return t
+    t = nt.nodes.new("ShaderNodeTexImage")
+    t.name = t.label = "Wool relief"
+    t.image = bpy.data.images.load(os.path.join(TEXTURES, "caban_nor_gl_1k.jpg"), check_existing=True)
+    t.image.colorspace_settings.name = "Non-Color"
+    nt.links.new(mp.outputs["Vector"], t.inputs["Vector"])
     nm = nt.nodes.new("ShaderNodeNormalMap")
     nm.inputs["Strength"].default_value = 1.2
-    nt.links.new(img("caban_nor_gl_1k.jpg", False).outputs["Color"], nm.inputs["Color"])
+    nt.links.new(t.outputs["Color"], nm.inputs["Color"])
     nt.links.new(nm.outputs["Normal"], bsdf.inputs["Normal"])
-    mix = nt.nodes.new("ShaderNodeMix")
-    mix.data_type, mix.blend_type = "RGBA", "MULTIPLY"
-    mix.inputs["Factor"].default_value = 0.35
-    base = bsdf.inputs["Base Color"].links[0].from_socket
-    nt.links.new(base, mix.inputs["A"])
-    nt.links.new(img("caban_ao_1k.jpg", True).outputs["Color"], mix.inputs["B"])
-    nt.links.new(mix.outputs["Result"], bsdf.inputs["Base Color"])
     bsdf.inputs["Sheen Roughness"].default_value = 0.6
 
 
-def fringe(hems, width, top_of_hang):
+def fringe(hems, width, top_of_hang, mat):
     """A short wool fringe along both hanging hems: strands about every
     FRINGE[1] inches, FRINGE[0] long, a little uneven."""
     import bmesh
@@ -594,18 +571,12 @@ def fringe(hems, width, top_of_hang):
             for i in range(4):
                 j = (i + 1) % 4
                 bm.faces.new((ring0[i], ring0[j], ring1[j], ring1[i]))
-    me = bpy.data.meshes.new("Throw fringe")
+    me = bpy.data.meshes.new("Blanket fringe")
     bm.to_mesh(me)
     bm.free()
-    f = bpy.data.objects.new("Throw fringe", me)
+    f = bpy.data.objects.new("Blanket fringe", me)
     bpy.context.scene.collection.objects.link(f)
-    fm = bpy.data.materials.new("Fringe")
-    fm.use_nodes = True
-    b = fm.node_tree.nodes["Principled BSDF"]
-    b.inputs["Base Color"].default_value = kit.hexcolor("#c9ae7c") + (1.0,)
-    b.inputs["Roughness"].default_value = 0.95
-    b.inputs["Sheen Weight"].default_value = 0.5
-    f.data.materials.append(fm)
+    f.data.materials.append(mat)            # (the blanket's: swap its pattern and the fringe follows)
     return f
 
 
@@ -619,26 +590,28 @@ def relax(o, factor=0.5, repeat=4):
 
 
 def bedding(frame, mat):
-    """Made up after the client's picture (2026-11-11): Morris's Strawberry
-    Thief over the headboard, an indigo block-print coverlet tucked in
-    between the mattress and the rails, a kilim throw across the foot, and
-    two pillows stacked flat at the head of each side."""
+    """Made up as a designer would (Sketchup-tools' notes and its
+    DESIGN_PRINCIPLES.md "Every bed, made simply", 2026-11-14): a coverlet
+    in a Morris print falling about 14" over the sides and the foot, over
+    the rails, one uncut sheet folding over the foot's corners; a plain white top sheet turned down
+    about 10" over its head end; a wool plaid blanket folded across the
+    foot, its ends falling over the sides; white pillows stacked two by two
+    at the head; a checked cover over the headboard. Each its own object
+    and material."""
     hb = [o for o in frame if o.name.startswith(("Headboard", "Head post"))]
     posts = [o for o in frame if o.name.startswith("Head post")]
-    # the coverlet: only the mattress (and the head posts) stop it, so its
-    # edges fall straight down inside the rails, tucked in
+    # what the coverlet falls over: the mattress, the rails and the foot's legs
+    over = [o for o in frame if o.name.startswith(("Side rail", "Foot rail", "Foot leg", "Head post"))
+            and "peg" not in o.name and "tenon" not in o.name and "bolt" not in o.name]
     cw, cl_ = COVERLET
-    cov = cloth("Coverlet", (cw, cl_), (W / 2, L - POST - 1.0 - cl_ / 2, MAT_TOP + 1.0),
-                fabric_material("Coverlet", "blockprint.png", (cw / 6.0, cl_ / 6.0)), posts + [mat], frames=80, mass=0.5,
-                bend=0.8, pin_head=3.0, foot_corners=COVERLET_CORNER)
-    finish_cloth(cov, 0.3)          # (its thickness first: the throw fell through a bare sheet)
-    # the throw: a blanket folded in thirds, shaped rather than simulated
-    # (simulated, it crumpled and curled at its ends like a torn runner)
+    y_head = COVERLET_HEAD                                    # its head edge, under the pillows' front
+    cov = cloth("Coverlet", (cw, cl_), (W / 2, y_head - cl_ / 2, MAT_TOP + 1.0),
+                fabric_material("Coverlet", COVERLET_PRINT, COVERLET_REPEAT), posts + over + [mat], frames=90,
+                mass=0.6, bend=0.8, pin_head=3.0, foot_corners=COVERLET_CORNER, self_collide=True)
+    turndown = top_sheet(cov, y_head)
+    finish_cloth(cov, 0.3)          # (its thickness first: the blanket fell through a bare sheet)
     folded_blanket(cov)
-    span = HB_SPAN - 0.75
-    length = (HB_TOP[1] - MAT_TOP) + (HB_TOP[1] - HB_BOTTOM[1]) + 6.0
-    headboard_cover(hb + [mat], fabric_material("Headboard cover", "morris-strawberry-thief.jpg",
-                                               (span / STRAWBERRY_REPEAT[0], length / STRAWBERRY_REPEAT[1])))
+    headboard_cover(hb + [mat], fabric_material("Headboard cover", HEADBOARD_PRINT, HEADBOARD_REPEAT))
     # pillows: two stacked flat at the head of each side
     pm = pillow_material()
     w, d, t = PILLOW
@@ -648,22 +621,52 @@ def bedding(frame, mat):
         for j in range(PILLOW_STACK):
             pillow("Pillow %d-%d" % (k, j), x + side * 0.4 * j, y + 0.6 * j, MAT_TOP + 0.5 + t * 0.42 + j * t * 0.78,
                    2.0 + 2.0 * j, seed=3 * k + j, mat=pm)
+    return turndown
+
+
+def top_sheet(cov, y_head):
+    """The top sheet's turndown: a plain white band TURNDOWN inches deep
+    folded back over the coverlet's head edge, following the coverlet over
+    the top and down the sides (made from the draped coverlet's own faces,
+    lifted clear of it), as a sheet turned down over a coverlet lies."""
+    import bmesh
+    I = kit.INCH
+    bm = bmesh.new()
+    bm.from_mesh(cov.data)
+    mw = cov.matrix_world
+    keep = [f for f in bm.faces if y_head - TURNDOWN <= (mw @ f.calc_center_median()).y / I]
+    bmesh.ops.delete(bm, geom=[f for f in bm.faces if f not in keep], context="FACES")
+    bmesh.ops.delete(bm, geom=[v for v in bm.verts if not v.link_faces], context="VERTS")
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    if bm.faces and sum(f.normal.z for f in bm.faces) < 0:
+        bmesh.ops.reverse_faces(bm, faces=bm.faces[:])
+    bm.normal_update()
+    for v in bm.verts:                                   # clear of the coverlet's own thickness
+        v.co += v.normal * 0.18 * I
+    me = bpy.data.meshes.new("Top sheet")
+    bm.to_mesh(me)
+    bm.free()
+    o = bpy.data.objects.new("Top sheet", me)
+    o.matrix_world = mw.copy()
+    bpy.context.scene.collection.objects.link(o)
+    o.data.materials.clear()
+    o.data.materials.append(fabric_material("Top sheet", "percale.png", PERCALE_REPEAT, sheen=0.35, roughness=0.9))
+    for p in o.data.polygons:
+        p.use_smooth = True
+    finish_cloth(o, 0.12, up=True)
+    return o
 
 
 # the export (tools/blender/deliver.py): every version of the bed, for other repos' rooms
 MODEL = os.path.join(HERE, "model")
 VERSIONS = {        # file stem: (model.py's option, its bedding collections)
-    "bed-frame-made-up": ("--bedding", ("Bedding: Strawberry Thief", "Bedding: coverlet, throw and pillows")),
+    "bed-frame-made-up": ("--bedding", ("Bedding: headboard cover", "Bedding: coverlet, top sheet, blanket and pillows")),
     "bed-frame-bare": (None, ()),
     "bed-frame-quilt": ("--quilt", ("Bedding: quilt",)),
 }
 MATERIAL_NAMES = [("Vanity Oak", "oak fumed"), ("Vanity Peg", "oak fumed pegs"), ("Vanity Pine_dark", "2x4 pine stained dark"),
-                  ("Vanity Pine", "2x4 pine"), ("Vanity Poplar", "poplar"), ("Vanity Brass", "brass aged"),
-                  ("Vanity Ticking", "mattress sheet"), ("Headboard cover", "Strawberry Thief"), ("Quilt", "quilt"),
-                  ("Coverlet", "block-print coverlet"), ("Throw", "kilim wool"), ("Fringe", "wool fringe"),
-                  ("Pillowcase", "pillowcase")]
-
-
+                  ("Vanity Pine", "2x4 pine"), ("Vanity Poplar", "poplar"), ("Vanity Brass", "brass aged")]
+# (the textiles are named for what they are, "Bed coverlet", "Bed blanket": a room swaps their patterns)
 MAT_FOOT_CORNERS = [(RAIL_IN + CLEAR / 2, FOOT_IN + CLEAR / 2), (W - RAIL_IN - CLEAR / 2, FOOT_IN + CLEAR / 2)]
 
 
@@ -749,7 +752,7 @@ def main():
     if a.no_render:
         return
     lo, hi = kit.bounds()
-    mat = mattress("#1c2c4a" if a.bedding else "#ece8df")
+    mat = mattress()
     if a.bedding:
         bedding(list(kit.OBJS), mat)
     elif a.quilt:

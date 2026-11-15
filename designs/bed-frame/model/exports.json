@@ -1,7 +1,7 @@
 {
  "bed-frame-bare": {
   "about": "",
-  "change": "the coverlet's foot corners sewn after the drape, so no black slit shows where the flaps met (Sketchup-tools' notes); the export test checks it; cloth thickness left live",
+  "change": "made up as a designer would: a Morris coverlet falling 14\" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10\", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes",
   "checked": {
    "failed": [],
    "passed": [
@@ -14,8 +14,9 @@
     "every mesh's matrix the identity",
     "objects and meshes named 'Bed ...'",
     "9 materials named 'Bed ...'",
-    "0 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15a",
+    "1 textiles with one Pattern image, a Repeat mapping and no hue nodes",
+    "1 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-15b",
     "collections Bed frame, Bed mattress",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
@@ -92,9 +93,10 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed blockprint.png",
-   "sketchup/Bed kilim.png",
-   "sketchup/Bed morris-strawberry-thief.jpg"
+   "sketchup/Bed check.png",
+   "sketchup/Bed morris-strawberry-thief-print.jpg",
+   "sketchup/Bed percale.png",
+   "sketchup/Bed plaid.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-bare.blend",
@@ -548,7 +550,9 @@
    42.571,
    60.125
   ],
-  "images": [],
+  "images": [
+   "Bed percale.png"
+  ],
   "lo_in": [
    -32.438,
    -42.571,
@@ -569,9 +573,9 @@
   "prefix": "Bed",
   "sewn": {},
   "sha256": {
-   "bed-frame-bare.blend": "642634c57d2bd8d4667c76bf0f9b968a9a60f099bf04b79f140b40f1eb88c50c",
-   "bed-frame-bare.glb": "2a6a339456f6cff7801e36819b343d307f9c96c3e086613fd44315bb54e6b2f1",
-   "sketchup/bed-frame-bare.dae": "4907df2db9f7185f46a4276e9baa1dd03eaae31f35909c8b339e86767ecf2c88"
+   "bed-frame-bare.blend": "914b38cc7dbe2ab7ee70db60725e76273ee1fe38e98763b8608a83907bc9d63d",
+   "bed-frame-bare.glb": "fd8db1f48bf087a52c6190be3c527fd4756128c98faa276a164f0274fb9e981c",
+   "sketchup/bed-frame-bare.dae": "e5d83b7814802cd539057fcc6d11a28bab5f0fe13d6ae8193d6e4c595378227d"
   },
   "size_in": [
    64.875,
@@ -579,17 +583,26 @@
    60.125
   ],
   "tall_in": 50.0,
+  "textiles": {
+   "Bed mattress sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   }
+  },
   "triangles": 4912,
   "triangles_render": 4912,
-  "version": "2026-11-15a"
+  "version": "2026-11-15b"
  },
  "bed-frame-made-up": {
   "about": "",
-  "change": "the coverlet's foot corners sewn after the drape, so no black slit shows where the flaps met (Sketchup-tools' notes); the export test checks it; cloth thickness left live",
+  "change": "made up as a designer would: a Morris coverlet falling 14\" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10\", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes",
   "checked": {
    "failed": [],
    "passed": [
-    "size 64.875 x 85.143 x 60.125 in (exported [64.875, 85.143, 60.125])",
+    "size 71.137 x 89.963 x 60.125 in (exported [71.137, 89.963, 60.125])",
     "bottom at z 0.0000 in",
     "frame footprint centered at (-0.000, 0.000) in",
     "frame 64.875 x 85.143 x 60.125 in (the design's sizes: [64.875, 85.0625, 60.125])",
@@ -598,15 +611,16 @@
     "every mesh's matrix the identity",
     "objects and meshes named 'Bed ...'",
     "14 materials named 'Bed ...'",
+    "6 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "5 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15a",
-    "collections Bed frame, Bed mattress, Bedding: Strawberry Thief, Bedding: coverlet, throw and pillows",
+    "every object tagged design_render_version=2026-11-15b",
+    "collections Bed frame, Bed mattress, Bedding: coverlet, top sheet, blanket and pillows, Bedding: headboard cover",
     "'Bed coverlet': 0 open edges within 2\" of its corners above the hem",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
    "size_in": [
-    64.875,
-    85.143,
+    71.137,
+    89.963,
     60.125
    ]
   },
@@ -675,23 +689,25 @@
    "Bed mattress": [
     "Bed mattress"
    ],
-   "Bedding: Strawberry Thief": [
-    "Bed headboard cover"
-   ],
-   "Bedding: coverlet, throw and pillows": [
+   "Bedding: coverlet, top sheet, blanket and pillows": [
+    "Bed blanket",
+    "Bed blanket fringe",
     "Bed coverlet",
     "Bed pillow 0-0",
     "Bed pillow 0-1",
     "Bed pillow 1-0",
     "Bed pillow 1-1",
-    "Bed throw",
-    "Bed throw fringe"
+    "Bed top sheet"
+   ],
+   "Bedding: headboard cover": [
+    "Bed headboard cover"
    ]
   },
   "dae_textures": [
-   "sketchup/Bed blockprint.png",
-   "sketchup/Bed kilim.png",
-   "sketchup/Bed morris-strawberry-thief.jpg"
+   "sketchup/Bed check.png",
+   "sketchup/Bed morris-strawberry-thief-print.jpg",
+   "sketchup/Bed percale.png",
+   "sketchup/Bed plaid.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-made-up.blend",
@@ -1120,52 +1136,28 @@
    ],
    "overhang": [
     [
-     -31.693,
-     -27.323
+     -34.803,
+     -45.0
     ],
     [
-     -31.654,
-     -31.496
+     -34.173,
+     -45.63
     ],
     [
-     -31.614,
-     -32.559
+     29.449,
+     -47.402
     ],
     [
-     -30.591,
-     -41.102
+     36.024,
+     -41.85
     ],
     [
-     -21.811,
-     -41.142
+     36.339,
+     -40.787
     ],
     [
-     -20.591,
-     -41.142
-    ],
-    [
-     30.591,
-     -41.102
-    ],
-    [
-     31.535,
-     -33.78
-    ],
-    [
-     31.654,
-     -21.85
-    ],
-    [
-     31.654,
-     -17.559
-    ],
-    [
-     30.512,
-     37.598
-    ],
-    [
-     30.472,
-     38.858
+     31.811,
+     18.346
     ],
     [
      28.858,
@@ -1188,19 +1180,11 @@
      41.811
     ],
     [
-     -30.472,
-     38.819
+     -31.811,
+     18.701
     ],
     [
-     -30.551,
-     37.598
-    ],
-    [
-     -30.591,
-     36.339
-    ],
-    [
-     -31.614,
+     -33.74,
      -14.016
     ]
    ]
@@ -1226,29 +1210,29 @@
   ],
   "front": "Bed front",
   "hi_in": [
-   32.437,
+   36.35,
    42.571,
    60.125
   ],
   "images": [
-   "Bed blockprint.png",
-   "Bed caban_ao_1k.jpg",
    "Bed caban_nor_gl_1k.jpg",
-   "Bed kilim.png",
-   "Bed morris-strawberry-thief.jpg"
+   "Bed check.png",
+   "Bed morris-strawberry-thief-print.jpg",
+   "Bed percale.png",
+   "Bed plaid.png"
   ],
   "lo_in": [
-   -32.438,
-   -42.571,
+   -34.786,
+   -47.392,
    0.0
   ],
   "materials": [
    "Bed 2x4 pine",
    "Bed 2x4 pine stained dark",
-   "Bed Strawberry Thief",
-   "Bed block-print coverlet",
+   "Bed blanket",
    "Bed brass aged",
-   "Bed kilim wool",
+   "Bed coverlet",
+   "Bed headboard cover",
    "Bed mattress sheet",
    "Bed oak fumed grain x",
    "Bed oak fumed grain y",
@@ -1256,9 +1240,9 @@
    "Bed oak fumed pegs grain x",
    "Bed pillowcase",
    "Bed poplar",
-   "Bed wool fringe"
+   "Bed top sheet"
   ],
-  "objects": 68,
+  "objects": 69,
   "prefix": "Bed",
   "sewn": {
    "Bed coverlet": [
@@ -1273,23 +1257,67 @@
    ]
   },
   "sha256": {
-   "bed-frame-made-up.blend": "043bd300188e68fbe4eb9116b39368ad3f07435e7e874236eb5422cb88863359",
-   "bed-frame-made-up.glb": "a2e881622cc1f06e99a2f8ef631de02851765fb8e39be392afa43191e6db295c",
-   "sketchup/bed-frame-made-up.dae": "1cc68db8592323712df49f8c1ec5ae36be24811498603c4991304f5d2b4bbf93"
+   "bed-frame-made-up.blend": "6216ac7f74d4ef6e82387c546199828353971ba61a2fd8c12f990cb6c0c4af53",
+   "bed-frame-made-up.glb": "a9670b025a825ae3882a5d672b4cd5d9b5d4c072c2d5971e7a875879a10ac6e4",
+   "sketchup/bed-frame-made-up.dae": "050ffc1a1de9adc0b9fa24a8a4048c51f9733100796367c0af94d1bb73e956e1"
   },
   "size_in": [
-   64.875,
-   85.143,
+   71.137,
+   89.963,
    60.125
   ],
   "tall_in": 50.0,
-  "triangles": 70784,
-  "triangles_render": 359552,
-  "version": "2026-11-15a"
+  "textiles": {
+   "Bed blanket": {
+    "pattern": "plaid.png",
+    "repeat_in": [
+     8.0,
+     8.0
+    ]
+   },
+   "Bed coverlet": {
+    "pattern": "morris-strawberry-thief-print.jpg",
+    "repeat_in": [
+     18.0,
+     19.6
+    ]
+   },
+   "Bed headboard cover": {
+    "pattern": "check.png",
+    "repeat_in": [
+     4.0,
+     4.0
+    ]
+   },
+   "Bed mattress sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   },
+   "Bed pillowcase": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   },
+   "Bed top sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   }
+  },
+  "triangles": 72232,
+  "triangles_render": 365344,
+  "version": "2026-11-15b"
  },
  "bed-frame-quilt": {
   "about": "",
-  "change": "the coverlet's foot corners sewn after the drape, so no black slit shows where the flaps met (Sketchup-tools' notes); the export test checks it; cloth thickness left live",
+  "change": "made up as a designer would: a Morris coverlet falling 14\" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10\", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes",
   "checked": {
    "failed": [],
    "passed": [
@@ -1302,8 +1330,9 @@
     "every mesh's matrix the identity",
     "objects and meshes named 'Bed ...'",
     "10 materials named 'Bed ...'",
-    "0 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15a",
+    "2 textiles with one Pattern image, a Repeat mapping and no hue nodes",
+    "2 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-15b",
     "collections Bed frame, Bed mattress, Bedding: quilt",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
@@ -1383,9 +1412,11 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed blockprint.png",
-   "sketchup/Bed kilim.png",
-   "sketchup/Bed morris-strawberry-thief.jpg"
+   "sketchup/Bed check.png",
+   "sketchup/Bed morris-strawberry-thief-print.jpg",
+   "sketchup/Bed percale.png",
+   "sketchup/Bed plaid.png",
+   "sketchup/Bed quilt.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-quilt.blend",
@@ -1912,7 +1943,10 @@
    42.571,
    60.125
   ],
-  "images": [],
+  "images": [
+   "Bed percale.png",
+   "Bed quilt.png"
+  ],
   "lo_in": [
    -32.438,
    -42.571,
@@ -1934,9 +1968,9 @@
   "prefix": "Bed",
   "sewn": {},
   "sha256": {
-   "bed-frame-quilt.blend": "c36679ebfb7267e98d89446d404bbce6b44d9c999db8b0b626f903c3198b3874",
-   "bed-frame-quilt.glb": "ba9ebbbfe7000fd154ea12935ada21d8b470c5f7f146cf84b4c0d56c6be27b69",
-   "sketchup/bed-frame-quilt.dae": "85e782cda9208c9ecc22a03cb140f8706c5fed428b2b1ae300b7748bbebcc87c"
+   "bed-frame-quilt.blend": "6ff493fd887eb9a4fd848480846de823ea36aca466ff8a15a55c72f7aa3c9c6c",
+   "bed-frame-quilt.glb": "c44b43039ebca23d33936a5117cf641efb008e79e61362777eed04698798ae62",
+   "sketchup/bed-frame-quilt.dae": "7ef2fc031df5fca81816a804844f87af626a7958faef04f9e387fbe133c60f30"
   },
   "size_in": [
    64.875,
@@ -1944,8 +1978,24 @@
    60.125
   ],
   "tall_in": 50.0,
+  "textiles": {
+   "Bed mattress sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   },
+   "Bed quilt": {
+    "pattern": "quilt.png",
+    "repeat_in": [
+     18.0,
+     18.0
+    ]
+   }
+  },
   "triangles": 21260,
   "triangles_render": 70304,
-  "version": "2026-11-15a"
+  "version": "2026-11-15b"
  }
 }

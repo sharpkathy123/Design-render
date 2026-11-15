@@ -16,3 +16,8 @@
   Cilliers), CC0, https://polyhaven.com/a/caban, downloaded 2026-11-11.
   The sample is 274 mm (10 3/4") square. Only its relief and shading are
   used, under the kilim's own colors, for the folded blanket.
+- `morris-strawberry-thief-print.jpg` (2026-11-15): the Strawberry Thief repeat above with its color
+  deepened in the image (saturation 1.25, value 0.85, Pillow), so the material needs no hue nodes.
+- `plaid.png`, `check.png`, `quilt.png`, `percale.png` (2026-11-15): our own, drawn by
+  `tools/make_fabric.py` (the blanket's wool plaid, the headboard cover's check, the quilt's pieced
+  squares, plain white sheeting).

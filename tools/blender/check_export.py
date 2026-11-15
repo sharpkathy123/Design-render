@@ -16,6 +16,8 @@ and WITHOUT bpy.context.view_layer.update() measure it and assert:
   material and image named with the prefix, every object tagged with the
   version, every image packed, the named collections there;
 - the front empty at the middle of the front, on the floor, pointing -y;
+- each textile has one "Pattern" image, a "Repeat" mapping and no hue
+  nodes (a room swaps a print by changing one image);
 - a sewn cloth (the coverlet) has no open edge within 2" of the corners
   given, above its hem: cut open there, its flaps showed a black slit.
 
@@ -81,6 +83,17 @@ def main():
     mats = {s.material for o in meshes for s in o.material_slots if s.material}
     bad = [m.name for m in mats if not m.name.startswith(prefix + " ")]
     ok(not bad, "%d materials named '%s ...'%s" % (len(mats), prefix, (": not " + ", ".join(bad)) if bad else ""))
+    # each textile: one image a room swaps (named "Pattern", through a "Repeat" mapping), no hue nodes
+    bad = []
+    for m in mats:
+        if "pattern" not in m:
+            continue
+        nodes = m.node_tree.nodes
+        pats = [n for n in nodes if n.type == "TEX_IMAGE" and n.name == "Pattern"]
+        if len(pats) != 1 or "Repeat" not in nodes or any(n.type == "HUE_SAT" for n in nodes):
+            bad.append(m.name)
+    ok(not bad, "%d textiles with one Pattern image, a Repeat mapping and no hue nodes%s"
+       % (len([m for m in mats if "pattern" in m]), (": not " + ", ".join(bad)) if bad else ""))
     imgs = [i for i in bpy.data.images if i.source == "FILE"]
     bad = [i.name for i in imgs if not i.packed_file or not i.name.startswith(prefix + " ")]
     ok(not bad, "%d images packed and named '%s ...'%s" % (len(imgs), prefix, (": not " + ", ".join(bad)) if bad else ""))
@@ -92,12 +105,12 @@ def main():
         if o is None:
             fails.append("no '%s' to check its corners" % name)
             continue
-        vz = [v.co.z / INCH for v in o.data.vertices]
-        hem = min(vz) + 0.5
         count = {}
         for p in o.data.polygons:
             for k in p.edge_keys:
                 count[k] = count.get(k, 0) + 1
+        bz = sorted(o.data.vertices[i].co.z / INCH for (a, b), c in count.items() if c == 1 for i in (a, b))
+        hem = bz[len(bz) // 2] + 1.0          # its hem's height along the sides: a corner hanging lower is fine
         open_ = 0
         for (a, b), c in count.items():
             if c != 1:
