@@ -120,13 +120,14 @@ def readme(name, share, cfg, recs, order, version, change, prefix, lib):
           "`depth_in` property is how far behind it the back is. Place by the front or by the back without measuring." % r0["front"],
           "- Every transform applied, no parents: each mesh's matrix is the identity. (Blender doesn't save "
           "`matrix_world`: an object appended without `view_layer.update()` reads as the identity, so an object "
-          "with a transform of its own lands in the wrong place; these can't.) Modifiers applied, except any "
-          "smoothing (Subdivision), left at 0 in the viewport and on in renders; the triangle counts above are both "
-          "ways. The empty is the one object with a transform: read it after an update.",
+          "with a transform of its own lands in the wrong place; these can't.) Modifiers applied, except two kept "
+          "live: a cloth's thickness (Solidify, so its sheet's own edges can be checked for open seams) and any "
+          "smoothing (Subdivision, at 0 in the viewport and on in renders); the triangle counts above are both "
+          "ways, thickness included. Sizes are of the meshes, without the cloth's thickness (under 1/2\"). The empty is the one object with a transform: read it after an update.",
           "- Every image packed into the .blend.",
           "- Checked on every export (`tools/blender/check_export.py`): a fresh Blender appends every object into an "
           "empty scene without `view_layer.update()`, and the size, floor, centering, facing, names, version tags, "
-          "packing and collections are asserted.", "",
+          "packing and collections are asserted, and a sewn cloth (the coverlet) has no open edge at its corners.", "",
           "## Placing it\n",
           "In Blender: File > Append, the file, `Object`, and select every `%s ...` object (or `Collection`, and the "
           "collections you want).\n" % prefix,

@@ -52,6 +52,9 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 ![A head post's pyramid cap, and the top rail's through-tenon and pegs](renders/bed-frame-head.jpg)
 *A head post's pyramid cap, and the top rail's through-tenon and pegs*
 
+![The coverlet's foot corner: before, cut open with a slit; after, its flaps sewn together after the drape](renders/bed-frame-coverlet-corner-before-after.jpg)
+*The coverlet's foot corner: before, cut open with a slit; after, its flaps sewn together after the drape*
+
 ![The foot's corner, with its pegged through-tenon and brass bolt cover](renders/bed-frame-footend.jpg)
 *The foot's corner, with its pegged through-tenon and brass bolt cover*
 
@@ -88,4 +91,4 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
   to match (BUILD.md, step 15).
 
 ---
-Updated November 12, 2026. Made with [Design-render](../../README.md); the model and its sources are in [designs/bed-frame](../../designs/bed-frame/).
+Updated November 15, 2026. Made with [Design-render](../../README.md); the model and its sources are in [designs/bed-frame](../../designs/bed-frame/).

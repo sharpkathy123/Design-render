@@ -181,23 +181,24 @@ def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=
     so the sides and the foot tuck in flat instead of folding out over the
     rails at the corners."""
     I = kit.INCH
-    bpy.ops.mesh.primitive_grid_add(x_subdivisions=max(8, int(size[0] / res)),
-                                    y_subdivisions=max(8, int(size[1] / res)), size=1.0)
-    q = bpy.context.active_object
-    q.name = name
-    q.scale = (size[0] * I, size[1] * I, 1.0)
-    bpy.ops.object.transform_apply(scale=True)
+    seams = []
+    if foot_corners:
+        # its own grid, the same spacing both ways and the corner a whole
+        # number of squares, so each corner's two cut edges pair up point
+        # for point and can be sewn together after the drape (sew_corners)
+        n = max(2, round(foot_corners / res))
+        sp = foot_corners / n
+        nx, ny = round(size[0] / sp), round(size[1] / sp)
+        q, seams = corner_cut_grid(name, nx, ny, sp, n)
+    else:
+        bpy.ops.mesh.primitive_grid_add(x_subdivisions=max(8, int(size[0] / res)),
+                                        y_subdivisions=max(8, int(size[1] / res)), size=1.0)
+        q = bpy.context.active_object
+        q.name = name
+        q.scale = (size[0] * I, size[1] * I, 1.0)
+        bpy.ops.object.transform_apply(scale=True)
     q.location = tuple(c * I for c in center)
     q.data.materials.append(mat)
-    if foot_corners:
-        import bmesh
-        bm = bmesh.new()
-        bm.from_mesh(q.data)
-        hx, hy, c = size[0] / 2 * I, size[1] / 2 * I, foot_corners * I
-        bmesh.ops.delete(bm, geom=[v for v in bm.verts if abs(v.co.x) > hx - c + 1e-6 and v.co.y < -hy + c - 1e-6],
-                         context="VERTS")
-        bm.to_mesh(q.data)
-        bm.free()
     if pin_head:
         vg = q.vertex_groups.new(name="pin")
         top = max(v.co.y for v in q.data.vertices)
@@ -230,9 +231,84 @@ def cloth(name, size, center, mat, collide, res=1.25, frames=70, mass=0.5, bend=
     sc.frame_set(1)
     for o in collide:
         o.modifiers.remove(o.modifiers["Collision"])
+    if seams and os.environ.get("BED_NO_SEW") != "1":       # (BED_NO_SEW=1: the old slit, for a before picture)
+        sew_corners(q, seams)
     for p in q.data.polygons:
         p.use_smooth = True
     return q
+
+
+def corner_cut_grid(name, nx, ny, sp, n):
+    """A flat grid nx by ny squares of sp inches, centered, its UVs 0..1,
+    with an n-square corner cut out at each foot (-y) corner. Returns the
+    object and, for each corner, its two cut edges as vertex indices from
+    the shared inner corner outward: (foot flap's, side flap's)."""
+    import bmesh
+    I = kit.INCH
+    hx, hy = nx * sp / 2, ny * sp / 2
+    bm = bmesh.new()
+    uv = bm.loops.layers.uv.new()
+    vs = {}
+    for i in range(nx + 1):
+        for j in range(ny + 1):
+            if j < n and (i < n or i > nx - n):            # inside a cut corner
+                continue
+            vs[(i, j)] = bm.verts.new(((i * sp - hx) * I, (j * sp - hy) * I, 0.0))
+    for i in range(nx):
+        for j in range(ny):
+            k = [(i, j), (i + 1, j), (i + 1, j + 1), (i, j + 1)]
+            if all(c in vs for c in k) and not (j < n and (i < n or i >= nx - n)):
+                f = bm.faces.new([vs[c] for c in k])
+                for lp, c in zip(f.loops, k):
+                    lp[uv].uv = (c[0] / nx, c[1] / ny)
+    bm.verts.index_update()
+    seams = []
+    for i0, step in ((n, -1), (nx - n, 1)):            # the left corner, the right
+        foot = [vs[(i0, n - t)].index for t in range(n + 1)]          # down the foot flap's cut edge
+        side = [vs[(i0 + step * t, n)].index for t in range(n + 1)]   # out along the side flap's
+        seams.append((foot, side))
+    me = bpy.data.meshes.new(name)
+    bm.to_mesh(me)
+    bm.free()
+    o = bpy.data.objects.new(name, me)
+    bpy.context.scene.collection.objects.link(o)
+    bpy.context.view_layer.objects.active = o
+    return o, seams
+
+
+def sew_corners(q, seams, merge=1.25):
+    """Join each foot corner's two flaps after the drape (Sketchup-tools'
+    notes, 2026-11-14: cut open, they hung 7/8" apart and a black slit
+    showed): a strip of faces between the cut edges, point to point from
+    the fold down to the hem, and the points within `merge` inches of each
+    other (at the top of the fold) merged. The drape itself isn't moved."""
+    import bmesh
+    I = kit.INCH
+    bm = bmesh.new()
+    bm.from_mesh(q.data)
+    bm.verts.ensure_lookup_table()
+    uv = bm.loops.layers.uv.active
+    pairs = []
+    for foot, side in seams:
+        F = [bm.verts[i] for i in foot]
+        S = [bm.verts[i] for i in side]
+        pairs += list(zip(F[1:], S[1:]))
+        for k in range(len(F) - 1):
+            ring = [F[k], F[k + 1], S[k + 1]] + ([S[k]] if k else [])
+            f = bm.faces.new(ring)
+            if uv:
+                for lp in f.loops:                          # each corner's own UV, from a face it's on
+                    other = next((l for l in lp.vert.link_loops if l.face is not f), None)
+                    if other:
+                        lp[uv].uv = other[uv].uv
+    for a, b in pairs:                                      # the top of the fold: one point, not two
+        if a.is_valid and b.is_valid and (a.co - b.co).length < merge * I:
+            bmesh.ops.pointmerge(bm, verts=[a, b], merge_co=(a.co + b.co) / 2)
+    bmesh.ops.dissolve_degenerate(bm, dist=1e-6, edges=bm.edges[:])
+    bmesh.ops.recalc_face_normals(bm, faces=bm.faces[:])
+    bm.to_mesh(q.data)
+    bm.free()
+    q.data.update()
 
 
 def lay_on(top, under, gap):
@@ -588,6 +664,9 @@ MATERIAL_NAMES = [("Vanity Oak", "oak fumed"), ("Vanity Peg", "oak fumed pegs"),
                   ("Pillowcase", "pillowcase")]
 
 
+MAT_FOOT_CORNERS = [(RAIL_IN + CLEAR / 2, FOOT_IN + CLEAR / 2), (W - RAIL_IN - CLEAR / 2, FOOT_IN + CLEAR / 2)]
+
+
 def export_name(n):
     """The headboard's parts all start "headboard" (Sketchup-tools' notes:
     so a script can find them): "Bed headboard post L", "Bed headboard rail top"."""
@@ -611,7 +690,8 @@ def export(path, frame, mat, kind):
         coll[bedding_names[0]] = rest
     deliver.export(path, "bed-frame", "Bed", coll, frame=("Bed frame", "Bed mattress"), tall_in=50.0,
                    expect_frame_in=(W + 2 * PROUD, L, POST_BODY + CAP_RISE), object_names=export_name,
-                   material_names=MATERIAL_NAMES)
+                   material_names=MATERIAL_NAMES,
+                   sewn={"Coverlet": MAT_FOOT_CORNERS} if "Coverlet" in bpy.data.objects else None)
 
 
 def export_all():

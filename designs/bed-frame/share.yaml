@@ -19,6 +19,8 @@ renders:
     caption: From the foot
   - file: renders/bed-frame-head.jpg
     caption: A head post's pyramid cap, and the top rail's through-tenon and pegs
+  - file: renders/bed-frame-coverlet-corner-before-after.jpg
+    caption: "The coverlet's foot corner: before, cut open with a slit; after, its flaps sewn together after the drape"
   - file: renders/bed-frame-footend.jpg
     caption: The foot's corner, with its pegged through-tenon and brass bolt cover
 drawings:

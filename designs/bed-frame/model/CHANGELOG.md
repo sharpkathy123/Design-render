@@ -4,6 +4,7 @@ Newest first, one line per change. The newest line's name is the version
 (`model/VERSION`, and `o["design_render_version"]` on every object):
 add a line here before exporting again (`python3.11 designs/bed-frame/model.py --export-all`).
 
+- 2026-11-15a: the coverlet's foot corners sewn after the drape, so no black slit shows where the flaps met (Sketchup-tools' notes); the export test checks it; cloth thickness left live
 - 2026-11-12a: ready for other repos' rooms: checked in a fresh Blender, names prefixed, bedding in named collections, a quilt version, .glb and SketchUp .dae copies, a footprint drawing
 - 2026-11-11d: the folded blanket in real wool, with a fringe (commit d9178ab)
 - 2026-11-11c: a straight foot rail, so the support under the bed stays out of sight (commit 639a45c)

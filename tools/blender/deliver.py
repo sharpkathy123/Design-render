@@ -86,6 +86,9 @@ def _apply_modifiers(o):
         if m.type == "SUBSURF":
             m.levels = 0                      # (viewport and the .glb/.dae: the cage; renders: render_levels)
             continue
+        if m.type == "SOLIDIFY":
+            continue                          # (a cloth's thickness stays live: its sheet's own edges can be
+                                              # checked for open seams, which a solidified rim would hide)
         if m.type == "COLLISION":
             o.modifiers.remove(m)
             continue
@@ -104,23 +107,26 @@ def _bbox(objs):
 
 
 def _tris(objs, render=False):
-    """Triangles in the meshes (render=True: with the smoothing at its render level)."""
-    if not render:
-        return sum(sum(len(p.vertices) - 2 for p in o.data.polygons) for o in objs if o.type == "MESH")
+    """Triangles as shown (the live modifiers evaluated: a cloth's thickness,
+    its smoothing at 0 in the viewport); render=True: the smoothing at its
+    render level."""
     keep = {}
-    for o in objs:
-        for m in o.modifiers:
-            if m.type == "SUBSURF":
-                keep[(o.name, m.name)] = m.levels
-                m.levels = m.render_levels
+    if render:
+        for o in objs:
+            for m in o.modifiers:
+                if m.type == "SUBSURF":
+                    keep[(o.name, m.name)] = m.levels
+                    m.levels = m.render_levels
     dg = bpy.context.evaluated_depsgraph_get()
+    dg.update()
     n = 0
     for o in objs:
         if o.type != "MESH":
             continue
-        me = o.evaluated_get(dg).to_mesh()
+        ev = o.evaluated_get(dg)
+        me = ev.to_mesh()
         n += sum(len(p.vertices) - 2 for p in me.polygons)
-        o.evaluated_get(dg).to_mesh_clear()
+        ev.to_mesh_clear()
     for o in objs:
         for m in o.modifiers:
             if (o.name, m.name) in keep:
@@ -248,7 +254,7 @@ def start_all(model_dir):
 
 
 def export(path, design, prefix, collections, frame, about="", front_back="y", tall_in=None, expect_frame_in=None,
-           object_names=None, material_names=None):
+           object_names=None, material_names=None, sewn=None):
     """Save the scene's meshes as a version of the design (see the module's notes).
 
     collections: {"Bed frame": [objects], "Bedding: quilt": [...]}: every
@@ -263,6 +269,9 @@ def export(path, design, prefix, collections, frame, about="", front_back="y", t
         (before the prefix): the bed's headboard parts all "headboard ...".
     material_names: [(start, name)]: a material whose name starts with
         `start` is called `name` (the rest of its name kept: " grain x").
+    sewn: {object name: [(x, y), ...] inches}: a cloth whose sheet must have
+        no open edge within 2" of these corners above its hem (the bed's
+        coverlet at the mattress's foot corners: a slit showed, 2026-11-14).
     """
     version, change = changelog_version(design)
     path = os.path.abspath(path)
@@ -306,6 +315,7 @@ def export(path, design, prefix, collections, frame, about="", front_back="y", t
         o.data.transform(Matrix.Translation(shift))
         o.data.update()
     # 4. names, collections, the version, packed images
+    sewn_objs = {n: bpy.data.objects[n] for n in (sewn or {})}
     for o in objs:
         n = object_names(o.name) if object_names else o.name
         o.name = _named(prefix, n)
@@ -368,7 +378,9 @@ def export(path, design, prefix, collections, frame, about="", front_back="y", t
                collections={c: sorted(o.name for o in g) for c, g in groups.items()},
                materials=sorted(m.name for m in bpy.data.materials if m.users),
                images=sorted(i.name for i in bpy.data.images if i.users and i.source == "FILE"),
-               front=prefix + " front", prefix=prefix, tall_in=tall_in, frame=list(frame))
+               front=prefix + " front", prefix=prefix, tall_in=tall_in, frame=list(frame),
+               sewn={o.name: [[round(x + shift.x / INCH, 3), round(y + shift.y / INCH, 3)] for x, y in sewn[n]]
+                     for n, o in sewn_objs.items()})
     # the footprint: each frame part's top-view box (drawn in height order) and the rest's outline
     rec["footprint"] = dict(
         frame=sorted(([round(v, 3) for v in inch(a)[:2] + inch(b)[:2] + [inch(b)[2]]]

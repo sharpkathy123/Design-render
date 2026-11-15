@@ -9,7 +9,7 @@ bed-frame-made-up:
   - 85.1
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-12a (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15a (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-made-up/bed-frame-made-up.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
@@ -21,7 +21,7 @@ bed-frame-bare:
   - 85.1
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-12a (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15a (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-bare/bed-frame-bare.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
@@ -33,7 +33,7 @@ bed-frame-quilt:
   - 85.1
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-12a (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15a (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-quilt/bed-frame-quilt.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'

@@ -15,7 +15,9 @@ and WITHOUT bpy.context.view_layer.update() measure it and assert:
 - no parents, every mesh's matrix the identity, every object, mesh,
   material and image named with the prefix, every object tagged with the
   version, every image packed, the named collections there;
-- the front empty at the middle of the front, on the floor, pointing -y.
+- the front empty at the middle of the front, on the floor, pointing -y;
+- a sewn cloth (the coverlet) has no open edge within 2" of the corners
+  given, above its hem: cut open there, its flaps showed a black slit.
 
     python3.11 tools/blender/check_export.py <file.blend> '<the export record as JSON>'
 
@@ -85,6 +87,28 @@ def main():
     bad = [o.name for o in objs if o.get("design_render_version") != want["version"]]
     ok(not bad, "every object tagged design_render_version=%s%s" % (want["version"], (": not " + ", ".join(bad[:5])) if bad else ""))
     ok(sorted(coll_names) == sorted(want["collections"]), "collections %s" % ", ".join(sorted(coll_names)))
+    for name, corners in (want.get("sewn") or {}).items():
+        o = next((m for m in meshes if m.name == name), None)
+        if o is None:
+            fails.append("no '%s' to check its corners" % name)
+            continue
+        vz = [v.co.z / INCH for v in o.data.vertices]
+        hem = min(vz) + 0.5
+        count = {}
+        for p in o.data.polygons:
+            for k in p.edge_keys:
+                count[k] = count.get(k, 0) + 1
+        open_ = 0
+        for (a, b), c in count.items():
+            if c != 1:
+                continue
+            pa, pb = o.data.vertices[a].co / INCH, o.data.vertices[b].co / INCH
+            if min(pa.z, pb.z) <= hem:
+                continue
+            for cx, cy in corners:
+                if all(((p.x - cx) ** 2 + (p.y - cy) ** 2) ** 0.5 < 2.0 for p in (pa, pb)):
+                    open_ += 1
+        ok(open_ == 0, "'%s': %d open edges within 2\" of its corners above the hem" % (name, open_))
     fr = [o for o in objs if o.name == want["front"]]
     if fr:
         f = fr[0]

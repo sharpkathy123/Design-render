@@ -1,14 +1,14 @@
 <!-- Written by tools/model_card.py from exports.json, CHANGELOG.md and share.yaml: edit those. -->
 # Queen bed frame as a 3D model, for rendering rooms
 
-**Version 2026-11-12a:** ready for other repos' rooms: checked in a fresh Blender, names prefixed, bedding in named collections, a quilt version, .glb and SketchUp .dae copies, a footprint drawing ([VERSION](VERSION) has every file's sha256; [CHANGELOG](CHANGELOG.md)). Every object in the files carries it too, as `o["design_render_version"]`.
+**Version 2026-11-15a:** the coverlet's foot corners sewn after the drape, so no black slit shows where the flaps met (Sketchup-tools' notes); the export test checks it; cloth thickness left live ([VERSION](VERSION) has every file's sha256; [CHANGELOG](CHANGELOG.md)). Every object in the files carries it too, as `o["design_render_version"]`.
 
 
 ## The files
 
 | Version | Blender 4.5 | glTF (meters) | SketchUp (inches) | Size over everything, W x D x H | Triangles (viewport / render) |
 |---|---|---|---|---|---|
-| **Queen bed frame, made up** | [bed-frame-made-up.blend](bed-frame-made-up.blend) | [bed-frame-made-up.glb](bed-frame-made-up.glb) | [sketchup/bed-frame-made-up.dae](sketchup/bed-frame-made-up.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 70,556 / 358,640 |
+| **Queen bed frame, made up** | [bed-frame-made-up.blend](bed-frame-made-up.blend) | [bed-frame-made-up.glb](bed-frame-made-up.glb) | [sketchup/bed-frame-made-up.dae](sketchup/bed-frame-made-up.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 70,784 / 359,552 |
 | **Queen bed frame, bare** | [bed-frame-bare.blend](bed-frame-bare.blend) | [bed-frame-bare.glb](bed-frame-bare.glb) | [sketchup/bed-frame-bare.dae](sketchup/bed-frame-bare.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 4,912 / 4,912 |
 | **Queen bed frame, with a quilt over the headboard** | [bed-frame-quilt.blend](bed-frame-quilt.blend) | [bed-frame-quilt.glb](bed-frame-quilt.glb) | [sketchup/bed-frame-quilt.dae](sketchup/bed-frame-quilt.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 21,260 / 70,304 |
 
@@ -24,9 +24,9 @@ The frame alone is 64 7/8" x 85 1/8" x 60 1/8" (W x D x H), the same in every fi
 - Real size in Blender meters (the scene's display unit set to inches). The floor is at z = 0 and the frame's footprint is centered on the origin.
 - The foot faces -y and the headboard +y, with its back face at the bed's +y end: stand it with that face against a wall.
 - An empty, `Bed front`, at the middle of the front on the floor, its arrow pointing -y (out of the front); its `depth_in` property is how far behind it the back is. Place by the front or by the back without measuring.
-- Every transform applied, no parents: each mesh's matrix is the identity. (Blender doesn't save `matrix_world`: an object appended without `view_layer.update()` reads as the identity, so an object with a transform of its own lands in the wrong place; these can't.) Modifiers applied, except any smoothing (Subdivision), left at 0 in the viewport and on in renders; the triangle counts above are both ways. The empty is the one object with a transform: read it after an update.
+- Every transform applied, no parents: each mesh's matrix is the identity. (Blender doesn't save `matrix_world`: an object appended without `view_layer.update()` reads as the identity, so an object with a transform of its own lands in the wrong place; these can't.) Modifiers applied, except two kept live: a cloth's thickness (Solidify, so its sheet's own edges can be checked for open seams) and any smoothing (Subdivision, at 0 in the viewport and on in renders); the triangle counts above are both ways, thickness included. Sizes are of the meshes, without the cloth's thickness (under 1/2"). The empty is the one object with a transform: read it after an update.
 - Every image packed into the .blend.
-- Checked on every export (`tools/blender/check_export.py`): a fresh Blender appends every object into an empty scene without `view_layer.update()`, and the size, floor, centering, facing, names, version tags, packing and collections are asserted.
+- Checked on every export (`tools/blender/check_export.py`): a fresh Blender appends every object into an empty scene without `view_layer.update()`, and the size, floor, centering, facing, names, version tags, packing and collections are asserted, and a sewn cloth (the coverlet) has no open edge at its corners.
 
 ## Placing it
 
@@ -77,7 +77,7 @@ bed-frame-made-up:
   - 85.1
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-12a (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15a (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-made-up/bed-frame-made-up.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
