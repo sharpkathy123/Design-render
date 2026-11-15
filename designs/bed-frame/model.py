@@ -599,8 +599,8 @@ def bedding(frame, mat):
     corners sewn (client, 2026-11-15: tucked into the frame, not covering
     it); a plain white top sheet turned down about 10" over its head end;
     a wool plaid blanket folded across the foot, its ends over the sides;
-    white pillows stacked two by two at the head; a plain light blue cover,
-    the coverlet's blue, over the headboard. Each its own object
+    white pillows stacked two by two at the head; a pieced star quilt in
+    the coverlet's colors over the headboard. Each its own object
     and material."""
     hb = [o for o in frame if o.name.startswith(("Headboard", "Head post"))]
     posts = [o for o in frame if o.name.startswith("Head post")]

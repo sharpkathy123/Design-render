@@ -64,8 +64,8 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
   in between the mattress and the rails, its foot corners sewn; a white
   top sheet turned down 10"; a wool plaid blanket across the foot; white
   pillows two by two (one column on the twin, king pillows on the king);
-  and a plain light blue cover over the headboard, the coverlet's own
-  blue (client, 2026-11-15).
+  and a pieced Ohio Star quilt over the headboard, in the coverlet's
+  navy, blues, sage, biscuit and strawberry red (client, 2026-11-15).
 - **Finish:** fumed, a deep brown, as Stickley's workshops did it; or dyed
   to match (BUILD.md, step 15).
 

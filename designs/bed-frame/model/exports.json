@@ -1,7 +1,7 @@
 {
  "bed-frame-bare": {
   "about": "",
-  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "change": "the headboard's cover a pieced Ohio Star quilt in the coverlet's colors (9\" blocks), in place of the plain light blue",
   "checked": {
    "failed": [],
    "passed": [
@@ -16,7 +16,7 @@
     "9 materials named 'Bed ...'",
     "1 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "1 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15c",
+    "every object tagged design_render_version=2026-11-15d",
     "collections Bed frame, Bed mattress",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
@@ -93,10 +93,10 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
-   "sketchup/Bed plaid.png"
+   "sketchup/Bed plaid.png",
+   "sketchup/Bed star-quilt.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-bare.blend",
@@ -573,9 +573,9 @@
   "prefix": "Bed",
   "sewn": {},
   "sha256": {
-   "bed-frame-bare.blend": "1080e08ebbb259c450748856b409abef78e08208b23d3c7567fe258aff31574c",
-   "bed-frame-bare.glb": "3a9c720cfbe17a51a9149c1a8b6e990072c97199194732c0f80b76537d997d47",
-   "sketchup/bed-frame-bare.dae": "3854db0530a67ba51a1ecb61e3732f947b4b03f5171a69ad86a1655cda269f8f"
+   "bed-frame-bare.blend": "6429afad67eb613513446554150669f9efb8524ecf55d789a69efd81bd814a23",
+   "bed-frame-bare.glb": "7a9a8bcbdea0e7aa5619e12c7bb6e2041804605047407be96ef03ffee66c5427",
+   "sketchup/bed-frame-bare.dae": "58a09f67aeff3cd69421f2744fb0ea904a2a51bffd4ec3b8ceb52c36b3388605"
   },
   "size_in": [
    64.875,
@@ -594,11 +594,11 @@
   },
   "triangles": 4912,
   "triangles_render": 4912,
-  "version": "2026-11-15c"
+  "version": "2026-11-15d"
  },
  "bed-frame-king-bare": {
   "about": "",
-  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "change": "the headboard's cover a pieced Ohio Star quilt in the coverlet's colors (9\" blocks), in place of the plain light blue",
   "checked": {
    "failed": [],
    "passed": [
@@ -613,7 +613,7 @@
     "9 materials named 'Bed ...'",
     "1 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "1 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15c",
+    "every object tagged design_render_version=2026-11-15d",
     "collections Bed frame, Bed mattress",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
@@ -692,11 +692,11 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
    "sketchup/Bed plaid.png",
-   "sketchup/Bed quilt.png"
+   "sketchup/Bed quilt.png",
+   "sketchup/Bed star-quilt.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-king-bare.blend",
@@ -1187,9 +1187,9 @@
   "prefix": "Bed",
   "sewn": {},
   "sha256": {
-   "bed-frame-king-bare.blend": "a12ebf4b6ed449bba73082f11d6fd64b648ba73eaa1f17a0f755d692c2b041f2",
-   "bed-frame-king-bare.glb": "720ff9e6a81adda16351c192293eb9ef17a3108fd8688c790b8fcbdee7ac181a",
-   "sketchup/bed-frame-king-bare.dae": "580bd3806e37ffa58bf991938d9ea150e2878acef5763cba0357978096fcff35"
+   "bed-frame-king-bare.blend": "0dc68416741cf9e3f92688b50ee0e2e9de04d2d737a3e37a0dfc0c3a69f86f44",
+   "bed-frame-king-bare.glb": "e9af4e894575d705c6e8c0e3dd6c684a078a452f3ad8652dc60df79cb13aab6e",
+   "sketchup/bed-frame-king-bare.dae": "5fa282509a504a8d8453e00ca72c8db26994c6ce3437850c394fb0e1084007dd"
   },
   "size_in": [
    80.875,
@@ -1208,11 +1208,11 @@
   },
   "triangles": 5128,
   "triangles_render": 5128,
-  "version": "2026-11-15c"
+  "version": "2026-11-15d"
  },
  "bed-frame-king-made-up": {
   "about": "",
-  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "change": "the headboard's cover a pieced Ohio Star quilt in the coverlet's colors (9\" blocks), in place of the plain light blue",
   "checked": {
    "failed": [],
    "passed": [
@@ -1227,7 +1227,7 @@
     "14 materials named 'Bed ...'",
     "6 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "5 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15c",
+    "every object tagged design_render_version=2026-11-15d",
     "collections Bed frame, Bed mattress, Bedding: coverlet, top sheet, blanket and pillows, Bedding: headboard cover",
     "'Bed coverlet': 0 open edges within 2\" of its corners above the hem",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
@@ -1320,11 +1320,11 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
    "sketchup/Bed plaid.png",
-   "sketchup/Bed quilt.png"
+   "sketchup/Bed quilt.png",
+   "sketchup/Bed star-quilt.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-king-made-up.blend",
@@ -1863,10 +1863,10 @@
   ],
   "images": [
    "Bed caban_nor_gl_1k.jpg",
-   "Bed linen-blue.png",
    "Bed morris-strawberry-thief-print.jpg",
    "Bed percale.png",
-   "Bed plaid.png"
+   "Bed plaid.png",
+   "Bed star-quilt.png"
   ],
   "lo_in": [
    -40.437,
@@ -1904,9 +1904,9 @@
    ]
   },
   "sha256": {
-   "bed-frame-king-made-up.blend": "3fe2cdca61a4330aaaea78744e1f51b41ec16c3bb777ad8e2c4228562c3a31c7",
-   "bed-frame-king-made-up.glb": "89b7e92abd2e848bdc80b595a12624b40a03a6b02ccc15cecc304a3a338d093c",
-   "sketchup/bed-frame-king-made-up.dae": "8164ae72fc4b84ce095cd6ca9548b12cab898934d49a8de5e8bac83d5fd8b0e8"
+   "bed-frame-king-made-up.blend": "3914feff10b68e0fdb01528e0397311e2d8f84565c971625ff923a621f1b7f99",
+   "bed-frame-king-made-up.glb": "ea65ebc9468c48c4ebb9d324cb4114470366495badb326e79a5296ba459a995d",
+   "sketchup/bed-frame-king-made-up.dae": "d4f3f774870a64a93bc8697fbd0bb123a4dda96f41be870762305024caa1c701"
   },
   "size_in": [
    80.875,
@@ -1930,10 +1930,10 @@
     ]
    },
    "Bed headboard cover": {
-    "pattern": "linen-blue.png",
+    "pattern": "star-quilt.png",
     "repeat_in": [
-     3.0,
-     3.0
+     18.0,
+     18.0
     ]
    },
    "Bed mattress sheet": {
@@ -1960,11 +1960,11 @@
   },
   "triangles": 76644,
   "triangles_render": 382344,
-  "version": "2026-11-15c"
+  "version": "2026-11-15d"
  },
  "bed-frame-made-up": {
   "about": "",
-  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "change": "the headboard's cover a pieced Ohio Star quilt in the coverlet's colors (9\" blocks), in place of the plain light blue",
   "checked": {
    "failed": [],
    "passed": [
@@ -1979,7 +1979,7 @@
     "14 materials named 'Bed ...'",
     "6 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "5 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15c",
+    "every object tagged design_render_version=2026-11-15d",
     "collections Bed frame, Bed mattress, Bedding: coverlet, top sheet, blanket and pillows, Bedding: headboard cover",
     "'Bed coverlet': 0 open edges within 2\" of its corners above the hem",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
@@ -2070,10 +2070,10 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
-   "sketchup/Bed plaid.png"
+   "sketchup/Bed plaid.png",
+   "sketchup/Bed star-quilt.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-made-up.blend",
@@ -2614,10 +2614,10 @@
   ],
   "images": [
    "Bed caban_nor_gl_1k.jpg",
-   "Bed linen-blue.png",
    "Bed morris-strawberry-thief-print.jpg",
    "Bed percale.png",
-   "Bed plaid.png"
+   "Bed plaid.png",
+   "Bed star-quilt.png"
   ],
   "lo_in": [
    -32.438,
@@ -2655,9 +2655,9 @@
    ]
   },
   "sha256": {
-   "bed-frame-made-up.blend": "354d16672c708e201e758962b3ddd9a136a0d06eef6958722237ca3e48446a2c",
-   "bed-frame-made-up.glb": "237d3c5f510c5e0b4dc15244397c6be6985272f130e162c220ec76a3fe64bc38",
-   "sketchup/bed-frame-made-up.dae": "9e32d98c3107ace1cb2b1c0d824480cbeac0341e9d4f12ea572aa07c4751ed93"
+   "bed-frame-made-up.blend": "d8a201f3dcede31a0a3cd8c4e820aa930a9b69ef5b3008964d3cf0b83a800cc0",
+   "bed-frame-made-up.glb": "dac5135201d0a695049217515330cc59909b2862fdadaa9e1580f8c09c41e682",
+   "sketchup/bed-frame-made-up.dae": "b3c36e01dda00e89b55defa7504df99d1f0d21135fe7864b097bfe35d6086e7c"
   },
   "size_in": [
    64.875,
@@ -2681,10 +2681,10 @@
     ]
    },
    "Bed headboard cover": {
-    "pattern": "linen-blue.png",
+    "pattern": "star-quilt.png",
     "repeat_in": [
-     3.0,
-     3.0
+     18.0,
+     18.0
     ]
    },
    "Bed mattress sheet": {
@@ -2711,11 +2711,11 @@
   },
   "triangles": 68932,
   "triangles_render": 352144,
-  "version": "2026-11-15c"
+  "version": "2026-11-15d"
  },
  "bed-frame-quilt": {
   "about": "",
-  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "change": "the headboard's cover a pieced Ohio Star quilt in the coverlet's colors (9\" blocks), in place of the plain light blue",
   "checked": {
    "failed": [],
    "passed": [
@@ -2730,7 +2730,7 @@
     "10 materials named 'Bed ...'",
     "2 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "2 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15c",
+    "every object tagged design_render_version=2026-11-15d",
     "collections Bed frame, Bed mattress, Bedding: quilt",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
@@ -2810,11 +2810,11 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
    "sketchup/Bed plaid.png",
-   "sketchup/Bed quilt.png"
+   "sketchup/Bed quilt.png",
+   "sketchup/Bed star-quilt.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-quilt.blend",
@@ -3366,9 +3366,9 @@
   "prefix": "Bed",
   "sewn": {},
   "sha256": {
-   "bed-frame-quilt.blend": "d8cbc34574141e9aecb3fa98d29c58ed611b2e13fb63c80d6fdb74ae5ba26824",
-   "bed-frame-quilt.glb": "b6d3d40970cb626c3281acbc5aa7533f3a3e89115f624994a49c4a14e179550a",
-   "sketchup/bed-frame-quilt.dae": "c7178e44c471c47cd896329d19e15bdc90120b4d753c0c096c952cb6c78625ce"
+   "bed-frame-quilt.blend": "39be15934d0fd948fd7a1f638390be4bfcd3703334041cb5e208dfac81b70aba",
+   "bed-frame-quilt.glb": "e3c69779df7216ef5b1eb3053c4bec0627e1f01c63ca5ac607e705ba13665bdc",
+   "sketchup/bed-frame-quilt.dae": "599d98d2a41ffa97552eef76256b577c221621b5bf2f9094edad44708c694374"
   },
   "size_in": [
    64.875,
@@ -3394,11 +3394,11 @@
   },
   "triangles": 21260,
   "triangles_render": 70304,
-  "version": "2026-11-15c"
+  "version": "2026-11-15d"
  },
  "bed-frame-twin-bare": {
   "about": "",
-  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "change": "the headboard's cover a pieced Ohio Star quilt in the coverlet's colors (9\" blocks), in place of the plain light blue",
   "checked": {
    "failed": [],
    "passed": [
@@ -3413,7 +3413,7 @@
     "9 materials named 'Bed ...'",
     "1 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "1 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15c",
+    "every object tagged design_render_version=2026-11-15d",
     "collections Bed frame, Bed mattress",
     "'Bed front' at (0.00, -40.07, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
@@ -3487,11 +3487,11 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
    "sketchup/Bed plaid.png",
-   "sketchup/Bed quilt.png"
+   "sketchup/Bed quilt.png",
+   "sketchup/Bed star-quilt.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-twin-bare.blend",
@@ -3947,9 +3947,9 @@
   "prefix": "Bed",
   "sewn": {},
   "sha256": {
-   "bed-frame-twin-bare.blend": "018c6f477e39dc1e9979ba7d8873441c41dde6efa940c7ec12b456e489e0089f",
-   "bed-frame-twin-bare.glb": "9a3e766d83730b93b9c53623fb3c8567ee8168709688cf67f9eb85fb0855ddf4",
-   "sketchup/bed-frame-twin-bare.dae": "ff42eae67d156eab3c321b2594e3317f5d4783159d48ce91b1044d9a53ad40ea"
+   "bed-frame-twin-bare.blend": "07f615d2f12199dd1838d2e441b39e947f060fe869923d12d37743040eb41595",
+   "bed-frame-twin-bare.glb": "751e214baf8ed118151659a0f0642fa62f09e1417403f1eb5b520dcb00c47678",
+   "sketchup/bed-frame-twin-bare.dae": "e8bf9f90c80ae9ada78a67569e778248f444181e820747d863a6dd9bc6acb0b3"
   },
   "size_in": [
    42.875,
@@ -3968,11 +3968,11 @@
   },
   "triangles": 4588,
   "triangles_render": 4588,
-  "version": "2026-11-15c"
+  "version": "2026-11-15d"
  },
  "bed-frame-twin-made-up": {
   "about": "",
-  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "change": "the headboard's cover a pieced Ohio Star quilt in the coverlet's colors (9\" blocks), in place of the plain light blue",
   "checked": {
    "failed": [],
    "passed": [
@@ -3987,7 +3987,7 @@
     "14 materials named 'Bed ...'",
     "6 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "5 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15c",
+    "every object tagged design_render_version=2026-11-15d",
     "collections Bed frame, Bed mattress, Bedding: coverlet, top sheet, blanket and pillows, Bedding: headboard cover",
     "'Bed coverlet': 0 open edges within 2\" of its corners above the hem",
     "'Bed front' at (0.00, -40.07, 0.00) in, pointing (0.00, -1.00, -0.00)"
@@ -4073,11 +4073,11 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
    "sketchup/Bed plaid.png",
-   "sketchup/Bed quilt.png"
+   "sketchup/Bed quilt.png",
+   "sketchup/Bed star-quilt.png"
   ],
   "exported": "2026-11-15",
   "file": "bed-frame-twin-made-up.blend",
@@ -4585,10 +4585,10 @@
   ],
   "images": [
    "Bed caban_nor_gl_1k.jpg",
-   "Bed linen-blue.png",
    "Bed morris-strawberry-thief-print.jpg",
    "Bed percale.png",
-   "Bed plaid.png"
+   "Bed plaid.png",
+   "Bed star-quilt.png"
   ],
   "lo_in": [
    -21.438,
@@ -4626,9 +4626,9 @@
    ]
   },
   "sha256": {
-   "bed-frame-twin-made-up.blend": "ea4e0bfdc2e6acea9d5ccb3d2412757cd84b29d66716f16e58cf73daeb506277",
-   "bed-frame-twin-made-up.glb": "12ecb32aa4a8e1a974da2abbc41bb76ba59f50786a01e58cb040abd33ee47436",
-   "sketchup/bed-frame-twin-made-up.dae": "043ec37acd9dcc340959fadf96b123d06b4252b395e0f058d753a9220ea946ff"
+   "bed-frame-twin-made-up.blend": "e767f384d1eda644395b6aadbf802f56181f98b67a1b0f7c77b3da69c92a54d9",
+   "bed-frame-twin-made-up.glb": "a33421d3639d50c0a9feebb5587a3123d6f40b6813011c2a32825b07f3cc7517",
+   "sketchup/bed-frame-twin-made-up.dae": "08a667ce22ee436bf859f54553b3294b44dfad3bb47f885cca3b1b92b338770f"
   },
   "size_in": [
    42.875,
@@ -4652,10 +4652,10 @@
     ]
    },
    "Bed headboard cover": {
-    "pattern": "linen-blue.png",
+    "pattern": "star-quilt.png",
     "repeat_in": [
-     3.0,
-     3.0
+     18.0,
+     18.0
     ]
    },
    "Bed mattress sheet": {
@@ -4682,6 +4682,6 @@
   },
   "triangles": 46616,
   "triangles_render": 263856,
-  "version": "2026-11-15c"
+  "version": "2026-11-15d"
  }
 }

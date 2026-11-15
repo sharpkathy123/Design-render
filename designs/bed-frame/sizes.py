@@ -88,8 +88,8 @@ STRAWBERRY_REPEAT = (18.0, 19.6)   # Morris's Strawberry Thief, one repeat acros
 # print on the coverlet, a wool plaid blanket, checks on the small piece, plain white sheets and pillows)
 COVERLET_PRINT, COVERLET_REPEAT = "morris-strawberry-thief-print.jpg", STRAWBERRY_REPEAT
 BLANKET_PRINT, BLANKET_REPEAT = "plaid.png", (8.0, 8.0)
-HEADBOARD_PRINT, HEADBOARD_REPEAT = "linen-blue.png", (3.0, 3.0)   # the coverlet's light blue, plain
-                                   # (client, 2026-11-15)
+HEADBOARD_PRINT, HEADBOARD_REPEAT = "star-quilt.png", (18.0, 18.0)   # a pieced Ohio Star quilt in the
+                                   # coverlet's colors, 9" blocks (client, 2026-11-15)
 PERCALE_REPEAT = (2.0, 2.0)        # percale.png: plain white sheeting
 QUILT_REPEAT = 18.0                # quilt.png: the --quilt version's pieced squares
 

@@ -8,7 +8,7 @@ summary: >-
 cover: renders/bed-frame-bedroom-bedding.jpg
 renders:
   - file: renders/bed-frame-bedroom-bedding.jpg
-    caption: Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, the headboard's cover in the coverlet's light blue
+    caption: Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, and a star quilt in the coverlet's colors over the headboard
   - file: renders/bed-frame-twin-bedroom-bedding.jpg
     caption: The twin, made up the same way, one column of pillows (a pair for the NW bedroom)
   - file: renders/bed-frame-king-bedroom-bedding.jpg
@@ -103,7 +103,7 @@ model:
         tucked in between the mattress and the rails, its foot corners sewn;
         a plain white top sheet turned down about 10" over it; a wool plaid
         blanket folded across the foot; four white pillows stacked two by
-        two; a plain light blue cover, the coverlet's blue, over the
+        two; a pieced Ohio Star quilt in the coverlet's colors over the
         headboard; a white fitted sheet.
     bed-frame-bare:
       name: Queen bed frame, bare
@@ -150,6 +150,9 @@ model:
       One repeat, cut from the scan to tile, its color deepened a little (saturation 1.25, value 0.85) in the image.
     plaid.png: our own wool plaid, drawn by `tools/make_fabric.py` (this repo, public)
     check.png: our own woven check, drawn by `tools/make_fabric.py` (this repo, public)
+    star-quilt.png: >-
+      our own pieced Ohio Star quilt, drawn by `tools/make_fabric.py` (this repo, public), in
+      the Strawberry Thief's colors
     linen-blue.png: >-
       our own plain linen, drawn by `tools/make_fabric.py` (this repo, public), in the
       Strawberry Thief's leaf blue lightened (#9db0cc)

@@ -269,7 +269,56 @@ def linen_blue(path):
     c.save(path)
 
 
-KINDS = {"linen-blue": linen_blue, "pomegranate": pomegranate, "blockprint": blockprint, "kilim": kilim, "plaid": plaid, "check": check,
+def star_quilt(path):
+    """A pieced Ohio Star quilt in the Strawberry Thief's colors (client,
+    2026-11-15: the headboard in a quilt pattern that goes with the
+    coverlet), our own: 9" blocks of a 3 x 3 grid, the star's points
+    quarter-square triangles, in two colorways alternating like a
+    checkerboard (navy points on biscuit, a red center; light blue points on
+    navy, a sage center), the leaf blue between each star's points, every patch's
+    dye a little different, the seams stitched. One tile is 2 x 2 blocks,
+    an 18" repeat."""
+    NAVY, LEAF, LIGHT, SAGE, BISCUIT, BERRY = "#262b4a", "#5f6f9a", "#9db0cc", "#6f7f4a", "#d9c9a0", "#a8483a"
+    ways = [dict(ground=BISCUIT, point=NAVY, point2=LEAF, center=BERRY, corner=BISCUIT),
+            dict(ground=NAVY, point=LIGHT, point2=LEAF, center=SAGE, corner=NAVY)]
+    n = 720
+    c = Canvas(n, n, BISCUIT)
+    rng = np.random.default_rng(27)
+    bx, by = np.floor(c.X * 2).astype(int), np.floor(c.Y * 2).astype(int)        # which block
+    u, v = (c.X * 2) % 1.0, (c.Y * 2) % 1.0                                       # within it, 0..1
+    gx, gy = np.floor(u * 3).astype(int), np.floor(v * 3).astype(int)           # its 3 x 3 grid
+    fu, fv = (u * 3) % 1.0, (v * 3) % 1.0                                         # within a unit
+    for b in range(4):
+        i, j = b % 2, b // 2
+        w = ways[(i + j) % 2]
+        blk = (bx == i) & (by == j)
+        c.paint(blk, w["ground"])
+        c.paint(blk & (gx == 1) & (gy == 1), w["center"])
+        c.paint(blk & (gx != 1) & (gy != 1), w["corner"])
+        # the side units: four triangles meeting in the middle; the two pointing in toward the
+        # center are the star's points, the outer two the ground
+        side = blk & ((gx == 1) ^ (gy == 1))
+        du, dv = fu - 0.5, fv - 0.5
+        toward = np.where(gx == 1, np.where(gy == 0, dv > np.abs(du), -dv > np.abs(du)),
+                          np.where(gx == 0, du > np.abs(dv), -du > np.abs(dv)))
+        across = np.abs(du) > np.abs(dv)
+        across = np.where(gx == 1, across, ~across)
+        c.paint(side & across, w["point"])
+        c.paint(side & toward & ~across, w["point2"])
+    # each patch's dye a little different (the patches: units, split along the triangles' diagonals)
+    patch = (bx * 2 + by) * 100 + gx * 10 + gy
+    for k in np.unique(patch):
+        c.rgb[patch == k] *= 1 + 0.035 * rng.normal()
+    # the seams, pressed and stitched: a pale line round every unit and down the triangles' diagonals
+    d1, d2 = np.abs(fu - fv), np.abs(fu + fv - 1)
+    seam = (np.minimum(fu, 1 - fu) < 0.012) | (np.minimum(fv, 1 - fv) < 0.012)
+    seam |= ((gx == 1) ^ (gy == 1)) & ((d1 < 0.012) | (d2 < 0.012))
+    c.rgb[seam] = c.rgb[seam] * 0.7 + hexrgb("#e8dcc0") * 0.3
+    c.texture(0.05, 28)
+    c.save(path)
+
+
+KINDS = {"star-quilt": star_quilt, "linen-blue": linen_blue, "pomegranate": pomegranate, "blockprint": blockprint, "kilim": kilim, "plaid": plaid, "check": check,
          "quilt": quilt, "percale": percale}
 
 

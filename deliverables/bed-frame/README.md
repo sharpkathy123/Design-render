@@ -4,7 +4,7 @@
 
 An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washable quilt over its headboard: square posts with pyramid caps, through-tenons pegged through the posts, wide flat slats to lean against, and a low foot rail with short capped legs.
 
-![Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, the headboard's cover in the coverlet's light blue](renders/bed-frame-bedroom-bedding.jpg)
+![Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, and a star quilt in the coverlet's colors over the headboard](renders/bed-frame-bedroom-bedding.jpg)
 
 **[Download the build packet (PDF)](bed-frame-build-packet.pdf)**: the pictures, the drawings and the build guide in one printable file.
 
@@ -46,8 +46,8 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 
 ## Pictures
 
-![Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, the headboard's cover in the coverlet's light blue](renders/bed-frame-bedroom-bedding.jpg)
-*Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, the headboard's cover in the coverlet's light blue*
+![Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, and a star quilt in the coverlet's colors over the headboard](renders/bed-frame-bedroom-bedding.jpg)
+*Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, and a star quilt in the coverlet's colors over the headboard*
 
 ![The twin, made up the same way, one column of pillows (a pair for the NW bedroom)](renders/bed-frame-twin-bedroom-bedding.jpg)
 *The twin, made up the same way, one column of pillows (a pair for the NW bedroom)*
@@ -118,8 +118,8 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
   in between the mattress and the rails, its foot corners sewn; a white
   top sheet turned down 10"; a wool plaid blanket across the foot; white
   pillows two by two (one column on the twin, king pillows on the king);
-  and a plain light blue cover over the headboard, the coverlet's own
-  blue (client, 2026-11-15).
+  and a pieced Ohio Star quilt over the headboard, in the coverlet's
+  navy, blues, sage, biscuit and strawberry red (client, 2026-11-15).
 - **Finish:** fumed, a deep brown, as Stickley's workshops did it; or dyed
   to match (BUILD.md, step 15).
 

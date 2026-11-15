@@ -98,9 +98,9 @@ Each design starts as a text spec, `specs/<name>.md`, and ends up in
      `DESIGN_PRINCIPLES.md`, "Every bed, made simply"): a pattern on the
      large pieces (a Morris print on the coverlet), checks or stripes on
      the small ones, wool plaid for a blanket, and sheets and pillowcases
-     plain white with no band. A plain piece takes a color picked from
-     the main print (the bed's headboard cover: the coverlet's light blue,
-     client, 2026-11-15). **Bedding tucks into the frame and never covers
+     plain white with no band. A smaller piece takes its colors from
+     the main print (the bed's headboard cover: a pieced star quilt in the
+     coverlet's colors, client, 2026-11-15). **Bedding tucks into the frame and never covers
      it** (client, 2026-11-15): the coverlet and sheets fall inside the
      rails, the top sheet turned down about 10", the blanket's ends over
      the sides to just above the rails. Each piece is its own named
