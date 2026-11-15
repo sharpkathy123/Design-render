@@ -74,6 +74,10 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
 - Mattresses 11" thick at every size (twin 38" x 75", queen 60" x 80",
   king 76" x 80"), on slats, no box spring; its top is 24" from
   the floor. A thicker mattress raises it: 13" puts the top at 26".
+- The twin is 42 1/8" wide (42 7/8" over the tenons), not the "about
+  40" first asked: the queen's 2 3/4" posts with the rails centered on
+  them add about 4" to a 38" mattress. The client accepted it
+  (2026-11-15).
 - Each post is two 6/4 boards glued up, quartersawn faces outward.
 
 ## More Arts & Crafts, if wanted later
@@ -90,9 +94,4 @@ Each of these adds wood or work:
 
 ## Questions
 
-- **The twin's width:** asked for about 40" outside, it comes out 42 1/8"
-  (42 7/8" over the tenons) with the queen's 2 3/4" posts and the rails
-  centered on them. A 38" mattress, 1/2" of clearance and 1 13/16" each
-  side for the rails make 42 1/8". Reaching 40" would take slimmer posts
-  (about 1 3/4") or rails set flush inside the posts. Is 42 1/8" all
-  right for the NW bedroom's pair?
+None open.
