@@ -7,8 +7,11 @@ add `--quilt` for the draped quilt; `python3 designs/bed-frame/draw_joinery.py`
 and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings).
 
 - **How to build it, with prices:** [BUILD.md](BUILD.md)
-- **The bed as a 3D model for other renders:** [model/](model/README.md)
-  (`python3.11 designs/bed-frame/model.py [--bedding] --export <file.blend>`)
+- **The bed as a 3D model for other repos' rooms:** [model/](model/README.md), made up, bare, or
+  with the quilt, each as a .blend, a .glb and a SketchUp .dae, checked on every export, with its
+  [version](model/VERSION), [changes](model/CHANGELOG.md) and [library records](model/library.yaml)
+  (`python3.11 designs/bed-frame/model.py --export-all`)
+- Footprint (top view to scale, for a room's plan): [bed-frame-footprint.svg](bed-frame-footprint.svg)
 - Drawing (front, side, top, cut list): [bed-frame-drawing.svg](bed-frame-drawing.svg)
 - Joinery (every mortise, tenon, peg and bolt): [bed-frame-joinery.svg](bed-frame-joinery.svg)
 - Renders: [corner](renders/bed-frame-corner.jpg), [foot](renders/bed-frame-foot.jpg),
@@ -48,13 +51,33 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
   a 2x4 center rail on three legs stained dark (they can be seen under
   the foot rail from low down).
+- **Twin and king** (Sketchup-tools, 2026-11-14: a pair of twins for the
+  NW bedroom, a king for the SE bedroom): the same bed at each size,
+  `python3.11 designs/bed-frame/model.py --size twin` or `--size king`.
+  The posts, rails and joinery are the queen's, and the headboard keeps
+  the queen's slat width: four slats on the twin, nine on the king. The
+  twin is 42 7/8" x 80 1/16" over the tenons, and the king
+  80 7/8" x 85 1/16". Each has its own drawing and cut list
+  ([twin](bed-frame-twin-drawing.svg), [king](bed-frame-king-drawing.svg)).
+  BUILD.md's steps are the same for each.
+- **Made up** (2026-11-15): Morris's Strawberry Thief on a coverlet tucked
+  in between the mattress and the rails, its foot corners sewn; a white
+  top sheet turned down 10"; a wool plaid blanket across the foot; white
+  pillows two by two (one column on the twin, king pillows on the king);
+  and a pieced Ohio Star quilt over the headboard, in the coverlet's
+  navy, blues, sage, biscuit and strawberry red (client, 2026-11-15).
 - **Finish:** fumed, a deep brown, as Stickley's workshops did it; or dyed
   to match (BUILD.md, step 15).
 
 ## Assumptions
 
-- Mattress 60" x 80" x 11" on slats, no box spring; its top is 24" from
+- Mattresses 11" thick at every size (twin 38" x 75", queen 60" x 80",
+  king 76" x 80"), on slats, no box spring; its top is 24" from
   the floor. A thicker mattress raises it: 13" puts the top at 26".
+- The twin is 42 1/8" wide (42 7/8" over the tenons), not the "about
+  40" first asked: the queen's 2 3/4" posts with the rails centered on
+  them add about 4" to a 38" mattress. The client accepted it
+  (2026-11-15).
 - Each post is two 6/4 boards glued up, quartersawn faces outward.
 
 ## More Arts & Crafts, if wanted later

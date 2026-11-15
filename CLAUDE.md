@@ -21,6 +21,8 @@ Each design starts as a text spec, `specs/<name>.md`, and ends up in
 | `parts.json` | the parts list, written by the model |
 | `<name>-drawing.svg` | front, side, top, dimensions, cut list |
 | `renders/<name>-<view>.jpg` | the pictures |
+| `model/` | the 3D model for other repos' rooms: `<name>-<version>.blend`, `.glb`, `sketchup/*.dae`, `CHANGELOG.md` (by hand), and `README.md`, `VERSION`, `library.yaml`, `exports.json` (written by the export) |
+| `<name>-footprint.svg` | the top view to scale, for a room's plan (written by the export) |
 
 1. **Read the whole spec.** Every size goes into the design's `sizes.py`
    (one size, one number: the model, the drawings and the build notes all
@@ -43,15 +45,93 @@ Each design starts as a text spec, `specs/<name>.md`, and ends up in
    `kit.camera_auto()`, `kit.render(..., quality="check")`). Look at
    the picture before sending it. If something looks wrong, fix it first.
    Final quality only when asked: it's slow on this machine.
-6. **Build the deliverables** (client, 2026-11-11: everything for each
+6. **Export the 3D model** (Sketchup-tools, 2026-11-12: everything it had
+   to fix to put the bed in its rooms, in its
+   `designer/notes-for-design-render.md`; the next design must drop in
+   with no work). Every design gets one, through `tools/blender/deliver.py`
+   `export()`; `designs/bed-frame/model.py` (`VERSIONS`, `export()`,
+   `export_all()`) is the pattern to copy:
+   - **A version each time.** Add a line to `model/CHANGELOG.md` first,
+     newest on top (`- 2026-11-12a: what changed`). Its name becomes the
+     version in `model/VERSION` (with every file's sha256) and on every
+     object (`o["design_render_version"]`).
+   - **Every choice, findable.** One file per version a room might show
+     (made up, bare, a different cover), since rooms append every object
+     in a file. Inside each, the parts in named collections (`Bed frame`,
+     `Bedding: quilt`). Name parts so a script can find them: all of the
+     back as `<prefix> headboard ...`, or whatever the back is called.
+   - **Prefixed names:** a short prefix (`Bed`) on every object, mesh,
+     material and image. Give materials real names through
+     `material_names` (`Bed oak fumed`, `Bed Strawberry Thief`), and give
+     a procedural material a `diffuse_color` (its .glb and .dae color).
+   - **Facing:** the front to -y, the back to +y, the footprint centered
+     on the origin, the floor at z = 0. Pass `tall_in` when the back is
+     the tall part, so the check asserts it, and `expect_frame_in` from
+     `sizes.py`.
+   - `python3.11 designs/<name>/model.py --export-all` writes each version's
+     .blend, .glb and SketchUp .dae (inches), then **checks each in a fresh
+     Blender** without `view_layer.update()` (size, floor, centering,
+     facing, names, tags, packing, collections). A failed check stops it:
+     fix the model, never the check. Then it writes `model/README.md` (the
+     sizes measured from the files, never typed; triangles; placing;
+     SketchUp; rights), `VERSION`, `library.yaml` (records ready to paste
+     into Sketchup-tools' `library/models/models.yaml`, with `version` and
+     `facing`) and `<name>-footprint.svg`. Its prose comes from
+     share.yaml's `model:` section: `facing`, `rot_rule`, `license`,
+     `versions` (name, use, about) and `textures` (every packed image's
+     source and rights: the export stops on one that isn't listed).
+   - **Textiles a room can restyle** (Sketchup-tools, 2026-11-14): each
+     textile its own material with ONE color image, the node named
+     `Pattern`, through a mapping named `Repeat`. Its UVs are one unit to
+     a meter of the cloth laid flat, so a print with an R-inch repeat takes
+     scale 39.37 / R. No hue or saturation nodes: bake any color change
+     into the image. Use `fabric_material()` in `designs/bed-frame/model.py`
+     (and `box_uv()` for a box-like piece). The export test checks it, and
+     the model README lists each textile's pattern and repeat.
+   - **No seams that can gape.** A cut cloth is sewn after the drape
+     (`sew_corners()`), and the export gets `sewn=` so the test checks for
+     open edges there. The bed's coverlet is cut at the foot corners to
+     tuck in, and showed a black slit at each (2026-11-14). A cover that
+     hangs outside the frame has to be one uncut sheet with self-collision
+     instead: a seam sewn straight across would run through a leg.
+   - **A designer's look by default** (Sketchup-tools'
+     `DESIGN_PRINCIPLES.md`, "Every bed, made simply"): a pattern on the
+     large pieces (a Morris print on the coverlet), checks or stripes on
+     the small ones, wool plaid for a blanket, and sheets and pillowcases
+     plain white with no band. A smaller piece takes its colors from
+     the main print (the bed's headboard cover: a pieced star quilt in the
+     coverlet's colors, client, 2026-11-15). **Bedding tucks into the frame and never covers
+     it** (client, 2026-11-15): the coverlet and sheets fall inside the
+     rails, the top sheet turned down about 10", the blanket's ends over
+     the sides to just above the rails. Each piece is its own named
+     object.
+   - **Other sizes are size options, never a scaled model.** When a room
+     needs another size, add it to `sizes.py` (the bed: `MATTRESSES`, and
+     `model.py --size twin|king`). The structural parts (posts, rails,
+     joinery) stay the original's, and the counts follow (the headboard's
+     slats keep their width). Each size gets its own files
+     (`<name>-<size>-made-up.blend`), drawing, footprint, and `group:`
+     in share.yaml's `model: versions:`.
+   - **Look at it placed:** load a version with Sketchup-tools'
+     `assets.place()` turned 90 degrees, and render it (RECIPES.md, "A
+     model for another repo's rooms"). When a fix is something the client
+     saw, render a close-up before and after, from the exported files,
+     and put it in the renders.
+   - Keep the bedding or other soft parts' smoothing modest, and say in the
+     reply if a file is over about 100,000 triangles in the viewport.
+   - List everything in `model/` in share.yaml's `files:` (the
+     `sketchup/` folder as one entry) and the footprint under
+     `drawings:`.
+7. **Build the deliverables** (client, 2026-11-11: everything for each
    design in one folder, to share): list what to share in the design's
    `share.yaml`, then `python3 tools/build_deliverables.py <name>`. It writes
    `deliverables/<name>/` (a landing page, a printable build packet PDF,
    each drawing as SVG and PDF, the build guide, the renders) and the index
    `deliverables/README.md`. Never edit `deliverables/` by hand; rerun it
    after any change to the design.
-7. **Commit and push**, then reply with what was built, the assumptions,
-   the questions, and the link to its deliverables page.
+8. **Commit and push**, then reply with what was built, the assumptions,
+   the questions, the model's version, and the link to its deliverables
+   page.
 
 Run a model with `python3.11 designs/<name>/model.py [--quality check|final] [--views front,back]`.
 Blender's module is `bpy` for Python 3.11

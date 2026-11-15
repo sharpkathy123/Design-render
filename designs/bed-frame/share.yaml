@@ -8,7 +8,11 @@ summary: >-
 cover: renders/bed-frame-bedroom-bedding.jpg
 renders:
   - file: renders/bed-frame-bedroom-bedding.jpg
-    caption: Made up with William Morris's Strawberry Thief over the headboard, an indigo block-print coverlet tucked in, a kilim throw, and pillows stacked two by two
+    caption: Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, and a star quilt in the coverlet's colors over the headboard
+  - file: renders/bed-frame-twin-bedroom-bedding.jpg
+    caption: The twin, made up the same way, one column of pillows (a pair for the NW bedroom)
+  - file: renders/bed-frame-king-bedroom-bedding.jpg
+    caption: The king, made up the same way, with king pillows (for the SE bedroom)
   - file: renders/bed-frame-corner-bedding.jpg
     caption: The same, from above the foot
   - file: renders/bed-frame-corner-quilt.jpg
@@ -19,6 +23,8 @@ renders:
     caption: From the foot
   - file: renders/bed-frame-head.jpg
     caption: A head post's pyramid cap, and the top rail's through-tenon and pegs
+  - file: renders/bed-frame-coverlet-corner-before-after.jpg
+    caption: "The coverlet's foot corner: before, cut open with a slit; after, its flaps sewn together after the drape"
   - file: renders/bed-frame-footend.jpg
     caption: The foot's corner, with its pegged through-tenon and brass bolt cover
 drawings:
@@ -26,11 +32,132 @@ drawings:
     title: Overall drawing and cut list
   - file: bed-frame-joinery.svg
     title: Joinery
+  - file: bed-frame-footprint.svg
+    title: Footprint, for a room's plan
+  - file: bed-frame-twin-drawing.svg
+    title: The twin, overall drawing and cut list
+  - file: bed-frame-twin-footprint.svg
+    title: The twin's footprint
+  - file: bed-frame-king-drawing.svg
+    title: The king, overall drawing and cut list
+  - file: bed-frame-king-footprint.svg
+    title: The king's footprint
 guide: BUILD.md
 files:
   - file: model/README.md
-    title: How to use the 3D model in another room's render
+    title: How to use the 3D model in another room's render (sizes, placing, SketchUp, rights)
+  - file: model/VERSION
+    title: The model's version and every file's sha256
+  - file: model/CHANGELOG.md
+    title: What changed in each version
+  - file: model/library.yaml
+    title: Ready-to-paste records for Sketchup-tools' library
   - file: model/bed-frame-made-up.blend
     title: The bed made up (Blender 4.5)
   - file: model/bed-frame-bare.blend
     title: The bare frame and mattress (Blender 4.5)
+  - file: model/bed-frame-quilt.blend
+    title: The frame with a quilt over the headboard (Blender 4.5)
+  - file: model/bed-frame-made-up.glb
+    title: The bed made up (glTF)
+  - file: model/bed-frame-bare.glb
+    title: The bare frame and mattress (glTF)
+  - file: model/bed-frame-quilt.glb
+    title: The frame with the quilt (glTF)
+  - file: model/bed-frame-twin-made-up.blend
+    title: The twin, made up (Blender 4.5)
+  - file: model/bed-frame-twin-bare.blend
+    title: The twin, bare (Blender 4.5)
+  - file: model/bed-frame-king-made-up.blend
+    title: The king, made up (Blender 4.5)
+  - file: model/bed-frame-king-bare.blend
+    title: The king, bare (Blender 4.5)
+  - file: model/bed-frame-twin-made-up.glb
+    title: The twin, made up (glTF)
+  - file: model/bed-frame-twin-bare.glb
+    title: The twin, bare (glTF)
+  - file: model/bed-frame-king-made-up.glb
+    title: The king, made up (glTF)
+  - file: model/bed-frame-king-bare.glb
+    title: The king, bare (glTF)
+  - file: model/sketchup/
+    title: For SketchUp, in inches (COLLADA .dae files and their images)
+
+# The 3D model's description (tools/model_card.py writes model/README.md,
+# VERSION and library.yaml from this and the exported files' measurements).
+model:
+  command: python3.11 designs/bed-frame/model.py --export-all
+  facing: >-
+    The foot faces -y and the headboard +y, with its back face at the bed's +y
+    end: stand it with that face against a wall.
+  rot_rule: >-
+    rot=0: the headboard to the room's +y; in a room whose x runs south,
+    rot=90 puts it to the north wall
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  versions:
+    bed-frame-made-up:
+      name: Queen bed frame, made up
+      use: the Arts & Crafts queen bed, made up (Design-render's bed frame)
+      about: >-
+        The bed made up: a coverlet in William Morris's Strawberry Thief
+        tucked in between the mattress and the rails, its foot corners sewn;
+        a plain white top sheet turned down about 10" over it; a wool plaid
+        blanket folded across the foot; four white pillows stacked two by
+        two; a pieced Ohio Star quilt in the coverlet's colors over the
+        headboard; a white fitted sheet.
+    bed-frame-bare:
+      name: Queen bed frame, bare
+      use: the Arts & Crafts queen bed, bare (Design-render's bed frame)
+      about: The frame and a mattress in a white fitted sheet, nothing else.
+    bed-frame-quilt:
+      name: Queen bed frame, with a quilt over the headboard
+      use: the Arts & Crafts queen bed with a pieced quilt over its headboard (Design-render's bed frame)
+      about: >-
+        The frame, a mattress in a white fitted sheet, and a pieced quilt
+        (ochre and sage squares) draped over the headboard.
+    bed-frame-twin-made-up:
+      group: twin
+      name: Twin bed frame, made up
+      use: the Arts & Crafts twin bed, made up (Design-render's bed frame at twin size); a pair in the NW bedroom
+      about: >-
+        The same bed at twin size (a 38" x 75" mattress; the posts, rails and
+        joinery the queen's, four headboard slats), made up the same way, with
+        one column of two pillows.
+    bed-frame-twin-bare:
+      group: twin
+      name: Twin bed frame, bare
+      use: the Arts & Crafts twin bed, bare (Design-render's bed frame at twin size)
+      about: The twin frame and a mattress in a white fitted sheet.
+    bed-frame-king-made-up:
+      group: king
+      name: King bed frame, made up
+      use: the Arts & Crafts king bed, made up (Design-render's bed frame at king size); the SE bedroom's
+      about: >-
+        The same bed at king size (a 76" x 80" mattress; the posts, rails and
+        joinery the queen's, nine headboard slats), made up the same way, with
+        king pillows (36" x 20") stacked two by two.
+    bed-frame-king-bare:
+      group: king
+      name: King bed frame, bare
+      use: the Arts & Crafts king bed, bare (Design-render's bed frame at king size)
+      about: The king frame and a mattress in a white fitted sheet.
+  textures:
+    morris-strawberry-thief-print.jpg: >-
+      William Morris, *Strawberry Thief*, designed 1883 (printed about 1934),
+      [Cooper Hewitt, Smithsonian Design Museum, object 18340065](https://collection.cooperhewitt.org/objects/18340065/):
+      the design is public domain and Cooper Hewitt releases the image as CC0
+      ([on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Textile,_Strawberry_Thief,_designed_1883,_printed_ca._1934_%28CH_18340065%29.jpg)).
+      One repeat, cut from the scan to tile, its color deepened a little (saturation 1.25, value 0.85) in the image.
+    plaid.png: our own wool plaid, drawn by `tools/make_fabric.py` (this repo, public)
+    check.png: our own woven check, drawn by `tools/make_fabric.py` (this repo, public)
+    star-quilt.png: >-
+      our own pieced Ohio Star quilt, drawn by `tools/make_fabric.py` (this repo, public), in
+      the Strawberry Thief's colors
+    linen-blue.png: >-
+      our own plain linen, drawn by `tools/make_fabric.py` (this repo, public), in the
+      Strawberry Thief's leaf blue lightened (#9db0cc)
+    quilt.png: our own pieced squares, drawn by `tools/make_fabric.py` (this repo, public)
+    percale.png: our own plain white sheeting, drawn by `tools/make_fabric.py` (this repo, public)
+    caban_nor_gl_1k.jpg: >-
+      Poly Haven, [Caban](https://polyhaven.com/a/caban) (photography colormass,
+      processing Rico Cilliers), CC0: the wool's weave and nap, as the blanket's relief

@@ -1,0 +1,25 @@
+version: 2026-11-15d
+change: the headboard's cover a pieced Ohio Star quilt in the coverlet's colors (9" blocks), in place of the plain light blue
+design: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
+sha256:
+  bed-frame-made-up.blend: d8a201f3dcede31a0a3cd8c4e820aa930a9b69ef5b3008964d3cf0b83a800cc0
+  bed-frame-made-up.glb: dac5135201d0a695049217515330cc59909b2862fdadaa9e1580f8c09c41e682
+  sketchup/bed-frame-made-up.dae: b3c36e01dda00e89b55defa7504df99d1f0d21135fe7864b097bfe35d6086e7c
+  bed-frame-bare.blend: 6429afad67eb613513446554150669f9efb8524ecf55d789a69efd81bd814a23
+  bed-frame-bare.glb: 7a9a8bcbdea0e7aa5619e12c7bb6e2041804605047407be96ef03ffee66c5427
+  sketchup/bed-frame-bare.dae: 58a09f67aeff3cd69421f2744fb0ea904a2a51bffd4ec3b8ceb52c36b3388605
+  bed-frame-quilt.blend: 39be15934d0fd948fd7a1f638390be4bfcd3703334041cb5e208dfac81b70aba
+  bed-frame-quilt.glb: e3c69779df7216ef5b1eb3053c4bec0627e1f01c63ca5ac607e705ba13665bdc
+  sketchup/bed-frame-quilt.dae: 599d98d2a41ffa97552eef76256b577c221621b5bf2f9094edad44708c694374
+  bed-frame-twin-made-up.blend: e767f384d1eda644395b6aadbf802f56181f98b67a1b0f7c77b3da69c92a54d9
+  bed-frame-twin-made-up.glb: a33421d3639d50c0a9feebb5587a3123d6f40b6813011c2a32825b07f3cc7517
+  sketchup/bed-frame-twin-made-up.dae: 08a667ce22ee436bf859f54553b3294b44dfad3bb47f885cca3b1b92b338770f
+  bed-frame-twin-bare.blend: 07f615d2f12199dd1838d2e441b39e947f060fe869923d12d37743040eb41595
+  bed-frame-twin-bare.glb: 751e214baf8ed118151659a0f0642fa62f09e1417403f1eb5b520dcb00c47678
+  sketchup/bed-frame-twin-bare.dae: e8bf9f90c80ae9ada78a67569e778248f444181e820747d863a6dd9bc6acb0b3
+  bed-frame-king-made-up.blend: 3914feff10b68e0fdb01528e0397311e2d8f84565c971625ff923a621f1b7f99
+  bed-frame-king-made-up.glb: ea65ebc9468c48c4ebb9d324cb4114470366495badb326e79a5296ba459a995d
+  sketchup/bed-frame-king-made-up.dae: d4f3f774870a64a93bc8697fbd0bb123a4dda96f41be870762305024caa1c701
+  bed-frame-king-bare.blend: 0dc68416741cf9e3f92688b50ee0e2e9de04d2d737a3e37a0dfc0c3a69f86f44
+  bed-frame-king-bare.glb: e9af4e894575d705c6e8c0e3dd6c684a078a452f3ad8652dc60df79cb13aab6e
+  sketchup/bed-frame-king-bare.dae: 5fa282509a504a8d8453e00ca72c8db26994c6ce3437850c394fb0e1084007dd

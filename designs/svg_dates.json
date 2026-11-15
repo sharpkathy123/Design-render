@@ -3,8 +3,28 @@
   "date": "2026-11-11",
   "hash": "325d7eaa46922762933943caeb9fd21fd1929f9b"
  },
+ "designs/bed-frame/bed-frame-footprint.svg": {
+  "date": "2026-11-15",
+  "hash": "08eafd9a271ba3df4c19079b17165dcf8987ae18"
+ },
  "designs/bed-frame/bed-frame-joinery.svg": {
   "date": "2026-11-11",
   "hash": "27a04ab2c1c3702f1b11cad02f0da4a41d6fe79f"
+ },
+ "designs/bed-frame/bed-frame-king-drawing.svg": {
+  "date": "2026-11-15",
+  "hash": "194478078641a84aee5c003875cfe2424c42745d"
+ },
+ "designs/bed-frame/bed-frame-king-footprint.svg": {
+  "date": "2026-11-15",
+  "hash": "bac89598c560a4919769be74c781a8e234cc8eaa"
+ },
+ "designs/bed-frame/bed-frame-twin-drawing.svg": {
+  "date": "2026-11-15",
+  "hash": "d132ef68b4a89090afab444b5e578d5aa90bd3c9"
+ },
+ "designs/bed-frame/bed-frame-twin-footprint.svg": {
+  "date": "2026-11-15",
+  "hash": "ebbef70b13356ed89bf27e217cb63ae5fb0ac584"
  }
 }
