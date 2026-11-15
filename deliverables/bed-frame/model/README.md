@@ -1,22 +1,34 @@
 <!-- Written by tools/model_card.py from exports.json, CHANGELOG.md and share.yaml: edit those. -->
 # Queen bed frame as a 3D model, for rendering rooms
 
-**Version 2026-11-15b:** made up as a designer would: a Morris coverlet falling 14" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes ([VERSION](VERSION) has every file's sha256; [CHANGELOG](CHANGELOG.md)). Every object in the files carries it too, as `o["design_render_version"]`.
+**Version 2026-11-15c:** the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38" x 75" mattress, for a pair in the NW bedroom) and a king (76" x 80", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each ([VERSION](VERSION) has every file's sha256; [CHANGELOG](CHANGELOG.md)). Every object in the files carries it too, as `o["design_render_version"]`.
 
 
 ## The files
 
 | Version | Blender 4.5 | glTF (meters) | SketchUp (inches) | Size over everything, W x D x H | Triangles (viewport / render) |
 |---|---|---|---|---|---|
-| **Queen bed frame, made up** | [bed-frame-made-up.blend](bed-frame-made-up.blend) | [bed-frame-made-up.glb](bed-frame-made-up.glb) | [sketchup/bed-frame-made-up.dae](sketchup/bed-frame-made-up.dae) | 71 1/8" x 89 15/16" x 60 1/8" | 72,232 / 365,344 |
+| **Queen bed frame, made up** | [bed-frame-made-up.blend](bed-frame-made-up.blend) | [bed-frame-made-up.glb](bed-frame-made-up.glb) | [sketchup/bed-frame-made-up.dae](sketchup/bed-frame-made-up.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 68,932 / 352,144 |
 | **Queen bed frame, bare** | [bed-frame-bare.blend](bed-frame-bare.blend) | [bed-frame-bare.glb](bed-frame-bare.glb) | [sketchup/bed-frame-bare.dae](sketchup/bed-frame-bare.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 4,912 / 4,912 |
 | **Queen bed frame, with a quilt over the headboard** | [bed-frame-quilt.blend](bed-frame-quilt.blend) | [bed-frame-quilt.glb](bed-frame-quilt.glb) | [sketchup/bed-frame-quilt.dae](sketchup/bed-frame-quilt.dae) | 64 7/8" x 85 1/8" x 60 1/8" | 21,260 / 70,304 |
+| **Twin bed frame, made up** | [bed-frame-twin-made-up.blend](bed-frame-twin-made-up.blend) | [bed-frame-twin-made-up.glb](bed-frame-twin-made-up.glb) | [sketchup/bed-frame-twin-made-up.dae](sketchup/bed-frame-twin-made-up.dae) | 42 7/8" x 80 1/8" x 60 1/8" | 46,616 / 263,856 |
+| **Twin bed frame, bare** | [bed-frame-twin-bare.blend](bed-frame-twin-bare.blend) | [bed-frame-twin-bare.glb](bed-frame-twin-bare.glb) | [sketchup/bed-frame-twin-bare.dae](sketchup/bed-frame-twin-bare.dae) | 42 7/8" x 80 1/8" x 60 1/8" | 4,588 / 4,588 |
+| **King bed frame, made up** | [bed-frame-king-made-up.blend](bed-frame-king-made-up.blend) | [bed-frame-king-made-up.glb](bed-frame-king-made-up.glb) | [sketchup/bed-frame-king-made-up.dae](sketchup/bed-frame-king-made-up.dae) | 80 7/8" x 85 1/8" x 60 1/8" | 76,644 / 382,344 |
+| **King bed frame, bare** | [bed-frame-king-bare.blend](bed-frame-king-bare.blend) | [bed-frame-king-bare.glb](bed-frame-king-bare.glb) | [sketchup/bed-frame-king-bare.dae](sketchup/bed-frame-king-bare.dae) | 80 7/8" x 85 1/8" x 60 1/8" | 5,128 / 5,128 |
 
-- **bed-frame-made-up.blend**: The bed made up as a designer would: a coverlet in William Morris's Strawberry Thief falling about 14" over the sides and the foot, one uncut sheet folding over the foot's corners; a plain white top sheet turned down about 10" over it; a wool plaid blanket folded across the foot, its ends over the sides; four white pillows stacked two by two; a checked cover over the headboard; a white fitted sheet. Collections: `Bed frame` (59); `Bed mattress` (1); `Bedding: coverlet, top sheet, blanket and pillows` (8); `Bedding: headboard cover` (1).
+- **bed-frame-made-up.blend**: The bed made up: a coverlet in William Morris's Strawberry Thief tucked in between the mattress and the rails, its foot corners sewn; a plain white top sheet turned down about 10" over it; a wool plaid blanket folded across the foot; four white pillows stacked two by two; a plain light blue cover, the coverlet's blue, over the headboard; a white fitted sheet. Collections: `Bed frame` (59); `Bed mattress` (1); `Bedding: coverlet, top sheet, blanket and pillows` (8); `Bedding: headboard cover` (1).
 - **bed-frame-bare.blend**: The frame and a mattress in a white fitted sheet, nothing else. Collections: `Bed frame` (59); `Bed mattress` (1).
 - **bed-frame-quilt.blend**: The frame, a mattress in a white fitted sheet, and a pieced quilt (ochre and sage squares) draped over the headboard. Collections: `Bed frame` (59); `Bed mattress` (1); `Bedding: quilt` (1).
+- **bed-frame-twin-made-up.blend**: The same bed at twin size (a 38" x 75" mattress; the posts, rails and joinery the queen's, four headboard slats), made up the same way, with one column of two pillows. Collections: `Bed frame` (56); `Bed mattress` (1); `Bedding: coverlet, top sheet, blanket and pillows` (6); `Bedding: headboard cover` (1).
+- **bed-frame-twin-bare.blend**: The twin frame and a mattress in a white fitted sheet. Collections: `Bed frame` (56); `Bed mattress` (1).
+- **bed-frame-king-made-up.blend**: The same bed at king size (a 76" x 80" mattress; the posts, rails and joinery the queen's, nine headboard slats), made up the same way, with king pillows (36" x 20") stacked two by two. Collections: `Bed frame` (61); `Bed mattress` (1); `Bedding: coverlet, top sheet, blanket and pillows` (8); `Bedding: headboard cover` (1).
+- **bed-frame-king-bare.blend**: The king frame and a mattress in a white fitted sheet. Collections: `Bed frame` (61); `Bed mattress` (1).
 
-The frame alone is 64 7/8" x 85 1/8" x 60 1/8" (W x D x H), the same in every file. Sizes are measured from the saved files by the export's check, not typed.
+The frame alone is 64 7/8" x 85 1/8" x 60 1/8" (W x D x H), the same in each of its files.
+The twin's frame alone is 42 7/8" x 80 1/8" x 60 1/8" (W x D x H), the same in each of its files.
+The king's frame alone is 80 7/8" x 85 1/8" x 60 1/8" (W x D x H), the same in each of its files.
+
+Sizes are measured from the saved files by the export's check, not typed.
 
 ## What's in them
 
@@ -73,11 +85,11 @@ bed-frame-made-up:
   use: the Arts & Crafts queen bed, made up (Design-render's bed frame)
   name: Queen bed frame, made up
   size_in:
-  - 71.1
-  - 90.0
+  - 64.9
+  - 85.1
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-15b (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15c (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-made-up/bed-frame-made-up.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
@@ -97,7 +109,7 @@ m.node_tree.nodes["Repeat"].inputs["Scale"].default_value = (39.37 / 21.0, 39.37
 |---|---|---|
 | `Bed blanket` | `plaid.png` | 8" x 8" |
 | `Bed coverlet` | `morris-strawberry-thief-print.jpg` | 18" x 19 5/8" |
-| `Bed headboard cover` | `check.png` | 4" x 4" |
+| `Bed headboard cover` | `linen-blue.png` | 3" x 3" |
 | `Bed mattress sheet` | `percale.png` | 2" x 2" |
 | `Bed pillowcase` | `percale.png` | 2" x 2" |
 | `Bed quilt` | `quilt.png` | 18" x 18" |
@@ -108,7 +120,7 @@ m.node_tree.nodes["Repeat"].inputs["Scale"].default_value = (39.37 / 21.0, 39.37
 | Image (packed) | Source and rights |
 |---|---|
 | `Bed caban_nor_gl_1k.jpg` | Poly Haven, [Caban](https://polyhaven.com/a/caban) (photography colormass, processing Rico Cilliers), CC0: the wool's weave and nap, as the blanket's relief |
-| `Bed check.png` | our own woven check, drawn by `tools/make_fabric.py` (this repo, public) |
+| `Bed linen-blue.png` | our own plain linen, drawn by `tools/make_fabric.py` (this repo, public), in the Strawberry Thief's leaf blue lightened (#9db0cc) |
 | `Bed morris-strawberry-thief-print.jpg` | William Morris, *Strawberry Thief*, designed 1883 (printed about 1934), [Cooper Hewitt, Smithsonian Design Museum, object 18340065](https://collection.cooperhewitt.org/objects/18340065/): the design is public domain and Cooper Hewitt releases the image as CC0 ([on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Textile,_Strawberry_Thief,_designed_1883,_printed_ca._1934_%28CH_18340065%29.jpg)). One repeat, cut from the scan to tile, its color deepened a little (saturation 1.25, value 0.85) in the image. |
 | `Bed percale.png` | our own plain white sheeting, drawn by `tools/make_fabric.py` (this repo, public) |
 | `Bed plaid.png` | our own wool plaid, drawn by `tools/make_fabric.py` (this repo, public) |
@@ -116,7 +128,7 @@ m.node_tree.nodes["Repeat"].inputs["Scale"].default_value = (39.37 / 21.0, 39.37
 
 ## Footprint
 
-[bed-frame-footprint.svg](../bed-frame-footprint.svg): the top view to scale, the frame solid and each version's bedding outline dashed, for a room's plan.
+The top view to scale, the frame solid and each version's bedding outline dashed, for a room's plan: [the design's own size](../bed-frame-footprint.svg), [twin](../bed-frame-twin-footprint.svg), [king](../bed-frame-king-footprint.svg).
 
 ## Making them again
 

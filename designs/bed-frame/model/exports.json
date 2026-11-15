@@ -1,7 +1,7 @@
 {
  "bed-frame-bare": {
   "about": "",
-  "change": "made up as a designer would: a Morris coverlet falling 14\" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10\", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes",
+  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
   "checked": {
    "failed": [],
    "passed": [
@@ -16,7 +16,7 @@
     "9 materials named 'Bed ...'",
     "1 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "1 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15b",
+    "every object tagged design_render_version=2026-11-15c",
     "collections Bed frame, Bed mattress",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
@@ -93,7 +93,7 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed check.png",
+   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
    "sketchup/Bed plaid.png"
@@ -573,9 +573,9 @@
   "prefix": "Bed",
   "sewn": {},
   "sha256": {
-   "bed-frame-bare.blend": "914b38cc7dbe2ab7ee70db60725e76273ee1fe38e98763b8608a83907bc9d63d",
-   "bed-frame-bare.glb": "fd8db1f48bf087a52c6190be3c527fd4756128c98faa276a164f0274fb9e981c",
-   "sketchup/bed-frame-bare.dae": "e5d83b7814802cd539057fcc6d11a28bab5f0fe13d6ae8193d6e4c595378227d"
+   "bed-frame-bare.blend": "1080e08ebbb259c450748856b409abef78e08208b23d3c7567fe258aff31574c",
+   "bed-frame-bare.glb": "3a9c720cfbe17a51a9149c1a8b6e990072c97199194732c0f80b76537d997d47",
+   "sketchup/bed-frame-bare.dae": "3854db0530a67ba51a1ecb61e3732f947b4b03f5171a69ad86a1655cda269f8f"
   },
   "size_in": [
    64.875,
@@ -594,15 +594,1381 @@
   },
   "triangles": 4912,
   "triangles_render": 4912,
-  "version": "2026-11-15b"
+  "version": "2026-11-15c"
  },
- "bed-frame-made-up": {
+ "bed-frame-king-bare": {
   "about": "",
-  "change": "made up as a designer would: a Morris coverlet falling 14\" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10\", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes",
+  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
   "checked": {
    "failed": [],
    "passed": [
-    "size 71.137 x 89.963 x 60.125 in (exported [71.137, 89.963, 60.125])",
+    "size 80.875 x 85.143 x 60.125 in (exported [80.875, 85.143, 60.125])",
+    "bottom at z 0.0000 in",
+    "frame footprint centered at (0.000, 0.000) in",
+    "frame 80.875 x 85.143 x 60.125 in (the design's sizes: [80.875, 85.0625, 60.125])",
+    "facing: 716 vertices above 50.0 in, all in the +y half",
+    "no parents",
+    "every mesh's matrix the identity",
+    "objects and meshes named 'Bed ...'",
+    "9 materials named 'Bed ...'",
+    "1 textiles with one Pattern image, a Repeat mapping and no hue nodes",
+    "1 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-15c",
+    "collections Bed frame, Bed mattress",
+    "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
+   ],
+   "size_in": [
+    80.875,
+    85.143,
+    60.125
+   ]
+  },
+  "collections": {
+   "Bed frame": [
+    "Bed center leg 1",
+    "Bed center leg 2",
+    "Bed center leg 3",
+    "Bed center rail",
+    "Bed cleat L",
+    "Bed cleat R",
+    "Bed foot leg L",
+    "Bed foot leg L cap",
+    "Bed foot leg R",
+    "Bed foot leg R cap",
+    "Bed foot rail",
+    "Bed foot rail peg L0",
+    "Bed foot rail peg L1",
+    "Bed foot rail peg R0",
+    "Bed foot rail peg R1",
+    "Bed foot rail tenon L",
+    "Bed foot rail tenon R",
+    "Bed headboard post L",
+    "Bed headboard post L cap",
+    "Bed headboard post R",
+    "Bed headboard post R cap",
+    "Bed headboard rail bottom",
+    "Bed headboard rail bottom peg L0",
+    "Bed headboard rail bottom peg L1",
+    "Bed headboard rail bottom peg R0",
+    "Bed headboard rail bottom peg R1",
+    "Bed headboard rail bottom tenon L",
+    "Bed headboard rail bottom tenon R",
+    "Bed headboard rail top",
+    "Bed headboard rail top peg L0",
+    "Bed headboard rail top peg L1",
+    "Bed headboard rail top peg R0",
+    "Bed headboard rail top peg R1",
+    "Bed headboard rail top tenon L",
+    "Bed headboard rail top tenon R",
+    "Bed headboard slat 1",
+    "Bed headboard slat 2",
+    "Bed headboard slat 3",
+    "Bed headboard slat 4",
+    "Bed headboard slat 5",
+    "Bed headboard slat 6",
+    "Bed headboard slat 7",
+    "Bed headboard slat 8",
+    "Bed headboard slat 9",
+    "Bed side rail L",
+    "Bed side rail L bolt cover 0",
+    "Bed side rail R",
+    "Bed side rail R bolt cover 0",
+    "Bed slat 1",
+    "Bed slat 10",
+    "Bed slat 11",
+    "Bed slat 12",
+    "Bed slat 13",
+    "Bed slat 2",
+    "Bed slat 3",
+    "Bed slat 4",
+    "Bed slat 5",
+    "Bed slat 6",
+    "Bed slat 7",
+    "Bed slat 8",
+    "Bed slat 9"
+   ],
+   "Bed mattress": [
+    "Bed mattress"
+   ]
+  },
+  "dae_textures": [
+   "sketchup/Bed linen-blue.png",
+   "sketchup/Bed morris-strawberry-thief-print.jpg",
+   "sketchup/Bed percale.png",
+   "sketchup/Bed plaid.png",
+   "sketchup/Bed quilt.png"
+  ],
+  "exported": "2026-11-15",
+  "file": "bed-frame-king-bare.blend",
+  "footprint": {
+   "frame": [
+    [
+     -0.75,
+     -28.679,
+     0.75,
+     -25.179,
+     8.75
+    ],
+    [
+     -0.75,
+     -2.179,
+     0.75,
+     1.321,
+     8.75
+    ],
+    [
+     -0.75,
+     24.321,
+     0.75,
+     27.821,
+     8.75
+    ],
+    [
+     -39.5,
+     -42.571,
+     -37.875,
+     -42.491,
+     10.062
+    ],
+    [
+     37.875,
+     -42.571,
+     39.5,
+     -42.491,
+     10.062
+    ],
+    [
+     -38.875,
+     -42.554,
+     -38.5,
+     -42.491,
+     11.438
+    ],
+    [
+     38.5,
+     -42.554,
+     38.875,
+     -42.491,
+     11.438
+    ],
+    [
+     -0.75,
+     -40.679,
+     0.75,
+     39.821,
+     12.25
+    ],
+    [
+     -38.25,
+     -39.741,
+     -36.75,
+     39.821,
+     12.25
+    ],
+    [
+     36.75,
+     -39.741,
+     38.25,
+     39.821,
+     12.25
+    ],
+    [
+     -38.25,
+     -38.179,
+     38.25,
+     -34.679,
+     13.0
+    ],
+    [
+     -38.25,
+     15.821,
+     38.25,
+     19.321,
+     13.0
+    ],
+    [
+     -38.25,
+     21.821,
+     38.25,
+     25.321,
+     13.0
+    ],
+    [
+     -38.25,
+     27.821,
+     38.25,
+     31.321,
+     13.0
+    ],
+    [
+     -38.25,
+     33.821,
+     38.25,
+     37.321,
+     13.0
+    ],
+    [
+     -38.25,
+     -32.179,
+     38.25,
+     -28.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -26.179,
+     38.25,
+     -22.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -20.179,
+     38.25,
+     -16.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -14.179,
+     38.25,
+     -10.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -8.179,
+     38.25,
+     -4.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -2.179,
+     38.25,
+     1.321,
+     13.0
+    ],
+    [
+     -38.25,
+     3.821,
+     38.25,
+     7.321,
+     13.0
+    ],
+    [
+     -38.25,
+     9.821,
+     38.25,
+     13.321,
+     13.0
+    ],
+    [
+     -39.125,
+     -39.741,
+     -38.25,
+     39.821,
+     14.0
+    ],
+    [
+     38.25,
+     -39.741,
+     39.125,
+     39.821,
+     14.0
+    ],
+    [
+     -38.875,
+     -42.554,
+     -38.5,
+     -42.491,
+     14.938
+    ],
+    [
+     38.5,
+     -42.554,
+     38.875,
+     -42.491,
+     14.938
+    ],
+    [
+     -38.875,
+     39.759,
+     -38.5,
+     39.821,
+     15.437
+    ],
+    [
+     38.5,
+     39.759,
+     38.875,
+     39.821,
+     15.437
+    ],
+    [
+     -40.437,
+     -41.304,
+     -40.062,
+     -40.929,
+     15.5
+    ],
+    [
+     40.063,
+     -41.304,
+     40.437,
+     -40.929,
+     15.5
+    ],
+    [
+     -37.312,
+     -41.554,
+     37.313,
+     -40.679,
+     16.0
+    ],
+    [
+     -40.062,
+     -42.491,
+     -37.312,
+     -39.741,
+     17.0
+    ],
+    [
+     37.313,
+     -42.491,
+     40.063,
+     -39.741,
+     17.0
+    ],
+    [
+     -40.062,
+     -42.491,
+     -37.312,
+     -39.741,
+     17.625
+    ],
+    [
+     37.313,
+     -42.491,
+     40.063,
+     -39.741,
+     17.625
+    ],
+    [
+     -38.875,
+     39.759,
+     -38.5,
+     39.821,
+     17.937
+    ],
+    [
+     38.5,
+     39.759,
+     38.875,
+     39.821,
+     17.937
+    ],
+    [
+     -40.437,
+     40.446,
+     -40.062,
+     40.946,
+     18.5
+    ],
+    [
+     40.063,
+     40.446,
+     40.437,
+     40.946,
+     18.5
+    ],
+    [
+     -37.312,
+     40.071,
+     37.313,
+     41.321,
+     19.0
+    ],
+    [
+     -38.0,
+     -40.429,
+     38.0,
+     39.571,
+     24.0
+    ],
+    [
+     -36.312,
+     40.071,
+     -29.132,
+     40.821,
+     51.5
+    ],
+    [
+     -28.132,
+     40.071,
+     -20.951,
+     40.821,
+     51.5
+    ],
+    [
+     -19.951,
+     40.071,
+     -12.771,
+     40.821,
+     51.5
+    ],
+    [
+     -11.771,
+     40.071,
+     -4.59,
+     40.821,
+     51.5
+    ],
+    [
+     -3.59,
+     40.071,
+     3.59,
+     40.821,
+     51.5
+    ],
+    [
+     4.59,
+     40.071,
+     11.771,
+     40.821,
+     51.5
+    ],
+    [
+     12.771,
+     40.071,
+     19.951,
+     40.821,
+     51.5
+    ],
+    [
+     20.951,
+     40.071,
+     28.132,
+     40.821,
+     51.5
+    ],
+    [
+     29.132,
+     40.071,
+     36.313,
+     40.821,
+     51.5
+    ],
+    [
+     -38.875,
+     39.759,
+     -38.5,
+     39.821,
+     52.937
+    ],
+    [
+     38.5,
+     39.759,
+     38.875,
+     39.821,
+     52.937
+    ],
+    [
+     -38.875,
+     39.759,
+     -38.5,
+     39.821,
+     54.937
+    ],
+    [
+     38.5,
+     39.759,
+     38.875,
+     39.821,
+     54.937
+    ],
+    [
+     -40.437,
+     40.446,
+     -40.062,
+     40.946,
+     55.5
+    ],
+    [
+     40.063,
+     40.446,
+     40.437,
+     40.946,
+     55.5
+    ],
+    [
+     -37.312,
+     40.071,
+     37.313,
+     41.321,
+     56.0
+    ],
+    [
+     -40.062,
+     39.821,
+     -37.312,
+     42.571,
+     59.5
+    ],
+    [
+     37.313,
+     39.821,
+     40.063,
+     42.571,
+     59.5
+    ],
+    [
+     -40.062,
+     39.821,
+     -37.312,
+     42.571,
+     60.125
+    ],
+    [
+     37.313,
+     39.821,
+     40.063,
+     42.571,
+     60.125
+    ]
+   ],
+   "overhang": []
+  },
+  "frame": [
+   "Bed frame",
+   "Bed mattress"
+  ],
+  "frame_hi_in": [
+   40.437,
+   42.571,
+   60.125
+  ],
+  "frame_lo_in": [
+   -40.437,
+   -42.571,
+   0.0
+  ],
+  "frame_size_in": [
+   80.875,
+   85.143,
+   60.125
+  ],
+  "front": "Bed front",
+  "hi_in": [
+   40.437,
+   42.571,
+   60.125
+  ],
+  "images": [
+   "Bed percale.png"
+  ],
+  "lo_in": [
+   -40.437,
+   -42.571,
+   0.0
+  ],
+  "materials": [
+   "Bed 2x4 pine",
+   "Bed 2x4 pine stained dark",
+   "Bed brass aged",
+   "Bed mattress sheet",
+   "Bed oak fumed grain x",
+   "Bed oak fumed grain y",
+   "Bed oak fumed grain z",
+   "Bed oak fumed pegs grain x",
+   "Bed poplar"
+  ],
+  "objects": 62,
+  "prefix": "Bed",
+  "sewn": {},
+  "sha256": {
+   "bed-frame-king-bare.blend": "a12ebf4b6ed449bba73082f11d6fd64b648ba73eaa1f17a0f755d692c2b041f2",
+   "bed-frame-king-bare.glb": "720ff9e6a81adda16351c192293eb9ef17a3108fd8688c790b8fcbdee7ac181a",
+   "sketchup/bed-frame-king-bare.dae": "580bd3806e37ffa58bf991938d9ea150e2878acef5763cba0357978096fcff35"
+  },
+  "size_in": [
+   80.875,
+   85.143,
+   60.125
+  ],
+  "tall_in": 50.0,
+  "textiles": {
+   "Bed mattress sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   }
+  },
+  "triangles": 5128,
+  "triangles_render": 5128,
+  "version": "2026-11-15c"
+ },
+ "bed-frame-king-made-up": {
+  "about": "",
+  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "checked": {
+   "failed": [],
+   "passed": [
+    "size 80.875 x 85.143 x 60.125 in (exported [80.875, 85.143, 60.125])",
+    "bottom at z 0.0000 in",
+    "frame footprint centered at (0.000, 0.000) in",
+    "frame 80.875 x 85.143 x 60.125 in (the design's sizes: [80.875, 85.0625, 60.125])",
+    "facing: 1639 vertices above 50.0 in, all in the +y half",
+    "no parents",
+    "every mesh's matrix the identity",
+    "objects and meshes named 'Bed ...'",
+    "14 materials named 'Bed ...'",
+    "6 textiles with one Pattern image, a Repeat mapping and no hue nodes",
+    "5 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-15c",
+    "collections Bed frame, Bed mattress, Bedding: coverlet, top sheet, blanket and pillows, Bedding: headboard cover",
+    "'Bed coverlet': 0 open edges within 2\" of its corners above the hem",
+    "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
+   ],
+   "size_in": [
+    80.875,
+    85.143,
+    60.125
+   ]
+  },
+  "collections": {
+   "Bed frame": [
+    "Bed center leg 1",
+    "Bed center leg 2",
+    "Bed center leg 3",
+    "Bed center rail",
+    "Bed cleat L",
+    "Bed cleat R",
+    "Bed foot leg L",
+    "Bed foot leg L cap",
+    "Bed foot leg R",
+    "Bed foot leg R cap",
+    "Bed foot rail",
+    "Bed foot rail peg L0",
+    "Bed foot rail peg L1",
+    "Bed foot rail peg R0",
+    "Bed foot rail peg R1",
+    "Bed foot rail tenon L",
+    "Bed foot rail tenon R",
+    "Bed headboard post L",
+    "Bed headboard post L cap",
+    "Bed headboard post R",
+    "Bed headboard post R cap",
+    "Bed headboard rail bottom",
+    "Bed headboard rail bottom peg L0",
+    "Bed headboard rail bottom peg L1",
+    "Bed headboard rail bottom peg R0",
+    "Bed headboard rail bottom peg R1",
+    "Bed headboard rail bottom tenon L",
+    "Bed headboard rail bottom tenon R",
+    "Bed headboard rail top",
+    "Bed headboard rail top peg L0",
+    "Bed headboard rail top peg L1",
+    "Bed headboard rail top peg R0",
+    "Bed headboard rail top peg R1",
+    "Bed headboard rail top tenon L",
+    "Bed headboard rail top tenon R",
+    "Bed headboard slat 1",
+    "Bed headboard slat 2",
+    "Bed headboard slat 3",
+    "Bed headboard slat 4",
+    "Bed headboard slat 5",
+    "Bed headboard slat 6",
+    "Bed headboard slat 7",
+    "Bed headboard slat 8",
+    "Bed headboard slat 9",
+    "Bed side rail L",
+    "Bed side rail L bolt cover 0",
+    "Bed side rail R",
+    "Bed side rail R bolt cover 0",
+    "Bed slat 1",
+    "Bed slat 10",
+    "Bed slat 11",
+    "Bed slat 12",
+    "Bed slat 13",
+    "Bed slat 2",
+    "Bed slat 3",
+    "Bed slat 4",
+    "Bed slat 5",
+    "Bed slat 6",
+    "Bed slat 7",
+    "Bed slat 8",
+    "Bed slat 9"
+   ],
+   "Bed mattress": [
+    "Bed mattress"
+   ],
+   "Bedding: coverlet, top sheet, blanket and pillows": [
+    "Bed blanket",
+    "Bed blanket fringe",
+    "Bed coverlet",
+    "Bed pillow 0-0",
+    "Bed pillow 0-1",
+    "Bed pillow 1-0",
+    "Bed pillow 1-1",
+    "Bed top sheet"
+   ],
+   "Bedding: headboard cover": [
+    "Bed headboard cover"
+   ]
+  },
+  "dae_textures": [
+   "sketchup/Bed linen-blue.png",
+   "sketchup/Bed morris-strawberry-thief-print.jpg",
+   "sketchup/Bed percale.png",
+   "sketchup/Bed plaid.png",
+   "sketchup/Bed quilt.png"
+  ],
+  "exported": "2026-11-15",
+  "file": "bed-frame-king-made-up.blend",
+  "footprint": {
+   "frame": [
+    [
+     -0.75,
+     -28.679,
+     0.75,
+     -25.179,
+     8.75
+    ],
+    [
+     -0.75,
+     -2.179,
+     0.75,
+     1.321,
+     8.75
+    ],
+    [
+     -0.75,
+     24.321,
+     0.75,
+     27.821,
+     8.75
+    ],
+    [
+     -39.5,
+     -42.571,
+     -37.875,
+     -42.491,
+     10.062
+    ],
+    [
+     37.875,
+     -42.571,
+     39.5,
+     -42.491,
+     10.062
+    ],
+    [
+     -38.875,
+     -42.554,
+     -38.5,
+     -42.491,
+     11.438
+    ],
+    [
+     38.5,
+     -42.554,
+     38.875,
+     -42.491,
+     11.438
+    ],
+    [
+     -0.75,
+     -40.679,
+     0.75,
+     39.821,
+     12.25
+    ],
+    [
+     -38.25,
+     -39.741,
+     -36.75,
+     39.821,
+     12.25
+    ],
+    [
+     36.75,
+     -39.741,
+     38.25,
+     39.821,
+     12.25
+    ],
+    [
+     -38.25,
+     -38.179,
+     38.25,
+     -34.679,
+     13.0
+    ],
+    [
+     -38.25,
+     15.821,
+     38.25,
+     19.321,
+     13.0
+    ],
+    [
+     -38.25,
+     21.821,
+     38.25,
+     25.321,
+     13.0
+    ],
+    [
+     -38.25,
+     27.821,
+     38.25,
+     31.321,
+     13.0
+    ],
+    [
+     -38.25,
+     33.821,
+     38.25,
+     37.321,
+     13.0
+    ],
+    [
+     -38.25,
+     -32.179,
+     38.25,
+     -28.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -26.179,
+     38.25,
+     -22.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -20.179,
+     38.25,
+     -16.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -14.179,
+     38.25,
+     -10.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -8.179,
+     38.25,
+     -4.679,
+     13.0
+    ],
+    [
+     -38.25,
+     -2.179,
+     38.25,
+     1.321,
+     13.0
+    ],
+    [
+     -38.25,
+     3.821,
+     38.25,
+     7.321,
+     13.0
+    ],
+    [
+     -38.25,
+     9.821,
+     38.25,
+     13.321,
+     13.0
+    ],
+    [
+     -39.125,
+     -39.741,
+     -38.25,
+     39.821,
+     14.0
+    ],
+    [
+     38.25,
+     -39.741,
+     39.125,
+     39.821,
+     14.0
+    ],
+    [
+     -38.875,
+     -42.554,
+     -38.5,
+     -42.491,
+     14.938
+    ],
+    [
+     38.5,
+     -42.554,
+     38.875,
+     -42.491,
+     14.938
+    ],
+    [
+     -38.875,
+     39.759,
+     -38.5,
+     39.821,
+     15.437
+    ],
+    [
+     38.5,
+     39.759,
+     38.875,
+     39.821,
+     15.437
+    ],
+    [
+     -40.437,
+     -41.304,
+     -40.062,
+     -40.929,
+     15.5
+    ],
+    [
+     40.063,
+     -41.304,
+     40.437,
+     -40.929,
+     15.5
+    ],
+    [
+     -37.312,
+     -41.554,
+     37.313,
+     -40.679,
+     16.0
+    ],
+    [
+     -40.062,
+     -42.491,
+     -37.312,
+     -39.741,
+     17.0
+    ],
+    [
+     37.313,
+     -42.491,
+     40.063,
+     -39.741,
+     17.0
+    ],
+    [
+     -40.062,
+     -42.491,
+     -37.312,
+     -39.741,
+     17.625
+    ],
+    [
+     37.313,
+     -42.491,
+     40.063,
+     -39.741,
+     17.625
+    ],
+    [
+     -38.875,
+     39.759,
+     -38.5,
+     39.821,
+     17.937
+    ],
+    [
+     38.5,
+     39.759,
+     38.875,
+     39.821,
+     17.937
+    ],
+    [
+     -40.437,
+     40.446,
+     -40.062,
+     40.946,
+     18.5
+    ],
+    [
+     40.063,
+     40.446,
+     40.437,
+     40.946,
+     18.5
+    ],
+    [
+     -37.312,
+     40.071,
+     37.313,
+     41.321,
+     19.0
+    ],
+    [
+     -38.0,
+     -40.429,
+     38.0,
+     39.571,
+     24.0
+    ],
+    [
+     -36.312,
+     40.071,
+     -29.132,
+     40.821,
+     51.5
+    ],
+    [
+     -28.132,
+     40.071,
+     -20.951,
+     40.821,
+     51.5
+    ],
+    [
+     -19.951,
+     40.071,
+     -12.771,
+     40.821,
+     51.5
+    ],
+    [
+     -11.771,
+     40.071,
+     -4.59,
+     40.821,
+     51.5
+    ],
+    [
+     -3.59,
+     40.071,
+     3.59,
+     40.821,
+     51.5
+    ],
+    [
+     4.59,
+     40.071,
+     11.771,
+     40.821,
+     51.5
+    ],
+    [
+     12.771,
+     40.071,
+     19.951,
+     40.821,
+     51.5
+    ],
+    [
+     20.951,
+     40.071,
+     28.132,
+     40.821,
+     51.5
+    ],
+    [
+     29.132,
+     40.071,
+     36.313,
+     40.821,
+     51.5
+    ],
+    [
+     -38.875,
+     39.759,
+     -38.5,
+     39.821,
+     52.937
+    ],
+    [
+     38.5,
+     39.759,
+     38.875,
+     39.821,
+     52.937
+    ],
+    [
+     -38.875,
+     39.759,
+     -38.5,
+     39.821,
+     54.937
+    ],
+    [
+     38.5,
+     39.759,
+     38.875,
+     39.821,
+     54.937
+    ],
+    [
+     -40.437,
+     40.446,
+     -40.062,
+     40.946,
+     55.5
+    ],
+    [
+     40.063,
+     40.446,
+     40.437,
+     40.946,
+     55.5
+    ],
+    [
+     -37.312,
+     40.071,
+     37.313,
+     41.321,
+     56.0
+    ],
+    [
+     -40.062,
+     39.821,
+     -37.312,
+     42.571,
+     59.5
+    ],
+    [
+     37.313,
+     39.821,
+     40.063,
+     42.571,
+     59.5
+    ],
+    [
+     -40.062,
+     39.821,
+     -37.312,
+     42.571,
+     60.125
+    ],
+    [
+     37.313,
+     39.821,
+     40.063,
+     42.571,
+     60.125
+    ]
+   ],
+   "overhang": [
+    [
+     -39.685,
+     -31.496
+    ],
+    [
+     -39.606,
+     -32.559
+    ],
+    [
+     -38.661,
+     -41.181
+    ],
+    [
+     38.661,
+     -41.142
+    ],
+    [
+     39.528,
+     -33.78
+    ],
+    [
+     39.685,
+     -20.945
+    ],
+    [
+     39.685,
+     -19.252
+    ],
+    [
+     39.646,
+     -17.559
+    ],
+    [
+     38.701,
+     17.48
+    ],
+    [
+     36.85,
+     41.811
+    ],
+    [
+     34.764,
+     42.008
+    ],
+    [
+     -4.213,
+     42.047
+    ],
+    [
+     -35.827,
+     41.969
+    ],
+    [
+     -36.85,
+     41.811
+    ],
+    [
+     -38.74,
+     17.48
+    ],
+    [
+     -39.646,
+     -14.016
+    ],
+    [
+     -39.685,
+     -27.323
+    ]
+   ]
+  },
+  "frame": [
+   "Bed frame",
+   "Bed mattress"
+  ],
+  "frame_hi_in": [
+   40.437,
+   42.571,
+   60.125
+  ],
+  "frame_lo_in": [
+   -40.437,
+   -42.571,
+   0.0
+  ],
+  "frame_size_in": [
+   80.875,
+   85.143,
+   60.125
+  ],
+  "front": "Bed front",
+  "hi_in": [
+   40.437,
+   42.571,
+   60.125
+  ],
+  "images": [
+   "Bed caban_nor_gl_1k.jpg",
+   "Bed linen-blue.png",
+   "Bed morris-strawberry-thief-print.jpg",
+   "Bed percale.png",
+   "Bed plaid.png"
+  ],
+  "lo_in": [
+   -40.437,
+   -42.571,
+   0.0
+  ],
+  "materials": [
+   "Bed 2x4 pine",
+   "Bed 2x4 pine stained dark",
+   "Bed blanket",
+   "Bed brass aged",
+   "Bed coverlet",
+   "Bed headboard cover",
+   "Bed mattress sheet",
+   "Bed oak fumed grain x",
+   "Bed oak fumed grain y",
+   "Bed oak fumed grain z",
+   "Bed oak fumed pegs grain x",
+   "Bed pillowcase",
+   "Bed poplar",
+   "Bed top sheet"
+  ],
+  "objects": 71,
+  "prefix": "Bed",
+  "sewn": {
+   "Bed coverlet": [
+    [
+     -38.0,
+     -40.429
+    ],
+    [
+     38.0,
+     -40.429
+    ]
+   ]
+  },
+  "sha256": {
+   "bed-frame-king-made-up.blend": "3fe2cdca61a4330aaaea78744e1f51b41ec16c3bb777ad8e2c4228562c3a31c7",
+   "bed-frame-king-made-up.glb": "89b7e92abd2e848bdc80b595a12624b40a03a6b02ccc15cecc304a3a338d093c",
+   "sketchup/bed-frame-king-made-up.dae": "8164ae72fc4b84ce095cd6ca9548b12cab898934d49a8de5e8bac83d5fd8b0e8"
+  },
+  "size_in": [
+   80.875,
+   85.143,
+   60.125
+  ],
+  "tall_in": 50.0,
+  "textiles": {
+   "Bed blanket": {
+    "pattern": "plaid.png",
+    "repeat_in": [
+     8.0,
+     8.0
+    ]
+   },
+   "Bed coverlet": {
+    "pattern": "morris-strawberry-thief-print.jpg",
+    "repeat_in": [
+     18.0,
+     19.6
+    ]
+   },
+   "Bed headboard cover": {
+    "pattern": "linen-blue.png",
+    "repeat_in": [
+     3.0,
+     3.0
+    ]
+   },
+   "Bed mattress sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   },
+   "Bed pillowcase": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   },
+   "Bed top sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   }
+  },
+  "triangles": 76644,
+  "triangles_render": 382344,
+  "version": "2026-11-15c"
+ },
+ "bed-frame-made-up": {
+  "about": "",
+  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "checked": {
+   "failed": [],
+   "passed": [
+    "size 64.875 x 85.143 x 60.125 in (exported [64.875, 85.143, 60.125])",
     "bottom at z 0.0000 in",
     "frame footprint centered at (-0.000, 0.000) in",
     "frame 64.875 x 85.143 x 60.125 in (the design's sizes: [64.875, 85.0625, 60.125])",
@@ -613,14 +1979,14 @@
     "14 materials named 'Bed ...'",
     "6 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "5 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15b",
+    "every object tagged design_render_version=2026-11-15c",
     "collections Bed frame, Bed mattress, Bedding: coverlet, top sheet, blanket and pillows, Bedding: headboard cover",
     "'Bed coverlet': 0 open edges within 2\" of its corners above the hem",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
    "size_in": [
-    71.137,
-    89.963,
+    64.875,
+    85.143,
     60.125
    ]
   },
@@ -704,7 +2070,7 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed check.png",
+   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
    "sketchup/Bed plaid.png"
@@ -1136,28 +2502,56 @@
    ],
    "overhang": [
     [
-     -34.803,
-     -45.0
+     -31.693,
+     -30.906
     ],
     [
-     -34.173,
-     -45.63
+     -31.614,
+     -32.559
     ],
     [
-     29.449,
-     -47.402
+     -30.709,
+     -40.157
     ],
     [
-     36.024,
-     -41.85
+     -30.551,
+     -41.142
     ],
     [
-     36.339,
-     -40.787
+     28.11,
+     -41.457
     ],
     [
-     31.811,
-     18.346
+     29.409,
+     -41.457
+    ],
+    [
+     31.063,
+     -41.339
+    ],
+    [
+     31.102,
+     -41.299
+    ],
+    [
+     31.142,
+     -41.22
+    ],
+    [
+     31.535,
+     -33.78
+    ],
+    [
+     31.654,
+     -21.85
+    ],
+    [
+     31.654,
+     -17.559
+    ],
+    [
+     30.748,
+     18.583
     ],
     [
      28.858,
@@ -1180,12 +2574,16 @@
      41.811
     ],
     [
-     -31.811,
-     18.701
+     -30.709,
+     18.583
     ],
     [
-     -33.74,
-     -14.016
+     -31.614,
+     -13.701
+    ],
+    [
+     -31.693,
+     -27.323
     ]
    ]
   },
@@ -1210,20 +2608,20 @@
   ],
   "front": "Bed front",
   "hi_in": [
-   36.35,
+   32.437,
    42.571,
    60.125
   ],
   "images": [
    "Bed caban_nor_gl_1k.jpg",
-   "Bed check.png",
+   "Bed linen-blue.png",
    "Bed morris-strawberry-thief-print.jpg",
    "Bed percale.png",
    "Bed plaid.png"
   ],
   "lo_in": [
-   -34.786,
-   -47.392,
+   -32.438,
+   -42.571,
    0.0
   ],
   "materials": [
@@ -1257,13 +2655,13 @@
    ]
   },
   "sha256": {
-   "bed-frame-made-up.blend": "6216ac7f74d4ef6e82387c546199828353971ba61a2fd8c12f990cb6c0c4af53",
-   "bed-frame-made-up.glb": "a9670b025a825ae3882a5d672b4cd5d9b5d4c072c2d5971e7a875879a10ac6e4",
-   "sketchup/bed-frame-made-up.dae": "050ffc1a1de9adc0b9fa24a8a4048c51f9733100796367c0af94d1bb73e956e1"
+   "bed-frame-made-up.blend": "354d16672c708e201e758962b3ddd9a136a0d06eef6958722237ca3e48446a2c",
+   "bed-frame-made-up.glb": "237d3c5f510c5e0b4dc15244397c6be6985272f130e162c220ec76a3fe64bc38",
+   "sketchup/bed-frame-made-up.dae": "9e32d98c3107ace1cb2b1c0d824480cbeac0341e9d4f12ea572aa07c4751ed93"
   },
   "size_in": [
-   71.137,
-   89.963,
+   64.875,
+   85.143,
    60.125
   ],
   "tall_in": 50.0,
@@ -1283,10 +2681,10 @@
     ]
    },
    "Bed headboard cover": {
-    "pattern": "check.png",
+    "pattern": "linen-blue.png",
     "repeat_in": [
-     4.0,
-     4.0
+     3.0,
+     3.0
     ]
    },
    "Bed mattress sheet": {
@@ -1311,13 +2709,13 @@
     ]
    }
   },
-  "triangles": 72232,
-  "triangles_render": 365344,
-  "version": "2026-11-15b"
+  "triangles": 68932,
+  "triangles_render": 352144,
+  "version": "2026-11-15c"
  },
  "bed-frame-quilt": {
   "about": "",
-  "change": "made up as a designer would: a Morris coverlet falling 14\" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10\", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes",
+  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
   "checked": {
    "failed": [],
    "passed": [
@@ -1332,7 +2730,7 @@
     "10 materials named 'Bed ...'",
     "2 textiles with one Pattern image, a Repeat mapping and no hue nodes",
     "2 images packed and named 'Bed ...'",
-    "every object tagged design_render_version=2026-11-15b",
+    "every object tagged design_render_version=2026-11-15c",
     "collections Bed frame, Bed mattress, Bedding: quilt",
     "'Bed front' at (0.00, -42.57, 0.00) in, pointing (0.00, -1.00, -0.00)"
    ],
@@ -1412,7 +2810,7 @@
    ]
   },
   "dae_textures": [
-   "sketchup/Bed check.png",
+   "sketchup/Bed linen-blue.png",
    "sketchup/Bed morris-strawberry-thief-print.jpg",
    "sketchup/Bed percale.png",
    "sketchup/Bed plaid.png",
@@ -1968,9 +3366,9 @@
   "prefix": "Bed",
   "sewn": {},
   "sha256": {
-   "bed-frame-quilt.blend": "6ff493fd887eb9a4fd848480846de823ea36aca466ff8a15a55c72f7aa3c9c6c",
-   "bed-frame-quilt.glb": "c44b43039ebca23d33936a5117cf641efb008e79e61362777eed04698798ae62",
-   "sketchup/bed-frame-quilt.dae": "7ef2fc031df5fca81816a804844f87af626a7958faef04f9e387fbe133c60f30"
+   "bed-frame-quilt.blend": "d8cbc34574141e9aecb3fa98d29c58ed611b2e13fb63c80d6fdb74ae5ba26824",
+   "bed-frame-quilt.glb": "b6d3d40970cb626c3281acbc5aa7533f3a3e89115f624994a49c4a14e179550a",
+   "sketchup/bed-frame-quilt.dae": "c7178e44c471c47cd896329d19e15bdc90120b4d753c0c096c952cb6c78625ce"
   },
   "size_in": [
    64.875,
@@ -1996,6 +3394,1294 @@
   },
   "triangles": 21260,
   "triangles_render": 70304,
-  "version": "2026-11-15b"
+  "version": "2026-11-15c"
+ },
+ "bed-frame-twin-bare": {
+  "about": "",
+  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "checked": {
+   "failed": [],
+   "passed": [
+    "size 42.875 x 80.143 x 60.125 in (exported [42.875, 80.142, 60.125])",
+    "bottom at z 0.0000 in",
+    "frame footprint centered at (-0.000, 0.000) in",
+    "frame 42.875 x 80.143 x 60.125 in (the design's sizes: [42.875, 80.0625, 60.125])",
+    "facing: 576 vertices above 50.0 in, all in the +y half",
+    "no parents",
+    "every mesh's matrix the identity",
+    "objects and meshes named 'Bed ...'",
+    "9 materials named 'Bed ...'",
+    "1 textiles with one Pattern image, a Repeat mapping and no hue nodes",
+    "1 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-15c",
+    "collections Bed frame, Bed mattress",
+    "'Bed front' at (0.00, -40.07, 0.00) in, pointing (0.00, -1.00, -0.00)"
+   ],
+   "size_in": [
+    42.875,
+    80.143,
+    60.125
+   ]
+  },
+  "collections": {
+   "Bed frame": [
+    "Bed center leg 1",
+    "Bed center leg 2",
+    "Bed center leg 3",
+    "Bed center rail",
+    "Bed cleat L",
+    "Bed cleat R",
+    "Bed foot leg L",
+    "Bed foot leg L cap",
+    "Bed foot leg R",
+    "Bed foot leg R cap",
+    "Bed foot rail",
+    "Bed foot rail peg L0",
+    "Bed foot rail peg L1",
+    "Bed foot rail peg R0",
+    "Bed foot rail peg R1",
+    "Bed foot rail tenon L",
+    "Bed foot rail tenon R",
+    "Bed headboard post L",
+    "Bed headboard post L cap",
+    "Bed headboard post R",
+    "Bed headboard post R cap",
+    "Bed headboard rail bottom",
+    "Bed headboard rail bottom peg L0",
+    "Bed headboard rail bottom peg L1",
+    "Bed headboard rail bottom peg R0",
+    "Bed headboard rail bottom peg R1",
+    "Bed headboard rail bottom tenon L",
+    "Bed headboard rail bottom tenon R",
+    "Bed headboard rail top",
+    "Bed headboard rail top peg L0",
+    "Bed headboard rail top peg L1",
+    "Bed headboard rail top peg R0",
+    "Bed headboard rail top peg R1",
+    "Bed headboard rail top tenon L",
+    "Bed headboard rail top tenon R",
+    "Bed headboard slat 1",
+    "Bed headboard slat 2",
+    "Bed headboard slat 3",
+    "Bed headboard slat 4",
+    "Bed side rail L",
+    "Bed side rail L bolt cover 0",
+    "Bed side rail R",
+    "Bed side rail R bolt cover 0",
+    "Bed slat 1",
+    "Bed slat 10",
+    "Bed slat 11",
+    "Bed slat 12",
+    "Bed slat 13",
+    "Bed slat 2",
+    "Bed slat 3",
+    "Bed slat 4",
+    "Bed slat 5",
+    "Bed slat 6",
+    "Bed slat 7",
+    "Bed slat 8",
+    "Bed slat 9"
+   ],
+   "Bed mattress": [
+    "Bed mattress"
+   ]
+  },
+  "dae_textures": [
+   "sketchup/Bed linen-blue.png",
+   "sketchup/Bed morris-strawberry-thief-print.jpg",
+   "sketchup/Bed percale.png",
+   "sketchup/Bed plaid.png",
+   "sketchup/Bed quilt.png"
+  ],
+  "exported": "2026-11-15",
+  "file": "bed-frame-twin-bare.blend",
+  "footprint": {
+   "frame": [
+    [
+     -0.75,
+     -26.179,
+     0.75,
+     -22.679,
+     8.75
+    ],
+    [
+     -0.75,
+     -2.179,
+     0.75,
+     1.321,
+     8.75
+    ],
+    [
+     -0.75,
+     21.821,
+     0.75,
+     25.321,
+     8.75
+    ],
+    [
+     -20.5,
+     -40.071,
+     -18.875,
+     -39.991,
+     10.062
+    ],
+    [
+     18.875,
+     -40.071,
+     20.5,
+     -39.991,
+     10.062
+    ],
+    [
+     -19.875,
+     -40.054,
+     -19.5,
+     -39.991,
+     11.438
+    ],
+    [
+     19.5,
+     -40.054,
+     19.875,
+     -39.991,
+     11.438
+    ],
+    [
+     -0.75,
+     -38.179,
+     0.75,
+     37.321,
+     12.25
+    ],
+    [
+     -19.25,
+     -37.241,
+     -17.75,
+     37.321,
+     12.25
+    ],
+    [
+     17.75,
+     -37.241,
+     19.25,
+     37.321,
+     12.25
+    ],
+    [
+     -19.25,
+     -36.036,
+     19.25,
+     -32.536,
+     13.0
+    ],
+    [
+     -19.25,
+     14.75,
+     19.25,
+     18.25,
+     13.0
+    ],
+    [
+     -19.25,
+     20.393,
+     19.25,
+     23.893,
+     13.0
+    ],
+    [
+     -19.25,
+     26.036,
+     19.25,
+     29.536,
+     13.0
+    ],
+    [
+     -19.25,
+     31.678,
+     19.25,
+     35.178,
+     13.0
+    ],
+    [
+     -19.25,
+     -30.393,
+     19.25,
+     -26.893,
+     13.0
+    ],
+    [
+     -19.25,
+     -24.75,
+     19.25,
+     -21.25,
+     13.0
+    ],
+    [
+     -19.25,
+     -19.107,
+     19.25,
+     -15.607,
+     13.0
+    ],
+    [
+     -19.25,
+     -13.464,
+     19.25,
+     -9.964,
+     13.0
+    ],
+    [
+     -19.25,
+     -7.822,
+     19.25,
+     -4.322,
+     13.0
+    ],
+    [
+     -19.25,
+     -2.179,
+     19.25,
+     1.321,
+     13.0
+    ],
+    [
+     -19.25,
+     3.464,
+     19.25,
+     6.964,
+     13.0
+    ],
+    [
+     -19.25,
+     9.107,
+     19.25,
+     12.607,
+     13.0
+    ],
+    [
+     -20.125,
+     -37.241,
+     -19.25,
+     37.321,
+     14.0
+    ],
+    [
+     19.25,
+     -37.241,
+     20.125,
+     37.321,
+     14.0
+    ],
+    [
+     -19.875,
+     -40.054,
+     -19.5,
+     -39.991,
+     14.938
+    ],
+    [
+     19.5,
+     -40.054,
+     19.875,
+     -39.991,
+     14.938
+    ],
+    [
+     -19.875,
+     37.259,
+     -19.5,
+     37.321,
+     15.437
+    ],
+    [
+     19.5,
+     37.259,
+     19.875,
+     37.321,
+     15.437
+    ],
+    [
+     -21.438,
+     -38.804,
+     -21.063,
+     -38.429,
+     15.5
+    ],
+    [
+     21.063,
+     -38.804,
+     21.437,
+     -38.429,
+     15.5
+    ],
+    [
+     -18.313,
+     -39.054,
+     18.312,
+     -38.179,
+     16.0
+    ],
+    [
+     -21.063,
+     -39.991,
+     -18.313,
+     -37.241,
+     17.0
+    ],
+    [
+     18.312,
+     -39.991,
+     21.063,
+     -37.241,
+     17.0
+    ],
+    [
+     -21.063,
+     -39.991,
+     -18.313,
+     -37.241,
+     17.625
+    ],
+    [
+     18.312,
+     -39.991,
+     21.063,
+     -37.241,
+     17.625
+    ],
+    [
+     -19.875,
+     37.259,
+     -19.5,
+     37.321,
+     17.937
+    ],
+    [
+     19.5,
+     37.259,
+     19.875,
+     37.321,
+     17.937
+    ],
+    [
+     -21.438,
+     37.946,
+     -21.063,
+     38.446,
+     18.5
+    ],
+    [
+     21.063,
+     37.946,
+     21.437,
+     38.446,
+     18.5
+    ],
+    [
+     -18.313,
+     37.571,
+     18.312,
+     38.821,
+     19.0
+    ],
+    [
+     -19.0,
+     -37.929,
+     19.0,
+     37.071,
+     24.0
+    ],
+    [
+     -17.312,
+     37.571,
+     -9.406,
+     38.321,
+     51.5
+    ],
+    [
+     -8.406,
+     37.571,
+     -0.5,
+     38.321,
+     51.5
+    ],
+    [
+     0.5,
+     37.571,
+     8.406,
+     38.321,
+     51.5
+    ],
+    [
+     9.406,
+     37.571,
+     17.312,
+     38.321,
+     51.5
+    ],
+    [
+     -19.875,
+     37.259,
+     -19.5,
+     37.321,
+     52.937
+    ],
+    [
+     19.5,
+     37.259,
+     19.875,
+     37.321,
+     52.937
+    ],
+    [
+     -19.875,
+     37.259,
+     -19.5,
+     37.321,
+     54.937
+    ],
+    [
+     19.5,
+     37.259,
+     19.875,
+     37.321,
+     54.937
+    ],
+    [
+     -21.438,
+     37.946,
+     -21.063,
+     38.446,
+     55.5
+    ],
+    [
+     21.063,
+     37.946,
+     21.437,
+     38.446,
+     55.5
+    ],
+    [
+     -18.313,
+     37.571,
+     18.312,
+     38.821,
+     56.0
+    ],
+    [
+     -21.063,
+     37.321,
+     -18.313,
+     40.071,
+     59.5
+    ],
+    [
+     18.312,
+     37.321,
+     21.063,
+     40.071,
+     59.5
+    ],
+    [
+     -21.063,
+     37.321,
+     -18.313,
+     40.071,
+     60.125
+    ],
+    [
+     18.312,
+     37.321,
+     21.063,
+     40.071,
+     60.125
+    ]
+   ],
+   "overhang": []
+  },
+  "frame": [
+   "Bed frame",
+   "Bed mattress"
+  ],
+  "frame_hi_in": [
+   21.437,
+   40.071,
+   60.125
+  ],
+  "frame_lo_in": [
+   -21.438,
+   -40.071,
+   0.0
+  ],
+  "frame_size_in": [
+   42.875,
+   80.142,
+   60.125
+  ],
+  "front": "Bed front",
+  "hi_in": [
+   21.437,
+   40.071,
+   60.125
+  ],
+  "images": [
+   "Bed percale.png"
+  ],
+  "lo_in": [
+   -21.438,
+   -40.071,
+   0.0
+  ],
+  "materials": [
+   "Bed 2x4 pine",
+   "Bed 2x4 pine stained dark",
+   "Bed brass aged",
+   "Bed mattress sheet",
+   "Bed oak fumed grain x",
+   "Bed oak fumed grain y",
+   "Bed oak fumed grain z",
+   "Bed oak fumed pegs grain x",
+   "Bed poplar"
+  ],
+  "objects": 57,
+  "prefix": "Bed",
+  "sewn": {},
+  "sha256": {
+   "bed-frame-twin-bare.blend": "018c6f477e39dc1e9979ba7d8873441c41dde6efa940c7ec12b456e489e0089f",
+   "bed-frame-twin-bare.glb": "9a3e766d83730b93b9c53623fb3c8567ee8168709688cf67f9eb85fb0855ddf4",
+   "sketchup/bed-frame-twin-bare.dae": "ff42eae67d156eab3c321b2594e3317f5d4783159d48ce91b1044d9a53ad40ea"
+  },
+  "size_in": [
+   42.875,
+   80.142,
+   60.125
+  ],
+  "tall_in": 50.0,
+  "textiles": {
+   "Bed mattress sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   }
+  },
+  "triangles": 4588,
+  "triangles_render": 4588,
+  "version": "2026-11-15c"
+ },
+ "bed-frame-twin-made-up": {
+  "about": "",
+  "change": "the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38\" x 75\" mattress, for a pair in the NW bedroom) and a king (76\" x 80\", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each",
+  "checked": {
+   "failed": [],
+   "passed": [
+    "size 42.875 x 80.143 x 60.125 in (exported [42.875, 80.142, 60.125])",
+    "bottom at z 0.0000 in",
+    "frame footprint centered at (-0.000, 0.000) in",
+    "frame 42.875 x 80.143 x 60.125 in (the design's sizes: [42.875, 80.0625, 60.125])",
+    "facing: 1031 vertices above 50.0 in, all in the +y half",
+    "no parents",
+    "every mesh's matrix the identity",
+    "objects and meshes named 'Bed ...'",
+    "14 materials named 'Bed ...'",
+    "6 textiles with one Pattern image, a Repeat mapping and no hue nodes",
+    "5 images packed and named 'Bed ...'",
+    "every object tagged design_render_version=2026-11-15c",
+    "collections Bed frame, Bed mattress, Bedding: coverlet, top sheet, blanket and pillows, Bedding: headboard cover",
+    "'Bed coverlet': 0 open edges within 2\" of its corners above the hem",
+    "'Bed front' at (0.00, -40.07, 0.00) in, pointing (0.00, -1.00, -0.00)"
+   ],
+   "size_in": [
+    42.875,
+    80.143,
+    60.125
+   ]
+  },
+  "collections": {
+   "Bed frame": [
+    "Bed center leg 1",
+    "Bed center leg 2",
+    "Bed center leg 3",
+    "Bed center rail",
+    "Bed cleat L",
+    "Bed cleat R",
+    "Bed foot leg L",
+    "Bed foot leg L cap",
+    "Bed foot leg R",
+    "Bed foot leg R cap",
+    "Bed foot rail",
+    "Bed foot rail peg L0",
+    "Bed foot rail peg L1",
+    "Bed foot rail peg R0",
+    "Bed foot rail peg R1",
+    "Bed foot rail tenon L",
+    "Bed foot rail tenon R",
+    "Bed headboard post L",
+    "Bed headboard post L cap",
+    "Bed headboard post R",
+    "Bed headboard post R cap",
+    "Bed headboard rail bottom",
+    "Bed headboard rail bottom peg L0",
+    "Bed headboard rail bottom peg L1",
+    "Bed headboard rail bottom peg R0",
+    "Bed headboard rail bottom peg R1",
+    "Bed headboard rail bottom tenon L",
+    "Bed headboard rail bottom tenon R",
+    "Bed headboard rail top",
+    "Bed headboard rail top peg L0",
+    "Bed headboard rail top peg L1",
+    "Bed headboard rail top peg R0",
+    "Bed headboard rail top peg R1",
+    "Bed headboard rail top tenon L",
+    "Bed headboard rail top tenon R",
+    "Bed headboard slat 1",
+    "Bed headboard slat 2",
+    "Bed headboard slat 3",
+    "Bed headboard slat 4",
+    "Bed side rail L",
+    "Bed side rail L bolt cover 0",
+    "Bed side rail R",
+    "Bed side rail R bolt cover 0",
+    "Bed slat 1",
+    "Bed slat 10",
+    "Bed slat 11",
+    "Bed slat 12",
+    "Bed slat 13",
+    "Bed slat 2",
+    "Bed slat 3",
+    "Bed slat 4",
+    "Bed slat 5",
+    "Bed slat 6",
+    "Bed slat 7",
+    "Bed slat 8",
+    "Bed slat 9"
+   ],
+   "Bed mattress": [
+    "Bed mattress"
+   ],
+   "Bedding: coverlet, top sheet, blanket and pillows": [
+    "Bed blanket",
+    "Bed blanket fringe",
+    "Bed coverlet",
+    "Bed pillow 0-0",
+    "Bed pillow 0-1",
+    "Bed top sheet"
+   ],
+   "Bedding: headboard cover": [
+    "Bed headboard cover"
+   ]
+  },
+  "dae_textures": [
+   "sketchup/Bed linen-blue.png",
+   "sketchup/Bed morris-strawberry-thief-print.jpg",
+   "sketchup/Bed percale.png",
+   "sketchup/Bed plaid.png",
+   "sketchup/Bed quilt.png"
+  ],
+  "exported": "2026-11-15",
+  "file": "bed-frame-twin-made-up.blend",
+  "footprint": {
+   "frame": [
+    [
+     -0.75,
+     -26.179,
+     0.75,
+     -22.679,
+     8.75
+    ],
+    [
+     -0.75,
+     -2.179,
+     0.75,
+     1.321,
+     8.75
+    ],
+    [
+     -0.75,
+     21.821,
+     0.75,
+     25.321,
+     8.75
+    ],
+    [
+     -20.5,
+     -40.071,
+     -18.875,
+     -39.991,
+     10.062
+    ],
+    [
+     18.875,
+     -40.071,
+     20.5,
+     -39.991,
+     10.062
+    ],
+    [
+     -19.875,
+     -40.054,
+     -19.5,
+     -39.991,
+     11.438
+    ],
+    [
+     19.5,
+     -40.054,
+     19.875,
+     -39.991,
+     11.438
+    ],
+    [
+     -0.75,
+     -38.179,
+     0.75,
+     37.321,
+     12.25
+    ],
+    [
+     -19.25,
+     -37.241,
+     -17.75,
+     37.321,
+     12.25
+    ],
+    [
+     17.75,
+     -37.241,
+     19.25,
+     37.321,
+     12.25
+    ],
+    [
+     -19.25,
+     -36.036,
+     19.25,
+     -32.536,
+     13.0
+    ],
+    [
+     -19.25,
+     14.75,
+     19.25,
+     18.25,
+     13.0
+    ],
+    [
+     -19.25,
+     20.393,
+     19.25,
+     23.893,
+     13.0
+    ],
+    [
+     -19.25,
+     26.036,
+     19.25,
+     29.536,
+     13.0
+    ],
+    [
+     -19.25,
+     31.678,
+     19.25,
+     35.178,
+     13.0
+    ],
+    [
+     -19.25,
+     -30.393,
+     19.25,
+     -26.893,
+     13.0
+    ],
+    [
+     -19.25,
+     -24.75,
+     19.25,
+     -21.25,
+     13.0
+    ],
+    [
+     -19.25,
+     -19.107,
+     19.25,
+     -15.607,
+     13.0
+    ],
+    [
+     -19.25,
+     -13.464,
+     19.25,
+     -9.964,
+     13.0
+    ],
+    [
+     -19.25,
+     -7.822,
+     19.25,
+     -4.322,
+     13.0
+    ],
+    [
+     -19.25,
+     -2.179,
+     19.25,
+     1.321,
+     13.0
+    ],
+    [
+     -19.25,
+     3.464,
+     19.25,
+     6.964,
+     13.0
+    ],
+    [
+     -19.25,
+     9.107,
+     19.25,
+     12.607,
+     13.0
+    ],
+    [
+     -20.125,
+     -37.241,
+     -19.25,
+     37.321,
+     14.0
+    ],
+    [
+     19.25,
+     -37.241,
+     20.125,
+     37.321,
+     14.0
+    ],
+    [
+     -19.875,
+     -40.054,
+     -19.5,
+     -39.991,
+     14.938
+    ],
+    [
+     19.5,
+     -40.054,
+     19.875,
+     -39.991,
+     14.938
+    ],
+    [
+     -19.875,
+     37.259,
+     -19.5,
+     37.321,
+     15.437
+    ],
+    [
+     19.5,
+     37.259,
+     19.875,
+     37.321,
+     15.437
+    ],
+    [
+     -21.438,
+     -38.804,
+     -21.063,
+     -38.429,
+     15.5
+    ],
+    [
+     21.063,
+     -38.804,
+     21.437,
+     -38.429,
+     15.5
+    ],
+    [
+     -18.313,
+     -39.054,
+     18.312,
+     -38.179,
+     16.0
+    ],
+    [
+     -21.063,
+     -39.991,
+     -18.313,
+     -37.241,
+     17.0
+    ],
+    [
+     18.312,
+     -39.991,
+     21.063,
+     -37.241,
+     17.0
+    ],
+    [
+     -21.063,
+     -39.991,
+     -18.313,
+     -37.241,
+     17.625
+    ],
+    [
+     18.312,
+     -39.991,
+     21.063,
+     -37.241,
+     17.625
+    ],
+    [
+     -19.875,
+     37.259,
+     -19.5,
+     37.321,
+     17.937
+    ],
+    [
+     19.5,
+     37.259,
+     19.875,
+     37.321,
+     17.937
+    ],
+    [
+     -21.438,
+     37.946,
+     -21.063,
+     38.446,
+     18.5
+    ],
+    [
+     21.063,
+     37.946,
+     21.437,
+     38.446,
+     18.5
+    ],
+    [
+     -18.313,
+     37.571,
+     18.312,
+     38.821,
+     19.0
+    ],
+    [
+     -19.0,
+     -37.929,
+     19.0,
+     37.071,
+     24.0
+    ],
+    [
+     -17.312,
+     37.571,
+     -9.406,
+     38.321,
+     51.5
+    ],
+    [
+     -8.406,
+     37.571,
+     -0.5,
+     38.321,
+     51.5
+    ],
+    [
+     0.5,
+     37.571,
+     8.406,
+     38.321,
+     51.5
+    ],
+    [
+     9.406,
+     37.571,
+     17.312,
+     38.321,
+     51.5
+    ],
+    [
+     -19.875,
+     37.259,
+     -19.5,
+     37.321,
+     52.937
+    ],
+    [
+     19.5,
+     37.259,
+     19.875,
+     37.321,
+     52.937
+    ],
+    [
+     -19.875,
+     37.259,
+     -19.5,
+     37.321,
+     54.937
+    ],
+    [
+     19.5,
+     37.259,
+     19.875,
+     37.321,
+     54.937
+    ],
+    [
+     -21.438,
+     37.946,
+     -21.063,
+     38.446,
+     55.5
+    ],
+    [
+     21.063,
+     37.946,
+     21.437,
+     38.446,
+     55.5
+    ],
+    [
+     -18.313,
+     37.571,
+     18.312,
+     38.821,
+     56.0
+    ],
+    [
+     -21.063,
+     37.321,
+     -18.313,
+     40.071,
+     59.5
+    ],
+    [
+     18.312,
+     37.321,
+     21.063,
+     40.071,
+     59.5
+    ],
+    [
+     -21.063,
+     37.321,
+     -18.313,
+     40.071,
+     60.125
+    ],
+    [
+     18.312,
+     37.321,
+     21.063,
+     40.071,
+     60.125
+    ]
+   ],
+   "overhang": [
+    [
+     -20.669,
+     -29.016
+    ],
+    [
+     -20.591,
+     -30.079
+    ],
+    [
+     -19.567,
+     -37.638
+    ],
+    [
+     -19.37,
+     -38.622
+    ],
+    [
+     -19.331,
+     -38.661
+    ],
+    [
+     19.409,
+     -39.134
+    ],
+    [
+     20.512,
+     -38.661
+    ],
+    [
+     20.63,
+     -38.583
+    ],
+    [
+     20.669,
+     -38.543
+    ],
+    [
+     20.669,
+     -16.732
+    ],
+    [
+     20.63,
+     -15.039
+    ],
+    [
+     19.685,
+     16.102
+    ],
+    [
+     17.835,
+     39.331
+    ],
+    [
+     15.827,
+     39.606
+    ],
+    [
+     -17.835,
+     39.606
+    ],
+    [
+     -19.646,
+     16.142
+    ],
+    [
+     -20.63,
+     -11.535
+    ],
+    [
+     -20.669,
+     -24.843
+    ]
+   ]
+  },
+  "frame": [
+   "Bed frame",
+   "Bed mattress"
+  ],
+  "frame_hi_in": [
+   21.437,
+   40.071,
+   60.125
+  ],
+  "frame_lo_in": [
+   -21.438,
+   -40.071,
+   0.0
+  ],
+  "frame_size_in": [
+   42.875,
+   80.142,
+   60.125
+  ],
+  "front": "Bed front",
+  "hi_in": [
+   21.437,
+   40.071,
+   60.125
+  ],
+  "images": [
+   "Bed caban_nor_gl_1k.jpg",
+   "Bed linen-blue.png",
+   "Bed morris-strawberry-thief-print.jpg",
+   "Bed percale.png",
+   "Bed plaid.png"
+  ],
+  "lo_in": [
+   -21.438,
+   -40.071,
+   0.0
+  ],
+  "materials": [
+   "Bed 2x4 pine",
+   "Bed 2x4 pine stained dark",
+   "Bed blanket",
+   "Bed brass aged",
+   "Bed coverlet",
+   "Bed headboard cover",
+   "Bed mattress sheet",
+   "Bed oak fumed grain x",
+   "Bed oak fumed grain y",
+   "Bed oak fumed grain z",
+   "Bed oak fumed pegs grain x",
+   "Bed pillowcase",
+   "Bed poplar",
+   "Bed top sheet"
+  ],
+  "objects": 64,
+  "prefix": "Bed",
+  "sewn": {
+   "Bed coverlet": [
+    [
+     -19.0,
+     -37.929
+    ],
+    [
+     19.0,
+     -37.929
+    ]
+   ]
+  },
+  "sha256": {
+   "bed-frame-twin-made-up.blend": "ea4e0bfdc2e6acea9d5ccb3d2412757cd84b29d66716f16e58cf73daeb506277",
+   "bed-frame-twin-made-up.glb": "12ecb32aa4a8e1a974da2abbc41bb76ba59f50786a01e58cb040abd33ee47436",
+   "sketchup/bed-frame-twin-made-up.dae": "043ec37acd9dcc340959fadf96b123d06b4252b395e0f058d753a9220ea946ff"
+  },
+  "size_in": [
+   42.875,
+   80.142,
+   60.125
+  ],
+  "tall_in": 50.0,
+  "textiles": {
+   "Bed blanket": {
+    "pattern": "plaid.png",
+    "repeat_in": [
+     8.0,
+     8.0
+    ]
+   },
+   "Bed coverlet": {
+    "pattern": "morris-strawberry-thief-print.jpg",
+    "repeat_in": [
+     18.0,
+     19.6
+    ]
+   },
+   "Bed headboard cover": {
+    "pattern": "linen-blue.png",
+    "repeat_in": [
+     3.0,
+     3.0
+    ]
+   },
+   "Bed mattress sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   },
+   "Bed pillowcase": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   },
+   "Bed top sheet": {
+    "pattern": "percale.png",
+    "repeat_in": [
+     2.0,
+     2.0
+    ]
+   }
+  },
+  "triangles": 46616,
+  "triangles_render": 263856,
+  "version": "2026-11-15c"
  }
 }

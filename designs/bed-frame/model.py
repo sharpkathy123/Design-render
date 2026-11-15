@@ -6,6 +6,7 @@ rails on bed bolts and a straight foot rail, through-
 tenoned into two short legs, no posts at the foot. Sizes in sizes.py.
 
     python3.11 designs/bed-frame/model.py [--quality check|final] [--views corner,foot,head,footend] [--quilt | --bedding]
+    python3.11 designs/bed-frame/model.py --size twin --bedding --views bedroom   # the twin (or king)
     python3.11 designs/bed-frame/model.py --export-all     # the 3D models in model/ (add a CHANGELOG line first)
 
 Writes designs/bed-frame/parts.json and renders/bed-frame-<view>[-quilt].jpg.
@@ -20,6 +21,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(HERE, "..", "..", "tools", "blender"))
 sys.path.insert(0, HERE)
 import kit  # noqa: E402
+if "--size" in sys.argv:            # (before sizes.py: it reads the size from BED_SIZE)
+    os.environ["BED_SIZE"] = sys.argv[sys.argv.index("--size") + 1]
 import bpy  # noqa: E402
 from sizes import *  # noqa: E402,F401,F403
 
@@ -592,22 +595,21 @@ def relax(o, factor=0.5, repeat=4):
 def bedding(frame, mat):
     """Made up as a designer would (Sketchup-tools' notes and its
     DESIGN_PRINCIPLES.md "Every bed, made simply", 2026-11-14): a coverlet
-    in a Morris print falling about 14" over the sides and the foot, over
-    the rails, one uncut sheet folding over the foot's corners; a plain white top sheet turned down
-    about 10" over its head end; a wool plaid blanket folded across the
-    foot, its ends falling over the sides; white pillows stacked two by two
-    at the head; a checked cover over the headboard. Each its own object
+    in a Morris print tucked in between the mattress and the rails, its foot
+    corners sewn (client, 2026-11-15: tucked into the frame, not covering
+    it); a plain white top sheet turned down about 10" over its head end;
+    a wool plaid blanket folded across the foot, its ends over the sides;
+    white pillows stacked two by two at the head; a plain light blue cover,
+    the coverlet's blue, over the headboard. Each its own object
     and material."""
     hb = [o for o in frame if o.name.startswith(("Headboard", "Head post"))]
     posts = [o for o in frame if o.name.startswith("Head post")]
-    # what the coverlet falls over: the mattress, the rails and the foot's legs
-    over = [o for o in frame if o.name.startswith(("Side rail", "Foot rail", "Foot leg", "Head post"))
-            and "peg" not in o.name and "tenon" not in o.name and "bolt" not in o.name]
     cw, cl_ = COVERLET
     y_head = COVERLET_HEAD                                    # its head edge, under the pillows' front
     cov = cloth("Coverlet", (cw, cl_), (W / 2, y_head - cl_ / 2, MAT_TOP + 1.0),
-                fabric_material("Coverlet", COVERLET_PRINT, COVERLET_REPEAT), posts + over + [mat], frames=90,
-                mass=0.6, bend=0.8, pin_head=3.0, foot_corners=COVERLET_CORNER, self_collide=True)
+                fabric_material("Coverlet", COVERLET_PRINT, COVERLET_REPEAT), posts + [mat], frames=80,
+                mass=0.5, bend=0.8, pin_head=3.0, foot_corners=COVERLET_CORNER)
+    # (only the mattress stops it, so its edges fall straight down inside the rails, tucked in)
     turndown = top_sheet(cov, y_head)
     finish_cloth(cov, 0.3)          # (its thickness first: the blanket fell through a bare sheet)
     folded_blanket(cov)
@@ -615,7 +617,8 @@ def bedding(frame, mat):
     # pillows: two stacked flat at the head of each side
     pm = pillow_material()
     w, d, t = PILLOW
-    for k, side in enumerate((-1, 1)):
+    sides = (0,) if PILLOW_COLUMNS == 1 else (-1, 1)        # (a twin: one column, in the middle)
+    for k, side in enumerate(sides):
         x = W / 2 + side * (w / 2 + 0.25)
         y = HB_Y - 4.5 - d / 2
         for j in range(PILLOW_STACK):
@@ -657,12 +660,19 @@ def top_sheet(cov, y_head):
     return o
 
 
+SIZE_TAG = "" if BED_SIZE == "queen" else "-" + BED_SIZE    # (the queen's files keep their names)
+
 # the export (tools/blender/deliver.py): every version of the bed, for other repos' rooms
 MODEL = os.path.join(HERE, "model")
-VERSIONS = {        # file stem: (model.py's option, its bedding collections)
-    "bed-frame-made-up": ("--bedding", ("Bedding: headboard cover", "Bedding: coverlet, top sheet, blanket and pillows")),
-    "bed-frame-bare": (None, ()),
-    "bed-frame-quilt": ("--quilt", ("Bedding: quilt",)),
+MADE_UP = ("Bedding: headboard cover", "Bedding: coverlet, top sheet, blanket and pillows")
+VERSIONS = {        # file stem: (model.py's options, its bedding collections)
+    "bed-frame-made-up": (["--bedding"], MADE_UP),
+    "bed-frame-bare": ([], ()),
+    "bed-frame-quilt": (["--quilt"], ("Bedding: quilt",)),
+    "bed-frame-twin-made-up": (["--size", "twin", "--bedding"], MADE_UP),     # a pair for the NW bedroom
+    "bed-frame-twin-bare": (["--size", "twin"], ()),
+    "bed-frame-king-made-up": (["--size", "king", "--bedding"], MADE_UP),     # the SE bedroom's
+    "bed-frame-king-bare": (["--size", "king"], ()),
 }
 MATERIAL_NAMES = [("Vanity Oak", "oak fumed"), ("Vanity Peg", "oak fumed pegs"), ("Vanity Pine_dark", "2x4 pine stained dark"),
                   ("Vanity Pine", "2x4 pine"), ("Vanity Poplar", "poplar"), ("Vanity Brass", "brass aged")]
@@ -686,7 +696,7 @@ def export(path, frame, mat, kind):
     bedding_names = VERSIONS[kind][1]
     rest = [o for o in bpy.data.objects if o.type == "MESH" and o not in frame and o is not mat]
     coll = {"Bed frame": list(frame), "Bed mattress": [mat]}
-    if kind == "bed-frame-made-up":
+    if kind.endswith("made-up"):
         coll[bedding_names[0]] = [o for o in rest if o.name.startswith("Headboard cover")]
         coll[bedding_names[1]] = [o for o in rest if not o.name.startswith("Headboard cover")]
     elif bedding_names:
@@ -702,10 +712,9 @@ def export_all():
     import subprocess
     import deliver
     deliver.start_all(MODEL)
-    for stem, (opt, _) in VERSIONS.items():
-        cmd = [sys.executable, os.path.abspath(__file__), "--no-checks", "--export", os.path.join(MODEL, stem + ".blend")]
-        if opt:
-            cmd.insert(2, opt)
+    for stem, (opts, _) in VERSIONS.items():
+        cmd = [sys.executable, os.path.abspath(__file__)] + list(opts) + ["--no-checks", "--export",
+                                                                           os.path.join(MODEL, stem + ".blend")]
         print("EXPORT-ALL", " ".join(cmd[2:]), flush=True)
         subprocess.run(cmd, check=True)
 
@@ -733,6 +742,7 @@ def main():
     ap.add_argument("--quality", default="check", choices=("check", "final"))
     ap.add_argument("--views", default="corner,foot")
     ap.add_argument("--quilt", action="store_true")
+    ap.add_argument("--size", default="queen", choices=sorted(MATTRESSES), help="the mattress: twin, queen or king")
     ap.add_argument("--bedding", action="store_true", help="made up: printed headboard cover, coverlet, throw, pillows")
     ap.add_argument("--no-render", action="store_true")
     ap.add_argument("--export", metavar="BLEND", help="save the bed (no studio, lights or camera) to a .blend, check it, and stop")
@@ -745,10 +755,11 @@ def main():
     if not a.no_checks:
         kit.check_joints()
         kit.check_overlaps()
-    kit.write_parts(os.path.join(HERE, "parts.json"), name="Queen bed frame",
+    kit.write_parts(os.path.join(HERE, "parts%s.json" % SIZE_TAG), name="%s bed frame" % BED_SIZE.capitalize(),
                     notes=["Quartersawn white oak, fumed; poplar slats; 2x4 cleats and center rail. The headboard's rails "
                            "and the foot rail are through-tenoned and pegged; side rails on bed bolts. Joinery: bed-frame-joinery.svg.",
-                           "Mattress 60\" x 80\" x 11\" on the slats (no box spring); its top 24\" from the floor."])
+                           "Mattress %s x %s x %s on the slats (no box spring); its top %s from the floor."
+                           % (frac(MAT_W), frac(MAT_L), frac(MAT_T), frac(MAT_TOP))])
     if a.no_render:
         return
     lo, hi = kit.bounds()
@@ -774,7 +785,7 @@ def main():
         else:
             az, el, lens = VIEWS[v]
             kit.camera_auto(azimuth=az, elevation=el, lens=lens, target=[(lo[k] + hi[k]) / 2 for k in range(3)])
-        kit.render(os.path.join(HERE, "renders", "bed-frame-%s%s.jpg" % (v, suffix)), quality=a.quality)
+        kit.render(os.path.join(HERE, "renders", "bed-frame%s-%s%s.jpg" % (SIZE_TAG, v, suffix)), quality=a.quality)
 
 
 if __name__ == "__main__":

@@ -256,7 +256,20 @@ def percale(path):
     c.save(path)
 
 
-KINDS = {"pomegranate": pomegranate, "blockprint": blockprint, "kilim": kilim, "plaid": plaid, "check": check,
+def linen_blue(path):
+    """A plain linen in light blue, the Strawberry Thief's leaf blue lightened
+    (#9db0cc: its hue and saturation, picked from the print, client
+    2026-11-15), for the headboard's cover beside the Morris coverlet: only
+    its weave and a few slubs. One tile is a 3" repeat."""
+    c = Canvas(192, 192, "#9db0cc")
+    rng = np.random.default_rng(25)
+    slub = np.repeat(rng.normal(0, 1, 192 // 3), 3)[:192]
+    c.rgb *= (1 + 0.03 * slub)[:, None, None]
+    c.texture(0.04, 26)
+    c.save(path)
+
+
+KINDS = {"linen-blue": linen_blue, "pomegranate": pomegranate, "blockprint": blockprint, "kilim": kilim, "plaid": plaid, "check": check,
          "quilt": quilt, "percale": percale}
 
 

@@ -796,3 +796,25 @@ cabinet runs to the ceiling, its cap against the plaster.
     each one's color (kit materials keep it in `diffuse_color`), or the
     image feeding its base color with the Mapping node's repeat baked into
     the UVs, since COLLADA has no texture transform.
+- **Bedding a room can restyle** (2026-11-15, Sketchup-tools' notes,
+  "The bedding's designer look" and "The black marks"):
+  - **The coverlet's corners:** cut out square and draped, its two flaps
+    hung 7/8" apart and a black slit showed. Sewn after the drape
+    (`sew_corners()`: a strip of faces point to point, the points closer
+    than 1 1/4" merged), it closes and keeps the drape. That's how the
+    tucked coverlet is made. A coverlet falling 14" over the rails was
+    tried (2026-11-15): there the seam ran through the foot leg, and one
+    uncut sheet with self-collision folded over the leg instead. But the
+    client wants the bedding tucked into the frame, not covering it.
+  - **Check the sheet, not the solid:** a Solidify's rim closes a slit
+    with a wall, so the export keeps a cloth's thickness live and checks
+    the sheet's own open edges. Take the hem as the median height of its
+    open edges plus 1", so a corner hanging lower isn't counted.
+  - **The top sheet's turndown** is made from the draped coverlet's own
+    faces in its last 10", lifted 0.18" along their normals and given
+    0.12" of thickness upward. It follows the coverlet over the top and
+    down the sides, with no second simulation.
+  - **Prints at their real size:** cloth UVs in meters (`corner_cut_grid`,
+    `cloth()`, the blanket's swept profile by arc length), and a `Repeat`
+    mapping at 39.37 / repeat inches. Our own wool plaid, check, quilt and
+    percale come from `tools/make_fabric.py`.

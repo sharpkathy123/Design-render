@@ -51,12 +51,28 @@ and `python3 tools/draw_views.py designs/bed-frame/parts.json` for the drawings)
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
   a 2x4 center rail on three legs stained dark (they can be seen under
   the foot rail from low down).
+- **Twin and king** (Sketchup-tools, 2026-11-14: a pair of twins for the
+  NW bedroom, a king for the SE bedroom): the same bed at each size,
+  `python3.11 designs/bed-frame/model.py --size twin` or `--size king`.
+  The posts, rails and joinery are the queen's, and the headboard keeps
+  the queen's slat width: four slats on the twin, nine on the king. The
+  twin is 42 7/8" x 80 1/16" over the tenons, and the king
+  80 7/8" x 85 1/16". Each has its own drawing and cut list
+  ([twin](bed-frame-twin-drawing.svg), [king](bed-frame-king-drawing.svg)).
+  BUILD.md's steps are the same for each.
+- **Made up** (2026-11-15): Morris's Strawberry Thief on a coverlet tucked
+  in between the mattress and the rails, its foot corners sewn; a white
+  top sheet turned down 10"; a wool plaid blanket across the foot; white
+  pillows two by two (one column on the twin, king pillows on the king);
+  and a plain light blue cover over the headboard, the coverlet's own
+  blue (client, 2026-11-15).
 - **Finish:** fumed, a deep brown, as Stickley's workshops did it; or dyed
   to match (BUILD.md, step 15).
 
 ## Assumptions
 
-- Mattress 60" x 80" x 11" on slats, no box spring; its top is 24" from
+- Mattresses 11" thick at every size (twin 38" x 75", queen 60" x 80",
+  king 76" x 80"), on slats, no box spring; its top is 24" from
   the floor. A thicker mattress raises it: 13" puts the top at 26".
 - Each post is two 6/4 boards glued up, quartersawn faces outward.
 
@@ -74,4 +90,9 @@ Each of these adds wood or work:
 
 ## Questions
 
-None open.
+- **The twin's width:** asked for about 40" outside, it comes out 42 1/8"
+  (42 7/8" over the tenons) with the queen's 2 3/4" posts and the rails
+  centered on them. A 38" mattress, 1/2" of clearance and 1 13/16" each
+  side for the rails make 42 1/8". Reaching 40" would take slimmer posts
+  (about 1 3/4") or rails set flush inside the posts. Is 42 1/8" all
+  right for the NW bedroom's pair?

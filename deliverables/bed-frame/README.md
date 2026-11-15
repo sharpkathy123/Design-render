@@ -4,7 +4,7 @@
 
 An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washable quilt over its headboard: square posts with pyramid caps, through-tenons pegged through the posts, wide flat slats to lean against, and a low foot rail with short capped legs.
 
-![Made up as a designer would, William Morris's Strawberry Thief on the coverlet falling over the sides and foot, a white top sheet turned down, a wool plaid blanket, white pillows two by two, a checked cover over the headboard](renders/bed-frame-bedroom-bedding.jpg)
+![Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, the headboard's cover in the coverlet's light blue](renders/bed-frame-bedroom-bedding.jpg)
 
 **[Download the build packet (PDF)](bed-frame-build-packet.pdf)**: the pictures, the drawings and the build guide in one printable file.
 
@@ -13,6 +13,10 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 - **Overall drawing and cut list:** [view](bed-frame-drawing.svg) (sharp at any zoom), [PDF to print](bed-frame-drawing.pdf)
 - **Joinery:** [view](bed-frame-joinery.svg) (sharp at any zoom), [PDF to print](bed-frame-joinery.pdf)
 - **Footprint, for a room's plan:** [view](bed-frame-footprint.svg) (sharp at any zoom), [PDF to print](bed-frame-footprint.pdf)
+- **The twin, overall drawing and cut list:** [view](bed-frame-twin-drawing.svg) (sharp at any zoom), [PDF to print](bed-frame-twin-drawing.pdf)
+- **The twin's footprint:** [view](bed-frame-twin-footprint.svg) (sharp at any zoom), [PDF to print](bed-frame-twin-footprint.pdf)
+- **The king, overall drawing and cut list:** [view](bed-frame-king-drawing.svg) (sharp at any zoom), [PDF to print](bed-frame-king-drawing.pdf)
+- **The king's footprint:** [view](bed-frame-king-footprint.svg) (sharp at any zoom), [PDF to print](bed-frame-king-footprint.pdf)
 
 ## How to build it
 
@@ -30,12 +34,26 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 - **The bed made up (glTF):** [bed-frame-made-up.glb](model/bed-frame-made-up.glb)
 - **The bare frame and mattress (glTF):** [bed-frame-bare.glb](model/bed-frame-bare.glb)
 - **The frame with the quilt (glTF):** [bed-frame-quilt.glb](model/bed-frame-quilt.glb)
+- **The twin, made up (Blender 4.5):** [bed-frame-twin-made-up.blend](model/bed-frame-twin-made-up.blend)
+- **The twin, bare (Blender 4.5):** [bed-frame-twin-bare.blend](model/bed-frame-twin-bare.blend)
+- **The king, made up (Blender 4.5):** [bed-frame-king-made-up.blend](model/bed-frame-king-made-up.blend)
+- **The king, bare (Blender 4.5):** [bed-frame-king-bare.blend](model/bed-frame-king-bare.blend)
+- **The twin, made up (glTF):** [bed-frame-twin-made-up.glb](model/bed-frame-twin-made-up.glb)
+- **The twin, bare (glTF):** [bed-frame-twin-bare.glb](model/bed-frame-twin-bare.glb)
+- **The king, made up (glTF):** [bed-frame-king-made-up.glb](model/bed-frame-king-made-up.glb)
+- **The king, bare (glTF):** [bed-frame-king-bare.glb](model/bed-frame-king-bare.glb)
 - **For SketchUp, in inches (COLLADA .dae files and their images):** [sketchup/](model/sketchup/)
 
 ## Pictures
 
-![Made up as a designer would, William Morris's Strawberry Thief on the coverlet falling over the sides and foot, a white top sheet turned down, a wool plaid blanket, white pillows two by two, a checked cover over the headboard](renders/bed-frame-bedroom-bedding.jpg)
-*Made up as a designer would, William Morris's Strawberry Thief on the coverlet falling over the sides and foot, a white top sheet turned down, a wool plaid blanket, white pillows two by two, a checked cover over the headboard*
+![Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, the headboard's cover in the coverlet's light blue](renders/bed-frame-bedroom-bedding.jpg)
+*Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, the headboard's cover in the coverlet's light blue*
+
+![The twin, made up the same way, one column of pillows (a pair for the NW bedroom)](renders/bed-frame-twin-bedroom-bedding.jpg)
+*The twin, made up the same way, one column of pillows (a pair for the NW bedroom)*
+
+![The king, made up the same way, with king pillows (for the SE bedroom)](renders/bed-frame-king-bedroom-bedding.jpg)
+*The king, made up the same way, with king pillows (for the SE bedroom)*
 
 ![The same, from above the foot](renders/bed-frame-corner-bedding.jpg)
 *The same, from above the foot*
@@ -87,6 +105,21 @@ An Arts & Crafts queen bed frame in quartersawn white oak, made to wear a washab
 - **Support:** 2x4 cleats inside the side rails, thirteen poplar slats, and
   a 2x4 center rail on three legs stained dark (they can be seen under
   the foot rail from low down).
+- **Twin and king** (Sketchup-tools, 2026-11-14: a pair of twins for the
+  NW bedroom, a king for the SE bedroom): the same bed at each size,
+  `python3.11 designs/bed-frame/model.py --size twin` or `--size king`.
+  The posts, rails and joinery are the queen's, and the headboard keeps
+  the queen's slat width: four slats on the twin, nine on the king. The
+  twin is 42 7/8" x 80 1/16" over the tenons, and the king
+  80 7/8" x 85 1/16". Each has its own drawing and cut list
+  ([twin](bed-frame-twin-drawing.svg), [king](bed-frame-king-drawing.svg)).
+  BUILD.md's steps are the same for each.
+- **Made up** (2026-11-15): Morris's Strawberry Thief on a coverlet tucked
+  in between the mattress and the rails, its foot corners sewn; a white
+  top sheet turned down 10"; a wool plaid blanket across the foot; white
+  pillows two by two (one column on the twin, king pillows on the king);
+  and a plain light blue cover over the headboard, the coverlet's own
+  blue (client, 2026-11-15).
 - **Finish:** fumed, a deep brown, as Stickley's workshops did it; or dyed
   to match (BUILD.md, step 15).
 

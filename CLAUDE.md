@@ -80,9 +80,43 @@ Each design starts as a text spec, `specs/<name>.md`, and ends up in
      share.yaml's `model:` section: `facing`, `rot_rule`, `license`,
      `versions` (name, use, about) and `textures` (every packed image's
      source and rights: the export stops on one that isn't listed).
+   - **Textiles a room can restyle** (Sketchup-tools, 2026-11-14): each
+     textile its own material with ONE color image, the node named
+     `Pattern`, through a mapping named `Repeat`. Its UVs are one unit to
+     a meter of the cloth laid flat, so a print with an R-inch repeat takes
+     scale 39.37 / R. No hue or saturation nodes: bake any color change
+     into the image. Use `fabric_material()` in `designs/bed-frame/model.py`
+     (and `box_uv()` for a box-like piece). The export test checks it, and
+     the model README lists each textile's pattern and repeat.
+   - **No seams that can gape.** A cut cloth is sewn after the drape
+     (`sew_corners()`), and the export gets `sewn=` so the test checks for
+     open edges there. The bed's coverlet is cut at the foot corners to
+     tuck in, and showed a black slit at each (2026-11-14). A cover that
+     hangs outside the frame has to be one uncut sheet with self-collision
+     instead: a seam sewn straight across would run through a leg.
+   - **A designer's look by default** (Sketchup-tools'
+     `DESIGN_PRINCIPLES.md`, "Every bed, made simply"): a pattern on the
+     large pieces (a Morris print on the coverlet), checks or stripes on
+     the small ones, wool plaid for a blanket, and sheets and pillowcases
+     plain white with no band. A plain piece takes a color picked from
+     the main print (the bed's headboard cover: the coverlet's light blue,
+     client, 2026-11-15). **Bedding tucks into the frame and never covers
+     it** (client, 2026-11-15): the coverlet and sheets fall inside the
+     rails, the top sheet turned down about 10", the blanket's ends over
+     the sides to just above the rails. Each piece is its own named
+     object.
+   - **Other sizes are size options, never a scaled model.** When a room
+     needs another size, add it to `sizes.py` (the bed: `MATTRESSES`, and
+     `model.py --size twin|king`). The structural parts (posts, rails,
+     joinery) stay the original's, and the counts follow (the headboard's
+     slats keep their width). Each size gets its own files
+     (`<name>-<size>-made-up.blend`), drawing, footprint, and `group:`
+     in share.yaml's `model: versions:`.
    - **Look at it placed:** load a version with Sketchup-tools'
      `assets.place()` turned 90 degrees, and render it (RECIPES.md, "A
-     model for another repo's rooms").
+     model for another repo's rooms"). When a fix is something the client
+     saw, render a close-up before and after, from the exported files,
+     and put it in the renders.
    - Keep the bedding or other soft parts' smoothing modest, and say in the
      reply if a file is over about 100,000 triangles in the viewport.
    - List everything in `model/` in share.yaml's `files:` (the

@@ -48,6 +48,19 @@ def load(name):
     return d, share, cfg, recs, order
 
 
+def groups(cfg, order):
+    """The versions by the size they're of (share.yaml versions' `group`:
+    twin, king; none: the design's own size): [(group, [stems])]."""
+    out = {}
+    for s in order:
+        out.setdefault(cfg.get("versions", {}).get(s, {}).get("group", ""), []).append(s)
+    return list(out.items())
+
+
+def footprint_file(name, group):
+    return "%s%s-footprint.svg" % (name, "-" + group if group else "")
+
+
 def write(name):
     d, share, cfg, recs, order = load(name)
     md = os.path.join(d, "model")
@@ -82,7 +95,8 @@ def write(name):
            "# version and facing are already right).\n")
     open(os.path.join(md, "library.yaml"), "w").write(hdr + yaml.safe_dump(lib, sort_keys=False, width=110))
 
-    footprint(name, d, share, recs, order)
+    for g, stems in groups(cfg, order):
+        footprint(name, d, share, recs, stems, g)
     open(os.path.join(md, "README.md"), "w").write(readme(name, share, cfg, recs, order, version, change, prefix, lib))
     print("MODEL CARD %s: %s (%s)" % (name, version, ", ".join(order)), flush=True)
 
@@ -107,8 +121,9 @@ def readme(name, share, cfg, recs, order, version, change, prefix, lib):
         L.append("- **%s**: %s Collections: %s." % (r["file"], (c.get("about") or r.get("about") or "").strip(),
                                                  "; ".join("`%s` (%d)" % (k, len(v)) for k, v in r["collections"].items())))
     r0 = recs[order[0]]
-    L += ["", "The frame alone is %s (W x D x H), the same in every file. Sizes are measured from the saved files by "
-          "the export's check, not typed." % size3(r0["frame_size_in"]), "",
+    L += [""] + ["The %sframe alone is %s (W x D x H), the same in each of its files." % (
+        (g + "'s ") if g else "", size3(recs[st[0]]["frame_size_in"])) for g, st in groups(cfg, order)] + [
+        "", "Sizes are measured from the saved files by the export's check, not typed.", "",
           "## What's in them\n",
           "- Only meshes, and one empty: every object, mesh, material and image is named `%s ...`, so appending them "
           "into a room that has its own `oak` or `brass` neither merges them nor makes `.001` copies. Materials: %s." % (
@@ -197,14 +212,15 @@ def readme(name, share, cfg, recs, order, version, change, prefix, lib):
             L.append("| `%s` | %s |" % (i, tex[src].strip()))
         L.append("")
     L += ["## Footprint\n",
-          "[%s-footprint.svg](../%s-footprint.svg): the top view to scale, the frame solid and each version's "
-          "bedding outline dashed, for a room's plan.\n" % (name, name),
+          "The top view to scale, the frame solid and each version's bedding outline dashed, for a room's plan: "
+          + ", ".join("[%s](../%s)" % (g or "the design's own size", footprint_file(name, g)) for g, _ in groups(cfg, order))
+          + ".\n",
           "## Making them again\n", "```", cfg.get("command", "python3.11 designs/%s/model.py --export-all" % name), "```",
           "Add a line to [CHANGELOG.md](CHANGELOG.md) first: its newest line is the version.\n"]
     return "\n".join(x for x in L if x is not None)
 
 
-def footprint(name, d, share, recs, order):
+def footprint(name, d, share, recs, order, group=""):
     """The top view to scale: the frame's parts (drawn lowest first, so the
     top ones show) solid, each version's bedding outline dashed, the sizes."""
     from svgdraw import SvgDraw
@@ -274,7 +290,8 @@ def footprint(name, d, share, recs, order):
     svg.text((bx, by), "BACK (+y)", font=F(12), fill=INK, anchor="md")
     # the title and the key
     tx, ty = M + (x1 - x0) * K + 60, M + 60
-    svg.text((tx, ty), share["title"], font=F(20), fill=INK, anchor="la")
+    svg.text((tx, ty), "%s bed frame" % group.capitalize() if group else share["title"], font=F(20), fill=INK,
+             anchor="la")
     svg.text((tx, ty + 26), "Footprint, from above", font=F(13), fill=SOFT, anchor="la")
     svg.text((tx, ty + 46), "x across, y front to back, in inches", font=F(12), fill=SOFT, anchor="la")
     for i in range(4):
@@ -297,7 +314,7 @@ def footprint(name, d, share, recs, order):
                                                                  frac(max(hy) - min(hy))), font=F(12), fill=col, anchor="lm")
     y += 30
     svg.text((tx, y), "Version %s" % max(recs[s]["version"] for s in order), font=F(12), fill=SOFT, anchor="la")
-    svg.save(os.path.join(d, "%s-footprint.svg" % name))
+    svg.save(os.path.join(d, footprint_file(name, group)))
 
 
 if __name__ == "__main__":

@@ -5,11 +5,11 @@ bed-frame-made-up:
   use: the Arts & Crafts queen bed, made up (Design-render's bed frame)
   name: Queen bed frame, made up
   size_in:
-  - 71.1
-  - 90.0
+  - 64.9
+  - 85.1
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-15b (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15c (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-made-up/bed-frame-made-up.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
@@ -21,7 +21,7 @@ bed-frame-bare:
   - 85.1
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-15b (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15c (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-bare/bed-frame-bare.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
@@ -33,7 +33,55 @@ bed-frame-quilt:
   - 85.1
   - 60.1
   source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
-  version: Design-render 2026-11-15b (model/VERSION and CHANGELOG.md in the source)
+  version: Design-render 2026-11-15c (model/VERSION and CHANGELOG.md in the source)
   license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
   file: library/models/bed-frame-quilt/bed-frame-quilt.blend
+  facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
+bed-frame-twin-made-up:
+  use: the Arts & Crafts twin bed, made up (Design-render's bed frame at twin size); a pair in the NW bedroom
+  name: Twin bed frame, made up
+  size_in:
+  - 42.9
+  - 80.1
+  - 60.1
+  source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
+  version: Design-render 2026-11-15c (model/VERSION and CHANGELOG.md in the source)
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  file: library/models/bed-frame-twin-made-up/bed-frame-twin-made-up.blend
+  facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
+bed-frame-twin-bare:
+  use: the Arts & Crafts twin bed, bare (Design-render's bed frame at twin size)
+  name: Twin bed frame, bare
+  size_in:
+  - 42.9
+  - 80.1
+  - 60.1
+  source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
+  version: Design-render 2026-11-15c (model/VERSION and CHANGELOG.md in the source)
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  file: library/models/bed-frame-twin-bare/bed-frame-twin-bare.blend
+  facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
+bed-frame-king-made-up:
+  use: the Arts & Crafts king bed, made up (Design-render's bed frame at king size); the SE bedroom's
+  name: King bed frame, made up
+  size_in:
+  - 80.9
+  - 85.1
+  - 60.1
+  source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
+  version: Design-render 2026-11-15c (model/VERSION and CHANGELOG.md in the source)
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  file: library/models/bed-frame-king-made-up/bed-frame-king-made-up.blend
+  facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'
+bed-frame-king-bare:
+  use: the Arts & Crafts king bed, bare (Design-render's bed frame at king size)
+  name: King bed frame, bare
+  size_in:
+  - 80.9
+  - 85.1
+  - 60.1
+  source: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
+  version: Design-render 2026-11-15c (model/VERSION and CHANGELOG.md in the source)
+  license: our own design; the Strawberry Thief scan is public domain (Cooper Hewitt, CC0)
+  file: library/models/bed-frame-king-bare/bed-frame-king-bare.blend
   facing: 'rot=0: the headboard to the room''s +y; in a room whose x runs south, rot=90 puts it to the north wall'

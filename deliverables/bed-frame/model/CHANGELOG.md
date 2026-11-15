@@ -4,6 +4,7 @@ Newest first, one line per change. The newest line's name is the version
 (`model/VERSION`, and `o["design_render_version"]` on every object):
 add a line here before exporting again (`python3.11 designs/bed-frame/model.py --export-all`).
 
+- 2026-11-15c: the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38" x 75" mattress, for a pair in the NW bedroom) and a king (76" x 80", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each
 - 2026-11-15b: made up as a designer would: a Morris coverlet falling 14" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes
 - 2026-11-15a: the coverlet's foot corners sewn after the drape, so no black slit shows where the flaps met (Sketchup-tools' notes); the export test checks it; cloth thickness left live
 - 2026-11-12a: ready for other repos' rooms: checked in a fresh Blender, names prefixed, bedding in named collections, a quilt version, .glb and SketchUp .dae copies, a footprint drawing

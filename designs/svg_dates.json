@@ -5,10 +5,26 @@
  },
  "designs/bed-frame/bed-frame-footprint.svg": {
   "date": "2026-11-15",
-  "hash": "98580892bfa18634cfa20dd0515f171a71d90401"
+  "hash": "05c613e58276c55c647e25a5666ab2c9c8abedc1"
  },
  "designs/bed-frame/bed-frame-joinery.svg": {
   "date": "2026-11-11",
   "hash": "27a04ab2c1c3702f1b11cad02f0da4a41d6fe79f"
+ },
+ "designs/bed-frame/bed-frame-king-drawing.svg": {
+  "date": "2026-11-15",
+  "hash": "194478078641a84aee5c003875cfe2424c42745d"
+ },
+ "designs/bed-frame/bed-frame-king-footprint.svg": {
+  "date": "2026-11-15",
+  "hash": "4891836052cd688d94de15e05b9b2dd1e1fae262"
+ },
+ "designs/bed-frame/bed-frame-twin-drawing.svg": {
+  "date": "2026-11-15",
+  "hash": "d132ef68b4a89090afab444b5e578d5aa90bd3c9"
+ },
+ "designs/bed-frame/bed-frame-twin-footprint.svg": {
+  "date": "2026-11-15",
+  "hash": "b5c70564a0b6a2be0846246af88b083a2ea65e41"
  }
 }

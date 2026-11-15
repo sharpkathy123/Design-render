@@ -1,13 +1,25 @@
-version: 2026-11-15b
-change: made up as a designer would: a Morris coverlet falling 14" over the sides and foot (one uncut sheet, its corners folding over the legs), a white top sheet turned down 10", a wool plaid blanket with its ends over the sides, white sheets and pillowcases, a checked headboard cover; each textile one Pattern image at a known UV scale, no hue nodes
+version: 2026-11-15c
+change: the coverlet tucked into the frame again, its foot corners sewn (client: tucked in, not covering the frame); the headboard's cover a plain light blue, the coverlet's (#9db0cc); a twin (38" x 75" mattress, for a pair in the NW bedroom) and a king (76" x 80", for the SE bedroom), each made up and bare, the posts, rails and joinery the queen's; the king with king pillows; a footprint drawing and cut list for each
 design: https://github.com/sharpkathy123/Design-render/tree/main/deliverables/bed-frame
 sha256:
-  bed-frame-made-up.blend: 6216ac7f74d4ef6e82387c546199828353971ba61a2fd8c12f990cb6c0c4af53
-  bed-frame-made-up.glb: a9670b025a825ae3882a5d672b4cd5d9b5d4c072c2d5971e7a875879a10ac6e4
-  sketchup/bed-frame-made-up.dae: 050ffc1a1de9adc0b9fa24a8a4048c51f9733100796367c0af94d1bb73e956e1
-  bed-frame-bare.blend: 914b38cc7dbe2ab7ee70db60725e76273ee1fe38e98763b8608a83907bc9d63d
-  bed-frame-bare.glb: fd8db1f48bf087a52c6190be3c527fd4756128c98faa276a164f0274fb9e981c
-  sketchup/bed-frame-bare.dae: e5d83b7814802cd539057fcc6d11a28bab5f0fe13d6ae8193d6e4c595378227d
-  bed-frame-quilt.blend: 6ff493fd887eb9a4fd848480846de823ea36aca466ff8a15a55c72f7aa3c9c6c
-  bed-frame-quilt.glb: c44b43039ebca23d33936a5117cf641efb008e79e61362777eed04698798ae62
-  sketchup/bed-frame-quilt.dae: 7ef2fc031df5fca81816a804844f87af626a7958faef04f9e387fbe133c60f30
+  bed-frame-made-up.blend: 354d16672c708e201e758962b3ddd9a136a0d06eef6958722237ca3e48446a2c
+  bed-frame-made-up.glb: 237d3c5f510c5e0b4dc15244397c6be6985272f130e162c220ec76a3fe64bc38
+  sketchup/bed-frame-made-up.dae: 9e32d98c3107ace1cb2b1c0d824480cbeac0341e9d4f12ea572aa07c4751ed93
+  bed-frame-bare.blend: 1080e08ebbb259c450748856b409abef78e08208b23d3c7567fe258aff31574c
+  bed-frame-bare.glb: 3a9c720cfbe17a51a9149c1a8b6e990072c97199194732c0f80b76537d997d47
+  sketchup/bed-frame-bare.dae: 3854db0530a67ba51a1ecb61e3732f947b4b03f5171a69ad86a1655cda269f8f
+  bed-frame-quilt.blend: d8cbc34574141e9aecb3fa98d29c58ed611b2e13fb63c80d6fdb74ae5ba26824
+  bed-frame-quilt.glb: b6d3d40970cb626c3281acbc5aa7533f3a3e89115f624994a49c4a14e179550a
+  sketchup/bed-frame-quilt.dae: c7178e44c471c47cd896329d19e15bdc90120b4d753c0c096c952cb6c78625ce
+  bed-frame-twin-made-up.blend: ea4e0bfdc2e6acea9d5ccb3d2412757cd84b29d66716f16e58cf73daeb506277
+  bed-frame-twin-made-up.glb: 12ecb32aa4a8e1a974da2abbc41bb76ba59f50786a01e58cb040abd33ee47436
+  sketchup/bed-frame-twin-made-up.dae: 043ec37acd9dcc340959fadf96b123d06b4252b395e0f058d753a9220ea946ff
+  bed-frame-twin-bare.blend: 018c6f477e39dc1e9979ba7d8873441c41dde6efa940c7ec12b456e489e0089f
+  bed-frame-twin-bare.glb: 9a3e766d83730b93b9c53623fb3c8567ee8168709688cf67f9eb85fb0855ddf4
+  sketchup/bed-frame-twin-bare.dae: ff42eae67d156eab3c321b2594e3317f5d4783159d48ce91b1044d9a53ad40ea
+  bed-frame-king-made-up.blend: 3fe2cdca61a4330aaaea78744e1f51b41ec16c3bb777ad8e2c4228562c3a31c7
+  bed-frame-king-made-up.glb: 89b7e92abd2e848bdc80b595a12624b40a03a6b02ccc15cecc304a3a338d093c
+  sketchup/bed-frame-king-made-up.dae: 8164ae72fc4b84ce095cd6ca9548b12cab898934d49a8de5e8bac83d5fd8b0e8
+  bed-frame-king-bare.blend: a12ebf4b6ed449bba73082f11d6fd64b648ba73eaa1f17a0f755d692c2b041f2
+  bed-frame-king-bare.glb: 720ff9e6a81adda16351c192293eb9ef17a3108fd8688c790b8fcbdee7ac181a
+  sketchup/bed-frame-king-bare.dae: 580bd3806e37ffa58bf991938d9ea150e2878acef5763cba0357978096fcff35

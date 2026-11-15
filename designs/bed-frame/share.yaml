@@ -8,7 +8,11 @@ summary: >-
 cover: renders/bed-frame-bedroom-bedding.jpg
 renders:
   - file: renders/bed-frame-bedroom-bedding.jpg
-    caption: Made up as a designer would, William Morris's Strawberry Thief on the coverlet falling over the sides and foot, a white top sheet turned down, a wool plaid blanket, white pillows two by two, a checked cover over the headboard
+    caption: Made up, William Morris's Strawberry Thief on the coverlet tucked into the frame, a white top sheet turned down, a wool plaid blanket, white pillows two by two, the headboard's cover in the coverlet's light blue
+  - file: renders/bed-frame-twin-bedroom-bedding.jpg
+    caption: The twin, made up the same way, one column of pillows (a pair for the NW bedroom)
+  - file: renders/bed-frame-king-bedroom-bedding.jpg
+    caption: The king, made up the same way, with king pillows (for the SE bedroom)
   - file: renders/bed-frame-corner-bedding.jpg
     caption: The same, from above the foot
   - file: renders/bed-frame-corner-quilt.jpg
@@ -30,6 +34,14 @@ drawings:
     title: Joinery
   - file: bed-frame-footprint.svg
     title: Footprint, for a room's plan
+  - file: bed-frame-twin-drawing.svg
+    title: The twin, overall drawing and cut list
+  - file: bed-frame-twin-footprint.svg
+    title: The twin's footprint
+  - file: bed-frame-king-drawing.svg
+    title: The king, overall drawing and cut list
+  - file: bed-frame-king-footprint.svg
+    title: The king's footprint
 guide: BUILD.md
 files:
   - file: model/README.md
@@ -52,6 +64,22 @@ files:
     title: The bare frame and mattress (glTF)
   - file: model/bed-frame-quilt.glb
     title: The frame with the quilt (glTF)
+  - file: model/bed-frame-twin-made-up.blend
+    title: The twin, made up (Blender 4.5)
+  - file: model/bed-frame-twin-bare.blend
+    title: The twin, bare (Blender 4.5)
+  - file: model/bed-frame-king-made-up.blend
+    title: The king, made up (Blender 4.5)
+  - file: model/bed-frame-king-bare.blend
+    title: The king, bare (Blender 4.5)
+  - file: model/bed-frame-twin-made-up.glb
+    title: The twin, made up (glTF)
+  - file: model/bed-frame-twin-bare.glb
+    title: The twin, bare (glTF)
+  - file: model/bed-frame-king-made-up.glb
+    title: The king, made up (glTF)
+  - file: model/bed-frame-king-bare.glb
+    title: The king, bare (glTF)
   - file: model/sketchup/
     title: For SketchUp, in inches (COLLADA .dae files and their images)
 
@@ -71,12 +99,12 @@ model:
       name: Queen bed frame, made up
       use: the Arts & Crafts queen bed, made up (Design-render's bed frame)
       about: >-
-        The bed made up as a designer would: a coverlet in William Morris's
-        Strawberry Thief falling about 14" over the sides and the foot, one
-        uncut sheet folding over the foot's corners; a plain white top sheet
-        turned down about 10" over it; a wool plaid blanket folded across the
-        foot, its ends over the sides; four white pillows stacked two by two;
-        a checked cover over the headboard; a white fitted sheet.
+        The bed made up: a coverlet in William Morris's Strawberry Thief
+        tucked in between the mattress and the rails, its foot corners sewn;
+        a plain white top sheet turned down about 10" over it; a wool plaid
+        blanket folded across the foot; four white pillows stacked two by
+        two; a plain light blue cover, the coverlet's blue, over the
+        headboard; a white fitted sheet.
     bed-frame-bare:
       name: Queen bed frame, bare
       use: the Arts & Crafts queen bed, bare (Design-render's bed frame)
@@ -87,6 +115,32 @@ model:
       about: >-
         The frame, a mattress in a white fitted sheet, and a pieced quilt
         (ochre and sage squares) draped over the headboard.
+    bed-frame-twin-made-up:
+      group: twin
+      name: Twin bed frame, made up
+      use: the Arts & Crafts twin bed, made up (Design-render's bed frame at twin size); a pair in the NW bedroom
+      about: >-
+        The same bed at twin size (a 38" x 75" mattress; the posts, rails and
+        joinery the queen's, four headboard slats), made up the same way, with
+        one column of two pillows.
+    bed-frame-twin-bare:
+      group: twin
+      name: Twin bed frame, bare
+      use: the Arts & Crafts twin bed, bare (Design-render's bed frame at twin size)
+      about: The twin frame and a mattress in a white fitted sheet.
+    bed-frame-king-made-up:
+      group: king
+      name: King bed frame, made up
+      use: the Arts & Crafts king bed, made up (Design-render's bed frame at king size); the SE bedroom's
+      about: >-
+        The same bed at king size (a 76" x 80" mattress; the posts, rails and
+        joinery the queen's, nine headboard slats), made up the same way, with
+        king pillows (36" x 20") stacked two by two.
+    bed-frame-king-bare:
+      group: king
+      name: King bed frame, bare
+      use: the Arts & Crafts king bed, bare (Design-render's bed frame at king size)
+      about: The king frame and a mattress in a white fitted sheet.
   textures:
     morris-strawberry-thief-print.jpg: >-
       William Morris, *Strawberry Thief*, designed 1883 (printed about 1934),
@@ -96,6 +150,9 @@ model:
       One repeat, cut from the scan to tile, its color deepened a little (saturation 1.25, value 0.85) in the image.
     plaid.png: our own wool plaid, drawn by `tools/make_fabric.py` (this repo, public)
     check.png: our own woven check, drawn by `tools/make_fabric.py` (this repo, public)
+    linen-blue.png: >-
+      our own plain linen, drawn by `tools/make_fabric.py` (this repo, public), in the
+      Strawberry Thief's leaf blue lightened (#9db0cc)
     quilt.png: our own pieced squares, drawn by `tools/make_fabric.py` (this repo, public)
     percale.png: our own plain white sheeting, drawn by `tools/make_fabric.py` (this repo, public)
     caban_nor_gl_1k.jpg: >-
